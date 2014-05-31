@@ -9,6 +9,7 @@
             <div class="borde" id="cuadro">
                 hola mundo
             </div>
+            :after
         </div>
     </body>
 </html>
