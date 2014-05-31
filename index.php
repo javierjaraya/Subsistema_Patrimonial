@@ -1,6 +1,8 @@
-<?php
-
-echo 'Hola, Esto esta funcionando y fue modificado (commit) por renato';
-echo 'Hora por mi :p';
-
-?>
+<html>
+    <header>
+        <title>Subsistema Patrimonial</title>
+    </header>
+    <body>
+        
+    </body>
+</html>
