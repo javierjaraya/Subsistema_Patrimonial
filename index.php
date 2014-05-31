@@ -7,6 +7,9 @@
     <body>
         <div id="contenedor">
             hola mundo
+            <div class="bs-example" id="cuadro">
+                casa
+            </div>
         </div>
     </body>
 </html>
