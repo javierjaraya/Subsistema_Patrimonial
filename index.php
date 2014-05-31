@@ -1,8 +1,12 @@
 <html>
     <header>
+        <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
     </header>
     <body>
-        
+        <div id="contenedor">
+            
+        </div>
     </body>
 </html>
