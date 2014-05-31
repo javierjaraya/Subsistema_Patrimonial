@@ -5,11 +5,23 @@
         <link href="css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="contenedor">
-            <div class="borde" id="cuadro">
-                hola mundo
-            </div>
-            :after
-        </div>
+        <header id="header">
+            Area header
+        </header>
+        
+        <nav id="nav">
+            Area nav
+        </nav>
+        
+        <aside id="aside">
+            Area aside
+        </aside>
+        
+        <section id="section">
+            Area section
+            <article class="borde" id="article">
+                Area article
+            </article>
+        </section>
     </body>
 </html>

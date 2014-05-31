@@ -7,11 +7,42 @@ and open the template in the editor.
     Created on : 31-05-2014, 01:52:39 PM
     Author     : Javier
 */
-#contenedor{
-    width: 100%;
+body{
+    background-color: gold;
 }
 
-#contenedor #cuadro{
+#header {
+    position: relative;
+    padding: 30px 15px;
+    color: #cdbfe3;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    background-color: #6f5499;
+    background-image: -webkit-linear-gradient(top,#563d7c 0,#6f5499 100%);
+    background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+}
+
+#nav{
+    background-color: greenyellow;
+}
+
+#aside{
+    float: left;
+    width: 20%;
+    min-height: 70%;
+    background-color: gainsboro;
+}
+
+#section{
+    float: left;
+    background-color: #ffffff;
+    width: 80%;
+    min-height: 70%;
+}
+
+#article{
     width: 500px;
     margin:0 auto 0 auto;
 }
