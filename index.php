@@ -6,9 +6,8 @@
     </head>
     <body>
         <div id="contenedor">
-            hola mundo
-            <div class="bs-example" id="cuadro">
-                casa
+            <div class="borde" id="cuadro">
+                hola mundo
             </div>
         </div>
     </body>
