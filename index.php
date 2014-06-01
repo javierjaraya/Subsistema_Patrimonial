@@ -7,23 +7,29 @@
         <link href='/assets/ico/favicon.ico' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        
 
     </head>
     <body>
-        <header id="header" class="row">
-            Area header
-        </header>
-        <nav id="nav" class="row">
+        <div class="row">
+            <header id="header" class="col-md-12">
+                Area header
+            </header>
+        </div>
+        
+        <div class="row">
+            <nav id="nav"  class="col-md-12">
             Area nav
         </nav>
+        </div>
+        
 		<div class="row">
-			<aside class="col-md-3">
-				Area aside
-				<ul class="nav nav-pills nav-stacked accordion">
-					<li id="one" class="files">
-						<a href="#one">My Files<span>495</span></a>
+			<aside class="col-xs-12 col-sm-3 col-md-3">
+				<ul class="accordion">
+					<li id="one" class="predio">
+						<a href="#one">Predios</a>
 						<ul class="sub-menu">
-							<li><a href="#one"><em>01</em>Dropbox<span>42</span></a></li>
+							<li><a href="#one">Agregar Nuevo</a></li>
 							<li><a href="#one"><em>02</em>Skydrive<span>87</span></a></li>
 							<li><a href="#one"><em>03</em>FTP Server<span>366</span></a></li>
 						</ul>
@@ -55,12 +61,13 @@
 				</ul>
 			</aside>
 
-			<section  class="col-md-9">
+			<section  class="col-xs-12 col-sm-9 col-md-9">
 				Area section
 				<article class="borde" id="article">
 					Area article
 				</article>
 			</section>
 		</div>
-    </body>
+    </body>       
+    <!-- Boostrap core JS -->
 </html>
