@@ -132,6 +132,8 @@
     <script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script>
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <!-- BlockUI core JS -->
+    <script type="text/javascript" src="assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
     <script type="text/javascript" src="assets/js/eventos.js"></script>
 </html>
