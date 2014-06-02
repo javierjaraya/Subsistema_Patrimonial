@@ -4,15 +4,14 @@
         <title>Subsistema Patrimonial</title>
         <link href="assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
-        <link href='assets/ico/favicon.ico' type='image/x-icon' rel='shortcut icon' />
+        <link href='assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Add custom CSS here -->
         <link href="assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-
     </head>
+    
     <body>
 
         <div id="wrapper">
