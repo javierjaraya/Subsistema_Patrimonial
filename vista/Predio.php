@@ -1,17 +1,14 @@
 <?php
-
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Vista de tabla contenedora de predio
  */
 
-/**
- * Description of Predio
- *
- * @author Renato
- */
-class Predio {
-    //put your code here
+include_once '../controlador/Sistema.php';
+include_once '../controlador/Predio.php';
+
+$control = Sistema::getInstancia();
+$predios = $control->findAllPredios();
+foreach($predios as $predio){
+    echo "<h3>".$predio->getNombre."</>";
 }
-
 ?>
