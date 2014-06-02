@@ -37,15 +37,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="javascript:eventos.cargarTabla('Predio');">Ver todos</a></li>
+                <li><a href="javascript:eventos.cargarTabla('Predio');" class="fa fa-table"> Ver todos</a></li>
                 <li><a href="#">Agregar Nuevo</a></li>
                 <li><a href="#">Third Item</a></li>
                 <li><a href="#">Last Item</a></li>
               </ul>
             </li>
-            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
-            <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
-            <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li class="active"><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
             <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
             <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
