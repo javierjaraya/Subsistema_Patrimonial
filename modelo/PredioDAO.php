@@ -26,7 +26,7 @@ class PredioDAO {
      * Metodo encargado de buscar todos los predios
      */
     public function findAll(){
-        $predios = array();
+        $predios = array(); // Lista contenedora de predios resultados
         $this->cone->conectar();
         $id = $this->queryMaxID();
         $laConsulta = "SELECT * FROM predio";
@@ -49,6 +49,13 @@ class PredioDAO {
         }
         $this->cone->desconectar();
         return $predios;
+    }
+    
+    public function findByExample($predio){
+        $this->cone->conectar();
+        $laConsulta = " SELECT *
+                        FROM predio
+                        ";
     }
 }
 

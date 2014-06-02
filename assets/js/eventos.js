@@ -20,7 +20,7 @@ console.log('iniciando eventos');
          * 
          */
         cargarTabla: function(tabla) {
-          $('section').load('vista/'+tabla+'.php');
+          $('#page-wrapper').load('vista/'+tabla+'.php');
           console.log('tabla cargada');
         },
         /**
