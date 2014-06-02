@@ -42,7 +42,15 @@
                                 <li><a href="#">Generar Reporte</a></li>
                             </ul>
                         </li>
-                        <li class="active"><a href="typography.html"><i class="fa fa-font"></i> Rodales</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:eventos.cargarTabla('Predio');" class="fa fa-table"> Ver todos</a></li>
+                                <li><a href="#">Agregar Nuevo</a></li>
+                                <li><a href="#">Buscar Rodal</a></li>
+                                <li><a href="#">Generar Reporte</a></li>
+                            </ul>
+                        </li>
                         <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
                         <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
                         <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
