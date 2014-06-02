@@ -27,7 +27,7 @@
             <aside class="col-xs-12 col-sm-3 col-md-3">
                 <ul class="accordion">
                     <li id="one" class="predio">
-                        <a href="#one">Predios</a>
+                        <a href="javascript:eventos.cargarTabla('Predio');">Predios</a>
                         <ul class="sub-menu">
                             <li><a href="#one">Agregar Nuevo</a></li>
                             <li><a href="#one"><em>02</em>Skydrive<span>87</span></a></li>
@@ -68,6 +68,11 @@
                 </article>
             </section>
         </div>
-    </body>       
+    </body>   
+    <!-- jQuery core JS -->
+    <script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script>
     <!-- Boostrap core JS -->
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <!-- Eventos subsistema patrimonial JS -->
+    <script type="text/javascript" src="assets/js/eventos.js"></script>
 </html>
