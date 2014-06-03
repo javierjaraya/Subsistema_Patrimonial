@@ -13,6 +13,9 @@ class CuentaDAO {
         $this->conexion = new Conexion();
     }
 
+    /** Metodo que busca la idCuenta maximo y retorna una idCuenta disponible
+     * @return NUMBER (*,0) : identificador disponible
+     */
     private function queryMaxId() {
         $this->conexion->conectar();
         $consultaMaxId = "SELECT (max(id_cuenta)+1) AS id FROM cuenta";
@@ -25,7 +28,7 @@ class CuentaDAO {
     }
 
     /** Metodo que retorna una cuenta correspondiente a un determinado $idCuenta
-     * Precondicion : $idCuenta
+     * Precondicion : $idCuenta != NULL
      * @param $idCuenta : NUMBER (*,0) - identificador de una cuenta
      * @return Cuenta : cuenta correspondiente al $idCuenta
      */
