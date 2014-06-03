@@ -14,7 +14,7 @@
 console.log('iniciando eventos');
     var eventos = (function() {
       var variablePublica = "podria iniciar un widget aqui";
-       var configuracion = ({css: {border: 'none', 
+       var confLoad = ({css: {border: 'none', 
 		        padding: '15px', 
 		        backgroundColor: '#000', 
 		        '-webkit-border-radius': '10px', 
@@ -22,12 +22,17 @@ console.log('iniciando eventos');
 		        opacity: .5, 
 		        color: '#fff' },
                         message: 'Cargando...'});
+        var confPredio;
       return {
         /**
-         * 
+         * Método encargado de cargar tabla en el contenedor con el id
+         * page-wrapper
+         * @author Renato
+         * @param {String} tabla
+         * @returns {undefined}
          */
         cargarTabla: function(tabla) {
-          $(document).ajaxStart($.blockUI(configuracion)).ajaxStop($.unblockUI);
+          $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
           $('#page-wrapper').load('vista/'+tabla+'.php');
           console.log('tabla cargada');
         },
@@ -39,5 +44,54 @@ console.log('iniciando eventos');
         vaciaTabla: function(tabla) {
           console.log('tabla ocultada');
         },
+        /**
+         * metodo el cual recibirá los parametros, validará y enviará
+         * por ajax a php
+         * @returns {Boolean}
+         */
+        aceptarIngresoPredio: function(){
+            
+            var idPredio = $(".idpredio").val();
+            nombre = $(".nombre").val();
+            validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+            superficie = $(".superficie").val();
+            valorcomercial = $(".valorcomercial").val();
+            
+            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial;
+            $.ajax({
+                type: "POST",
+                url: "vista/ingresaPredio.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#page-wrapper').html(response);
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            return false;
+        },
+        /**
+         * metodo encargado de mostrar formulario para predio
+         * @returns {undefined}
+         */
+        ingresaNuevoPredio: function(){
+            confPredio = { message: $('#nuevoPredio'),
+                        css:{
+                            top: '20px',
+                    
+                        }
+                    };
+            $(document).ajaxStart($.blockUI(confPredio)).ajaxStop($.unblockUI);
+            console.log('abriendo contenedor nuevo predio');
+            
+            
+        },
+        
       };
     })();
