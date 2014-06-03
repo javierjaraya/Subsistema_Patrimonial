@@ -31,17 +31,17 @@
             <div id="content" class="color">
                 <div class="col-md-offset-2"><br><h1>¡Bienvenido!</h1><br></div>
                 <div class="borde" id="start">
-                    <form action="admin.php" method="POST" class="form-horizontal" role="form">
+                    <form action="vista/Seguridad.php" method="POST" class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Email</label>
+                            <label class="col-sm-3 control-label">Usuario</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email@dominio.com">
+                                <input type="text" class="form-control" id="inputUsuario" placeholder="18771223-8" name="idCuenta">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword" class="col-sm-3 control-label">Password</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -59,5 +59,5 @@
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-    <script type="text/javascript" src="assets/js/predio.js"></script>
+    <script type="text/javascript" src="assets/js/eventos.js"></script>
 </html>
