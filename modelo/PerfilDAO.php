@@ -4,6 +4,10 @@
  *
  * @author Javier
  */
+
+include_once 'Conexion.php';
+include_once '../controlador/Perfil.php';
+
 class PerfilDAO {
     private $conexion;
     

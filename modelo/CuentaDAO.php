@@ -5,6 +5,8 @@
  *
  * @author Javier
  */
+include_once 'Conexion.php';
+include_once '../controlador/Cuenta.php';
 class CuentaDAO {
 
     private $conexion;
