@@ -7,12 +7,12 @@
 /**
  * 
  * Propuesta uso de javascript en subsistema_patrimonio
- * @type eventos._L10.Anonym$0
+ * @type predio._L10.Anonym$0
  */
 
 
-console.log('iniciando eventos');
-    var eventos = (function() {
+console.log('iniciando eventos de predio');
+    var predio = (function() {
       var variablePublica = "podria iniciar un widget aqui";
        var confLoad = ({css: {border: 'none', 
 		        padding: '15px', 
@@ -21,7 +21,7 @@ console.log('iniciando eventos');
 		        '-moz-border-radius': '10px', 
 		        opacity: .5, 
 		        color: '#fff' },
-                        message: 'Cargando...'});
+                        message: '<img src="assets/ico/ajax.gif" class="" />Cargando...'});
         var confPredio;
       return {
         /**
@@ -31,9 +31,9 @@ console.log('iniciando eventos');
          * @param {String} tabla
          * @returns {undefined}
          */
-        cargarTabla: function(tabla) {
+        cargarTabla: function() {
           $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
-          $('#page-wrapper').load('vista/'+tabla+'.php');
+          $('#page-wrapper').load('vista/Predio.php');
           console.log('tabla cargada');
         },
         /**
@@ -43,6 +43,10 @@ console.log('iniciando eventos');
          */
         vaciaTabla: function(tabla) {
           console.log('tabla ocultada');
+        },  
+        cancelarIngresoPredio: function(){
+            console.log("Ingreso de predio cancelado");
+            $.unblockUI();
         },
         /**
          * metodo el cual recibirá los parametros, validará y enviará

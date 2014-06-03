@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $predios = $control->findAllPredios();
 ?>
 <div class="row">
-    <h1>Lista de Predios  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="eventos.ingresaNuevoPredio()">Nuevo</button></h1>
+    <h1>Lista de Predios  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="predio.ingresaNuevoPredio()">Nuevo</button></h1>
 </div>
 <div class="row">
     <table id="tabla_contactos" class='table table-bordered table-hover table-striped tablesorter'>
@@ -51,9 +51,9 @@ $predios = $control->findAllPredios();
             <div><label>Zona: </label><input cols="30" rows="5" class="zona" name="zona" ></input></div>
             <div><label>Comuna: </label><input cols="30" rows="5" class="comuna" name="comuna" /></div>
             <div class="ultimo">
-                <img src="assets/ico/ajax.gif" class="ajaxgif hide" />
                 <div class="msg"></div>
-                <button  onclick="eventos.aceptarIngresoPredio()">Enviar Mensaje</button>
+                <button  type="button" onclick="predio.aceptarIngresoPredio()">Aceptar</button>
+                <button  type="button" onclick="predio.cancelarIngresoPredio()">Cancelar</button>
             </div>
         </fieldset>
  
