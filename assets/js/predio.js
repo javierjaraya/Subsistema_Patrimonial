@@ -85,9 +85,12 @@ console.log('iniciando eventos de predio');
          * @returns {undefined}
          */
         ingresaNuevoPredio: function(){
-            confPredio = { message: $('#nuevoPredio'),
-                        css:{
-                            top: '20px',
+            confPredio = { 
+                onOverlayClick: $.unblockUI,
+                message: $('#nuevoPredio'),     
+                        css:{                          
+                            top: '60px',
+                            'min-width': '200px',
                     
                         }
                     };
