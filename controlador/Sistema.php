@@ -8,8 +8,10 @@ include_once '../modelo/PredioDAO.php';
 class Sistema {
      private static $miInstancia = NULL;
      
+     private $cuentaDAO;
+     private $perfilDAO;
      private $predioDAO;
-     
+
      private function Sistema(){
          $this->predioDAO = new PredioDAO();
      }

@@ -20,7 +20,6 @@ class PredioDAO {
             $id = ociresult($queryId, "ID");
         }
         return $id;
-        
     }
     /**
      * Metodo encargado de buscar todos los predios
