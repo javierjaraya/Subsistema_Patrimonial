@@ -59,5 +59,5 @@
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-    <script type="text/javascript" src="assets/js/eventos.js"></script>
+    <script type="text/javascript" src="assets/js/predio.js"></script>
 </html>
