@@ -34,15 +34,17 @@ class CuentaDAO {
      * @param $idCuenta : NUMBER (*,0) - identificador de una cuenta
      * @return Cuenta : cuenta correspondiente al $idCuenta
      */
-    public function getCuenta($idCuenta) {
+    public function getCuenta($dni) {
         $this->conexion->conectar();
-        $consultaCuenta = "SELECT * FROM cuenta WHERE id_cuenta = $idCuenta";
-        $queryCuenta = $this->conexion->ejecutar($consultaCuenta);
+        $consultaCuenta = "SELECT cuenta.ID_CUENTA, cuenta.FECHACREACION, cuenta.PASSWORD, cuenta.ESTADO, cuenta.ID_PERFIL 
+                            FROM empleado JOIN cuenta ON empleado.ID_CUENTA = cuenta.ID_CUENTA
+                            where empleado.dni = '$dni'";
+        $query = $this->conexion->ejecutar($consultaCuenta);
         $cuenta = new Cuenta();
 
-        while (OCIFetch($queryCuenta)) {
+        while (OCIFetch($query)) {
             $cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
-            $cuenta->setFechaCreacion(ociresult($query, "FECHACREADACON"));
+            $cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
             $cuenta->setPassword(ociresult($query, "PASSWORD"));
             $cuenta->setEstado(ociresult($query, "ESTADO"));
             $cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));

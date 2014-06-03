@@ -10,16 +10,18 @@ include_once '../controlador/Session.php';
 $control = Sistema::getInstancia();
 
 if (isset($_POST["Ingresar"])) {
-    $idCuenta = trim(htmlentities(htmlspecialchars(strip_tags($_POST["idCuenta"]))));
+    $dni = trim(htmlentities(htmlspecialchars(strip_tags($_POST["dni"]))));
     $password = trim(htmlentities(htmlspecialchars(strip_tags($_POST["password"]))));
 
-    $cuenta = $control->verifyUser($idCuenta, $password);
+    $cuenta = $control->verifyUser($dni, $password);
     if ($cuenta != null) {
         $session = new Session();
+        $idCuenta = $cuenta->getIdCuenta();
         $idPerfil = $cuenta->getIdPerfil();
         $session->starSession($idCuenta, $idPerfil);
         $direccion = $session->securityCheck();
-        header('Location: ' . $direccion);
+        echo $direccion;
+        //header('Location: ' . $direccion);
     }else{
         header('Location: ');
     }

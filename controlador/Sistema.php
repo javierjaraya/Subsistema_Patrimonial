@@ -34,13 +34,14 @@ class Sistema {
         return $this->predioDAO->findAll();
     }
     
-    public function verifyUser($idCuenta,$password){
-        $cuenta = $this->cuentaDAO->getCuenta($idCuenta);
+    public function verifyUser($dni,$password){
+        $cuenta = $this->cuentaDAO->getCuenta($dni);
         if($cuenta != NULL){
             if($cuenta->getPassword() == $password){
                 return $cuenta;
             }
         }
+        echo "RETORNO NULL";
         return $cuenta;
     }
 }
