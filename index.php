@@ -29,23 +29,23 @@
             </nav>
 
             <div id="content" class="color">
-                <h1>¡Bienvenido!</h1>
+                <div class="col-md-offset-2"><br><h1>¡Bienvenido!</h1><br></div>
                 <div class="borde" id="start">
                     <form action="admin.php" method="POST" class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Email</label>
+                            <label class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="inputEmail" placeholder="Email@dominio.com">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                            <label for="inputPassword" class="col-sm-3 control-label">Password</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="inputPassword" placeholder="Password">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-default" name="Ingresar" value="Ingresar">
+                            <div class="col-sm-9"><input type="submit" class="btn btn-default" name="Ingresar" value="Ingresar"></div>
                         </div>
                     </form>
                 </div><!-- /#wrapper -->

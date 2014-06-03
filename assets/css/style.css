@@ -50,13 +50,14 @@ body{
 
 
 #start{
-    background-color: red;
-    width: 200px;
+    content: "Ejemplo";
+    max-width: 350px;
+    //min-width: 100px;
     margin:0 auto 0 auto;
 }
-.color{
-    background-color: green;
-}
+
+#centro{margin:0 auto 0 auto;}
+
 .borde {
     position: relative;
     padding: 45px 15px 15px;
@@ -70,7 +71,7 @@ body{
 }
 
 .borde:after {
-    content: "Ejemplo";
+    content: "Iniciar Sesion";
     position: absolute;
     top: 15px;
     left: 15px;
