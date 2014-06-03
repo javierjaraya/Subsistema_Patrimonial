@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Predio
  *
@@ -84,8 +79,5 @@ class Predio {
     public function setIdEmpresa($idEmpresa) {
         $this->idEmpresa = $idEmpresa;
     }
-
-
 }
-
 ?>
