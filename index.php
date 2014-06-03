@@ -13,8 +13,7 @@
     </head>
     <body>
 
-        <div id="wrapper">
-
+        <div>
             <!-- Sidebar -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,7 +28,7 @@
 
             </nav>
 
-            <div id="page-wrapper">
+            <div id="content" class="color">
                 <h1>¡Bienvenido!</h1>
                 <div class="borde" id="start">
                     <form action="admin.php" method="POST" class="form-horizontal" role="form">
