@@ -30,3 +30,4 @@ class Perfil {
         $this->nombrePerfil = $nombrePerfil;
     }
 }
+?>

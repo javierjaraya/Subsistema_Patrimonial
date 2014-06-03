@@ -56,3 +56,4 @@ class Cuenta {
         $this->idPerfil = $idPerfil;
     }
 }
+?>
