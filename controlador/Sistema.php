@@ -1,4 +1,6 @@
 <?php
+include_once '../modelo/CuentaDAO.php';
+include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
 /**
  * Description of Sistema
@@ -13,6 +15,8 @@ class Sistema {
      private $predioDAO;
 
      private function Sistema(){
+         $this->cuentaDAO = new CuentaDAO();
+         $this->perfilDAO = new PerfilDAO();
          $this->predioDAO = new PredioDAO();
      }
      
@@ -30,6 +34,15 @@ class Sistema {
         return $this->predioDAO->findAll();
     }
     
+    public function verifyUser($idCuenta,$password){
+        $cuenta = $this->cuentaDAO->getCuenta($idCuenta);
+        if($cuenta != NULL){
+            if($cuenta->getPassword() == $password){
+                return $cuenta;
+            }
+        }
+        return $cuenta;
+    }
 }
 
 ?>
