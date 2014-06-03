@@ -31,7 +31,7 @@
 
             <div id="page-wrapper">
                 <h1>¡Bienvenido!</h1>
-                <div class="borde" id="star">
+                <div class="borde" id="start">
                     <form action="admin.php" method="POST" class="form-horizontal" role="form">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Email</label>

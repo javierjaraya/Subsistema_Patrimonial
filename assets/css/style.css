@@ -48,6 +48,12 @@ body{
     margin:0 auto 0 auto;
 }
 
+
+#start{
+    background-color: red;
+    width: 200px;
+    margin:0 auto 0 auto;
+}
 .borde {
     position: relative;
     padding: 45px 15px 15px;
