@@ -20,8 +20,7 @@ if (isset($_POST["Ingresar"])) {
         $idPerfil = $cuenta->getIdPerfil();
         $session->starSession($idCuenta, $idPerfil);
         $direccion = $session->securityCheck();
-        echo $direccion;
-        //header('Location: ' . $direccion);
+        header('Location: ' . $direccion);
     }else{
         header('Location: ');
     }

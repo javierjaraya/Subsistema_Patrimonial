@@ -41,7 +41,6 @@ class Sistema {
                 return $cuenta;
             }
         }
-        echo "RETORNO NULL";
         return $cuenta;
     }
 }

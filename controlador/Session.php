@@ -13,7 +13,6 @@ class Session {
         session_start();
         $_SESSION["idCuenta"] = $idCuenta;
         $_SESSION["idPerfil"] = $idPerfil;
-        echo $idCuenta."  -  ".$idPerfil;
     }
     
     public function stopSession(){
@@ -27,7 +26,6 @@ class Session {
     public function securityCheck(){
         session_start();
         error_reporting(E_ALL & ~E_NOTICE | E_STRICT);
-        echo $_SESSION[idPerfil];
         if ($_SESSION["idPerfil"] == "1111") {
             return "../admin.php";
         }else if ($_SESSION["idPerfil"] == "2222") {
