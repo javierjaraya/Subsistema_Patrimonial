@@ -32,7 +32,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li><a href="javascript:predio.cargarTabla('Predio');"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -136,4 +136,5 @@
     <script type="text/javascript" src="assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
     <script type="text/javascript" src="assets/js/predio.js"></script>
+    <script type="text/javascript" src="assets/js/seguridad.js"></script>
 </html>
