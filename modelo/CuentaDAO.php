@@ -2,11 +2,12 @@
 
 /**
  * Description of CuentaDAO
- *
+ * Clase encargada de realizar la conexion enter el Sistema y la BD
  * @author Javier
  */
 include_once 'Conexion.php';
 include_once '../controlador/Cuenta.php';
+
 class CuentaDAO {
 
     private $conexion;
@@ -16,6 +17,7 @@ class CuentaDAO {
     }
 
     /** Metodo que busca la idCuenta maximo y retorna una idCuenta disponible
+     * @author Javier
      * @return NUMBER (*,0) : identificador disponible
      */
     private function queryMaxId() {
@@ -31,6 +33,7 @@ class CuentaDAO {
 
     /** Metodo que retorna una cuenta correspondiente a un determinado $idCuenta
      * Precondicion : $idCuenta != NULL
+     * @author Javier
      * @param $idCuenta : NUMBER (*,0) - identificador de una cuenta
      * @return Cuenta : cuenta correspondiente al $idCuenta
      */

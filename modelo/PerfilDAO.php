@@ -1,7 +1,7 @@
 <?php
 /**
  * Description of PerfilDAO
- *
+ * Clase encargada de realizar la conexion entre el Sistema y la BD
  * @author Javier
  */
 
@@ -16,6 +16,7 @@ class PerfilDAO {
     }
     
     /** Metodo que busca la idPerfil maximo y retorna una idPerfil disponible
+     * @author Javier
      * @return NUMBER (*,0) : identificador disponible
      */
     private function queryMaxId(){
@@ -31,6 +32,7 @@ class PerfilDAO {
     
     /** Metodo que retorna una perfil correspondiente a un determinado $idPerfil
      * Precondicion : $idPerfil != NULL
+     * @author Javier
      * @param $idPerfil : NUMBER (*,0) - identificador de un perfil
      * @return Perfil : cuenta correspondiente al $idPerfil
      */

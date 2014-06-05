@@ -34,6 +34,13 @@ class Sistema {
         return $this->predioDAO->findAll();
     }
     
+    /**
+     * Metodo que retorna una cuenta de usuario segun un determinado dni y password
+     * @author Javier
+     * @param VARCHAR(10) $dni Description: identificador de un empleado
+     * @param VARcHAR(45) $password Description: contraseña de acceso del empleado a su cuenta de usuario
+     * @return Cuenta Description: cuenta de usuario asignada a un empleado
+     */
     public function verifyUser($dni,$password){
         $cuenta = $this->cuentaDAO->getCuenta($dni);
         if($cuenta != NULL){
