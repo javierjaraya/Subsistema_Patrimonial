@@ -77,6 +77,4 @@ class Empleado {
     public function setIdCuenta($idCuenta) {
         $this->idCuenta = $idCuenta;
     }
-
-            //put your code here
 }
