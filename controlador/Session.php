@@ -5,16 +5,24 @@
  * @author Javier
  */
 class Session {
-    private $direccion;
+    
     function __construct() {
     }
     
+    /**
+     * Metodo que inicializa una nueva session
+     * @param NUMBER(*,0) $name $idCuenta Description: identificador de una cuenta para la sesion
+     * @param NUMBER(*,0) $name $idPerfil Description: identificador del perfil de la cuenta
+     */
     public function starSession($idCuenta,$idPerfil){
         session_start();
         $_SESSION["idCuenta"] = $idCuenta;
         $_SESSION["idPerfil"] = $idPerfil;
     }
     
+    /**
+     * Metodo que cierra una sesion destruyendo la sesion anteriormente creada
+     */
     public function stopSession(){
         session_start();
         unset($_SESSION["idCuenta"]); 
