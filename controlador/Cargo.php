@@ -31,6 +31,18 @@ class Cargo {
     public function getDescripcion() {
         return $this->descripcion;
     }
+    public function setIdCargo($idCargo) {
+        $this->idCargo = $idCargo;
+    }
+
+    public function setNombreCargo($nombreCargo) {
+        $this->nombreCargo = $nombreCargo;
+    }
+
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
 
 
 //put your code here

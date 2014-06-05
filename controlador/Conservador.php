@@ -25,6 +25,13 @@ class Conservador {
     public function getNombreConservador() {
         return $this->nombreConservador;
     }
+    public function setIdConservador($idConservador) {
+        $this->idConservador = $idConservador;
+    }
 
-        //put your code here
+    public function setNombreConservador($nombreConservador) {
+        $this->nombreConservador = $nombreConservador;
+    }
+
+            //put your code here
 }

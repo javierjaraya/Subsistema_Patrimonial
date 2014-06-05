@@ -50,6 +50,33 @@ class Empleado {
     public function getIdCuenta() {
         return $this->idCuenta;
     }
+    public function setDni($dni) {
+        $this->dni = $dni;
+    }
 
-        //put your code here
+    public function setNombreEmpleado($nombreEmpleado) {
+        $this->nombreEmpleado = $nombreEmpleado;
+    }
+
+    public function setApPateroEmpleado($apPateroEmpleado) {
+        $this->apPateroEmpleado = $apPateroEmpleado;
+    }
+
+    public function setApMaternoEmpleado($apMaternoEmpleado) {
+        $this->apMaternoEmpleado = $apMaternoEmpleado;
+    }
+
+    public function setFechaIngreso($fechaIngreso) {
+        $this->fechaIngreso = $fechaIngreso;
+    }
+
+    public function setIdCargo($idCargo) {
+        $this->idCargo = $idCargo;
+    }
+
+    public function setIdCuenta($idCuenta) {
+        $this->idCuenta = $idCuenta;
+    }
+
+            //put your code here
 }

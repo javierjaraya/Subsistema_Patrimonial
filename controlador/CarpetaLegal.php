@@ -55,6 +55,37 @@ class CarpetaLegal {
     public function getIdPredio() {
         return $this->idPredio;
     }
+    public function setIdCarpeta($idCarpeta) {
+        $this->idCarpeta = $idCarpeta;
+    }
 
-        //put your code here
+    public function setInscripcion($inscripcion) {
+        $this->inscripcion = $inscripcion;
+    }
+
+    public function setFechaInscripcion($fechaInscripcion) {
+        $this->fechaInscripcion = $fechaInscripcion;
+    }
+
+    public function setContribucion($contribucion) {
+        $this->contribucion = $contribucion;
+    }
+
+    public function setCodigo($codigo) {
+        $this->codigo = $codigo;
+    }
+
+    public function setRol($rol) {
+        $this->rol = $rol;
+    }
+
+    public function setConservadorBienRaiz($conservadorBienRaiz) {
+        $this->conservadorBienRaiz = $conservadorBienRaiz;
+    }
+
+    public function setIdPredio($idPredio) {
+        $this->idPredio = $idPredio;
+    }
+
+            //put your code here
 }
