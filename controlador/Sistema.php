@@ -50,6 +50,13 @@ class Sistema {
         }
         return $cuenta;
     }
+    
+    /**
+     * 
+     */
+    public function getEmpleadoCuenta(){
+        return $this->cuentaDAO->getEmpleado();
+    }
 }
 
 ?>

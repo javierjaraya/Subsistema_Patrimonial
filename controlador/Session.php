@@ -40,9 +40,9 @@ class Session {
         session_start();
         error_reporting(E_ALL & ~E_NOTICE | E_STRICT);
         if ($_SESSION["idPerfil"] == "1111") {
-            return "../admin.php";
+            return "../vista/admin.php";
         }else if ($_SESSION["idPerfil"] == "2222") {
-            return "../user.php";
+            return "../vista/user.php";
         }else{
             return "../index.php";
         }
