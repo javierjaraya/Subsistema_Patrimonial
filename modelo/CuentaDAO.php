@@ -11,6 +11,7 @@ include_once '../controlador/Cuenta.php';
 class CuentaDAO {
 
     private $conexion;
+    private $cuenta;
 
     public function __construct() {
         $this->conexion = new Conexion();
@@ -53,7 +54,13 @@ class CuentaDAO {
             $cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
         }
         $this->conexion->desconectar();
+        $this->cuenta = $cuenta;
         return $cuenta;
+    }
+    public function getEmpleado(){
+        $idCuenta = $this->cuenta->getIdCuenta();
+        $this->conexion->conectar();
+        
     }
 }
 
