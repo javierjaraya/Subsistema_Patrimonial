@@ -24,7 +24,7 @@ class ComunaDAO {
         $this->conexion->conectar();
         $consultaComuna = "SELECT * FROM comuna";
         $query = $this->conexion->ejecutar($consultaComuna);
-        $comunas = array(); // Lista contenedora de provincias
+        $comunas = array(); // Lista contenedora de comunas
         $i = 0;
         while(ocifetch($query)){
             $comuna = new Comuna();
