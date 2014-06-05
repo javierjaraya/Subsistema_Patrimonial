@@ -13,14 +13,18 @@ $predios = $control->findAllPredios();
     <h1>Lista de Predios  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="predio.ingresaNuevoPredio()">Nuevo</button></h1>
 </div>
 <div class="row">
-    <table id="tabla_contactos" class='table table-bordered table-hover table-striped tablesorter'>
+    <div class="panel panel-default">
+						<div class="panel-heading" data-original-title="">
+							<h2><span class="break"></span>Listado de Botillerías</h2>
+						</div>
+    <table cellpadding="0" cellspacing="0" border="0" table id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
         <thead>
             <tr>
-                <th class="header">ID Predio <i class='fa fa-sort'></i></th>
-                <th class="header">Nombre Predio<i class='fa fa-sort'></i></th>
-                <th class="header">Estado <i class='fa fa-sort'></i></th>
-                <th class="header">Valor Comercial <i class='fa fa-sort'></i></th>
-                <th class="header">Accion</th>
+                <th >ID Predio </th>
+                <th >Nombre Predio</th>
+                <th >Estado </th>
+                <th >Valor Comercial </th>
+                <th >Accion</th>
             </tr>
         </thead>
         <tbody id="tbody">
