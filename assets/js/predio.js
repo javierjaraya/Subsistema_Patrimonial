@@ -15,7 +15,7 @@ console.log('iniciando eventos de predio');
 		        '-moz-border-radius': '10px', 
 		        opacity: .5, 
 		        color: '#fff' },
-                        message: '<img src="assets/ico/ajax.gif" class="" />Cargando...'});
+                        message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'});
         var confPredio;
       return {
         /**
@@ -26,9 +26,9 @@ console.log('iniciando eventos de predio');
          * @returns {undefined}
          */
         cargarTabla: function(pagina) {
-          //$(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+          $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
           var randomnumber=Math.random()*11;
-          $.post(pagina, {
+          $.post(pagina+".php", {
                 randomnumber:randomnumber
             }, function(data){
               $("#page-wrapper").html(data);
