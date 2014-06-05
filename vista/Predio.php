@@ -14,10 +14,8 @@ $predios = $control->findAllPredios();
 </div>
 <div class="row">
     <div class="panel panel-default">
-						<div class="panel-heading" data-original-title="">
-							<h2><span class="break"></span>Listado de Botillerías</h2>
-						</div>
-    <table cellpadding="0" cellspacing="0" border="0" table id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
+						
+    <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
         <thead>
             <tr>
                 <th >ID Predio </th>

@@ -7,6 +7,7 @@
         <link href='assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
         <!-- Add custom CSS here -->
         <link href="assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -36,7 +37,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('Predio');" class="fa fa-table"> Ver todos</a></li>
+                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Predio</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
@@ -45,7 +46,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
+                                <li><a href="#" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Rodal</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
@@ -135,8 +136,9 @@
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-    <script type="text/javascript" src="assets/js/predio.js"></script>
-    <script type="text/javascript" src="assets/js/seguridad.js"></script>
     <script type="text/javascript" src="assets/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/js/predio.js"></script>
+    <script type="text/javascript" src="assets/js/seguridad.js"></script>
+    
 </html>
