@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Usuario</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputUsuario" placeholder="18771223-8" name="dni">
+                                <input type="text" class="form-control" id="inputUsuario" placeholder="11471623-5" name="dni">
                             </div>
                         </div>
                         <div class="form-group">
