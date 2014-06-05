@@ -1,6 +1,7 @@
 <?php
 /**
  * Description of Session
+ * Clase encargada de administrar las sesiones de usuarios segun sus perfiles
  *
  * @author Javier
  */
@@ -31,6 +32,10 @@ class Session {
         exit();
     }
     
+    /**
+     * Metodo que verifica si hay una sesion creada y retorna una direccion segun el perfil de la cuenta
+     * @return String Description: direccion correspondiente a un perfil de una cuenta
+     */
     public function securityCheck(){
         session_start();
         error_reporting(E_ALL & ~E_NOTICE | E_STRICT);
