@@ -39,8 +39,8 @@ class ProvinciaDAO {
     }
     /**
      * Metodo que retorna un objeto provincia correspondiente a una determinada $idProvincia
-     * @param NUMBER(*,0) $idRegion Description: identificador de un determinada Region
-     * @return Region Description: region con un identificador $idRegion
+     * @param NUMBER(*,0) $idRegion Description: identificador de un determinada Provincia
+     * @return Provincia Description: provincia con un identificador $idProvincia
      */
     public function getProvincia($idProvincia){
         $this->conexion->conectar();
