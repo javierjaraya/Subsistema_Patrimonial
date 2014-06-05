@@ -28,15 +28,20 @@ console.log('iniciando eventos de predio');
         cargarTabla: function(pagina) {
           $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
           var randomnumber=Math.random()*11;
-          $.post(pagina+".php", {
-                randomnumber:randomnumber
-            }, function(data){
-              $("#page-wrapper").html(data);
-              $("#tabla_contactos").dataTable({
-		
-                });
-       
-            });
+          $('#page-wrapper').load(pagina+'.php',function(){ 
+              $("#tabla_contactos").dataTable(
+                  {
+		"sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-12'i><'col-lg-12 center'p>>",
+		"sPaginationType": "bootstrap",
+		"oLanguage": {
+			"sLengthMenu": "_MENU_ records per page"
+		}
+	}
+                  
+                  );
+          
+          
+          });
           console.log('tabla cargada');
         },
         /**

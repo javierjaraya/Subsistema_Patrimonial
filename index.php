@@ -10,6 +10,7 @@
         <!-- Add custom CSS here -->
         <link href="assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/jquery.dataTables.css">
     </head>
     <body>
 

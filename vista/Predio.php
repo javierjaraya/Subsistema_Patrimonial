@@ -15,7 +15,7 @@ $predios = $control->findAllPredios();
 <div class="row">
     <div class="panel panel-default">
 						
-    <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
+    <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable dataTable">
         <thead>
             <tr>
                 <th >ID Predio </th>
@@ -43,7 +43,6 @@ $predios = $control->findAllPredios();
         </tbody>
     </table>
 </div>
-
 <div id="nuevoPredio" style="display:none; cursor: default"> 
         <fieldset>
             <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /></div>
