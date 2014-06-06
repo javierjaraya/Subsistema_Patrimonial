@@ -7,6 +7,7 @@
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Session.php';
 include_once '../controlador/Empleado.php';
+//include_once '../modelo/EmpleadoDAO.php';
 
 $control = Sistema::getInstancia();
 
