@@ -34,7 +34,7 @@ $predios = $control->findAllPredios();
                 echo "<td>".$predio->getEstado()."</td>";
                 echo "<td>".$predio->getValorComercial()."</td>";
                 echo "<td>";
-                echo "<button type='button' class='btn btn-warning'>Modificar</button>";
+                echo "<button type='button' onClick='predio.modificarPredio()' class='btn btn-warning'>Modificar</button>";
                 echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
                 echo "</td>";
                 echo "</tr>";
@@ -51,6 +51,7 @@ $predios = $control->findAllPredios();
             <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" /></div>
             <div><label>Zona: </label><input cols="30" rows="5" class="zona" name="zona" ></input></div>
             <div><label>Comuna: </label><input cols="30" rows="5" class="comuna" name="comuna" /></div>
+            <input cols="30" rows="5" class="idcomuna" name="idcomuna" hidden/>
             <div class="ultimo">
                 <div class="msg"></div>
                 <button  type="button" onclick="predio.aceptarIngresoPredio()">Aceptar</button>
