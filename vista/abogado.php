@@ -1,9 +1,8 @@
 <?php
-    include_once '../controlador/Sistema.php';
+    /*include_once 'controlador/Sistema.php';
     
     $control = Sistema::getInstancia();
-    session_start();
-    $empleado = $_SESSION["nombreEmpleado"];//" Javier Jara";//$_SESSION["nombreEmpleado"];//$control->getNombreEmpleadoCuenta();//;
+    $empleado = $control->getEmpleadoCuenta();*/
 ?>
 <html>
     <head>
@@ -33,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" href="index.html">SB Abogado</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,31 +43,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Predio</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Rodal</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Empleados <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:empleado.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Empleado</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
-                            </ul>
-                        </li>
-                        
                         <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
                         <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
                         <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
@@ -82,7 +60,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name"><?php echo $empleado;?> 1</span>
+                                        <span class="name"><?php  ?></span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -91,7 +69,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name"><?php echo $empleado;?> 2</span>
+                                        <span class="name">John Smith:</span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -100,7 +78,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name"><?php echo $empleado;?> 3</span>
+                                        <span class="name">John Smith:</span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -123,7 +101,7 @@
                             </ul>
                         </li>
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $empleado;?> 4<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
@@ -138,6 +116,7 @@
 
             <div id="page-wrapper">
                 <h1>Bienvenido!</h1>
+
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
@@ -153,11 +132,7 @@
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
     <script type="text/javascript" src="../assets/js/predio.js"></script>
-    <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/seguridad.js"></script>
-    <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
-    <!-- jQuery UI (estilos) -->
-    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
 </html>
