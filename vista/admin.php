@@ -3,7 +3,7 @@
     
     $control = Sistema::getInstancia();
     //session_start();
-    //$empleado = $_SESSION["nombreEmpleado"];//$control->getNombreEmpleadoCuenta();//"Javier Jara";
+    $empleado = " Javier Jara";//$_SESSION["nombreEmpleado"];//$control->getNombreEmpleadoCuenta();//;
 ?>
 <html>
     <head>
