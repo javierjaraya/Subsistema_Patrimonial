@@ -18,10 +18,10 @@ $predios = $control->findAllPredios();
     <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable dataTable">
         <thead>
             <tr>
-                <th >ID Predio </th>
-                <th >Nombre Predio</th>
-                <th >Estado </th>
-                <th >Valor Comercial </th>
+                <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Estado <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Valor Comercial <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Accion</th>
             </tr>
         </thead>
