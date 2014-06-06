@@ -2,6 +2,7 @@
 include_once '../modelo/CuentaDAO.php';
 include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
+include_once '../modelo/ComunaDAO.php';
 include_once '../controlador/Empleado.php';
 /**
  * Description of Sistema
@@ -14,11 +15,13 @@ class Sistema {
      private $cuentaDAO;
      private $perfilDAO;
      private $predioDAO;
+     private $comunaDAO;
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
          $this->perfilDAO = new PerfilDAO();
          $this->predioDAO = new PredioDAO();
+         $this->comunaDAO = new ComunaDAO();
      }
      
      public static function  getInstancia(){
@@ -57,6 +60,10 @@ class Sistema {
      */
     public function getNombreEmpleadoCuenta(){
         return $this->cuentaDAO->getNombreEmpleado();
+    }
+    
+    public function getComunaLike($nombre){
+        return $this->comunaDAO->getComunaLike($nombre);
     }
 }
 
