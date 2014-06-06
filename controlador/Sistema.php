@@ -43,8 +43,15 @@ class Sistema {
     public function findAllPredios(){
         return $this->predioDAO->findAll();
     } 
-   
     /**
+     * Metodo encargado de buscar un predio por Id
+     * @return Array de Predios
+     */
+    
+    public function findPredioById($idPredio){
+        return $this->predioDAO->findById($idPredio);
+    }
+        /**
      * Metodo encargado de buscar todos los empleados
      * @return Array de Empleados
      * agregado 05/06/13 21:29 by Sebastián

@@ -107,12 +107,48 @@ console.log('iniciando eventos de predio');
             
             
         },
-        modificarPredio: function(){
-            //ajax
-            predio.mostrarModificar();
+        modificarPredio: function(id){
+            var idPredio = id;
+            //predio.mostrarModificar();
+            console.log(idPredio);
+            var datos = 'idpredio='+ idPredio ;
+            $.ajax({
+                type: "POST",
+                url: "modificarPredio.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editPredioDialog').html(response);
+                    
+                    predio.mostrarModificar();
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
         },
         mostrarModificar: function(){
-            $(document).ajaxStart($.blockUI()).ajaxStop($.unblockUI);
+              $( "#editPredioDialog" ).dialog({
+              height: 400,
+              width: 500,
+              modal: true,
+              buttons: {
+                Actualizar: function() {
+                  var bValid = true;
+                  
+            },
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        
+              }
+            });
         },
         /**
          * 

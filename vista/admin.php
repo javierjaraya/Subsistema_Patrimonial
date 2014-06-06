@@ -12,6 +12,8 @@
         <title>Subsistema Patrimonial</title>
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
         <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -100,6 +102,8 @@
     </body> 
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
+    <!-- jQuery UI (estilos) -->
+    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <!-- BlockUI core JS -->
@@ -111,6 +115,5 @@
     <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
-    <!-- jQuery UI (estilos) -->
-    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+    
 </html>
