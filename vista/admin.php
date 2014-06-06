@@ -62,7 +62,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Empleados <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:empleado.cargarTabla('Empleado');" class="fa fa-table"> Ver todos</a></li>
+                                <li><a href="javascript:empleado.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Empleado</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
@@ -153,6 +153,7 @@
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
     <script type="text/javascript" src="../assets/js/predio.js"></script>
+    <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/seguridad.js"></script>
     <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
