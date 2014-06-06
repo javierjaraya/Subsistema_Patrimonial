@@ -42,7 +42,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('Predio');" class="fa fa-table"> Ver todos</a></li>
+                                <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Predio</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
