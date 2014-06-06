@@ -55,24 +55,6 @@ class EmpleadoDAO {
                         FROM empleado
                         ";
     }
-    
-    public function getEmpleado($dni){
-        $this->cone->conectar();
-        $laConsulta = "SELECT * FROM empleado WHERE empleado.dni = $dni";
-        $query = $this->cone->ejecutar($laConsulta);
-        $empleado = new Empleado();
-        while(ocifetch($query)){
-            $empleado->setDni(ociresult($query, "DNI"));
-            $empleado->setNombreEmpleado(ociresult($query, "NOMBRE_EMPLEADO"));
-            $empleado->setApPaternoEmpleado(ociresult($query, "AP_PATERNO_EMPLEADO"));
-            $empleado->setApMaternoEmpleado(ociresult($query, "AP_MATERNO_EMPLEADO"));
-            $empleado->setFechaIngreso(ociresult($query, "FECHA_INGRESO"));
-            $empleado->setIdCargo(ociresult($query, "ID_CARGO"));
-            $empleado->setIdCuenta(ociresult($query, "ID_CUENTA")); 
-        }
-        $this->cone->desconectar();
-        return $empleado;
-    }
 }
 
 ?>

@@ -4,7 +4,6 @@ include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
 include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
-include_once '../controlador/Empleado.php';
 /**
  * Description of Sistema
  * Clase la cual se conectará con las vistas para obtener los datos desde la bd
@@ -70,11 +69,7 @@ class Sistema {
     
     public function getComunaLike($nombre){
         return $this->comunaDAO->getComunaLike($nombre);
-    }
-    
-    public function getEmpleado($dni){
-        return$this->empleadoDAO->getEmpleado($dni);
-    }
+    }   
 }
 
 ?>

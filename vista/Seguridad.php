@@ -6,6 +6,7 @@
  */
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Session.php';
+include_once '../controlador/Empleado.php';
 
 $control = Sistema::getInstancia();
 
@@ -18,9 +19,7 @@ if (isset($_POST["Ingresar"])) {
         $session = new Session();
         $idCuenta = $cuenta->getIdCuenta();
         $idPerfil = $cuenta->getIdPerfil();
-        $empleado = $control->getEmpleado($dni);
-        $nombreEmpleado = $empleado->getNombreEmpleado;
-        $session->starSession($idCuenta, $idPerfil,$nombreEmpleado);
+        $session->starSession($idCuenta, $idPerfil);
         $direccion = $session->securityCheck();
         header('Location: ' . $direccion);
     }else{
