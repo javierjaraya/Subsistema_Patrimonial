@@ -45,6 +45,10 @@ class Session {
             return "../vista/admin.php";
         }else if ($_SESSION["idPerfil"] == "2222") {
             return "../vista/user.php";
+        }else if ($_SESSION["idPerfil"] == "3333") {
+            return "../vista/user.php";
+        }else if ($_SESSION["idPerfil"] == "4444") {
+            return "../vista/user.php";
         }else{
             return "../index.php";
         }
