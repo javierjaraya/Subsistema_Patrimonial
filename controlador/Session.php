@@ -15,10 +15,11 @@ class Session {
      * @param NUMBER(*,0) $name $idCuenta Description: identificador de una cuenta para la sesion
      * @param NUMBER(*,0) $name $idPerfil Description: identificador del perfil de la cuenta
      */
-    public function starSession($idCuenta,$idPerfil){
+    public function starSession($idCuenta,$idPerfil,$nombreEmpleado){
         session_start();
         $_SESSION["idCuenta"] = $idCuenta;
         $_SESSION["idPerfil"] = $idPerfil;
+        $_SESSION["nombreEmpleado"] = $nombreEmpleado;
     }
     
     /**
@@ -28,6 +29,7 @@ class Session {
         session_start();
         unset($_SESSION["idCuenta"]); 
 	unset($_SESSION["idPerfil"]);
+        unset($_SESSION["nombreEmpleado"]);
 	session_destroy();
         exit();
     }

@@ -2,8 +2,8 @@
     include_once '../controlador/Sistema.php';
     
     $control = Sistema::getInstancia();
-    //session_start();
-    $empleado = " Javier Jara";//$_SESSION["nombreEmpleado"];//$control->getNombreEmpleadoCuenta();//;
+    session_start();
+    $empleado = $_SESSION["nombreEmpleado"];//" Javier Jara";//$_SESSION["nombreEmpleado"];//$control->getNombreEmpleadoCuenta();//;
 ?>
 <html>
     <head>

@@ -7,20 +7,25 @@
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Session.php';
 include_once '../controlador/Empleado.php';
-//include_once '../modelo/EmpleadoDAO.php';
+include_once '../modelo/EmpleadoDAO.php';
 
 $control = Sistema::getInstancia();
 
 if (isset($_POST["Ingresar"])) {
     $dni = trim(htmlentities(htmlspecialchars(strip_tags($_POST["dni"]))));
     $password = trim(htmlentities(htmlspecialchars(strip_tags($_POST["password"]))));
-
+    
+    
     $cuenta = $control->verifyUser($dni, $password);
     if ($cuenta != null) {
         $session = new Session();
         $idCuenta = $cuenta->getIdCuenta();
         $idPerfil = $cuenta->getIdPerfil();
-        $session->starSession($idCuenta, $idPerfil);
+        
+        $empleado = new EmpleadoDAO();
+        $empl = $empleado->getEmpleado($dni);
+    
+        $session->starSession($idCuenta, $idPerfil,$empl->getNombreEmpleado());
         $direccion = $session->securityCheck();
         header('Location: ' . $direccion);
     }else{
