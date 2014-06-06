@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" href="index.html">SB Abogado</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,17 +43,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Predio</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Rodal</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
                             </ul>
                         </li>
