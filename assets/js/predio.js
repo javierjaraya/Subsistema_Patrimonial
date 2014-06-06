@@ -28,7 +28,7 @@ console.log('iniciando eventos de predio');
         cargarTabla: function() {
           $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
           var randomnumber=Math.random()*11;
-          $('#page-wrapper').load('vista/Predio.php',function(){ 
+          $('#page-wrapper').load('Predio.php',function(){ 
               $("#tabla_contactos").dataTable(
                   {
 		"sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-12'i><'col-lg-12 center'p>>",
