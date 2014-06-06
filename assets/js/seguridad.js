@@ -9,10 +9,10 @@ console.log('iniciando eventos de iniciar session');
 		        color: '#fff' },
                         message: '<img src="assets/ico/ajax.gif" class="" />Cargando...'});
       return {
-        verificaUsuario: function() {
+        cerrarSession: function() {
           $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
-          $('#page-wrapper').load('vista/Seguridad.php');
-          console.log('Usuario verificado');
+          load('vista/Seguridad.php?id=cerrar');
+          console.log('Session cerrada');
         }
       };
     })();

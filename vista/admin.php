@@ -1,9 +1,10 @@
 <?php
     include_once '../controlador/Sistema.php';
+    include_once '../controlador/Session.php';
     
     $control = Sistema::getInstancia();
-    session_start();
-    $empleado = $_SESSION["nombreEmpleado"];//" Javier Jara";//$_SESSION["nombreEmpleado"];//$control->getNombreEmpleadoCuenta();//;
+    $session = $control->getSession();
+    $empleado = $session->getNombreEmpleado();
 ?>
 <html>
     <head>
@@ -123,13 +124,13 @@
                             </ul>
                         </li>
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $empleado;?> 4<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $empleado;?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                                <li><a href="Seguridad.php?id=cerrar"><i class="fa fa-power-off"></i> Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
