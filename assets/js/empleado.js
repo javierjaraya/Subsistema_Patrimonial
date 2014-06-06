@@ -16,7 +16,7 @@ console.log('iniciando eventos de empleado');
 		        opacity: .5, 
 		        color: '#fff' },
                         message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'});
-        //var confPredio;
+        //var confEmpleado;
       return {
         /**
          * Método encargado de cargar tabla en el contenedor con el id

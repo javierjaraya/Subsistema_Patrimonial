@@ -23,7 +23,8 @@ $empleados = $control->findAllEmpleados();
                 <th >Nombre </th>
                 <th >Apellido Paterno </th>
                 <th >Apellido Materno </th>
-                <th >Ingreso</th>
+                <th >Ingreso </th>
+                <th >Accion</th>
                 
             </tr>
         </thead>
