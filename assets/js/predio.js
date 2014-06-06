@@ -107,6 +107,35 @@ console.log('iniciando eventos de predio');
             
             
         },
+        modificarPredio: function(){
+            //ajax
+            predio.mostrarModificar();
+        },
+        mostrarModificar: function(){
+            $(document).ajaxStart($.blockUI()).ajaxStop($.unblockUI);
+        },
+        /**
+         * 
+         * @returns {undefined}
+         */
+        cargaFuncionesAutocompletar: function(){
+            $( "#matricula" ).autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2
+            });
+            $("#matricula").focusout(function(){
+                $.ajax({
+                    url:'alumno.php',
+                    type:'POST',
+                    dataType:'json',
+                    data:{ matricula:$('#matricula').val()}
+                }).done(function(respuesta){
+                    $("#nombre").val(respuesta.nombre);
+                    $("#paterno").val(respuesta.paterno);
+                    $("#materno").val(respuesta.materno);
+                });
+            });
+        },
         
       };
     })();
