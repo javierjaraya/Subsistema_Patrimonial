@@ -32,22 +32,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" href="index.html">SB Jede de Mensura</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Predio</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
-                            </ul>
-                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -57,9 +48,6 @@
                                 <li><a href="#">Generar Reporte</a></li>
                             </ul>
                         </li>
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
-                        <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
-                        <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
