@@ -66,8 +66,8 @@ class Sistema {
     /**
      * 
      */
-    public function getEmpleadoCuenta(){
-        return $this->cuentaDAO->getEmpleado();
+    public function getNombreEmpleadoCuenta(){
+        return $this->cuentaDAO->getNombreEmpleado();
     }
 }
 
