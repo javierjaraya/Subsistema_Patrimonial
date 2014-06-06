@@ -54,4 +54,21 @@ class ComunaDAO {
         }
         return $comuna;
     }
+    /**
+     * Método encargado de buscar cohincidencias segun el valor nombre
+     * @author Renato Hormazabal <nato.ehv@gmail.com>
+     * @param String $nombre
+     * @return Arreglo, Devuelve una lista de comunas las cuales cohinciden con nombre
+     */
+    public function getComunaLike($nombre){
+        $this->conexion->conectar();
+        $consultaComuna = " SELECT  NOMBRE_COMUNA
+                            FROM    Comuna
+                            WHERE   nombre_comuna LIKE '%$nombre%'";
+        $query = $this->conexion->ejecutar($consultaComuna);
+        while(ocifetch($query)){
+            $comunas[] = ociresult($query, "NOMBRE_COMUNA");
+        }
+        return json_encode($comunas);
+    }
 }
