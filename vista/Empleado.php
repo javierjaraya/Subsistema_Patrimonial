@@ -40,7 +40,7 @@ $empleados = $control->findAllEmpleados();
                 echo "<td>";
                 echo "<button type='button' class='btn btn-warning'>Modificar</button>";
                 echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
-                echo "<button type='button' class='btn btn-warning'>Agregar Cuenta</button>";
+                echo "<button type='button' class='btn btn-warning' onClick='empleado.ingresaNuevaCuenta()'>Agregar Cuenta</button>";
                 echo "</td>";
                 echo "</tr>";
             }
