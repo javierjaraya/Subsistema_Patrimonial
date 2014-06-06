@@ -40,7 +40,7 @@ console.log('iniciando eventos de predio');
                   
                   );
           
-          
+          predio.cargaFuncionesAutocompletar();
           });
           console.log('tabla cargada');
         },
@@ -93,16 +93,23 @@ console.log('iniciando eventos de predio');
          * @returns {undefined}
          */
         ingresaNuevoPredio: function(){
-            confPredio = { 
-                onOverlayClick: $.unblockUI,
-                message: $('#nuevoPredio'),     
-                        css:{                          
-                            top: '60px',
-                            'min-width': '200px',
-                    
-                        }
-                    };
-            $(document).ajaxStart($.blockUI(confPredio)).ajaxStop($.unblockUI);
+             $( "#nuevoPredio" ).dialog({
+              height: 400,
+              width: 500,
+              modal: true,
+              buttons: {
+                Aceptar: function() {
+                  predio.aceptarIngresoPredio();
+                  
+            },
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        
+              }
+            });            
             console.log('abriendo contenedor nuevo predio');
             
             
@@ -151,26 +158,25 @@ console.log('iniciando eventos de predio');
             });
         },
         /**
-         * 
+         * Metodo encargado de inicializar el autocomplete
          * @returns {undefined}
          */
         cargaFuncionesAutocompletar: function(){
-            $( "#matricula" ).autocomplete({
-                source: "buscaPredio.php",
-                minLength: 2
+            $("#comuna").autocomplete({
+                source: "buscaComuna.php",
+                minLength: 2,
             });
-            $("#matricula").focusout(function(){
-                $.ajax({
-                    url:'alumno.php',
-                    type:'POST',
-                    dataType:'json',
-                    data:{ matricula:$('#matricula').val()}
-                }).done(function(respuesta){
-                    $("#nombre").val(respuesta.nombre);
-                    $("#paterno").val(respuesta.paterno);
-                    $("#materno").val(respuesta.materno);
-                });
-            });
+            console.log("Autocomplete iniciado");
+//            $("#comuna").focusout(function(){
+//                $.ajax({
+//                    url:'alumno.php',
+//                    type:'POST',
+//                    dataType:'json',
+//                    data:{ matricula:$('#matricula').val()}
+//                }).done(function(respuesta){
+//                    $("#nombre").val(respuesta.nombre);
+//                });
+//            });
         },
         
       };

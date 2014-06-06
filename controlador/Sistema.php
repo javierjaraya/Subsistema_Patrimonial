@@ -78,7 +78,7 @@ class Sistema {
     }
     
     public function getComunaLike($nombre){
-        return $this->comunaDAO->getComunaLike($nombre);
+        return $this->comunaDAO->getLike($nombre);
     }   
     
     public function getSession() {

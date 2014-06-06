@@ -10,6 +10,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
           <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -20,6 +21,23 @@
         <!-- Add custom CSS here -->
         <link href="../assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+        <style>
+            .ui-autocomplete-loading {
+    background: white url('../assets/ico/ajax.gif') right center no-repeat;
+  }
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+  </style>
     </head>
 
     <body>
