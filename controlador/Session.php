@@ -31,7 +31,8 @@ class Session {
 	unset($_SESSION["idPerfil"]);
         unset($_SESSION["nombreEmpleado"]);
 	session_destroy();
-        exit();
+        //exit();
+        return "../index.php";
     }
     
     /**
@@ -52,5 +53,20 @@ class Session {
         }else{
             return "../index.php";
         }
+    }
+    
+    public function getNombreEmpleado() {
+        session_start();
+        return $_SESSION["nombreEmpleado"];
+    }
+    
+    public function getIdPerfil(){
+        session_start();
+        return $_SESSION["idPerfil"];
+    }
+    
+    public function getIdCuenta(){
+        session_start();
+        return $_SESSION["idCuenta"];
     }
 }

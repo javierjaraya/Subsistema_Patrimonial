@@ -4,6 +4,7 @@ include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
 include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
+include_once 'Session.php';
 /**
  * Description of Sistema
  * Clase la cual se conectará con las vistas para obtener los datos desde la bd
@@ -12,6 +13,7 @@ include_once '../modelo/ComunaDAO.php';
 class Sistema {
      private static $miInstancia = NULL;
      
+     private $session;
      private $cuentaDAO;
      private $perfilDAO;
      private $predioDAO;
@@ -24,6 +26,7 @@ class Sistema {
          $this->predioDAO = new PredioDAO();
          $this->empleadoDAO = new EmpleadoDAO();
          $this->comunaDAO = new ComunaDAO();
+         $this->session = new Session();
 
      }
      
@@ -70,6 +73,13 @@ class Sistema {
     public function getComunaLike($nombre){
         return $this->comunaDAO->getComunaLike($nombre);
     }   
+    
+    public function getSession() {
+        if($this->session != null)
+            return $this->session;
+        else
+            return $this->session = new Session();
+    }
 }
 
 ?>
