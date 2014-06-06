@@ -143,6 +143,9 @@
     <!-- Eventos subsistema patrimonial JS -->
     <script type="text/javascript" src="../assets/js/predio.js"></script>
     <script type="text/javascript" src="../assets/js/seguridad.js"></script>
+    <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
+    <!-- jQuery UI (estilos) -->
+    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
 </html>
