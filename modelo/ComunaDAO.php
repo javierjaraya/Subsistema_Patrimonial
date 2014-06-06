@@ -60,15 +60,15 @@ class ComunaDAO {
      * @param String $nombre
      * @return Arreglo, Devuelve una lista de comunas las cuales cohinciden con nombre
      */
-    public function getComunaLike($nombre){
+    public function getLike($nombre){
         $this->conexion->conectar();
         $consultaComuna = " SELECT  NOMBRE_COMUNA
                             FROM    Comuna
-                            WHERE   nombre_comuna LIKE '%$nombre%'";
+                            WHERE   upper(nombre_comuna) LIKE upper('%$nombre%')";
         $query = $this->conexion->ejecutar($consultaComuna);
         while(ocifetch($query)){
             $comunas[] = ociresult($query, "NOMBRE_COMUNA");
         }
-        return json_encode($comunas);
+        return $comunas;
     }
 }
