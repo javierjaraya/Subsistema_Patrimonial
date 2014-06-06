@@ -28,8 +28,6 @@ if (isset($_POST["Ingresar"])) {
         $session->starSession($idCuenta, $idPerfil,$empl->getNombreEmpleado());
         $direccion = $session->securityCheck();
         header('Location: ' . $direccion);
-    }else{
-        header('Location: ');
     }
 }
 ?>
