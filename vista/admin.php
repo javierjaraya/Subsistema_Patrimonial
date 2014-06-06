@@ -1,8 +1,9 @@
 <?php
-    /*include_once 'controlador/Sistema.php';
+    include_once '../controlador/Sistema.php';
+    include_once '../controlador/Empleado.php';
     
     $control = Sistema::getInstancia();
-    $empleado = $control->getEmpleadoCuenta();*/
+    $empleado = $control->getNombreEmpleadoCuenta();//"Javier Jara";
 ?>
 <html>
     <head>
@@ -70,7 +71,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name"><?php  ?></span>
+                                        <span class="name"><?php echo $empleado;?></span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -79,7 +80,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name">John Smith:</span>
+                                        <span class="name"><?php echo $empleado;?></span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -88,7 +89,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name">John Smith:</span>
+                                        <span class="name"><?php echo $empleado;?></span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -111,7 +112,7 @@
                             </ul>
                         </li>
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $empleado;?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
@@ -126,7 +127,6 @@
 
             <div id="page-wrapper">
                 <h1>Bienvenido!</h1>
-
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->

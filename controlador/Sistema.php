@@ -2,6 +2,7 @@
 include_once '../modelo/CuentaDAO.php';
 include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
+include_once '../controlador/Empleado.php';
 /**
  * Description of Sistema
  * Clase la cual se conectará con las vistas para obtener los datos desde la bd
@@ -54,8 +55,8 @@ class Sistema {
     /**
      * 
      */
-    public function getEmpleadoCuenta(){
-        return $this->cuentaDAO->getEmpleado();
+    public function getNombreEmpleadoCuenta(){
+        return $this->cuentaDAO->getNombreEmpleado();
     }
 }
 
