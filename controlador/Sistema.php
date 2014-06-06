@@ -68,15 +68,12 @@ class Sistema {
         return $cuenta;
     }
     
-    /**
-     * 
-     */
-    public function getNombreEmpleadoCuenta(){
-        return $this->cuentaDAO->getNombreEmpleado();
-    }
-    
     public function getComunaLike($nombre){
         return $this->comunaDAO->getComunaLike($nombre);
+    }
+    
+    public function getEmpleado($dni){
+        return$this->empleadoDAO->getEmpleado($dni);
     }
 }
 

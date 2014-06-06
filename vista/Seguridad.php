@@ -18,7 +18,9 @@ if (isset($_POST["Ingresar"])) {
         $session = new Session();
         $idCuenta = $cuenta->getIdCuenta();
         $idPerfil = $cuenta->getIdPerfil();
-        $session->starSession($idCuenta, $idPerfil);
+        $empleado = $control->getEmpleado($dni);
+        $nombreEmpleado = $empleado->getNombreEmpleado;
+        $session->starSession($idCuenta, $idPerfil,$nombreEmpleado);
         $direccion = $session->securityCheck();
         header('Location: ' . $direccion);
     }else{
