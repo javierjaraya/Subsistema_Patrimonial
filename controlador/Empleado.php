@@ -14,7 +14,7 @@
 class Empleado {
     private $dni;
     private $nombreEmpleado;
-    private $apPateroEmpleado;
+    private $apPaternoEmpleado;
     private $apMaternoEmpleado;
     private $fechaIngreso;
     private $idCargo;
@@ -31,8 +31,8 @@ class Empleado {
         return $this->nombreEmpleado;
     }
 
-    public function getApPateroEmpleado() {
-        return $this->apPateroEmpleado;
+    public function getApPaternoEmpleado() {
+        return $this->apPaternoEmpleado;
     }
 
     public function getApMaternoEmpleado() {
@@ -58,8 +58,8 @@ class Empleado {
         $this->nombreEmpleado = $nombreEmpleado;
     }
 
-    public function setApPateroEmpleado($apPateroEmpleado) {
-        $this->apPateroEmpleado = $apPateroEmpleado;
+    public function setApPaternoEmpleado($apPaternoEmpleado) {
+        $this->apPaternoEmpleado = $apPaternoEmpleado;
     }
 
     public function setApMaternoEmpleado($apMaternoEmpleado) {
