@@ -29,12 +29,12 @@ $predios = $control->findAllPredios();
             <?PHP
             foreach($predios as $predio){
                 echo "<tr>";
-                echo "<td>".$predio->getIdPredio()."</td>";
+                echo "<td >".$predio->getIdPredio()."</td>";
                 echo "<td>".$predio->getNombre()."</td>";
                 echo "<td>".$predio->getEstado()."</td>";
                 echo "<td>".$predio->getValorComercial()."</td>";
                 echo "<td>";
-                echo "<button type='button' class='btn btn-warning'>Modificar</button>";
+                echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning'>Modificar</button>";
                 echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
                 echo "</td>";
                 echo "</tr>";
@@ -58,4 +58,10 @@ $predios = $control->findAllPredios();
             </div>
         </fieldset>
  
+</div> 
+    
+<div  style="display:none; cursor: default"> 
+           <div id="editPredioDialog" title="Create new user">
+        
+    </div>
 </div> 
