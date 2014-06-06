@@ -1,18 +1,23 @@
+<?php
+    /*include_once 'controlador/Sistema.php';
+    
+    $control = Sistema::getInstancia();
+    $empleado = $control->getEmpleadoCuenta();*/
+?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
-        <link href='assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
+        <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
+        <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Add custom CSS here -->
-        <link href="assets/css/sb-admin.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link href="../assets/css/sb-admin.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
     </head>
-    
+
     <body>
 
         <div id="wrapper">
@@ -27,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" href="index.html">SB Consultor</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,8 +42,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
+                                <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Buscar Predio</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
                             </ul>
@@ -46,8 +50,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
+                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Buscar Rodal</a></li>
                                 <li><a href="#">Generar Reporte</a></li>
                             </ul>
@@ -65,7 +68,7 @@
                                 <li class="message-preview">
                                     <a href="#">
                                         <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                                        <span class="name">John Smith:</span>
+                                        <span class="name"><?php  ?></span>
                                         <span class="message">Hey there, I wanted to ask you something...</span>
                                         <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
                                     </a>
@@ -130,15 +133,14 @@
 
     </body> 
     <!-- jQuery core JS -->
-    <script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
     <!-- Boostrap core JS -->
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <!-- BlockUI core JS -->
-    <script type="text/javascript" src="assets/js/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-    <script type="text/javascript" src="assets/js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/js/predio.js"></script>
-    <script type="text/javascript" src="assets/js/seguridad.js"></script>
-    
+    <script type="text/javascript" src="../assets/js/predio.js"></script>
+    <script type="text/javascript" src="../assets/js/seguridad.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
 </html>

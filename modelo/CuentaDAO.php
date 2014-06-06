@@ -12,6 +12,7 @@ class CuentaDAO {
 
     private $conexion;
     private $cuenta;
+    private $nombreEmpleado;
 
     public function __construct() {
         $this->conexion = new Conexion();
@@ -40,27 +41,26 @@ class CuentaDAO {
      */
     public function getCuenta($dni) {
         $this->conexion->conectar();
-        $consultaCuenta = "SELECT cuenta.ID_CUENTA, cuenta.FECHACREACION, cuenta.PASSWORD, cuenta.ESTADO, cuenta.ID_PERFIL 
+        $consultaCuenta = "SELECT empleado.NOMBRE_EMPLEADO,cuenta.ID_CUENTA, cuenta.FECHACREACION, cuenta.PASSWORD, cuenta.ESTADO, cuenta.ID_PERFIL 
                             FROM empleado JOIN cuenta ON empleado.ID_CUENTA = cuenta.ID_CUENTA
                             where empleado.dni = '$dni'";
         $query = $this->conexion->ejecutar($consultaCuenta);
-        $cuenta = new Cuenta();
+        $this->cuenta = new Cuenta();
 
         while (OCIFetch($query)) {
-            $cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
-            $cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
-            $cuenta->setPassword(ociresult($query, "PASSWORD"));
-            $cuenta->setEstado(ociresult($query, "ESTADO"));
-            $cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
+            $this->nombreEmpleado = ociresult($query, "NOMBRE_EMPLEADO");
+            $this->cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
+            $this->cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
+            $this->cuenta->setPassword(ociresult($query, "PASSWORD"));
+            $this->cuenta->setEstado(ociresult($query, "ESTADO"));
+            $this->cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
+            
         }
         $this->conexion->desconectar();
-        $this->cuenta = $cuenta;
-        return $cuenta;
+        return $this->cuenta;
     }
-    public function getEmpleado(){
-        $idCuenta = $this->cuenta->getIdCuenta();
-        $this->conexion->conectar();
-        
+    public function getNombreEmpleado(){
+        return $this->nombreEmpleado;
     }
 }
 
