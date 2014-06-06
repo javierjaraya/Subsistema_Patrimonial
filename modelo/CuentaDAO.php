@@ -12,7 +12,6 @@ class CuentaDAO {
 
     private $conexion;
     private $cuenta;
-    private $nombreEmpleado;
 
     public function __construct() {
         $this->conexion = new Conexion();
@@ -58,9 +57,6 @@ class CuentaDAO {
         }
         $this->conexion->desconectar();
         return $this->cuenta;
-    }
-    public function getNombreEmpleado(){
-        return $this->nombreEmpleado;
     }
 }
 
