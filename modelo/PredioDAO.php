@@ -53,44 +53,44 @@ class PredioDAO implements interfaceDAO{
     }
     
     public function findByExample($predio){
-        $this->cone->conectar();
-        $laConsulta = " SELECT * FROM predio WHERE";
-        /*
-         * Verifico valores que vienen en el ejemplo
-         */
-        if(!isset($predio->getIdPredio()))
-            $laConsulta ="$laConsulta ID_PREDIO = $predio->getIdPredio()";
-        if(!isset($predio->getNombre()))
-            $laConsulta ="$laConsulta NOMBRE = $predio->getNombre()";
-        if(!isset($predio->getSuperficie()))
-            $laConsulta ="$laConsulta SUPERFICIE = $predio->getSuperficie()";
-        if(!isset($predio->getEstado()))
-            $laConsulta ="$laConsulta ESTADO = $predio->getEstado()";
-        if(!isset($predio->getValorComercial()))
-            $laConsulta ="$laConsulta VALOR_COMERCIAL = $predio->getValorComercial()";
-        if(!isset($predio->getIdComuna()))
-            $laConsulta ="$laConsulta ID_COMUNA = $predio->getIdComuna()";
-        if(!isset($predio->getIdZona()))
-            $laConsulta ="$laConsulta ID_ZONA = $predio->getIdZona()";
-        if(!isset($predio->getIdEmpresa()))
-            $laConsulta ="$laConsulta ID_EMPRESA = $predio->getIdEmpresa()";
-        $query = $this->cone->ejecutar($laConsulta);
-        
-        $predios = array();
-        while(ocifetch($query)){
-            $predio = new Predio();
-            $predio->setEstado(ociresult($query, "ESTADO"));
-            $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
-            $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
-            $predio->setIdPredio(ociresult($query, "ID_PREDIO"));
-            $predio->setIdZona(ociresult($query, "ID_ZONA"));
-            $predio->setNombre(ociresult($query, "NOMBRE"));
-            $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
-            $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
-            $predios[] = $predio;
-        }
-        $this->cone->desconectar();
-        return $predios;
+//        $this->cone->conectar();
+//        $laConsulta = " SELECT * FROM predio WHERE";
+//        /*
+//         * Verifico valores que vienen en el ejemplo
+//         */
+//        if(!isset($predio->getIdPredio()))
+//            $laConsulta ="$laConsulta ID_PREDIO = $predio->getIdPredio()";
+//        if(!isset($predio->getNombre()))
+//            $laConsulta ="$laConsulta NOMBRE = $predio->getNombre()";
+//        if(!isset($predio->getSuperficie()))
+//            $laConsulta ="$laConsulta SUPERFICIE = $predio->getSuperficie()";
+//        if(!isset($predio->getEstado()))
+//            $laConsulta ="$laConsulta ESTADO = $predio->getEstado()";
+//        if(!isset($predio->getValorComercial()))
+//            $laConsulta ="$laConsulta VALOR_COMERCIAL = $predio->getValorComercial()";
+//        if(!isset($predio->getIdComuna()))
+//            $laConsulta ="$laConsulta ID_COMUNA = $predio->getIdComuna()";
+//        if(!isset($predio->getIdZona()))
+//            $laConsulta ="$laConsulta ID_ZONA = $predio->getIdZona()";
+//        if(!isset($predio->getIdEmpresa()))
+//            $laConsulta ="$laConsulta ID_EMPRESA = $predio->getIdEmpresa()";
+//        $query = $this->cone->ejecutar($laConsulta);
+//        
+//        $predios = array();
+//        while(ocifetch($query)){
+//            $predio = new Predio();
+//            $predio->setEstado(ociresult($query, "ESTADO"));
+//            $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
+//            $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
+//            $predio->setIdPredio(ociresult($query, "ID_PREDIO"));
+//            $predio->setIdZona(ociresult($query, "ID_ZONA"));
+//            $predio->setNombre(ociresult($query, "NOMBRE"));
+//            $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
+//            $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
+//            $predios[] = $predio;
+//        }
+//        $this->cone->desconectar();
+//        return $predios;
         
     }
     /**
