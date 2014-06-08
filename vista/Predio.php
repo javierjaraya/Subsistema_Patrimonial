@@ -43,7 +43,7 @@ $predios = $control->findAllPredios();
         </tbody>
     </table>
 </div>
-<div id="nuevoPredio" style="display:none; cursor: default"> 
+<div id="nuevoPredio"  class="ui-front" style="display:none; cursor: default"> 
         <fieldset>
             <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /></div>
             <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" /></div>
