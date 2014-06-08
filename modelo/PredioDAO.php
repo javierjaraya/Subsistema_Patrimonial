@@ -68,10 +68,6 @@ class PredioDAO implements interfaceDAO{
         
     }
 
-    public function finByExample($object) {
-        
-    }
-
     public function findByID($id) {
         
     }
