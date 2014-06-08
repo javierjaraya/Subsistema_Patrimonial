@@ -141,9 +141,12 @@ console.log('iniciando eventos de predio');
         },
         mostrarModificar: function(){
               $( "#editPredioDialog" ).dialog({
-              height: 400,
+              title: "Nuevo Predio",
+              height: 800,
               width: 500,
               modal: true,
+              position: { my: "left top", at: "left top", of: "#editPredioDialog" },
+              resizable: false,
               buttons: {
                 Actualizar: function() {
                   var bValid = true;
@@ -166,11 +169,20 @@ console.log('iniciando eventos de predio');
             $(".id_comuna").autocomplete({
                 source: "buscaComuna.php",
                 minLength: 2,
-                appendTo: '#nuevoPredio',
+//                appendTo: '#nuevoPredio',
                 select: function(event, ui){
                     $(".id_comuna").attr("id",ui.item.id);
+                     $(".id_comuna").tooltip('hide');
+                },
+                change: function(event, ui){
+                    if(!ui.item){
+                        $(".id_comuna").tooltip(
+                                {
+                                title: 'Seleccione una opción válida',
+                                placement: 'right'});
+                    }
                 }
-            });
+            }).css('z-index',1000);;
             console.log("Autocomplete iniciado");
 //            $("#comuna").focusout(function(){
 //                $.ajax({

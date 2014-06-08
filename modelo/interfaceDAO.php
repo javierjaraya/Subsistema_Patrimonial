@@ -18,7 +18,7 @@ interface interfaceDAO {
      * Metodo el cual busca objectos mediante un ejemplo
      * @param type $object
      */
-    public function finByExample($object);
+    public function findByExample($object);
     /**
      * Busqueda realizada mediante un ID
      * @param type $id
@@ -34,6 +34,11 @@ interface interfaceDAO {
      * @param type $object
      */
     public function save($object);
+    /**
+     * Método encargado de actualizar un objeto
+     * @param type $object
+     */
+    public function update($object);
 }
 
 ?>
