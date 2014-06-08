@@ -80,6 +80,10 @@ class PredioDAO implements interfaceDAO{
         
     }
 
+    public function update($object) {
+        
+    }
+
 }
 
 ?>
