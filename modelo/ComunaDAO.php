@@ -67,8 +67,10 @@ class ComunaDAO {
                             WHERE   upper(nombre_comuna) LIKE upper('%$nombre%')";
         $query = $this->conexion->ejecutar($consultaComuna);
         while(ocifetch($query)){
-            $comunas[] = ociresult($query, "NOMBRE_COMUNA");
+            $comunas[] = utf8_encode(ociresult($query, "NOMBRE_COMUNA"));
         }
+        if(!isset($comunas))
+            $comunas[] ="Sin resultado";
         return $comunas;
     }
 }

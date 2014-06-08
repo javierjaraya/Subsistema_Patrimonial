@@ -72,7 +72,7 @@ console.log('iniciando eventos de predio');
             var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial;
             $.ajax({
                 type: "POST",
-                url: "vista/ingresaPredio.php",
+                url: "ingresaPredio.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
@@ -82,7 +82,7 @@ console.log('iniciando eventos de predio');
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Consulta mal hecha');
+                    $('#page-wrapper').html('Error al Ingresar Predio');
                                   
                 }
             });
@@ -100,10 +100,11 @@ console.log('iniciando eventos de predio');
               buttons: {
                 Aceptar: function() {
                   predio.aceptarIngresoPredio();
-                  
+                  $( this ).dialog( "close" );
             },
                 Cancelar: function() {
                   $( this ).dialog( "close" );
+                  
                 }
               },
               close: function() {
@@ -165,6 +166,7 @@ console.log('iniciando eventos de predio');
             $("#comuna").autocomplete({
                 source: "buscaComuna.php",
                 minLength: 2,
+                appendTo: '#nuevoPredio'
             });
             console.log("Autocomplete iniciado");
 //            $("#comuna").focusout(function(){
