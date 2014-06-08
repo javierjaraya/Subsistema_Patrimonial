@@ -1,6 +1,7 @@
 <?php
 include_once 'Conexion.php';
 include_once '../controlador/Predio.php';
+include_once 'interfaceDAO.php';
 
 /**
  * Description of PredioDAO
