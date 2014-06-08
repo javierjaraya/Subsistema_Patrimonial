@@ -7,7 +7,7 @@ include_once '../controlador/Predio.php';
  * 
  * @author Renato
  */
-class PredioDAO {
+class PredioDAO implements interfaceDAO{
     private $cone;
     
     public function PredioDAO(){
@@ -63,13 +63,22 @@ class PredioDAO {
      * 
      * 
      */
-    /**
-     * @author John Doe <john.doe@example.com>
-     * @param type $predio
-     */
     public function save($predio) {
         
     }
+
+    public function finByExample($object) {
+        
+    }
+
+    public function findByID($id) {
+        
+    }
+
+    public function findLikeAtrr($name) {
+        
+    }
+
 }
 
 ?>
