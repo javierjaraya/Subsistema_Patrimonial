@@ -14,6 +14,8 @@ class Predio {
     private $idComuna;
     private $idZona;
     private $idEmpresa;
+    
+    public static $id_predio = "ID_PREDIO";
             
     function _construct(){}
     public function getIdPredio() {
