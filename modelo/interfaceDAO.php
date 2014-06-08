@@ -14,7 +14,8 @@ interface interfaceDAO {
     public function findAll();
     public function finByExample($object);
     public function findByID($id);
-    public function findLikeName($name);
+    public function findLikeAtrr($name);
+    public function save($object);
 }
 
 ?>

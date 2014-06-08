@@ -23,6 +23,7 @@ class PredioDAO {
     }
     /**
      * Metodo encargado de buscar todos los predios
+     * @author Renato Hormazabal <nato.ehv@gmail.com>
      */
     public function findAll(){
         $predios = array(); // Lista contenedora de predios resultados
@@ -55,6 +56,19 @@ class PredioDAO {
         $laConsulta = " SELECT *
                         FROM predio
                         ";
+    }
+    /**
+     * @author Renato Hormazabal <nato.ehv@gmail.com>
+     * @param Predio $predio la cual será guardada
+     * 
+     * 
+     */
+    /**
+     * @author John Doe <john.doe@example.com>
+     * @param type $predio
+     */
+    public function save($predio) {
+        
     }
 }
 
