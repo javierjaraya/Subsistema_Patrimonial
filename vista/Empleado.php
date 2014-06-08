@@ -6,6 +6,7 @@
 
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Empleado.php';
+include_once '../controlador/Cuenta.php';
 
 $control = Sistema::getInstancia();
 $empleados = $control->findAllEmpleados();
@@ -40,7 +41,7 @@ $empleados = $control->findAllEmpleados();
                 echo "<td>";
                 echo "<button type='button' class='btn btn-warning'>Modificar</button>";
                 echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
-                echo "<button type='button' class='btn btn-warning' onClick='empleado.ingresaNuevaCuenta()'>Agregar Cuenta</button>";
+                echo "<button type='button' class='btn btn-primary btn-lg' onClick='empleado.ingresaNuevaCuenta()'>Agregar Cuenta</button>";
                 echo "</td>";
                 echo "</tr>";
             }
@@ -68,17 +69,14 @@ $empleados = $control->findAllEmpleados();
 </div>     
     
 <div id="nuevaCuenta" style="display:none; cursor: default"> 
+   
         <fieldset>
             <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" /></div>
             <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" /></div>
             <div><label>Password: </label><input type="text" class="password" name="password" /></div>
             <div><label>Estado: </label><input type="text" class="estado" name="estado" /></div>
             <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>
-            <div class="accion">
-                <div class="msg"></div>
-                <button  type="button" onclick="empleado.aceptarIngresoEmpleado()">Aceptar</button>
-                <button  type="button" onclick="">Cancelar</button>
-            </div>
+            
         </fieldset>
- 
+
 </div>     

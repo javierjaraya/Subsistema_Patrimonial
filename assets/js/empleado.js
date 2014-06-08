@@ -99,35 +99,43 @@ console.log('iniciando eventos de empleado');
         },
         
         ingresaNuevaCuenta: function(){
-            confCuenta = { 
-                onOverlayClick: $.unblockUI,
-                message: $('#nuevaCuenta'),     
-                        css:{                          
-                            top: '60px',
-                            'min-width': '200px',
-                    
-                        }
-                    };
-            $(document).ajaxStart($.blockUI(confCuenta)).ajaxStop($.unblockUI);
-            console.log('abriendo nuevo contenedor cuenta');
+            $( "#nuevaCuenta" ).dialog({
+              height: 400,
+              width: 500,
+              modal: true,
+              buttons: {
+                Aceptar: function() {
+                  empleado.aceptarIngresoCuenta();
+                  $( this ).dialog( "close" );
+            },
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                  
+                }
+              },
+              close: function() {
+        
+              }
+            });            
+            console.log('abriendo contenedor nueva Cuenta');
             
             
         },
         
         aceptarIngresoCuenta: function(){
             
-            var idCuenta = $(".idCuenta").val();
+            idCuenta = $(".idCuenta").val();
             fechaCreacion = $(".fechaCreacion").val();
             password = $(".password").val();
             estado = $(".estado").val();
-            var idPerfil = $(".idPerfil").val();
+            idPerfil = $(".idPerfil").val();
             
             var datos = '&idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
-                    + '&estado=' + estado + '$idPerfil' + idPerfil;
+                    + '&estado=' + estado + '&idPerfil=' + idPerfil;
                     
             $.ajax({
                 type: "POST",
-                url: "vista/ingresaCuenta.php",
+                url: "ingresaCuenta.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
@@ -137,7 +145,7 @@ console.log('iniciando eventos de empleado');
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Consulta mal ejecutada');
+                    $('#page-wrapper').html('Error al ingresar la Cuenta');
                                   
                 }
             });

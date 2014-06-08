@@ -7,8 +7,9 @@
  */
 include_once 'Conexion.php';
 include_once '../controlador/Cuenta.php';
+include_once '../modelo/interfaceDAO.php';
 
-class CuentaDAO {
+class CuentaDAO implements interfaceDAO{
 
     private $conexion;
     private $cuenta;
@@ -58,6 +59,32 @@ class CuentaDAO {
         $this->conexion->desconectar();
         return $this->cuenta;
     }
+    
+    public function save($cuenta) {
+        $this->cone->conectar();
+        $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHA_CREACION, PASSWORD, ESTADO, ID_PERFIL) 
+            VALUES ('$cuenta->getIdCuenta()','$cuenta->getfechaCreacion()','$cuenta->getPassword()','$cuenta->getEstado()','$cuenta->getIdPerfil()')";
+        $query = $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+        
+    }
+
+    public function finByExample($object) {
+        
+    }
+
+    public function findAll() {
+        
+    }
+
+    public function findByID($id) {
+        
+    }
+
+    public function findLikeAtrr($name) {
+        
+    }
+
 }
 
 ?>
