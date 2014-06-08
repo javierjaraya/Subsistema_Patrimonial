@@ -163,10 +163,13 @@ console.log('iniciando eventos de predio');
          * @returns {undefined}
          */
         cargaFuncionesAutocompletar: function(){
-            $("#comuna").autocomplete({
+            $(".id_comuna").autocomplete({
                 source: "buscaComuna.php",
                 minLength: 2,
-                appendTo: '#nuevoPredio'
+                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    $(".id_comuna").attr("id",ui.item.id);
+                }
             });
             console.log("Autocomplete iniciado");
 //            $("#comuna").focusout(function(){

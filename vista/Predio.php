@@ -50,8 +50,8 @@ $predios = $control->findAllPredios();
             <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" /></div>
             <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" /></div>
             <div><label>Zona: </label><input cols="30" rows="5" class="zona" name="zona" ></input></div>
-            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna"/></div>
-            <input cols="30" rows="5" class="idcomuna" name="idcomuna" hidden/>
+            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna"/></div>
+            
         </fieldset>
  
 </div> 

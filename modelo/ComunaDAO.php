@@ -62,15 +62,21 @@ class ComunaDAO {
      */
     public function getLike($nombre){
         $this->conexion->conectar();
-        $consultaComuna = " SELECT  NOMBRE_COMUNA
+        // busca cohincidencias que comiencen con $nombre
+        $consultaComuna = " SELECT  NOMBRE_COMUNA, ID_COMUNA
                             FROM    Comuna
-                            WHERE   upper(nombre_comuna) LIKE upper('%$nombre%')";
+                            WHERE   upper(nombre_comuna) LIKE upper('$nombre%')";
         $query = $this->conexion->ejecutar($consultaComuna);
+        $comunas = array();
+        $resultado_comunas = array();
         while(ocifetch($query)){
-            $comunas[] = utf8_encode(ociresult($query, "NOMBRE_COMUNA"));
+            //es necesario pasar a UTF8 para conservar eñes y tíldes 
+            $comunas['id']  = utf8_encode(ociresult($query, "ID_COMUNA"));
+            $comunas['value'] = utf8_encode(ociresult($query, "NOMBRE_COMUNA"));
+            array_push($resultado_comunas, $comunas);
         }
-        if(!isset($comunas))
-            $comunas[] ="Sin resultado";
-        return $comunas;
+//        if(!isset($comunas))
+//            $comunas[] ="Sin resultado";
+        return $resultado_comunas;
     }
 }
