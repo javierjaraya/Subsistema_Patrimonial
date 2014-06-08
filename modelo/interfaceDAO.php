@@ -34,6 +34,11 @@ interface interfaceDAO {
      * @param type $object
      */
     public function save($object);
+    /**
+     * Método encargado de actualizar un objeto
+     * @param type $object
+     */
+    public function update($object);
 }
 
 ?>
