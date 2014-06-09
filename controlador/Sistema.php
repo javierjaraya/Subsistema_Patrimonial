@@ -4,7 +4,9 @@ include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
 include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
+include_once '../modelo/CaminoDAO.php';
 include_once 'Session.php';
+include_once 'Cuenta.php';
 /**
  * Description of Sistema
  * Clase la cual se conectará con las vistas para obtener los datos desde la bd
@@ -19,6 +21,7 @@ class Sistema {
      private $predioDAO;
      private $empleadoDAO;
      private $comunaDAO;
+     private $caminoDAO;
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -27,6 +30,7 @@ class Sistema {
          $this->empleadoDAO = new EmpleadoDAO();
          $this->comunaDAO = new ComunaDAO();
          $this->session = new Session();
+         $this->caminoDAO = new CaminoDAO();
 
      }
      
@@ -60,6 +64,11 @@ class Sistema {
         return $this->empleadoDAO->findAll();
     } 
     
+    public function saveCuenta($cuenta){
+        $this->cuentaDAO->save($cuenta);
+    }
+
+
     /**
      * Metodo que retorna una cuenta de usuario segun un determinado dni y password
      * @author Javier
@@ -87,9 +96,14 @@ class Sistema {
         else
             return $this->session = new Session();
     }
-    public function savePredio($predio) {
-        $this->predioDAO->save($predio);
+    
+    public function findAllCaminos(){
+        return $this->caminoDAO->findAll();
     }
+    public function savePredio($predio){
+            $this->predioDAO->save($predio);
+    }
+
 }
 
 ?>

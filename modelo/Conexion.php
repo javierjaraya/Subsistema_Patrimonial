@@ -40,11 +40,39 @@ class Conexion {
         try {
             $ejecutar = oci_parse($this->conexion, $strComando);
             oci_execute($ejecutar);
-            
+
             return $ejecutar;
         } catch (PDOException $ex) {
             throw $ex;
         }
     }
+
+    /**
+     * Metodos para insertar datos en una tabla
+     * @param $nombretabla Description: nombre de la tabla
+     * @param $arrayValores Description: arreglo con los valores de la tabla, (ordenados)
+     */
+    public function insert($nombretabla, $arrayValores) {
+        try {
+            $max = sizeof($arrayValores);
+            $datos = "(";
+            for ($i = 1; $i <= $max; $i ++) {
+                $datos = $datos . ":dato$i";
+                if ($i < $max)
+                    $datos = $datos . ",";
+            }
+            $datos = $datos . ")";
+            $ejecutar = OCIParse($this->conexion, "insert into $nombretabla values $datos");
+
+            for ($i = 1; $i <= $max; $i ++) {
+                OCIBindByName($ejecutar, ":dato$i", $arrayValores[$i-1]);
+            }
+            OCIExecute($ejecutar, OCI_DEFAULT);
+        } catch (PDOException $ex) {
+            throw $ex;
+        }
+    }
+
 }
+
 ?>

@@ -7,8 +7,9 @@
  */
 include_once 'Conexion.php';
 include_once '../controlador/Cuenta.php';
+include_once 'interfaceDAO.php';
 
-class CuentaDAO {
+class CuentaDAO{
 
     private $conexion;
     private $cuenta;
@@ -58,6 +59,42 @@ class CuentaDAO {
         $this->conexion->desconectar();
         return $this->cuenta;
     }
+    
+    public function save($cuenta) {
+        //$this->cuenta=$cuenta;
+        //echo $cuenta->getIdCuenta();
+        $this->conexion->conectar();
+        $laConsulta = '';
+        //'.$cuenta->getIdCuenta().','.".$cuenta->getFechaCreacion().".','".$cuenta->getPassword()."','".$cuenta->getEstado()."','.$cuenta->getIdPerfil().'
+        //$laConsulta = 'INSERT into CUENTA VALUES (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL)(2004,08/06/14,admin,1,1111)';
+        $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) 
+            VALUES (".$cuenta->getIdCuenta().",'".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."',".$cuenta->getIdPerfil().")";
+        echo $laConsulta; 
+        $query = $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+        
+    }
+
+    public function findAll() {
+        
+    }
+
+    public function findByID($id) {
+        
+    }
+
+    public function findLikeAtrr($name) {
+        
+    }
+
+    public function findByExample($object) {
+        
+    }
+
+    public function update($object) {
+        
+    }
+
 }
 
 ?>
