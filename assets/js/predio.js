@@ -186,16 +186,29 @@ console.log('iniciando eventos de predio');
                 }
             }).css('z-index',1000);;
             console.log("Autocomplete iniciado");
-//            $("#comuna").focusout(function(){
-//                $.ajax({
-//                    url:'alumno.php',
-//                    type:'POST',
-//                    dataType:'json',
-//                    data:{ matricula:$('#matricula').val()}
-//                }).done(function(respuesta){
-//                    $("#nombre").val(respuesta.nombre);
-//                });
-//            });
+            $(".id_comuna").focusout(function(){
+                
+                $.ajax({
+                    url:'buscaComuna.php',
+                    type:'POST',
+                    dataType:'json',
+                    data:{ nombreComuna:$('.id_comuna').val()}
+                }).done(function(respuesta){
+                    console.log("llamada post terminada");
+                    if(respuesta.error == "1"){
+                        console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
+                        $(".id_comuna").val(respuesta.nombre);
+                        $(".id_comuna").attr("idcomuna", respuesta.id);
+                        $(".id_comuna").tooltip('hide');
+                    }else{
+                        console.log("No se encuentra comuna");
+                        $(".id_comuna").tooltip(
+                                {
+                                title: 'Seleccione una opción válida',
+                                placement: 'right'});
+                    }
+                });
+            });
         },
         
       };
