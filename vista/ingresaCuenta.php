@@ -1,12 +1,28 @@
 <?php
 
-$idCuenta = $_POST['dni'];
-$nombre = $_POST['nombre'];
-$apPaterno = $_POST['apPaterno'];
-$apMaterno = $_POST['apMaterno'];
-$fechaIngreso = $_POST['fechaIngreso'];
-$idCargo = $_POST['idCargo'];
+include_once '../controlador/Cuenta.php';
+include_once '../controlador/Sistema.php';
 
-echo $dni . " - " .$nombre. " - " .$apPaterno." - ". $apMaterno." - ". $fechaIngreso." - ". $idCargo." - ". $idCuenta;
+
+$idCuenta = $_POST['idCuenta'];
+$fechaCreacion = $_POST['fechaCreacion'];
+$password = $_POST['password'];
+$estado = $_POST['estado'];
+$idPerfil = $_POST['idPerfil'];
+
+$cuenta = new Cuenta();
+
+$cuenta->setIdCuenta($idCuenta);
+$cuenta->setFechaCreacion($fechaCreacion);
+$cuenta->setPassword($password);
+$cuenta->setEstado($estado);
+$cuenta->setIdPerfil($idPerfil);
+
+//echo $cuenta->getIdCuenta();
+
+$control = Sistema::getInstancia();
+$control->saveCuenta($cuenta);
+
+//echo $idCuenta . " - " .$fechaCreacion. " - " .$password. " - " . $estado. " - " . $idPerfil;
 
 ?>

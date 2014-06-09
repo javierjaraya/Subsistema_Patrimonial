@@ -6,6 +6,7 @@ include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CaminoDAO.php';
 include_once 'Session.php';
+include_once 'Cuenta.php';
 /**
  * Description of Sistema
  * Clase la cual se conectará con las vistas para obtener los datos desde la bd
@@ -63,6 +64,11 @@ class Sistema {
         return $this->empleadoDAO->findAll();
     } 
     
+    public function saveCuenta($cuenta){
+        $this->cuentaDAO->save($cuenta);
+    }
+
+
     /**
      * Metodo que retorna una cuenta de usuario segun un determinado dni y password
      * @author Javier
