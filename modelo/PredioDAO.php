@@ -58,21 +58,21 @@ class PredioDAO implements interfaceDAO{
         /*
          * Verifico valores que vienen en el ejemplo
          */
-        if($predio->getIdPredio() == "")
+        if($predio->getIdPredio() != "")
             $laConsulta ="$laConsulta ID_PREDIO = $predio->getIdPredio()";
-        if($predio->getNombre() == "")
+        if($predio->getNombre() != "")
             $laConsulta ="$laConsulta NOMBRE = $predio->getNombre()";
-        if($predio->getSuperficie() == "")
+        if($predio->getSuperficie() != "")
             $laConsulta ="$laConsulta SUPERFICIE = $predio->getSuperficie()";
-        if($predio->getEstado() == "")
+        if($predio->getEstado() != "")
             $laConsulta ="$laConsulta ESTADO = $predio->getEstado()";
-        if($predio->getValorComercial() == "")
+        if($predio->getValorComercial() != "")
             $laConsulta ="$laConsulta VALOR_COMERCIAL = $predio->getValorComercial()";
-        if($predio->getIdComuna() == "")
+        if($predio->getIdComuna() != "")
             $laConsulta ="$laConsulta ID_COMUNA = $predio->getIdComuna()";
-        if($predio->getIdZona() == "")
+        if($predio->getIdZona() != "")
             $laConsulta ="$laConsulta ID_ZONA = $predio->getIdZona()";
-        if($predio->getIdEmpresa() == "")
+        if($predio->getIdEmpresa() != "")
             $laConsulta ="$laConsulta ID_EMPRESA = $predio->getIdEmpresa()";
         $query = $this->cone->ejecutar($laConsulta);
         
