@@ -174,7 +174,7 @@ console.log('iniciando eventos de predio');
 //                appendTo: '#nuevoPredio',
                 select: function(event, ui){
                     $(".id_comuna").attr("idcomuna",ui.item.id);
-                     $(".id_comuna").tooltip('hide');
+                     $(".id_comuna").tooltip('destroy');
                 },
                 change: function(event, ui){
                     if(!ui.item){
@@ -199,7 +199,7 @@ console.log('iniciando eventos de predio');
                         console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
                         $(".id_comuna").val(respuesta.nombre);
                         $(".id_comuna").attr("idcomuna", respuesta.id);
-                        $(".id_comuna").tooltip('hide');
+                        $(".id_comuna").tooltip('destroy');
                     }else{
                         console.log("No se encuentra comuna");
                         $(".id_comuna").tooltip(
