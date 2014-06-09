@@ -100,6 +100,11 @@ class Sistema {
     public function findAllCaminos(){
         return $this->caminoDAO->findAll();
     }
+    
+    /**
+     * ;etodo encargado de guardar predio
+     * @param type $predio
+     */
     public function savePredio($predio){
             $this->predioDAO->save($predio);
     }
