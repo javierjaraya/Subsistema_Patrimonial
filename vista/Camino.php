@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $caminos = $control->findAllCaminos();
 ?>
 <div class="row">
-    <h1>Lista de Caminos</h1>
+    <h1>Lista de Caminos <button type='button' class='btn btn-primary glyphicon glyphicon-plus'></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -34,8 +34,10 @@ $caminos = $control->findAllCaminos();
                 echo "<td>".$camino->getTipoSuperficie()."</td>";
                 echo "<td>".$camino->getIdPredio()."</td>";
                 echo "<td>";
-                echo "<button type='button' onclick='' class='btn btn-warning'>Modificar</button>";
-                echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
+                //echo "<a href='#'><i class='btn btn-warning glyphicon glyphicon-pencil'></i> Editar</a> ";
+                //echo "<a href='#'><i class='btn btn-danger glyphicon glyphicon-trash'></i> Eliminar</a>";
+                echo "<button type='button'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 echo "</td>";
                 echo "</tr>";
             }
