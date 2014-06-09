@@ -1,9 +1,26 @@
 <?php
-$idpredio = $_POST['idpredio'];
+include_once '../controlador/Sistema.php';
+include_once '../controlador/Comuna.php';
+
+$idPredio = $_POST['idpredio'];
 $nombre = $_POST['nombre'];
 $superficie = $_POST['superficie'];
-$valorcomercial = $_POST['valorcomercial'];
+$valorComercial = $_POST['valorcomercial'];
+$idComuna = $_POST['idcomuna'];
 
-echo $idpredio . " - " .$nombre. " - " .$superficie." - ". $valorcomercial;
+$control = Sistema::getInstancia();
+$predio = new Predio();
+$predio->setEstado(1);
+$predio->setIdComuna($idComuna);
+$predio->setIdEmpresa(1);
+$predio->setIdPredio($idPredio);
+$predio->setIdZona(3); //es necesario buscarla
+$predio->setNombre($nombre);
+$predio->setSuperficie($superficie);
+$predio->setValorComercial($valorComercial);
+
+$control->savePredio($predio);
+        
+
 
 ?>

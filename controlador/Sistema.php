@@ -87,6 +87,9 @@ class Sistema {
         else
             return $this->session = new Session();
     }
+    public function savePredio($predio) {
+        $this->predioDAO->save($predio);
+    }
 }
 
 ?>

@@ -68,8 +68,10 @@ console.log('iniciando eventos de predio');
             validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
             superficie = $(".superficie").val();
             valorcomercial = $(".valorcomercial").val();
+            idComuna = $(".id_comuna").attr("idcomuna");
             
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial;
+            
+            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna;
             $.ajax({
                 type: "POST",
                 url: "ingresaPredio.php",
@@ -94,9 +96,12 @@ console.log('iniciando eventos de predio');
          */
         ingresaNuevoPredio: function(){
              $( "#nuevoPredio" ).dialog({
+              title: "Nuevo Predio",
               height: 400,
               width: 500,
               modal: true,
+              position: { my: "center top", at: "center top", of: "#page-wrapper" },
+              resizable: false,
               buttons: {
                 Aceptar: function() {
                   predio.aceptarIngresoPredio();
@@ -140,13 +145,10 @@ console.log('iniciando eventos de predio');
             
         },
         mostrarModificar: function(){
-              $( "#editPredioDialog" ).dialog({
-              title: "Nuevo Predio",
-              height: 800,
+              $( "#editPredioDialog" ).dialog({            
+              height: 400,
               width: 500,
               modal: true,
-              position: { my: "left top", at: "left top", of: "#editPredioDialog" },
-              resizable: false,
               buttons: {
                 Actualizar: function() {
                   var bValid = true;
@@ -171,7 +173,7 @@ console.log('iniciando eventos de predio');
                 minLength: 2,
 //                appendTo: '#nuevoPredio',
                 select: function(event, ui){
-                    $(".id_comuna").attr("id",ui.item.id);
+                    $(".id_comuna").attr("idcomuna",ui.item.id);
                      $(".id_comuna").tooltip('hide');
                 },
                 change: function(event, ui){
