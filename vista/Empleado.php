@@ -50,7 +50,7 @@ $empleados = $control->findAllEmpleados();
     </table>
 </div>
 
-<div id="nuevoEmpleado" style="display:none; cursor: default"> 
+<!--<div id="nuevoEmpleado" style="display:none; cursor: default"> 
         <fieldset>
             <div><label>DNI: </label><input type="text" class="dni" name="dni" /></div>
             <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" /></div>
@@ -65,18 +65,14 @@ $empleados = $control->findAllEmpleados();
                 <button  type="button" onclick="">Cancelar</button>
             </div>
         </fieldset>
- 
-</div>     
+</div>-->
     
 <div id="nuevaCuenta" style="display:none; cursor: default"> 
-   
         <fieldset>
-            <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" /></div>
-            <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" /></div>
-            <div><label>Password: </label><input type="text" class="password" name="password" /></div>
-            <div><label>Estado: </label><input type="text" class="estado" name="estado" /></div>
-            <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>
-            
+                <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" value="2004" /></div>
+                <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" value="08/06/14" /></div>
+                <div><label>Password: </label><input type="text" class="password" name="password" value="admin" /></div>
+    <div><label>Estado: </label><input type="text" class="estado" name="estado" value="1" /></div>
+    <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" value="1111" /></div>            
         </fieldset>
-
 </div>     

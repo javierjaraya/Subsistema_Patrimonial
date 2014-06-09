@@ -7,9 +7,9 @@
  */
 include_once 'Conexion.php';
 include_once '../controlador/Cuenta.php';
-include_once '../modelo/interfaceDAO.php';
+include_once 'interfaceDAO.php';
 
-class CuentaDAO implements interfaceDAO{
+class CuentaDAO{
 
     private $conexion;
     private $cuenta;
@@ -61,15 +61,17 @@ class CuentaDAO implements interfaceDAO{
     }
     
     public function save($cuenta) {
-        $this->cone->conectar();
-        $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHA_CREACION, PASSWORD, ESTADO, ID_PERFIL) 
-            VALUES ('$cuenta->getIdCuenta()','$cuenta->getfechaCreacion()','$cuenta->getPassword()','$cuenta->getEstado()','$cuenta->getIdPerfil()')";
-        $query = $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
-        
-    }
-
-    public function finByExample($object) {
+        //$this->cuenta=$cuenta;
+        //echo $cuenta->getIdCuenta();
+        $this->conexion->conectar();
+        $laConsulta = '';
+        //'.$cuenta->getIdCuenta().','.".$cuenta->getFechaCreacion().".','".$cuenta->getPassword()."','".$cuenta->getEstado()."','.$cuenta->getIdPerfil().'
+        //$laConsulta = 'INSERT into CUENTA VALUES (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL)(2004,08/06/14,admin,1,1111)';
+        $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) 
+            VALUES (".$cuenta->getIdCuenta().",'".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."',".$cuenta->getIdPerfil().")";
+        echo $laConsulta; 
+        $query = $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
         
     }
 
@@ -82,6 +84,14 @@ class CuentaDAO implements interfaceDAO{
     }
 
     public function findLikeAtrr($name) {
+        
+    }
+
+    public function findByExample($object) {
+        
+    }
+
+    public function update($object) {
         
     }
 

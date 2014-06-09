@@ -24,10 +24,10 @@ class EmpleadoDAO {
         return $dni;
     }
     /**
-     * Metodo encargado de buscar todos los predios
+     * Metodo encargado de buscar todos los empleados
      */
     public function findAll(){
-        $empleados = array(); // Lista contenedora de predios resultados
+        $empleados = array(); // Lista contenedora de los empleados
         $dni = $this->queryMaxDni();
         $this->cone->conectar();
         $laConsulta = "SELECT * FROM empleado";

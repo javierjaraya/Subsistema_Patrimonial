@@ -124,13 +124,13 @@ console.log('iniciando eventos de empleado');
         
         aceptarIngresoCuenta: function(){
             
-            idCuenta = $(".idCuenta").val();
+            var idCuenta = $(".idCuenta").val();
             fechaCreacion = $(".fechaCreacion").val();
             password = $(".password").val();
             estado = $(".estado").val();
-            idPerfil = $(".idPerfil").val();
+            idPerfil = $(".idPerfil").val();         
             
-            var datos = '&idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
+            var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
                     + '&estado=' + estado + '&idPerfil=' + idPerfil;
                     
             $.ajax({
