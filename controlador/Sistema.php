@@ -100,7 +100,7 @@ class Sistema {
     public function findAllCaminos(){
         return $this->caminoDAO->findAll();
     }
-<<<<<<< HEAD
+
     
     /**
      * ;etodo encargado de guardar predio
@@ -109,9 +109,8 @@ class Sistema {
     public function savePredio($predio){
             $this->predioDAO->save($predio);
     }
-
-=======
->>>>>>> branch 'master' of https://github.com/javierjaraya/Subsistema_Patrimonial.git
+    
 }
+
 
 ?>
