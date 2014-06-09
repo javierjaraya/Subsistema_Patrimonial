@@ -110,6 +110,9 @@ class Sistema {
             $this->predioDAO->save($predio);
     }
     
+    public function findComunaByExample($comuna){
+        return $this->comunaDAO->findByExample($comuna);
+    }
 }
 
 

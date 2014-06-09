@@ -54,26 +54,43 @@ class PredioDAO implements interfaceDAO{
     
     public function findByExample($predio){
         $this->cone->conectar();
-        $laConsulta = " SELECT * FROM predio WHERE";
+        $laConsulta = " SELECT * FROM predio";
+        $conector = "WHERE";
         /*
          * Verifico valores que vienen en el ejemplo
          */
-        if($predio->getIdPredio() != "")
-            $laConsulta ="$laConsulta ID_PREDIO = $predio->getIdPredio()";
-        if($predio->getNombre() != "")
-            $laConsulta ="$laConsulta NOMBRE = $predio->getNombre()";
-        if($predio->getSuperficie() != "")
-            $laConsulta ="$laConsulta SUPERFICIE = $predio->getSuperficie()";
-        if($predio->getEstado() != "")
-            $laConsulta ="$laConsulta ESTADO = $predio->getEstado()";
-        if($predio->getValorComercial() != "")
-            $laConsulta ="$laConsulta VALOR_COMERCIAL = $predio->getValorComercial()";
-        if($predio->getIdComuna() != "")
-            $laConsulta ="$laConsulta ID_COMUNA = $predio->getIdComuna()";
-        if($predio->getIdZona() != "")
-            $laConsulta ="$laConsulta ID_ZONA = $predio->getIdZona()";
-        if($predio->getIdEmpresa() != "")
-            $laConsulta ="$laConsulta ID_EMPRESA = $predio->getIdEmpresa()";
+        if($predio->getIdPredio() != ""){
+            $laConsulta = $laConsulta." ".$conector." ID_PREDIO = $predio->getIdPredio()";
+            $conector  = "AND";
+        }
+            
+        if($predio->getNombre() != ""){
+            $laConsulta = $laConsulta." ".$conector." NOMBRE = $predio->getNombre()";
+            $conector  = "AND";
+        }
+        if($predio->getSuperficie() != ""){
+            $laConsulta = $laConsulta." ".$conector." SUPERFICIE = $predio->getSuperficie()";
+            $conector  = "AND";
+        }
+        if($predio->getEstado() != ""){
+            $laConsulta = $laConsulta." ".$conector." ESTADO = $predio->getEstado()";
+            $conector  = "AND";
+        }
+        if($predio->getValorComercial() != ""){
+            $laConsulta = $laConsulta." ".$conector." VALOR_COMERCIAL = $predio->getValorComercial()";
+            $conector  = "AND";
+        }
+        if($predio->getIdComuna() != ""){
+            $laConsulta = $laConsulta." ".$conector." ID_COMUNA = $predio->getIdComuna()";
+            $conector  = "AND";
+        }
+        if($predio->getIdZona() != ""){
+            $laConsulta = $laConsulta." ".$conector." ID_ZONA = $predio->getIdZona()";
+            $conector  = "AND";
+        }
+        if($predio->getIdEmpresa() != ""){
+            $laConsulta = $laConsulta." ".$conector." ID_EMPRESA = $predio->getIdEmpresa()";
+        }
         $query = $this->cone->ejecutar($laConsulta);
         
         $predios = array();
