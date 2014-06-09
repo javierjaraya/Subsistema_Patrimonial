@@ -4,6 +4,7 @@ include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
 include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
+include_once '../modelo/CaminoDAO.php';
 include_once 'Session.php';
 /**
  * Description of Sistema
@@ -19,6 +20,7 @@ class Sistema {
      private $predioDAO;
      private $empleadoDAO;
      private $comunaDAO;
+     private $caminoDAO;
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -27,6 +29,7 @@ class Sistema {
          $this->empleadoDAO = new EmpleadoDAO();
          $this->comunaDAO = new ComunaDAO();
          $this->session = new Session();
+         $this->caminoDAO = new CaminoDAO();
 
      }
      
@@ -86,6 +89,10 @@ class Sistema {
             return $this->session;
         else
             return $this->session = new Session();
+    }
+    
+    public function findAllCaminos(){
+        return $this->caminoDAO->findAll();
     }
 }
 
