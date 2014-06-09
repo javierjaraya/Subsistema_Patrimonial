@@ -77,7 +77,7 @@
                                 <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Rodal</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
+                                <li><a href="#">Resumen Rodal</a></li>
                             </ul>
                         </li>
                         

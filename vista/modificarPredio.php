@@ -13,7 +13,7 @@ $predios = $control->findPredioById($idpredio);
 
 ?>
 <form>
-<fieldset>
+
             <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /></div>
             <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" /></div>
             <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" /></div>
@@ -25,5 +25,5 @@ $predios = $control->findPredioById($idpredio);
                 <button  type="button" onclick="predio.aceptarIngresoPredio()">Aceptar</button>
                 <button  type="button" onclick="predio.cancelarIngresoPredio()">Cancelar</button>
             </div>
-        </fieldset>
+
   </form>
