@@ -91,9 +91,9 @@
                             </ul>
                         </li>
                         
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
+                        <li><a href=""><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Caminos <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i> Caminos <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:camino.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                             </ul>
