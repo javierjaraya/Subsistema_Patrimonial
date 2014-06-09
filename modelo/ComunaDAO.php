@@ -42,11 +42,11 @@ class ComunaDAO {
      * @param NUMBER(*,0) $idComuna Description: identificador de un determinada Comuna
      * @return Comuna Description: comuna con un identificador $idComuna
      */
-    public function getProvincia($idComuna){
+    public function findById($idComuna){
         $this->conexion->conectar();
         $consultaComuna = "SELECT * FROM comuna WHERE id_comuna = $idComuna";
         $query = $this->conexion->ejecutar($consultaComuna);
-        $comuna = new Provincia();
+        $comuna = new Comuna();
         while(ocifetch($query)){
             $comuna->setIdComuna(ociresult($query, "ID_COMUNA"));
             $comuna->setNombreComuna(ociresult($query, "NOMBRE_COMUNA"));
@@ -110,4 +110,5 @@ class ComunaDAO {
         return $comunas;
         
     }
+
 }
