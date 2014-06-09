@@ -123,7 +123,7 @@ class Sistema {
      * 
      * @param $idcomuna
      */
-    public function getIdZonaByIdComuna($idcomuna){
+    public function getIdZonaByIdComuna($idComuna){
         $comuna = $this->comunaDAO->findById($idComuna);
         $idProvincia = $comuna->getIdProvincia();
         $provincia = new Provincia();

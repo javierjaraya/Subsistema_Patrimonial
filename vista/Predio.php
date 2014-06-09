@@ -60,5 +60,10 @@ $predios = $control->findAllPredios();
            <div id="editPredioDialog" title="Create new user">
         
 </div>
+    
+<div class="notify_correct" style="display:none">
+     <h1>Predio Agregado</h1>
+     <h2>Correctamente!</h2>
+</div>
 </div> 
 

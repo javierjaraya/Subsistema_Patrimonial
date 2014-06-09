@@ -62,7 +62,7 @@ console.log('iniciando eventos de predio');
          * @returns {Boolean}
          */
         aceptarIngresoPredio: function(){
-            
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idPredio = $(".idpredio").val();
             nombre = $(".nombre").val();
             validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
@@ -78,7 +78,10 @@ console.log('iniciando eventos de predio');
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    $('#page-wrapper').html(response);
+                    predio.cargarTabla();
+                   // $(document).ajaxStop(predio.mostrarMensaje(""));
+                    
+//                    $('#page-wrapper').html(response);
                     
                    
                 },
@@ -209,6 +212,32 @@ console.log('iniciando eventos de predio');
                     }
                 });
             });
+        },
+        
+        mostrarMensaje: function(mensaje){
+            confi = { 
+            message: $('notify_correct'), 
+            fadeIn: 700, 
+            fadeOut: 700, 
+            timeout: 2000, 
+            showOverlay: false, 
+            centerY: false, 
+            css: { 
+                    background: "url('assets/ico/check')",
+                    width: '350px', 
+                    top: '10px', 
+                    left: '', 
+                    right: '10px', 
+                    border: 'none', 
+                    padding: '5px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    opacity: .6, 
+                    color: '#fff' 
+                } 
+            };
+            $.blockUI(confi);
         },
         
       };

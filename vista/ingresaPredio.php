@@ -9,12 +9,13 @@ $valorComercial = $_POST['valorcomercial'];
 $idComuna = $_POST['idcomuna'];
 
 $control = Sistema::getInstancia();
+$idZona = $control->getIdZonaByIdComuna($idComuna);
 $predio = new Predio();
 $predio->setEstado(1);
 $predio->setIdComuna($idComuna);
 $predio->setIdEmpresa(1);
 $predio->setIdPredio($idPredio);
-$predio->setIdZona(3); //es necesario buscarla
+$predio->setIdZona($idZona); //es necesario buscarla
 $predio->setNombre($nombre);
 $predio->setSuperficie($superficie);
 $predio->setValorComercial($valorComercial);
