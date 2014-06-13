@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $caminos = $control->findAllCaminos();
 ?>
 <div class="row">
-    <h1>Lista de Caminos <button type='button' class='btn btn-primary glyphicon glyphicon-plus'></button></h1>
+    <h1>Lista de Caminos <button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='camino.ingresaNuevoCamino()'></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">

@@ -20,9 +20,11 @@ $idcamino = $_POST['idcamino'];
 
 $control = Sistema::getInstancia();
 $caminos = $control->findCaminoById($idcamino);
-echo $caminos->getIdCamino()." -";
+
 ?>
-<form>
+
+
+<form action="" method="POST">
                 <div><label>Identificador Camino: </label><input type="text" class="idcamino" name="idcamino" value="<?php echo $caminos->getIdCamino(); ?>" /></div>
                 <div><label>Longitud : </label><input type="text" class="longitud" name="longitud" value="<?php echo $caminos->getLongitud(); ?>"/></div>
                 <div><label>Tipo superficie :</label><input cols="30" rows="5" class="tiposuperficie" name="tiposuperficie" value="<?php echo $caminos->getTipoSuperficie(); ?>"/></div>
