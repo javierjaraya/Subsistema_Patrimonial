@@ -8,7 +8,8 @@ var camino = (function() {
             '-moz-border-radius': '10px',
             opacity: .5,
             color: '#fff'},
-        message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'});
+        message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'}
+    );
     var confCamino;
     return {
         cargarTabla: function() {
@@ -27,6 +28,51 @@ var camino = (function() {
                 );
             });
             console.log('tabla cargada');
+        },
+        modificarCamino: function(id) {
+            var idCamino = id;
+            //predio.mostrarModificar();
+            console.log(idCamino);
+            var datos = 'idcamino='+ idCamino ;
+            $.ajax({
+                type: "POST",
+                url: "modificarCamino.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editCaminoDialog').html(response);
+                    
+                    camino.mostrarModificar();
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+        },
+        /*
+         * Funcion que muestra el formulario en pantalla
+         */
+        mostrarModificar: function(){
+              $( "#editCaminoDialog" ).dialog({            
+              height: 400,
+              width: 500,
+              modal: true,
+              buttons: {
+                Actualizar: function() {
+                  var bValid = true;
+                  
+            },
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        
+              }
+            });
         },
         /**
          * 
