@@ -45,9 +45,9 @@ $predios = $control->findAllPredios();
 </div>
 <div id="nuevoPredio"  class="ui-front" style="display:none; cursor: default"> 
         <fieldset>
-            <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /></div>
+                <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /><img id="id_predio_check" src="" style="display: none;"></div>
             <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" /></div>
-            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna" idcomuna=""/></div>
+            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna" idcomuna=""/><img id="comuna_check" src="" style="display: none;"></div>
             <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" /></div>
             <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" /></div>
             
