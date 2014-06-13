@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $predios = $control->findAllPredios();
 ?>
 <div class="row">
-    <h1>Lista de Predios  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="predio.ingresaNuevoPredio()">Nuevo</button></h1>
+    <h1>Lista de Predios  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -34,8 +34,8 @@ $predios = $control->findAllPredios();
                 echo "<td>".$predio->getEstado()."</td>";
                 echo "<td>".$predio->getValorComercial()."</td>";
                 echo "<td>";
-                echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning'>Modificar</button>";
-                echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
+                echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 echo "</td>";
                 echo "</tr>";
             }
