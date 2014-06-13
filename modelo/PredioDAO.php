@@ -125,8 +125,31 @@ class PredioDAO implements interfaceDAO{
         
     }
 
-    public function findByID($id) {
+    public function findById($id) {
+        $predios = array(); // Lista contenedora de predios resultados
+        $this->cone->conectar();
+        $laConsulta = " SELECT * 
+                        FROM predio
+                        WHERE ID_PREDIO = ".$id;
         
+        $query = $this->cone->ejecutar($laConsulta);
+        $i = 0;
+        while(ocifetch($query)){
+            $predio = new Predio();
+            $predio->setEstado(ociresult($query, "ESTADO"));
+            $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
+            $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
+            $predio->setIdPredio(ociresult($query, "ID_PREDIO"));
+            $predio->setIdZona(ociresult($query, "ID_ZONA"));
+            $predio->setNombre(ociresult($query, "NOMBRE"));
+            $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
+            $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
+            $predios[$i] = $predio;
+            $i++;
+            
+        }
+        $this->cone->desconectar();
+        return $predios;
     }
 
     public function findLikeAtrr($name) {

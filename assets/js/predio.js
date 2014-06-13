@@ -39,7 +39,7 @@ console.log('iniciando eventos de predio');
 	}
                   
                   );
-          
+          predio.cargaFuncioneskeyPress();
           predio.cargaFuncionesAutocompletar();
           });
           console.log('tabla cargada');
@@ -227,7 +227,39 @@ console.log('iniciando eventos de predio');
                 });
             });
         },
-        
+        /**
+         * Método encargado de validar el input de id_predio al momento de ingresar
+         * una nueva tabla
+         * @returns {undefined}
+         */
+        cargaFuncioneskeyPress: function(){
+            $(".idpredio").focusout(function(){
+                
+                $.ajax({
+                    url:'verificaIdPredio.php',
+                    type:'POST',
+                    dataType:'json',
+                    data:{ idpredio:$('.idpredio').val()}
+                }).done(function(respuesta){
+                    console.log("llamada post terminada");
+                    if(respuesta.error == "1"){
+                        console.log("codigo retornado : "+respuesta.error);
+                        $(".idpredio").tooltip('destroy');
+                        $('#id_predio_check').attr("src","../assets/ico/tick.gif");
+                        $('#id_predio_check').show();
+                    }else{
+                        console.log("el id ya esta en el sistema");
+                        $(".idpredio").tooltip(
+                                {
+                                title: 'El id seleccionado no se encuentra disponible',
+                                placement: 'right'});
+                        $('#id_predio_check').attr("src","../assets/ico/error.png");
+                        $('#id_predio_check').show();
+                    }
+                });
+            });
+        },
+                
         mostrarMensaje: function(mensaje){
             confi = { 
             message: $('notify_correct'), 
