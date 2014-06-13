@@ -18,7 +18,8 @@ class CaminoDAO {
     public function findAll(){
         $caminos = array();
         $this->conexion->conectar();
-        $laConsulta = "SELECT * FROM camino";
+        $laConsulta = "SELECT camino.ID_CAMINO, camino.LONGITUD, superficie.NOMBRE_SUPERFICIE AS TIPO_SUPERFICIE, predio.NOMBRE as PREDIO
+                    FROM predio JOIN (camino JOIN superficie ON camino.TIPO_SUPERFICIE = superficie.id_superficie) ON predio.ID_PREDIO = camino.ID_PREDIO ";
         
         $query = $this->conexion->ejecutar($laConsulta);
         $i = 0;
@@ -28,7 +29,7 @@ class CaminoDAO {
             $camino->setIdCamino(ociresult($query, "ID_CAMINO"));
             $camino->setLongitud(ociresult($query, "LONGITUD"));
             $camino->setTipoSuperficie(ociresult($query, "TIPO_SUPERFICIE"));
-            $camino->setIdPredio(ociresult($query, "ID_PREDIO"));
+            $camino->setIdPredio(ociresult($query, "PREDIO"));
             $caminos[$i] = $camino;
             $i++;
             

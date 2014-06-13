@@ -30,7 +30,7 @@ $caminos = $control->findAllCaminos();
             foreach($caminos as $camino){
                 echo "<tr>";
                 echo "<td >".$camino->getIdCamino()."</td>";
-                echo "<td>".$camino->getLongitud()."</td>";
+                echo "<td>".$camino->getLongitud()." m</td>";
                 echo "<td>".$camino->getTipoSuperficie()."</td>";
                 echo "<td>".$camino->getIdPredio()."</td>";
                 echo "<td>";
