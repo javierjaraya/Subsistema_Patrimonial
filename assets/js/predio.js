@@ -93,6 +93,7 @@ console.log('iniciando eventos de predio');
             });
             return false;
         },
+        
         /**
          * metodo encargado de mostrar formulario para predio
          * @returns {undefined}
@@ -107,6 +108,7 @@ console.log('iniciando eventos de predio');
               resizable: false,
               buttons: {
                 Aceptar: function() {
+                  
                   predio.aceptarIngresoPredio();
                   $( this ).dialog( "close" );
             },
@@ -177,6 +179,8 @@ console.log('iniciando eventos de predio');
 //                appendTo: '#nuevoPredio',
                 select: function(event, ui){
                     $(".id_comuna").attr("idcomuna",ui.item.id);
+                    $('#comuna_check').attr("src","../assets/ico/tick.gif");
+                        $('#comuna_check').show();
                      $(".id_comuna").tooltip('destroy');
                 },
                 change: function(event, ui){
@@ -185,6 +189,12 @@ console.log('iniciando eventos de predio');
                                 {
                                 title: 'Seleccione una opción válida',
                                 placement: 'right'});
+                        /*
+                         * Agrega check_error en input comuna
+                         */
+                        $('#comuna_check').attr("src","../assets/ico/error.png");
+                        $('#comuna_check').show();
+                        
                     }
                 }
             }).css('z-index',1000);;
@@ -203,12 +213,16 @@ console.log('iniciando eventos de predio');
                         $(".id_comuna").val(respuesta.nombre);
                         $(".id_comuna").attr("idcomuna", respuesta.id);
                         $(".id_comuna").tooltip('destroy');
+                        $('#comuna_check').attr("src","../assets/ico/tick.gif");
+                        $('#comuna_check').show();
                     }else{
                         console.log("No se encuentra comuna");
                         $(".id_comuna").tooltip(
                                 {
                                 title: 'Seleccione una opción válida',
                                 placement: 'right'});
+                        $('#comuna_check').attr("src","../assets/ico/error.png");
+                        $('#comuna_check').show();
                     }
                 });
             });

@@ -7,6 +7,7 @@ $nombre = $_POST['nombre'];
 $superficie = $_POST['superficie'];
 $valorComercial = $_POST['valorcomercial'];
 $idComuna = $_POST['idcomuna'];
+$idZona = ""; //Obtener desde formulario
 
 $control = Sistema::getInstancia();
 $idZona = $control->getIdZonaByIdComuna($idComuna);
