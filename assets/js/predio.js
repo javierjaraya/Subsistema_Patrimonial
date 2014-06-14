@@ -95,7 +95,8 @@ console.log('iniciando eventos de predio');
         },
         
         /**
-         * metodo encargado de mostrar formulario para predio
+         * metodo encargado de mostrar formulario para ingresar
+         * un nuevo predio
          * @returns {undefined}
          */
         ingresaNuevoPredio: function(){
@@ -108,9 +109,23 @@ console.log('iniciando eventos de predio');
               resizable: false,
               buttons: {
                 Aceptar: function() {
+                  valida = true;
+                  ok_id_predio = false;
+                  ok_comuna = false;
+                  if($(".idpredio").attr("ok") == "true") ok_id_predio = true;
+                  if($(".id_comuna").attr("ok") == true ) ok_comuna = true;
+                  console.log("ok_id_predio: "+ok_id_predio);
+                  if(valida && ok_id_predio && ok_comuna){
+                       predio.aceptarIngresoPredio();
+                       $( this ).dialog( "close" );
+                  }else{
+                      switch(false){
+                          case ok_id_predio: $(".idpredio").focus();
+                              break;
+                      }
+                  }
+                 
                   
-                  predio.aceptarIngresoPredio();
-                  $( this ).dialog( "close" );
             },
                 Cancelar: function() {
                   $( this ).dialog( "close" );
@@ -179,6 +194,7 @@ console.log('iniciando eventos de predio');
 //                appendTo: '#nuevoPredio',
                 select: function(event, ui){
                     $(".id_comuna").attr("idcomuna",ui.item.id);
+                     $(".id_comuna").attr("ok", "true");
                     $('#comuna_check').attr("src","../assets/ico/tick.gif");
                         $('#comuna_check').show();
                      $(".id_comuna").tooltip('destroy');
@@ -192,6 +208,7 @@ console.log('iniciando eventos de predio');
                         /*
                          * Agrega check_error en input comuna
                          */
+                        $(".id_comuna").attr("ok", "false");
                         $('#comuna_check').attr("src","../assets/ico/error.png");
                         $('#comuna_check').show();
                         
@@ -200,32 +217,44 @@ console.log('iniciando eventos de predio');
             }).css('z-index',1000);;
             console.log("Autocomplete iniciado");
             $(".id_comuna").focusout(function(){
-                
-                $.ajax({
-                    url:'buscaComuna.php',
-                    type:'POST',
-                    dataType:'json',
-                    data:{ nombreComuna:$('.id_comuna').val()}
-                }).done(function(respuesta){
-                    console.log("llamada post terminada");
-                    if(respuesta.error == "1"){
-                        console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
-                        $(".id_comuna").val(respuesta.nombre);
-                        $(".id_comuna").attr("idcomuna", respuesta.id);
-                        $(".id_comuna").tooltip('destroy');
-                        $('#comuna_check').attr("src","../assets/ico/tick.gif");
-                        $('#comuna_check').show();
-                    }else{
-                        console.log("No se encuentra comuna");
-                        $(".id_comuna").tooltip(
-                                {
-                                title: 'Seleccione una opción válida',
-                                placement: 'right'});
-                        $('#comuna_check').attr("src","../assets/ico/error.png");
-                        $('#comuna_check').show();
-                    }
-                });
-            });
+               if($('.id_comuna').val()!=""){ 
+                    $.ajax({
+                        url:'buscaComuna.php',
+                        type:'POST',
+                        dataType:'json',
+                        data:{ nombreComuna:$('.id_comuna').val()}
+                    }).done(function(respuesta){
+                        console.log("llamada post terminada");
+                        if(respuesta.error == "1"){
+                            console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
+                            $(".id_comuna").val(respuesta.nombre);
+                            $(".id_comuna").attr("idcomuna", respuesta.id);
+                            $(".id_comuna").attr("ok", "true");
+                            $(".id_comuna").tooltip('destroy');
+                            $('#comuna_check').attr("src","../assets/ico/tick.gif");
+                            $('#comuna_check').show();
+                        }else{
+                            console.log("No se encuentra comuna");
+                            $(".id_comuna").tooltip(
+                                    {
+                                    title: 'Seleccione una opción válida',
+                                    placement: 'right'});
+                            $(".id_comuna").attr("ok", "false");
+                            $('#comuna_check').attr("src","../assets/ico/error.png");
+                            $('#comuna_check').show();
+                        }
+                    });
+               }else{
+                   console.log("No se encuentra comuna");
+                            $(".id_comuna").tooltip(
+                                    {
+                                    title: 'El Campo Comuna no puede estar vacio',
+                                    placement: 'right'});
+                            $(".id_comuna").attr("ok", "false");
+                            $('#comuna_check').attr("src","../assets/ico/error.png");
+                            $('#comuna_check').show();
+               }
+             });
         },
         /**
          * Método encargado de validar el input de id_predio al momento de ingresar
@@ -234,29 +263,41 @@ console.log('iniciando eventos de predio');
          */
         cargaFuncioneskeyPress: function(){
             $(".idpredio").focusout(function(){
-                
-                $.ajax({
-                    url:'verificaIdPredio.php',
-                    type:'POST',
-                    dataType:'json',
-                    data:{ idpredio:$('.idpredio').val()}
-                }).done(function(respuesta){
-                    console.log("llamada post terminada");
-                    if(respuesta.error == "1"){
-                        console.log("codigo retornado : "+respuesta.error);
-                        $(".idpredio").tooltip('destroy');
-                        $('#id_predio_check').attr("src","../assets/ico/tick.gif");
-                        $('#id_predio_check').show();
-                    }else{
-                        console.log("el id ya esta en el sistema");
-                        $(".idpredio").tooltip(
+                var idPredio = $('.idpredio').val();
+                if (idPredio != ""){
+                    $.ajax({
+                        url:'verificaIdPredio.php',
+                        type:'POST',
+                        dataType:'json',
+                        data:{ idpredio:$('.idpredio').val()}
+                    }).done(function(respuesta){
+                        console.log("llamada post terminada");
+                        if(respuesta.error == "1"){
+                            console.log("codigo retornado : "+respuesta.error);
+                            $(".idpredio").tooltip('destroy');
+                            $(".idpredio").attr("ok", "true");
+                            $('#id_predio_check').attr("src","../assets/ico/tick.gif");
+                            $('#id_predio_check').show();
+                        }else{
+                            console.log("el id ya esta en el sistema");
+                            $(".idpredio").tooltip(
+                                    {
+                                    title: 'El id seleccionado no se encuentra disponible',
+                                    placement: 'right'});
+                            $(".idpredio").attr("ok", "false");
+                            $('#id_predio_check').attr("src","../assets/ico/error.png");
+                            $('#id_predio_check').show();
+                        }
+                    });
+                }else{
+                    $('#id_predio_check').attr("src","../assets/ico/error.png");
+                            $('#id_predio_check').show();
+                    $(".idpredio").tooltip(
                                 {
-                                title: 'El id seleccionado no se encuentra disponible',
+                                title: 'El Campo predio No puede estar vacio',
                                 placement: 'right'});
-                        $('#id_predio_check').attr("src","../assets/ico/error.png");
-                        $('#id_predio_check').show();
-                    }
-                });
+                   $(".idpredio").attr("ok", "false"); 
+                }
             });
         },
                 

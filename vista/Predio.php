@@ -45,11 +45,11 @@ $predios = $control->findAllPredios();
 </div>
 <div id="nuevoPredio"  class="ui-front" style="display:none; cursor: default"> 
         <fieldset>
-            <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /><img id="id_predio_check" src="" style="display: none;"></div>
-            <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" /></div>
-            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna" idcomuna=""/><img id="comuna_check" src="" style="display: none;"></div>
-            <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" /></div>
-            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" /></div>
+            <div><label>Identificador Predio: </label><input type="number" class="idpredio" name="idpredio" ok="false"/>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;" required="required"></div>
+            <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" required="required"/></div>
+            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna" idcomuna="" required="required" ok="false">&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"></div>
+            <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" required="required" /></div>
+            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" required="required"/></div>
             
             
         </fieldset>
