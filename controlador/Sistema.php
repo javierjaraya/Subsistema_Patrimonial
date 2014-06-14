@@ -105,6 +105,10 @@ class Sistema {
     public function findAllCaminos(){
         return $this->caminoDAO->findAll();
     }
+    /*Obtiene el camino correspondiente a la id*/
+    public function findCaminoById($idCamino){
+        return $this->caminoDAO->findById($idCamino);
+    }
 
     
     /**

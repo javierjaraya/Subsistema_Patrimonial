@@ -37,4 +37,20 @@ class CaminoDAO {
         $this->conexion->desconectar();
         return $caminos;
     }
+    
+    public function findById($idCamino){
+        $camino = new Camino();
+        $this->conexion->conectar();
+        $laConsulta = "SELECT * FROM camino WHERE camino.ID_CAMINO = $idCamino";
+        $query = $this->conexion->ejecutar($laConsulta);
+        
+        while(ocifetch($query)){
+            $camino->setIdCamino(ociresult($query, "ID_CAMINO"));
+            $camino->setLongitud(ociresult($query, "LONGITUD"));
+            $camino->setTipoSuperficie(ociresult($query, "TIPO_SUPERFICIE"));
+            $camino->setIdPredio(ociresult($query, "ID_PREDIO"));
+        }
+        $this->conexion->desconectar();
+        return $camino;
+    }
 }
