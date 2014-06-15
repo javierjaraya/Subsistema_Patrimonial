@@ -69,7 +69,7 @@ $empleados = $control->findAllEmpleados();
     
 <div id="nuevaCuenta" style="display:none; cursor: default"> 
         <fieldset>
-                <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" value="2004" /></div>
+                <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" value="2007" /></div>
                 <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" value="08/06/14" /></div>
                 <div><label>Password: </label><input type="text" class="password" name="password" value="admin" /></div>
     <div><label>Estado: </label><input type="text" class="estado" name="estado" value="1" /></div>

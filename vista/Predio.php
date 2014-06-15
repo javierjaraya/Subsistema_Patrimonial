@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
  * Vista de tabla contenedora de predio
  */

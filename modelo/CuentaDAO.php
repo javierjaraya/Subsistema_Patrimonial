@@ -67,8 +67,7 @@ class CuentaDAO{
         $laConsulta = '';
         //'.$cuenta->getIdCuenta().','.".$cuenta->getFechaCreacion().".','".$cuenta->getPassword()."','".$cuenta->getEstado()."','.$cuenta->getIdPerfil().'
         //$laConsulta = 'INSERT into CUENTA VALUES (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL)(2004,08/06/14,admin,1,1111)';
-        $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) 
-            VALUES (".$cuenta->getIdCuenta().",'".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."',".$cuenta->getIdPerfil().")";
+        $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) VALUES (".$cuenta->getIdCuenta().",'".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."',".$cuenta->getIdPerfil().")";
         echo $laConsulta; 
         $query = $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
