@@ -42,11 +42,11 @@ class ComunaDAO {
      * @param NUMBER(*,0) $idComuna Description: identificador de un determinada Comuna
      * @return Comuna Description: comuna con un identificador $idComuna
      */
-    public function getProvincia($idComuna){
+    public function findById($idComuna){
         $this->conexion->conectar();
         $consultaComuna = "SELECT * FROM comuna WHERE id_comuna = $idComuna";
         $query = $this->conexion->ejecutar($consultaComuna);
-        $comuna = new Provincia();
+        $comuna = new Comuna();
         while(ocifetch($query)){
             $comuna->setIdComuna(ociresult($query, "ID_COMUNA"));
             $comuna->setNombreComuna(ociresult($query, "NOMBRE_COMUNA"));
@@ -77,6 +77,38 @@ class ComunaDAO {
         }
 //        if(!isset($comunas))
 //            $comunas[] ="Sin resultado";
+        $this->conexion->desconectar();
         return $resultado_comunas;
     }
+    
+    public function findByExample($comuna){
+        $this->conexion->conectar();
+        $conector = "WHERE";
+        $query = "  SELECT  *
+                    FROM    Comuna";
+        if($comuna->getIdComuna() != ""){
+             $query = $query." ".$conector." ID_COMUNA = ".$comuna->getIdComuna();
+             $conector = "AND";
+        }
+           
+        if($comuna->getIdProvincia() != ""){
+            $query = $query." ".$conector." ID_PROVINCIA = ".$comuna->getIdProvincia();
+            $conector = "AND";
+        }
+        if($comuna->getNombreComuna() != "")
+            $query = $query." ".$conector." upper(NOMBRE_COMUNA) = upper('".$comuna->getNombreComuna()."')";
+        $result = $this->conexion->ejecutar($query);
+        $comunas = array();
+        while(ocifetch($result)){
+            $comuna = new Comuna();
+            $comuna->setIdComuna(ociresult($result, "ID_COMUNA"));
+            $comuna->setIdProvincia(ociresult($result, "ID_PROVINCIA"));
+            $comuna->setNombreComuna(ociresult($result, "NOMBRE_COMUNA"));
+            $comunas[] = $comuna;
+        }
+        $this->conexion->desconectar();
+        return $comunas;
+        
+    }
+
 }

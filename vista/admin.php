@@ -91,9 +91,13 @@
                             </ul>
                         </li>
                         
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
-                        <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
-                        <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
+                        <li><a href=""><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i> Caminos <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:camino.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
@@ -130,7 +134,7 @@
     <!-- Eventos subsistema patrimonial JS -->
     <script type="text/javascript" src="../assets/js/predio.js"></script>
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
-    <script type="text/javascript" src="../assets/js/seguridad.js"></script>
+    <script type="text/javascript" src="../assets/js/camino.js"></script>
     <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>

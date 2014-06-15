@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $predios = $control->findAllPredios();
 ?>
 <div class="row">
-    <h1>Lista de Predios  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="predio.ingresaNuevoPredio()">Nuevo</button></h1>
+    <h1>Lista de Predios  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -34,8 +34,8 @@ $predios = $control->findAllPredios();
                 echo "<td>".$predio->getEstado()."</td>";
                 echo "<td>".$predio->getValorComercial()."</td>";
                 echo "<td>";
-                echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning'>Modificar</button>";
-                echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
+                echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 echo "</td>";
                 echo "</tr>";
             }
@@ -45,12 +45,12 @@ $predios = $control->findAllPredios();
 </div>
 <div id="nuevoPredio"  class="ui-front" style="display:none; cursor: default"> 
         <fieldset>
-            <div><label>Identificador Predio: </label><input type="text" class="idpredio" name="idpredio" /></div>
-            <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" /></div>
-            <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" /></div>
-            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" /></div>
-            <div><label>Zona: </label><input cols="30" rows="5" class="zona" name="zona" ></input></div>
-            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna"/></div>
+            <div><label>Identificador Predio: </label><input type="number" class="idpredio" name="idpredio" ok="false"/>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;" required="required"></div>
+            <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" required="required"/></div>
+            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna" idcomuna="" required="required" ok="false">&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"></div>
+            <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" required="required" /></div>
+            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" required="required"/></div>
+            
             
         </fieldset>
  
@@ -59,6 +59,11 @@ $predios = $control->findAllPredios();
 <div  style="display:none; cursor: default"> 
            <div id="editPredioDialog" title="Create new user">
         
+</div>
+    
+<div class="notify_correct" style="display:none">
+     <h1>Predio Agregado</h1>
+     <h2>Correctamente!</h2>
 </div>
 </div> 
 

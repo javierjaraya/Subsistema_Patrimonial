@@ -4,8 +4,12 @@ include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
 include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
+include_once '../modelo/CaminoDAO.php';
+include_once '../modelo/ProvinciaDAO.php';
 include_once 'Session.php';
 include_once 'Cuenta.php';
+include_once 'Comuna.php';
+include_once 'Provincia.php';
 /**
  * Description of Sistema
  * Clase la cual se conectará con las vistas para obtener los datos desde la bd
@@ -20,6 +24,8 @@ class Sistema {
      private $predioDAO;
      private $empleadoDAO;
      private $comunaDAO;
+     private $caminoDAO;
+     private $provinciaDAO;
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -28,6 +34,8 @@ class Sistema {
          $this->empleadoDAO = new EmpleadoDAO();
          $this->comunaDAO = new ComunaDAO();
          $this->session = new Session();
+         $this->caminoDAO = new CaminoDAO();
+         $this->provinciaDAO = new ProvinciaDAO();
 
      }
      
@@ -93,6 +101,78 @@ class Sistema {
         else
             return $this->session = new Session();
     }
+    
+    public function findAllCaminos(){
+        return $this->caminoDAO->findAll();
+    }
+    /*Obtiene el camino correspondiente a la id*/
+    public function findCaminoById($idCamino){
+        return $this->caminoDAO->findById($idCamino);
+    }
+
+    
+    /**
+     * ;etodo encargado de guardar predio
+     * @param type $predio
+     */
+    public function savePredio($predio){
+            $this->predioDAO->save($predio);
+    }
+    
+    public function findComunaByExample($comuna){
+        return $this->comunaDAO->findByExample($comuna);
+    }
+    /**
+     * Metodo encargado de obtener la zona donde se encuentra una comuna
+     * 
+     * @param $idcomuna
+     */
+    public function getIdZonaByIdComuna($idComuna){
+        $comuna = $this->comunaDAO->findById($idComuna);
+        $idProvincia = $comuna->getIdProvincia();
+        $provincia = new Provincia();
+        $provincia = $this->provinciaDAO->getProvincia($idProvincia);
+        $idRegion = $provincia->getIdRegion();
+        $NORTE = 1;
+        $CENTRO = 2;
+        $SUR = 3;
+        switch ($idRegion) {
+            case 2: // TARAPACA
+               return $NORTE; 
+            case 3: // ANTOFAGASTA
+               return $NORTE;
+            case 1: // ARICA Y PARINACOTA
+                return $NORTE;
+            case 4: //ATACAMA
+                return $NORTE;
+            case 5: // COQUIMBO
+                return $NORTE;
+            case 6: // VALPARAISO
+                return $CENTRO;
+            case 7: //LIB BERNARDO
+                return $CENTRO;
+            case 8: // MAULE
+                return $CENTRO;
+            case 9: // BIO BIO
+                return $CENTRO;
+            case 15: // SANTIAGO
+                return $CENTRO;
+            case 10: // ARAUCANIA
+                return $SUR;
+            case 11: // LOS LAGOS
+                return $SUR;
+            case 12: // LOS RIOS
+                return $SUR;
+            case 13: // AISEN Y MAGALLANES
+                return $SUR;
+            case 14: // LA ANTARTICA
+                return $SUR;
+            default:
+                break;
+        }
+        return "";
+    }
 }
+
 
 ?>
