@@ -22,7 +22,7 @@ $predios = $control->findAllPredios();
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Estado <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Valor Comercial <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Accion</th>
+                <th >Acción</th>
             </tr>
         </thead>
         <tbody id="tbody">
