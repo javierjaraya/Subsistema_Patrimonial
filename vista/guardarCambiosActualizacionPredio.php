@@ -39,5 +39,4 @@ $control->actualizarPredio($predio, $id_original);
 
 
 
-
 ?>

@@ -162,7 +162,7 @@ class PredioDAO implements interfaceDAO{
                                 NOMBRE='".$predio->getNombre()."',
                                 SUPERFICIE='".$predio->getSuperficie()."',
                                 VALOR_COMERCIAL='".$predio->getValorComercial()."',
-                                ESTADO='".$predio->getEstado()."',
+                                ESTADO='".$predio->getEstado()."'   
                                
                         WHERE ID_PREDIO='".$id_original."' ";
         
