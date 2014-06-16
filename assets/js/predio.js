@@ -141,6 +141,7 @@ console.log('iniciando eventos de predio');
             
         },
         modificarPredio: function(id){
+            
             var idPredio = id;
             //predio.mostrarModificar();
             console.log(idPredio);
@@ -165,21 +166,56 @@ console.log('iniciando eventos de predio');
             
         },
         mostrarModificar: function(){
-              $( "#editPredioDialog" ).dialog({            
-              height: 400,
+              $( "#editPredioDialog" ).dialog({
+              title: "Edición Predio",
+              height: 500,
               width: 500,
               modal: true,
+             
+              resizable: false,
               buttons: {
                 Actualizar: function() {
                   var bValid = true;
+                  var idPredio = $("#idpredio").val();
                   
-            },
+                    nombre = $("#nombre").val();
+                    
+                    comuna = $("#comuna").val();
+                    idOriginal = $("#idOriginal").val();
+                    superficie = $("#superficie").val();
+                    valorcomercial = $("#valorcomercial").val();
+                    estado = $("#estado").val();
+            
+            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&comuna=' + comuna + '&idOriginal=' + idOriginal+ '&estado=' + estado;
+            $.ajax({
+                type: "POST",
+                url: "guardarCambiosActualizacionPredio.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#page-wrapper').html(response);
+                    
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+            $( this ).dialog( "close" );
+                    return true;
+                  
+            }
+            ,
                 Cancelar: function() {
                   $( this ).dialog( "close" );
                 }
               },
               close: function() {
-        
+        $( this ).dialog( "close" );
               }
             });
         },

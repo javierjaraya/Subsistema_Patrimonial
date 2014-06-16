@@ -172,6 +172,14 @@ class Sistema {
         }
         return "";
     }
+    
+    
+    public function getComunaById($idComuna){
+        return $this->comunaDAO->findById($idComuna);
+    }
+    public function actualizarPredio($predio, $id_original){
+        $this->predioDAO->actualizarPredioDAO($predio, $id_original);
+    }
 }
 
 
