@@ -31,7 +31,12 @@ $predios = $control->findAllPredios();
                 echo "<tr>";
                 echo "<td >".$predio->getIdPredio()."</td>";
                 echo "<td>".$predio->getNombre()."</td>";
-                echo "<td>".$predio->getEstado()."</td>";
+                if($predio->getEstado() == 0){
+                    echo "<td>Inactivo</td>";
+                }else{
+                    echo "<td>Activo</td>";
+                }
+                
                 echo "<td>".$predio->getValorComercial()."</td>";
                 echo "<td>";
                 echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
