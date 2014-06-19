@@ -48,13 +48,14 @@ $predios = $control->findAllPredios();
         </tbody>
     </table>
 </div>
-<div id="nuevoPredio"  class="ui-front" style="display:none; cursor: default"> 
+    
+<div id="nuevoPredio"  class="ui-front"style="display:none; cursor: default" > 
         <fieldset>
-            <div><label>Identificador Predio: </label><input type="number" class="idpredio" name="idpredio" ok="false"/>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;" required="required"></div>
-            <div><label>Nombre: </label><input type="text" class="nombre" name="nombre" required="required"/></div>
-            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna" idcomuna="" required="required" ok="false">&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"></div>
-            <div><label>Superficie: </label><input type="text" class="superficie" name="superficie" required="required" /></div>
-            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial" name="valorcomercial" required="required"/></div>
+            <div><label>Identificador Predio: </label>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;"><input type="number" class="idpredio form-control" name="idpredio" ok="false"/></div>
+            <div><label>Nombre: </label><input type="text" class="nombre form-control" name="nombre" required="required"/></div>
+            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false">&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"></div>
+            <div><label>Superficie: </label><input type="text" class="superficie form-control" name="superficie" required="required" /></div>
+            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
             
             
         </fieldset>

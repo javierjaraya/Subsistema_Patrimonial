@@ -34,7 +34,7 @@ console.log('iniciando eventos de predio');
 		"sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-12'i><'col-lg-12 center'p>>",
 		"sPaginationType": "bootstrap",
 		"oLanguage": {
-			"sLengthMenu": "_MENU_ records per page"
+			"sLengthMenu": "_MENU_ Resultados por página"
 		}
 	}
                   
@@ -102,7 +102,7 @@ console.log('iniciando eventos de predio');
         ingresaNuevoPredio: function(){
              $( "#nuevoPredio" ).dialog({
               title: "Nuevo Predio",
-              height: 400,
+              height: 560,
               width: 500,
               modal: true,
               position: { my: "center top", at: "center top", of: "#page-wrapper" },
@@ -240,7 +240,7 @@ console.log('iniciando eventos de predio');
                         $(".id_comuna").tooltip(
                                 {
                                 title: 'Seleccione una opción válida',
-                                placement: 'right'});
+                                placement: 'bottom'});
                         /*
                          * Agrega check_error en input comuna
                          */
@@ -274,7 +274,7 @@ console.log('iniciando eventos de predio');
                             $(".id_comuna").tooltip(
                                     {
                                     title: 'Seleccione una opción válida',
-                                    placement: 'right'});
+                                    placement: 'bottom'});
                             $(".id_comuna").attr("ok", "false");
                             $('#comuna_check').attr("src","../assets/ico/error.png");
                             $('#comuna_check').show();
@@ -285,7 +285,7 @@ console.log('iniciando eventos de predio');
                             $(".id_comuna").tooltip(
                                     {
                                     title: 'El Campo Comuna no puede estar vacio',
-                                    placement: 'right'});
+                                    placement: 'bottom'});
                             $(".id_comuna").attr("ok", "false");
                             $('#comuna_check').attr("src","../assets/ico/error.png");
                             $('#comuna_check').show();
@@ -319,7 +319,7 @@ console.log('iniciando eventos de predio');
                             $(".idpredio").tooltip(
                                     {
                                     title: 'El id seleccionado no se encuentra disponible',
-                                    placement: 'right'});
+                                    placement: 'bottom'});
                             $(".idpredio").attr("ok", "false");
                             $('#id_predio_check').attr("src","../assets/ico/error.png");
                             $('#id_predio_check').show();
@@ -331,7 +331,7 @@ console.log('iniciando eventos de predio');
                     $(".idpredio").tooltip(
                                 {
                                 title: 'El Campo predio No puede estar vacio',
-                                placement: 'right'});
+                                placement: 'bottom'});
                    $(".idpredio").attr("ok", "false"); 
                 }
             });
