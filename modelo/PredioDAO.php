@@ -30,7 +30,7 @@ class PredioDAO implements interfaceDAO{
         $predios = array(); // Lista contenedora de predios resultados
         $this->cone->conectar();
         $id = $this->queryMaxID();
-        $laConsulta = "SELECT * FROM predio";
+        $laConsulta = "SELECT * FROM predio ORDER BY ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
         $i = 0;
