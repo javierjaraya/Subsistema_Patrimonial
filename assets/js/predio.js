@@ -109,19 +109,73 @@ console.log('iniciando eventos de predio');
               resizable: false,
               buttons: {
                 Aceptar: function() {
+                  console.log("Se inicia validacion");
                   valida = true;
                   ok_id_predio = false;
                   ok_comuna = false;
+                  ok_nombre = false;
+                  ok_superficie = false;
+                  ok_valor = false;
+                  
                   if($(".idpredio").attr("ok") == "true") ok_id_predio = true;
-                  if($(".id_comuna").attr("ok") == true ) ok_comuna = true;
-                  console.log("ok_id_predio: "+ok_id_predio);
-                  if(valida && ok_id_predio && ok_comuna){
+                  if($(".id_comuna").attr("ok") == "true" ) ok_comuna = true;
+                  
+                  val_nombre = $(".nombre").val();
+                  val_superficie = $(".superficie").val();
+                  val_valor = $(".valorcomercial").val();
+                  
+                  if(val_nombre != ""){
+                      console.log("nombre es correcto")
+                      $(".nombre").tooltip('destroy');
+                      ok_nombre = true;
+                  }else{
+                      $(".nombre").tooltip(
+                                    {
+                                    title: 'El campo nombre no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_superficie != ""){
+                      console.log("superficie es correcto")
+                      $(".superficie").tooltip('destroy');
+                      ok_superficie = true;
+                  }else{
+                      $(".superficie").tooltip(
+                                    {
+                                    title: 'El campo superficie es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_valor != ""){
+                      console.log("valor comercial es correcto")
+                      $(".valorcomercial").tooltip('destroy');
+                      ok_valor = true;
+                  }else{
+                      $(".valorcomercial").tooltip(
+                                    {
+                                    title: 'El campo valor comercial es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  valida = valida && ok_id_predio && ok_comuna && ok_nombre && ok_superficie && ok_valor;
+                  
+                  if(valida){
                        predio.aceptarIngresoPredio();
+                       predio.cargarTabla();
                        $( this ).dialog( "close" );
                   }else{
                       switch(false){
                           case ok_id_predio: $(".idpredio").focus();
                               break;
+                          case ok_nombre: $(".nombre").focus();
+                              
+                              break;
+                          case ok_comuna: $(".id_comuna").focus();
+                              break;
+                          case ok_superficie: $(".superficie").focus();
+                              break;
+                          case ok_valor: $(".valorcomercial").focus();
+                              break;
+                              
                       }
                   }
                  
@@ -271,6 +325,7 @@ console.log('iniciando eventos de predio');
                             $('#comuna_check').show();
                         }else{
                             console.log("No se encuentra comuna");
+                            $(".id_comuna").tooltip('destroy');
                             $(".id_comuna").tooltip(
                                     {
                                     title: 'Seleccione una opción válida',
@@ -307,7 +362,9 @@ console.log('iniciando eventos de predio');
                         dataType:'json',
                         data:{ idpredio:$('.idpredio').val()}
                     }).done(function(respuesta){
+                        console.log(respuesta);
                         console.log("llamada post terminada");
+                        
                         if(respuesta.error == "1"){
                             console.log("codigo retornado : "+respuesta.error);
                             $(".idpredio").tooltip('destroy');
@@ -316,6 +373,7 @@ console.log('iniciando eventos de predio');
                             $('#id_predio_check').show();
                         }else{
                             console.log("el id ya esta en el sistema");
+                            $(".idpredio").tooltip('destroy');
                             $(".idpredio").tooltip(
                                     {
                                     title: 'El id seleccionado no se encuentra disponible',
@@ -328,6 +386,7 @@ console.log('iniciando eventos de predio');
                 }else{
                     $('#id_predio_check').attr("src","../assets/ico/error.png");
                             $('#id_predio_check').show();
+                            $(".idpredio").tooltip('destroy');
                     $(".idpredio").tooltip(
                                 {
                                 title: 'El Campo predio No puede estar vacio',

@@ -53,9 +53,9 @@ $predios = $control->findAllPredios();
         <fieldset>
             <div><label>Identificador Predio: </label>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;"><input type="number" class="idpredio form-control" name="idpredio" ok="false"/></div>
             <div><label>Nombre: </label><input type="text" class="nombre form-control" name="nombre" required="required"/></div>
-            <div class="ui-widget"><label>Comuna: </label><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false">&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"></div>
-            <div><label>Superficie: </label><input type="text" class="superficie form-control" name="superficie" required="required" /></div>
-            <div><label>Valor Comercial:</label><input cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
+            <div class="ui-widget"><label>Comuna: </label>&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false"></div>
+            <div><label>Superficie: </label><input type="number" class="superficie form-control" name="superficie" required="required" /></div>
+            <div><label>Valor Comercial:</label><input type="number" cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
             
             
         </fieldset>
