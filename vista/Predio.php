@@ -40,7 +40,7 @@ $predios = $control->findAllPredios();
                 echo "<td class='text-right'>".$predio->getValorComercial()."</td>";
                 echo "<td>";
                 echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                echo "<button type='button' onclick='predio.eliminarPredio(".$predio->getIdPredio().")' class='btn btn-danger glyphicon glyphicon-trash' onclick='return confirm(\"¿Está seguro que desea eliminar?\"); ' ></button>";
                 echo "</td>";
                 echo "</tr>";
             }

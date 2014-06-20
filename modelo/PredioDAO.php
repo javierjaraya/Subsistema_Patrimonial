@@ -30,7 +30,7 @@ class PredioDAO implements interfaceDAO{
         $predios = array(); // Lista contenedora de predios resultados
         $this->cone->conectar();
         $id = $this->queryMaxID();
-        $laConsulta = "SELECT * FROM predio";
+        $laConsulta = "SELECT * FROM predio ORDER BY ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
         $i = 0;
@@ -167,6 +167,18 @@ class PredioDAO implements interfaceDAO{
         
         $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
+    }
+    
+    public function delete($idPredio){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE predio 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_PREDIO='".$idPredio."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+        
     }
 
 }

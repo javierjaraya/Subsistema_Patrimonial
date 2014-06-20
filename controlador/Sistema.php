@@ -180,6 +180,12 @@ class Sistema {
     public function actualizarPredio($predio, $id_original){
         $this->predioDAO->actualizarPredioDAO($predio, $id_original);
     }
+    
+    /** Método encargado de elimnar un Predio mediante su Id - Iván*/
+    public function eliminarPredio($idPredio){
+        $this->predioDAO->delete($idPredio);
+    }
+            
 }
 
 

@@ -1,4 +1,5 @@
 <?php
+
 require('../lib/fpdf/fpdf.php');
 include_once '../controlador/Predio.php';
 
@@ -8,113 +9,109 @@ include_once '../controlador/Predio.php';
  * @author Renato Hormazabal <nato.ehv@gmail.com>
  */
 class PDF extends FPDF {
-     function cabeceraHorizontal($cabecera)
-    {
-        $this->SetXY(10, 10);
-        $this->SetFont('Arial','B',10);
-        $this->SetFillColor(2,157,116);//Fondo verde de celda
+    
+    function  logoAndTitulo($titulo){
+        // Logo                               x  y  escala tamaño
+        $this->Image('../assets/img/Logo.jpg',10,8,35);
+        // Título
+        $this->SetXY(60, 9);
+        $this->SetFont('Arial', 'B', 15);
+                                            //Borde,
+        $this->Cell(40,10,utf8_decode($titulo), 0, 0, 'L', $bandera);
+        // Salto de línea
+        $this->Ln(5);
+    }
+    function cabeceraHorizontal($cabecera) {
+        $this->SetXY(10, 20);
+        $this->SetFont('Arial', 'B', 10);
+        $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
-        foreach($cabecera as $fila)
-        {
- 
-            $this->CellFitSpace(30,7, utf8_decode($fila),1, 0 , 'L', true);
- 
+        foreach ($cabecera as $fila) {
+            $this->CellFitSpace(40, 7, utf8_decode($fila), 1, 0, 'L', true);
         }
     }
- 
-    function datosHorizontalPredio($predios)
-    {
-        $this->SetXY(10,17);
-        $this->SetFont('Arial','',10);
+
+    function datosHorizontalPredio($predios) {
+        $this->SetXY(10, 27);
+        $this->SetFont('Arial', '', 10);
         $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $bandera = false; //Para alternar el relleno
-        foreach($predios as $predio)
-        {
+        foreach ($predios as $predio) {
             //Usaremos CellFitSpace en lugar de Cell
-            $this->CellFitSpace(30,7, utf8_decode($predio->getIdPredio()),1, 0 , 'L', $bandera );
-            $this->CellFitSpace(30,7, utf8_decode($predio->getNombre()),1, 0 , 'L', $bandera );
-            $this->CellFitSpace(30,7, utf8_decode($predio->getSuperficie()),1, 0 , 'R', $bandera );
-            $this->CellFitSpace(30,7, utf8_decode($predio->getValorComercial()),1, 0 , 'R', $bandera );
-            $this->Ln();//Salto de línea para generar otra fila
-            $bandera = !$bandera;//Alterna el valor de la bandera
+            $this->CellFitSpace(40, 7, utf8_decode($predio->getIdPredio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($predio->getNombre()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($predio->getSuperficie()), 1, 0, 'R', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($predio->getValorComercial()), 1, 0, 'R', $bandera);
+            $this->Ln(); //Salto de línea para generar otra fila
+            $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
- 
-    function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal)
-    {
+
+    function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal,$tituloPagina) {
+        $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontal($cabeceraHorizontal);
         $this->datosHorizontalPredio($datosHorizontal);
     }
-    
+
     //***** Aquí comienza código para ajustar texto *************
     //***********************************************************
-    function CellFit($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='', $scale=false, $force=true)
-    {
+    function CellFit($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '', $scale = false, $force = true) {
         //Get string width
-        $str_width=$this->GetStringWidth($txt);
- 
+        $str_width = $this->GetStringWidth($txt);
+
         //Calculate ratio to fit cell
-        if($w==0)
-            $w = $this->w-$this->rMargin-$this->x;
-        $ratio = ($w-$this->cMargin*2)/$str_width;
- 
+        if ($w == 0)
+            $w = $this->w - $this->rMargin - $this->x;
+        $ratio = ($w - $this->cMargin * 2) / $str_width;
+
         $fit = ($ratio < 1 || ($ratio > 1 && $force));
-        if ($fit)
-        {
-            if ($scale)
-            {
+        if ($fit) {
+            if ($scale) {
                 //Calculate horizontal scaling
-                $horiz_scale=$ratio*100.0;
+                $horiz_scale = $ratio * 100.0;
                 //Set horizontal scaling
-                $this->_out(sprintf('BT %.2F Tz ET',$horiz_scale));
-            }
-            else
-            {
+                $this->_out(sprintf('BT %.2F Tz ET', $horiz_scale));
+            } else {
                 //Calculate character spacing in points
-                $char_space=($w-$this->cMargin*2-$str_width)/max($this->MBGetStringLength($txt)-1,1)*$this->k;
+                $char_space = ($w - $this->cMargin * 2 - $str_width) / max($this->MBGetStringLength($txt) - 1, 1) * $this->k;
                 //Set character spacing
-                $this->_out(sprintf('BT %.2F Tc ET',$char_space));
+                $this->_out(sprintf('BT %.2F Tc ET', $char_space));
             }
             //Override user alignment (since text will fill up cell)
-            $align='';
+            $align = '';
         }
- 
+
         //Pass on to Cell method
-        $this->Cell($w,$h,$txt,$border,$ln,$align,$fill,$link);
- 
+        $this->Cell($w, $h, $txt, $border, $ln, $align, $fill, $link);
+
         //Reset character spacing/horizontal scaling
         if ($fit)
-            $this->_out('BT '.($scale ? '100 Tz' : '0 Tc').' ET');
+            $this->_out('BT ' . ($scale ? '100 Tz' : '0 Tc') . ' ET');
     }
- 
-    function CellFitSpace($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
-    {
-        $this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,false,false);
+
+    function CellFitSpace($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '') {
+        $this->CellFit($w, $h, $txt, $border, $ln, $align, $fill, $link, false, false);
     }
- 
+
     //Patch to also work with CJK double-byte text
-    function MBGetStringLength($s)
-    {
-        if($this->CurrentFont['type']=='Type0')
-        {
+    function MBGetStringLength($s) {
+        if ($this->CurrentFont['type'] == 'Type0') {
             $len = 0;
             $nbbytes = strlen($s);
-            for ($i = 0; $i < $nbbytes; $i++)
-            {
-                if (ord($s[$i])<128)
+            for ($i = 0; $i < $nbbytes; $i++) {
+                if (ord($s[$i]) < 128)
                     $len++;
-                else
-                {
+                else {
                     $len++;
                     $i++;
                 }
             }
             return $len;
-        }
-        else
+        } else
             return strlen($s);
     }
+
 //************** Fin del código para ajustar texto *****************
 //******************************************************************
 }
