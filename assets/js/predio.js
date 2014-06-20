@@ -274,6 +274,31 @@ console.log('iniciando eventos de predio');
             });
         },
         /**
+         * Metodo encargado de eliminar un predio
+         * @returns {undefined}
+         */
+        eliminarPredio: function(id){
+            
+            var idPredio = id;
+            //predio.mostrarModificar();
+            console.log(idPredio);
+            var datos = 'idpredio='+ idPredio ;
+            $.ajax({
+                type: "POST",
+                url: "eliminarPredio.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+        },
+        /**
          * Metodo encargado de inicializar el autocomplete
          * @returns {undefined}
          */

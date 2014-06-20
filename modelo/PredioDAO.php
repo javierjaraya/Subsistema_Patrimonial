@@ -168,6 +168,18 @@ class PredioDAO implements interfaceDAO{
         $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
     }
+    
+    public function delete($idPredio){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE predio 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_PREDIO='".$idPredio."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+        
+    }
 
 }
 
