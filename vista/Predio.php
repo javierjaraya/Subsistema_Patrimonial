@@ -20,8 +20,8 @@ $predios = $control->findAllPredios();
             <tr>
                 <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Superficie <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Valor Comercial <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Superficie (HA) <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Valor Comercial ($) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Acción</th>
             </tr>
         </thead>
