@@ -41,8 +41,11 @@ class PDF extends FPDF {
             //Usaremos CellFitSpace en lugar de Cell
             $this->CellFitSpace(40, 7, utf8_decode($predio->getIdPredio()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(40, 7, utf8_decode($predio->getNombre()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($predio->getSuperficie()), 1, 0, 'R', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($predio->getValorComercial()), 1, 0, 'R', $bandera);
+            $a = number_format($predio->getSuperficie());
+            $this->CellFitSpace(40, 7, utf8_decode($a.' ha'), 1, 0, 'R', $bandera);
+            //Damos formato numerico
+            $a = number_format($predio->getValorComercial());
+            $this->CellFitSpace(40, 7, utf8_decode('$'.$a), 1, 0, 'R', $bandera);
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
