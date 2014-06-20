@@ -128,7 +128,6 @@ class PredioDAO implements interfaceDAO{
     public function findById($idPredio) {
         $predioEncontrado = new Predio();
         $this->cone->conectar();
-        $id = $this->queryMaxID();
         $laConsulta = "SELECT * FROM predio WHERE ID_PREDIO = '".$idPredio."'";
         $query = $this->cone->ejecutar($laConsulta);
         while(ocifetch($query)){

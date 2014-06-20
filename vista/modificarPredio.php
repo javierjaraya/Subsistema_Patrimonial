@@ -36,7 +36,7 @@ $idOriginal = $idpredio;
 <form>
 <fieldset>
             <div><label>Identificador Predio: </label><input type="text" id="idpredio" name="idpredio" <?php echo "value=$idpredio"?> /></div>
-            <div><label>Nombre: </label><input type="text" class="text ui-widget-content ui-corner-all" id="nombre" <?php echo "value=$nombrePredio"?> /></div>
+            <div><label>Nombre: </label><input type="text" class="text ui-widget-content ui-corner-all" id="nombre" <?php echo "value=".$nombrePredio?> /></div>
             <div><label>Superficie: </label><input type="text" id="superficie" name="superficie" <?php echo "value=$superficiePredio"?> /></div>
             <div><label>Valor Comercial:</label><input cols="30" rows="5" id="valorcomercial" name="valorcomercial" <?php echo "value=$valorComercialPredio"?> /></div>
             
