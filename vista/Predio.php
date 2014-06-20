@@ -20,8 +20,8 @@ $predios = $control->findAllPredios();
             <tr>
                 <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Estado <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th  >Valor Comercial <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Superficie <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Valor Comercial <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Acción</th>
             </tr>
         </thead>
@@ -31,12 +31,7 @@ $predios = $control->findAllPredios();
                 echo "<tr>";
                 echo "<td >".$predio->getIdPredio()."</td>";
                 echo "<td>".$predio->getNombre()."</td>";
-                if($predio->getEstado() == 0){
-                    echo "<td>Inactivo</td>";
-                }else{
-                    echo "<td>Activo</td>";
-                }
-                
+                echo "<td class='text-right'>".$predio->getSuperficie()."</td>";
                 echo "<td class='text-right'>".$predio->getValorComercial()."</td>";
                 echo "<td>";
                 echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
