@@ -113,7 +113,7 @@ console.log('iniciando eventos de predio');
                   ok_id_predio = false;
                   ok_comuna = false;
                   if($(".idpredio").attr("ok") == "true") ok_id_predio = true;
-                  if($(".id_comuna").attr("ok") == true ) ok_comuna = true;
+                  if($(".id_comuna").attr("ok") == "true" ) ok_comuna = true;
                   console.log("ok_id_predio: "+ok_id_predio);
                   if(valida && ok_id_predio && ok_comuna){
                        predio.aceptarIngresoPredio();
