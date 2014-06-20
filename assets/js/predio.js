@@ -307,7 +307,9 @@ console.log('iniciando eventos de predio');
                         dataType:'json',
                         data:{ idpredio:$('.idpredio').val()}
                     }).done(function(respuesta){
+                        console.log(respuesta);
                         console.log("llamada post terminada");
+                        
                         if(respuesta.error == "1"){
                             console.log("codigo retornado : "+respuesta.error);
                             $(".idpredio").tooltip('destroy');
@@ -316,6 +318,7 @@ console.log('iniciando eventos de predio');
                             $('#id_predio_check').show();
                         }else{
                             console.log("el id ya esta en el sistema");
+                            $(".idpredio").tooltip('destroy');
                             $(".idpredio").tooltip(
                                     {
                                     title: 'El id seleccionado no se encuentra disponible',
@@ -328,6 +331,7 @@ console.log('iniciando eventos de predio');
                 }else{
                     $('#id_predio_check').attr("src","../assets/ico/error.png");
                             $('#id_predio_check').show();
+                            $(".idpredio").tooltip('destroy');
                     $(".idpredio").tooltip(
                                 {
                                 title: 'El Campo predio No puede estar vacio',

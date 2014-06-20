@@ -9,7 +9,7 @@ $idpredio = $_POST['idpredio'];
 $control = Sistema::getInstancia();
 $predio = $control->findPredioById($idpredio);
 $return = array();
-if(empty($predio)){
+if($predio->getNombre() ==""){
     //el id predio no es utilizado
     $return['error'] = 1;
 }else{
