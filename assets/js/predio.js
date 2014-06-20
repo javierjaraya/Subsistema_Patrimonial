@@ -278,24 +278,27 @@ console.log('iniciando eventos de predio');
          * @returns {undefined}
          */
         eliminarPredio: function(id){
-            
-            var idPredio = id;
-            //predio.mostrarModificar();
-            console.log(idPredio);
-            var datos = 'idpredio='+ idPredio ;
-            $.ajax({
-                type: "POST",
-                url: "eliminarPredio.php",
-                data: datos,
-                success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
-                },
-                error: function() {
-                    console.log("Error al ejecutar AJAX");
-                    //$('#page-wrapper').html('Consulta mal hecha');
-                                  
-                }
-            });
+            var confirmacion = confirm("¿Está seguro que desea eliminar?");
+            if(confirmacion){
+                var idPredio = id;
+                //predio.mostrarModificar();
+                console.log("Id predio a eliminar: "+idPredio);
+                var datos = 'idpredio='+ idPredio ;
+                $.ajax({
+                    type: "POST",
+                    url: "eliminarPredio.php",
+                    data: datos,
+                    success: function(response) {
+                        console.log("Ajax ejecutado correctamente");
+                        predio.cargarTabla();
+                    },
+                    error: function() {
+                        console.log("Error al ejecutar AJAX");
+                        //$('#page-wrapper').html('Consulta mal hecha');
+                                      
+                    }
+                });
+            }
             
         },
         /**

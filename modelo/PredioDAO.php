@@ -23,7 +23,7 @@ class PredioDAO implements interfaceDAO{
         return $id;
     }
     /**
-     * Metodo encargado de buscar todos los predios
+     * Metodo encargado de buscar todos los predios ACTIVOS
      * @author Renato Hormazabal <nato.ehv@gmail.com>
      */
     public function findAll(){
