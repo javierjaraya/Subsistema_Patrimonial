@@ -209,6 +209,7 @@ console.log('iniciando eventos de predio');
                     $('#editPredioDialog').html(response);
                     
                     predio.mostrarModificar();
+                    predio.cargarTabla();
                    
                 },
                 error: function() {
@@ -248,6 +249,7 @@ console.log('iniciando eventos de predio');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
+                    predio.cargarTabla();
                     
                     
                    
@@ -272,6 +274,34 @@ console.log('iniciando eventos de predio');
         $( this ).dialog( "close" );
               }
             });
+        },
+        /**
+         * Metodo encargado de eliminar un predio
+         * @returns {undefined}
+         */
+        eliminarPredio: function(id){
+            var confirmacion = confirm("¿Está seguro que desea eliminar?");
+            if(confirmacion){
+                var idPredio = id;
+                //predio.mostrarModificar();
+                console.log("Id predio a eliminar: "+idPredio);
+                var datos = 'idpredio='+ idPredio ;
+                $.ajax({
+                    type: "POST",
+                    url: "eliminarPredio.php",
+                    data: datos,
+                    success: function(response) {
+                        console.log("Ajax ejecutado correctamente");
+                        predio.cargarTabla();
+                    },
+                    error: function() {
+                        console.log("Error al ejecutar AJAX");
+                        //$('#page-wrapper').html('Consulta mal hecha');
+                                      
+                    }
+                });
+            }
+            
         },
         /**
          * Metodo encargado de inicializar el autocomplete
