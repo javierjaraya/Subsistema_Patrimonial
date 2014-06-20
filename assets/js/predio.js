@@ -209,6 +209,7 @@ console.log('iniciando eventos de predio');
                     $('#editPredioDialog').html(response);
                     
                     predio.mostrarModificar();
+                    predio.cargarTabla();
                    
                 },
                 error: function() {
@@ -248,6 +249,7 @@ console.log('iniciando eventos de predio');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
+                    predio.cargarTabla();
                     
                     
                    
