@@ -29,8 +29,9 @@ class PredioDAO implements interfaceDAO{
     public function findAll(){
         $predios = array(); // Lista contenedora de predios resultados
         $this->cone->conectar();
+        $estadoActivo = 1;
         $id = $this->queryMaxID();
-        $laConsulta = "SELECT * FROM predio ORDER BY ID_PREDIO";
+        $laConsulta = "SELECT * FROM predio WHERE ESTADO = '".$estadoActivo."' ORDER BY ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
         $i = 0;
