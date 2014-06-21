@@ -12,10 +12,11 @@ class RodalDAO implements interfaceDAO{
     }
     
     public function findAll(){
-        
+        $estado = 1;
         $this->cone->conectar();
         $laConsulta = "SELECT * FROM rodal  r, predio  p 
             WHERE  r.ID_PREDIO = p.ID_PREDIO
+            AND r.ESTADO = '".$estado."'
             
             ORDER BY p.ID_PREDIO";
         
@@ -66,6 +67,18 @@ class RodalDAO implements interfaceDAO{
     }
 
     public function update($object) {
+        
+    }
+    
+    public function delete($idRodal){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE rodal 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_RODAL='".$idRodal."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
         
     }
 

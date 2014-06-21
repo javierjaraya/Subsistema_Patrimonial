@@ -198,6 +198,10 @@ class Sistema {
     public function eliminarPredio($idPredio){
         $this->predioDAO->delete($idPredio);
     }
+    
+    public function eliminarRodal($idRodal){
+        $this->rodalDAO->delete($idRodal);
+    }
             
 }
 
