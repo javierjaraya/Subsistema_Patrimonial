@@ -240,7 +240,7 @@ console.log('iniciando eventos de predio');
                     superficie = $("#superficie").val();
                     valorcomercial = $("#valorcomercial").val();
                     estado = $("#estado").val();
-            
+                    
             var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&comuna=' + comuna + '&idOriginal=' + idOriginal+ '&estado=' + estado;
             $.ajax({
                 type: "POST",
