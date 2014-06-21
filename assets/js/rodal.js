@@ -6,7 +6,7 @@
 
 
 console.log('iniciando eventos de rodal');
-    var predio = (function() {
+    var rodal = (function() {
       var variablePublica = "podria iniciar un widget aqui";
        var confLoad = ({css: {border: 'none', 
 		        padding: '15px', 

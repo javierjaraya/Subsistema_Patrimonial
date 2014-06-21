@@ -12,15 +12,12 @@ class RodalDAO implements interfaceDAO{
     }
     
     public function findAll(){
-        $rodales = array(); // Lista contenedora de rodales resultados
+        
         $this->cone->conectar();
-        
-        
-        $laConsulta = "SELECT * FROM rodal  r, manejo  m, especiearborea  e, predio  p 
-            WHERE r.ID_RODAL = m.ID_RODAL 
-            AND  r.ID_PREDIO = p.ID_PREDIO
-            AND r.id_especie_arborea = e.id_especie_arborea
-            ORDER BY p.ID_PREDIO;";
+        $laConsulta = "SELECT * FROM rodal  r, predio  p 
+            WHERE  r.ID_PREDIO = p.ID_PREDIO
+            
+            ORDER BY p.ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
