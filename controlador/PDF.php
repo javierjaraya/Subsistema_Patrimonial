@@ -17,7 +17,7 @@ class PDF extends FPDF {
         $this->SetXY(60, 9);
         $this->SetFont('Arial', 'B', 15);
                                             //Borde,
-        $this->Cell(40,10,utf8_decode($titulo), 0, 0, 'L', $bandera);
+        $this->Cell(40,10,utf8_decode($titulo), 0, 0, 'L', false);
         // Salto de línea
         $this->Ln(5);
     }

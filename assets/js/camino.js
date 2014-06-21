@@ -29,6 +29,43 @@ var camino = (function() {
             });
             console.log('tabla cargada');
         },
+        vaciaTabla: function(tabla) {
+          console.log('tabla ocultada');
+        },
+        cancelarIngresoCamino: function(){
+            console.log("Ingreso de camino cancelado");
+            $.unblockUI();
+        },
+        aceptarIngresoCamino: function(){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idCamino = $(".idcamino").val();
+            longitud = $(".longitud").val();
+            tipoSuperficie = $(".tipoSuperficie").val();
+            idPredio = $(".idPredio").val();
+            
+            
+            var datos = 'idcamino='+ idCamino + '&longitud=' + longitud + '&tipoSuperficie=' + tipoSuperficie + '&idPredio=' + idPredio;
+            $.ajax({
+                type: "POST",
+                url: "ingresaCamino.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    predio.cargarTabla();
+                   // $(document).ajaxStop(predio.mostrarMensaje(""));
+                    
+//                    $('#page-wrapper').html(response);
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Error al Ingresar Predio');
+                                  
+                }
+            });
+            return false;
+        },
         modificarCamino: function(id) {
             var idCamino = id;
             //predio.mostrarModificar();
