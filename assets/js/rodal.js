@@ -279,12 +279,12 @@ console.log('iniciando eventos de rodal');
          * Metodo encargado de eliminar un predio
          * @returns {undefined}
          */
-        eliminarPredio: function(id){
+        eliminarRodal: function(id){
             var confirmacion = confirm("¿Está seguro que desea eliminar?");
             if(confirmacion){
                 var idRodal = id;
                 //predio.mostrarModificar();
-                console.log("Id predio a eliminar: "+idRodal);
+                console.log("Id rodal a eliminar: "+idRodal);
                 var datos = 'idrodal='+ idRodal ;
                 $.ajax({
                     type: "POST",
@@ -292,7 +292,7 @@ console.log('iniciando eventos de rodal');
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
-                        predio.cargarTabla();
+                        rodal.cargarTabla();
                     },
                     error: function() {
                         console.log("Error al ejecutar AJAX");
