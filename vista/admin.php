@@ -66,7 +66,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                        <li><a href="admin.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -121,6 +121,7 @@
 
             <div id="page-wrapper">
                 <h1>Bienvenido!</h1>
+                <img src="../assets/img/fondo.jpg" width="100%" height="75%">
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
