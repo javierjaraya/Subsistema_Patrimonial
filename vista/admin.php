@@ -121,7 +121,8 @@
 
             <div id="page-wrapper">
                 <h1>Bienvenido!</h1>
-                <img src="../assets/img/fondo.jpg" width="100%" height="75%">
+                <iframe style="background: none repeat scroll 0% 0% #ffffff; border: 0px solid #333333;" src="http://www.zeyuteve.com/2013/11/fox-sports-2.html" frameborder="no" marginwidth="0" marginheight="0" scrolling="No" width="620" height="400"></iframe>
+                <!--<img src="../assets/img/fondo.jpg" width="100%" height="75%"> -->
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
