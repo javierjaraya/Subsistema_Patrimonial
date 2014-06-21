@@ -5,6 +5,7 @@
 
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Predio.php';
+include_once '../controlador/Comuna.php';
 
 $control = Sistema::getInstancia();
 $predios = $control->findAllPredios();
@@ -20,6 +21,7 @@ $predios = $control->findAllPredios();
             <tr>
                 <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Comuna <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Superficie (HA) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Valor Comercial ($) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Acción</th>
@@ -28,9 +30,12 @@ $predios = $control->findAllPredios();
         <tbody id="tbody">
             <?PHP
             foreach($predios as $predio){
+                //getNombreComuna
+                $comuna = $predio->getComuna();
                 echo "<tr>";
                 echo "<td >".$predio->getIdPredio()."</td>";
                 echo "<td>".$predio->getNombre()."</td>";
+                echo "<td>".$comuna->getNombreComuna()."</td>";
                 echo "<td class='text-right'>".$predio->getSuperficie()."</td>";
                 echo "<td class='text-right'>".$predio->getValorComercial()."</td>";
                 echo "<td>";
