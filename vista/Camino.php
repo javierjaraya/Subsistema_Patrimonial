@@ -47,14 +47,26 @@ $caminos = $control->findAllCaminos();
     </div>
 
     <!--VENTA DIALOGO : MODIFICAR CAMINO -->    
-    <div  style="display:none; cursor: default"> 
-        <div id="editCaminoDialog" title="Create new user">
-        </div>
-
-        <div class="notify_correct" style="display:none">
-            <h1>Camino Agregado</h1>
-            <h2>Correctamente!</h2>
-
-        </div>
-    </div> 
+    <div id="nuevoCamino"  class="ui-front"style="display:none; cursor: default" > 
+        <fieldset>
+            <div><label>Identificador Camino: </label>&nbsp;&nbsp;<img id="id_camino_check" src="" style="display: none;"><input type="number" class="idcamino form-control" name="idpredio" ok="false"/></div>
+            <div><label>Nombre: </label><input type="text" class="nombre form-control" name="nombre" required="required"/></div>
+            <div class="ui-widget"><label>Comuna: </label>&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false"></div>
+            <div><label>Superficie: </label><input type="number" class="superficie form-control" name="superficie" required="required" /></div>
+            <div><label>Valor Comercial:</label><input type="number" cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
+            
+            
+        </fieldset>
+ 
+</div> 
+    
+<div  style="display:none; cursor: default"> 
+           <div id="editCaminoDialog" title="Create new user">
+        
 </div>
+    
+<div class="notify_correct" style="display:none">
+     <h1>Predio Agregado</h1>
+     <h2>Correctamente!</h2>
+</div>
+</div> 
