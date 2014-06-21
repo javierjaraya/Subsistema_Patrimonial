@@ -68,6 +68,18 @@ class RodalDAO implements interfaceDAO{
     public function update($object) {
         
     }
+    
+    public function delete($idRodal){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE rodal 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_PREDIO='".$idRodal."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+        
+    }
 
 }
 ?>

@@ -282,13 +282,13 @@ console.log('iniciando eventos de rodal');
         eliminarPredio: function(id){
             var confirmacion = confirm("¿Está seguro que desea eliminar?");
             if(confirmacion){
-                var idPredio = id;
+                var idRodal = id;
                 //predio.mostrarModificar();
-                console.log("Id predio a eliminar: "+idPredio);
-                var datos = 'idpredio='+ idPredio ;
+                console.log("Id predio a eliminar: "+idRodal);
+                var datos = 'idrodal='+ idRodal ;
                 $.ajax({
                     type: "POST",
-                    url: "eliminarPredio.php",
+                    url: "eliminarRodal.php",
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
