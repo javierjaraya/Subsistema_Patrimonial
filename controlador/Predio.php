@@ -14,6 +14,7 @@ class Predio {
     private $idComuna;
     private $idZona;
     private $idEmpresa;
+    private $comuna;
     
     public static $id_predio = "ID_PREDIO";
             
@@ -80,6 +81,14 @@ class Predio {
 
     public function setIdEmpresa($idEmpresa) {
         $this->idEmpresa = $idEmpresa;
+    }
+    
+    public function getComuna() {
+        return $this->comuna;
+    }
+    
+    public function setComuna($comuna) {
+        $this->comuna = $comuna;
     }
 }
 ?>

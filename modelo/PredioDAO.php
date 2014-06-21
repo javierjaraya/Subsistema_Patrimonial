@@ -31,12 +31,17 @@ class PredioDAO implements interfaceDAO{
         $this->cone->conectar();
         $estadoActivo = 1;
         $id = $this->queryMaxID();
-        $laConsulta = "SELECT * FROM predio WHERE ESTADO = '".$estadoActivo."' ORDER BY ID_PREDIO";
+        $laConsulta = " SELECT * 
+                        FROM predio , comuna
+                        WHERE ESTADO = '".$estadoActivo."' 
+                        AND PREDIO.ID_COMUNA = COMUNA.ID_COMUNA
+                        ORDER BY ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
         $i = 0;
         while(ocifetch($query)){
             $predio = new Predio();
+            $comuna = new Comuna();
             $predio->setEstado(ociresult($query, "ESTADO"));
             $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
             $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
@@ -45,6 +50,14 @@ class PredioDAO implements interfaceDAO{
             $predio->setNombre(ociresult($query, "NOMBRE"));
             $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
             $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
+            /*
+             * Carga comuna
+             */
+            $comuna->setIdComuna(ociresult($query, "ID_COMUNA"));
+            $comuna->setIdProvincia(ociresult($query, "ID_PROVINCIA"));
+            $comuna->setNombreComuna(ociresult($query, "NOMBRE_COMUNA"));
+            $predio->setComuna($comuna);
+            
             $predios[$i] = $predio;
             $i++;
             
@@ -128,11 +141,16 @@ class PredioDAO implements interfaceDAO{
 
     public function findById($idPredio) {
         $predioEncontrado = new Predio();
+        $comuna = new Comuna();
         $this->cone->conectar();
-        $laConsulta = "SELECT * FROM predio WHERE ID_PREDIO = '".$idPredio."'";
+        $laConsulta = " SELECT * 
+                        FROM PREDIO, COMUNA 
+                        WHERE PREDIO.ID_PREDIO = ".$idPredio."
+                        AND PREDIO.ID_COMUNA = COMUNA.ID_COMUNA";
         $query = $this->cone->ejecutar($laConsulta);
         while(ocifetch($query)){
             $predioEncontrado = new Predio();
+            $comuna = new Comuna();
             $predioEncontrado->setEstado(ociresult($query, "ESTADO"));
             $predioEncontrado->setIdComuna(ociresult($query, "ID_COMUNA"));
             $predioEncontrado->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
@@ -141,7 +159,6 @@ class PredioDAO implements interfaceDAO{
             $predioEncontrado->setNombre(ociresult($query, "NOMBRE"));
             $predioEncontrado->setSuperficie(ociresult($query, "SUPERFICIE"));
             $predioEncontrado->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
-            
             
         }
         $this->cone->desconectar();
