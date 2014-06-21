@@ -2,6 +2,7 @@
 include_once '../modelo/CuentaDAO.php';
 include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
+include_once '../modelo/RodalDAO.php';
 include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CaminoDAO.php';
@@ -26,6 +27,7 @@ class Sistema {
      private $comunaDAO;
      private $caminoDAO;
      private $provinciaDAO;
+     private $rodalDAO;
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -36,6 +38,7 @@ class Sistema {
          $this->session = new Session();
          $this->caminoDAO = new CaminoDAO();
          $this->provinciaDAO = new ProvinciaDAO();
+         $this->rodalDAO  = new RodalDAO();
 
      }
      
@@ -52,6 +55,13 @@ class Sistema {
     public function findAllPredios(){
         return $this->predioDAO->findAll();
     } 
+    /**
+     * Metodo encargado de buscar todos los rodales
+     * @return Array de rodales
+     */
+    public function findAllRodales(){
+        return $this->rodalDAO->findAll();
+    }
     /**
      * Metodo encargado de buscar un predio por Id
      * @return Array de Predios
