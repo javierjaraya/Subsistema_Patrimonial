@@ -9,18 +9,19 @@ include_once '../controlador/Predio.php';
  * @author Renato Hormazabal <nato.ehv@gmail.com>
  */
 class PDF extends FPDF {
-    
-    function  logoAndTitulo($titulo){
+
+    function logoAndTitulo($titulo) {
         // Logo                               x  y  escala tamaño
-        $this->Image('../assets/img/Logo.jpg',10,8,35);
+        $this->Image('../assets/img/Logo.jpg', 10, 8, 35);
         // Título
         $this->SetXY(60, 9);
         $this->SetFont('Arial', 'B', 15);
-                                            //Borde,
-        $this->Cell(40,10,utf8_decode($titulo), 0, 0, 'L', false);
+        //Borde,
+        $this->Cell(40, 10, utf8_decode($titulo), 0, 0, 'L', false);
         // Salto de línea
         $this->Ln(5);
     }
+
     function cabeceraHorizontal($cabecera) {
         $this->SetXY(10, 20);
         $this->SetFont('Arial', 'B', 10);
@@ -42,19 +43,31 @@ class PDF extends FPDF {
             $this->CellFitSpace(40, 7, utf8_decode($predio->getIdPredio()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(40, 7, utf8_decode($predio->getNombre()), 1, 0, 'L', $bandera);
             $a = number_format($predio->getSuperficie());
-            $this->CellFitSpace(40, 7, utf8_decode($a.' ha'), 1, 0, 'R', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($a . ' ha'), 1, 0, 'R', $bandera);
             //Damos formato numerico
             $a = number_format($predio->getValorComercial());
-            $this->CellFitSpace(40, 7, utf8_decode('$'.$a), 1, 0, 'R', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode('$' . $a), 1, 0, 'R', $bandera);
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
 
-    function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal,$tituloPagina) {
+    // Pie de página
+    function Footer() {
+        // Posición: a 1,5 cm del final
+        $this->SetY(-15);
+        // Arial italic 8
+        $this->SetFont('Arial', 'I', 8);
+        // Número de página
+        $this->Cell(0, 10, 'Pagina ' . $this->PageNo() , 0, 0, 'C');
+    }
+
+    function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontal($cabeceraHorizontal);
         $this->datosHorizontalPredio($datosHorizontal);
+        $this->Footer();
+        
     }
 
     //***** Aquí comienza código para ajustar texto *************
