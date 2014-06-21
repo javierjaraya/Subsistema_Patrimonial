@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $caminos = $control->findAllCaminos();
 ?>
 <div class="row">
-    <h1>Lista de Caminos <button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='camino.ingresaNuevoCamino()'></button></h1>
+    <h1>Lista de Caminos <button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick="camino.ingresaNuevoCamino()"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -46,15 +46,24 @@ $caminos = $control->findAllCaminos();
         </table>
     </div>
 
-    <!--VENTA DIALOGO : MODIFICAR CAMINO -->    
+    <!--VENTA DIALOGO : AGREGAR CAMINO -->    
+    <div id="nuevoCamino"  class="ui-front"style="display:none; cursor: default" > 
+        <fieldset>
+            <div><label>Identificador Camino: </label>&nbsp;&nbsp;<img id="id_camino_check" src="" style="display: none;"><input type="number" class="idcamino form-control" name="idcamino" ok="false"/></div>
+            <div><label>Longitud: </label><input type="number" class="nombre form-control" name="longitud" required="required"/></div>
+            <div class="ui-widget"><label>Tipo Superficie: </label>&nbsp;&nbsp;<img id="superficie_check" src="" style="display: none;"><input cols="30" rows="5" name="superficie" id="comuna" class="id_superficie form-control"  required="required" ok="false"></div>
+            <div><label>Nombre Predio: </label><input type="text" class="superficie form-control" name="superficie" required="required" /></div>
+       </fieldset>
+         
+    </div> 
+
     <div  style="display:none; cursor: default"> 
         <div id="editCaminoDialog" title="Create new user">
+
         </div>
 
         <div class="notify_correct" style="display:none">
             <h1>Camino Agregado</h1>
             <h2>Correctamente!</h2>
-
         </div>
     </div> 
-</div>

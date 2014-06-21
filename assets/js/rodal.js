@@ -5,8 +5,8 @@
  */
 
 
-console.log('iniciando eventos de predio');
-    var predio = (function() {
+console.log('iniciando eventos de rodal');
+    var rodal = (function() {
       var variablePublica = "podria iniciar un widget aqui";
        var confLoad = ({css: {border: 'none', 
 		        padding: '15px', 
@@ -16,19 +16,20 @@ console.log('iniciando eventos de predio');
 		        opacity: .5, 
 		        color: '#fff' },
                         message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'});
-        var confPredio;
+        var confRodal;
       return {
         /**
          * Método encargado de cargar tabla en el contenedor con el id
          * page-wrapper
-         * @author Renato
+         * @author Ivan
          * @param {String} tabla
          * @returns {undefined}
          */
         cargarTabla: function() {
+          console.log("Iniciando cargado de tabla");
           $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
           var randomnumber=Math.random()*11;
-          $('#page-wrapper').load('Predio.php',function(){ 
+          $('#page-wrapper').load('Rodal.php',function(){ 
               $("#tabla_contactos").dataTable(
                   {
 		"sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-12'i><'col-lg-12 center'p>>",
@@ -39,8 +40,7 @@ console.log('iniciando eventos de predio');
 	}
                   
                   );
-          predio.cargaFuncioneskeyPress();
-          predio.cargaFuncionesAutocompletar();
+          
           });
           console.log('tabla cargada');
         },

@@ -1,17 +1,16 @@
- <?php
+<?php
 /*
  * Vista de tabla contenedora de predio
  */
 
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Predio.php';
-include_once '../controlador/Comuna.php';
 
 $control = Sistema::getInstancia();
-$predios = $control->findAllPredios();
+$predios = $control->findAllRodales();
 ?>
 <div class="row">
-    <h1>Lista de Predios  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('predioReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
+    <h1>Lista de Rodales  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('predioReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -21,26 +20,30 @@ $predios = $control->findAllPredios();
             <tr>
                 <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Comuna <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Superficie (HA) <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >ID Rodal <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Manejo <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Zona Crecimiento <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Sup. <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Año Plantación <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Valor Comercial ($) <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Acción</th>
+                <th  >Acción</th>
             </tr>
         </thead>
         <tbody id="tbody">
             <?PHP
-            foreach($predios as $predio){
-                //getNombreComuna
-                $comuna = $predio->getComuna();
+            while($row =  oci_fetch_array($predios,OCI_RETURN_NULLS)){
                 echo "<tr>";
-                echo "<td >".$predio->getIdPredio()."</td>";
-                echo "<td>".$predio->getNombre()."</td>";
-                echo "<td>".$comuna->getNombreComuna()."</td>";
-                echo "<td class='text-right'>".$predio->getSuperficie()."</td>";
-                echo "<td class='text-right'>".$predio->getValorComercial()."</td>";
+                echo "<td class='text-right'>".$row['ID_PREDIO']."</td>";
+                echo "<td>".$row['NOMBRE']."</td>";
+                echo "<td class='text-right'>".$row['ID_RODAL']."</td>";
+                echo "<td >".$row['MANEJO']."</td>";
+                echo "<td >".$row['ZONA_CRECIMIENTO']."</td>";
+                echo "<td class='text-right'>".$row['SUPERFICIE']."</td>";
+                echo "<td class='text-right'>".$row['ANIO_PLANTACION']."</td>";
+                echo "<td class='text-right'>".$row['VALOR_COMERCIAL']."</td>";
                 echo "<td>";
-                echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                echo "<button type='button' onclick='predio.eliminarPredio(".$predio->getIdPredio().")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";
+                echo "<button type='button'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                echo "<button type='button' onclick='predio.eliminarRodal(".$row['ID_PREDIO'].")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";
                 echo "</td>";
                 echo "</tr>";
             }

@@ -23,6 +23,13 @@ class Session {
     }
     
     /**
+     * Metodo que retoran TRUE si hay una session iniciada y FALSE si no lo esta
+     */
+    public function isStarSession(){
+        return session_start();
+    }
+
+        /**
      * Metodo que cierra una sesion destruyendo la sesion anteriormente creada
      */
     public function stopSession(){

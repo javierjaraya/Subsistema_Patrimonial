@@ -4,7 +4,12 @@
     
     $control = Sistema::getInstancia();
     $session = $control->getSession();
+    
     $empleado = $session->getNombreEmpleado();
+    if(!isset($empleado)){
+        $direccion = $session->securityCheck();
+        header('Location: '.$direccion);
+    }
 ?>
 <html>
     <head>
@@ -61,9 +66,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                        <li><a href="admin.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tree-deciduous"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
@@ -72,9 +77,9 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tree-conifer"></i> Rodal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
+                                <li><a href="javascript:rodal.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
                                 <li><a href="#">Buscar Rodal</a></li>
                                 <li><a href="#">Resumen Rodal</a></li>
@@ -82,7 +87,7 @@
                         </li>
                         
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Empleados <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Empleados <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:empleado.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                                 <li><a href="#">Agregar Nuevo</a></li>
@@ -116,6 +121,8 @@
 
             <div id="page-wrapper">
                 <h1>Bienvenido!</h1>
+                <iframe style="background: none repeat scroll 0% 0% #ffffff; border: 0px solid #333333;" src="http://www.zeyuteve.com/2013/11/fox-sports-2.html" frameborder="no" marginwidth="0" marginheight="0" scrolling="No" width="620" height="400"></iframe>
+                <!--<img src="../assets/img/fondo.jpg" width="100%" height="75%"> -->
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
@@ -132,6 +139,7 @@
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
+     <script type="text/javascript" src="../assets/js/rodal.js"></script>
     <script type="text/javascript" src="../assets/js/predio.js"></script>
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/camino.js"></script>

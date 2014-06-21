@@ -23,19 +23,25 @@ class PredioDAO implements interfaceDAO{
         return $id;
     }
     /**
-     * Metodo encargado de buscar todos los predios
+     * Metodo encargado de buscar todos los predios ACTIVOS
      * @author Renato Hormazabal <nato.ehv@gmail.com>
      */
     public function findAll(){
         $predios = array(); // Lista contenedora de predios resultados
         $this->cone->conectar();
+        $estadoActivo = 1;
         $id = $this->queryMaxID();
-        $laConsulta = "SELECT * FROM predio";
+        $laConsulta = " SELECT * 
+                        FROM predio , comuna
+                        WHERE ESTADO = '".$estadoActivo."' 
+                        AND PREDIO.ID_COMUNA = COMUNA.ID_COMUNA
+                        ORDER BY ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
         $i = 0;
         while(ocifetch($query)){
             $predio = new Predio();
+            $comuna = new Comuna();
             $predio->setEstado(ociresult($query, "ESTADO"));
             $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
             $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
@@ -44,6 +50,14 @@ class PredioDAO implements interfaceDAO{
             $predio->setNombre(ociresult($query, "NOMBRE"));
             $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
             $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
+            /*
+             * Carga comuna
+             */
+            $comuna->setIdComuna(ociresult($query, "ID_COMUNA"));
+            $comuna->setIdProvincia(ociresult($query, "ID_PROVINCIA"));
+            $comuna->setNombreComuna(ociresult($query, "NOMBRE_COMUNA"));
+            $predio->setComuna($comuna);
+            
             $predios[$i] = $predio;
             $i++;
             
@@ -125,31 +139,30 @@ class PredioDAO implements interfaceDAO{
         
     }
 
-    public function findById($id) {
-        $predios = array(); // Lista contenedora de predios resultados
+    public function findById($idPredio) {
+        $predioEncontrado = new Predio();
+        $comuna = new Comuna();
         $this->cone->conectar();
         $laConsulta = " SELECT * 
-                        FROM predio
-                        WHERE ID_PREDIO = ".$id;
-        
+                        FROM PREDIO, COMUNA 
+                        WHERE PREDIO.ID_PREDIO = ".$idPredio."
+                        AND PREDIO.ID_COMUNA = COMUNA.ID_COMUNA";
         $query = $this->cone->ejecutar($laConsulta);
-        $i = 0;
         while(ocifetch($query)){
-            $predio = new Predio();
-            $predio->setEstado(ociresult($query, "ESTADO"));
-            $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
-            $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
-            $predio->setIdPredio(ociresult($query, "ID_PREDIO"));
-            $predio->setIdZona(ociresult($query, "ID_ZONA"));
-            $predio->setNombre(ociresult($query, "NOMBRE"));
-            $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
-            $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
-            $predios[$i] = $predio;
-            $i++;
+            $predioEncontrado = new Predio();
+            $comuna = new Comuna();
+            $predioEncontrado->setEstado(ociresult($query, "ESTADO"));
+            $predioEncontrado->setIdComuna(ociresult($query, "ID_COMUNA"));
+            $predioEncontrado->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
+            $predioEncontrado->setIdPredio(ociresult($query, "ID_PREDIO"));
+            $predioEncontrado->setIdZona(ociresult($query, "ID_ZONA"));
+            $predioEncontrado->setNombre(ociresult($query, "NOMBRE"));
+            $predioEncontrado->setSuperficie(ociresult($query, "SUPERFICIE"));
+            $predioEncontrado->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
             
         }
         $this->cone->desconectar();
-        return $predios;
+        return $predioEncontrado;
     }
 
     public function findLikeAtrr($name) {
@@ -157,6 +170,32 @@ class PredioDAO implements interfaceDAO{
     }
 
     public function update($object) {
+        
+    }
+    public function actualizarPredioDAO($predio, $id_original) {
+        $this->cone->conectar();
+        $laConsulta = "UPDATE predio 
+                        SET     ID_PREDIO='".$predio->getIdPredio()."',
+                                NOMBRE='".$predio->getNombre()."',
+                                SUPERFICIE='".$predio->getSuperficie()."',
+                                VALOR_COMERCIAL='".$predio->getValorComercial()."',
+                                ESTADO='".$predio->getEstado()."'   
+                               
+                        WHERE ID_PREDIO='".$id_original."' ";
+        
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+    }
+    
+    public function delete($idPredio){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE predio 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_PREDIO='".$idPredio."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
         
     }
 
