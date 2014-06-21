@@ -109,9 +109,12 @@ class Sistema {
     public function findCaminoById($idCamino){
         return $this->caminoDAO->findById($idCamino);
     }
-
     
-    /**
+    public function saveCamino($camino){
+        $this->caminoDAO->save($camino);
+    }
+
+        /**
      * ;etodo encargado de guardar predio
      * @param type $predio
      */
