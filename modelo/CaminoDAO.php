@@ -53,4 +53,12 @@ class CaminoDAO {
         $this->conexion->desconectar();
         return $camino;
     }
+    
+    public function save($camino){
+        $this->conexion->conectar();
+        $laConsulta = "INSERT into CAMINO (ID_CAMINO, LONGITUD, TIPO_SUPERFICIE, TIPO_SUPERFICIE) 
+            VALUES ('".$camino->getIdCamino()."','".$camino->getLongitud()."','".$camino->getTipoSuperficie()."','".$camino->getIdPredio()."')";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+    }
 }
