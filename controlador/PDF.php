@@ -67,6 +67,7 @@ class PDF extends FPDF {
         $this->cabeceraHorizontal($cabeceraHorizontal);
         $this->datosHorizontalPredio($datosHorizontal);
         $this->Footer();
+        
     }
 
     //***** Aquí comienza código para ajustar texto *************
