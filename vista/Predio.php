@@ -20,6 +20,7 @@ $predios = $control->findAllPredios();
             <tr>
                 <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Comuna <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Superficie (HA) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Valor Comercial ($) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Acción</th>
@@ -31,6 +32,7 @@ $predios = $control->findAllPredios();
                 echo "<tr>";
                 echo "<td >".$predio->getIdPredio()."</td>";
                 echo "<td>".$predio->getNombre()."</td>";
+                echo "<td>".$control->getComunaById($predio->getIdComuna())->getNombreComuna()."</td>";
                 echo "<td class='text-right'>".$predio->getSuperficie()."</td>";
                 echo "<td class='text-right'>".$predio->getValorComercial()."</td>";
                 echo "<td>";
