@@ -229,7 +229,10 @@ class Sistema {
     public function actualizarRodal($rodal){
         $this->rodalDAO->update($rodal);
     }
-
+    
+    public function findInventarios($idRodal, $fi, $ff){
+        return $this->inventarioDAO->findBetweenDate($idRodal, $fi, $ff);
+    }
 
 
 

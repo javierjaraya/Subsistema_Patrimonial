@@ -51,6 +51,29 @@ class PDF extends FPDF {
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
+    
+    function datosHorizontalInventario($inventarios) {
+        $this->SetXY(10, 27);
+        $this->SetFont('Arial', '', 10);
+        $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
+        $this->SetTextColor(3, 3, 3); //Color del texto: Negro
+        $bandera = false; //Para alternar el relleno
+        foreach ($inventarios as $inventario) {
+            //Usaremos CellFitSpace en lugar de Cell
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getIdInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getServicio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getSistemaInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getDiametroMedio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getAlturaDominante()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getAreaBasal()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
+            
+            $this->Ln(); //Salto de línea para generar otra fila
+            $bandera = !$bandera; //Alterna el valor de la bandera
+        }
+    }
 
     // Pie de página
     function Footer() {
@@ -68,6 +91,13 @@ class PDF extends FPDF {
         $this->datosHorizontalPredio($datosHorizontal);
         $this->Footer();
         
+    }
+    
+    function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
+        $this->logoAndTitulo($tituloPagina);
+        $this->cabeceraHorizontal($cabeceraHorizontal);
+        $this->datosHorizontalInventario($datosHorizontal);
+        $this->Footer();
     }
 
     //***** Aquí comienza código para ajustar texto *************

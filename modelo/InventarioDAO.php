@@ -27,6 +27,18 @@ class InventarioDAO  implements interfaceDAO{
         $this->conexion->desconectar();
         return $query;
     }
+    
+    public function findBetweenDate($idRodal, $fi, $ff){
+        $this->conexion->conectar();
+        $laConsulta = "SELECT * FROM inventario
+            WHERE  ID_RODAL = '".$idRodal."'
+            AND (FECHA_MEDICION BETWEEN '".$fi."' AND '".$ff."')
+            ORDER BY FECHA_MEDICION";
+        echo $laConsulta;
+        $query = $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+        return $query;
+    }
 
     public function findAll() {
         

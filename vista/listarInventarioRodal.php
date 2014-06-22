@@ -16,10 +16,10 @@ $inventario = $control->getInventarios($idRodal);
         <form action="inventarioReportes.php" target="_blank" name="form "method="POST" class="form-horizontal" role="form">
                         
                            <div class="col-sm-3">
-                                <input type="date" title="Seleccione la Fecha de Inicio" class="form-control" id="fechaInicio" name="fechaInicio" >
+                                <input type="date" title="Seleccione la Fecha de Inicio" class="form-control" id="fechaInicio" name="fechaInicio" required>
                             </div>
                             <div class="col-sm-3">
-                                <input type="date" title="Seleccione la Fecha de Fin" class="form-control" id="fechaFin" name="fechaFin">
+                                <input type="date" title="Seleccione la Fecha de Fin" class="form-control" id="fechaFin" name="fechaFin" required>
                             </div>
                             <input type="hidden" value =<?php echo $idRodal ?> id="idRodal" name="idRodal">
                         
