@@ -8,14 +8,15 @@
 console.log('iniciando eventos de cuenta');
     var cuenta = (function() {
       var variablePublica = "podria iniciar un widget aqui";
-       /*var confLoad = ({css: {border: 'none', 
+       var confLoad = ({css: {border: 'none', 
 		        padding: '15px', 
 		        backgroundColor: '#000', 
 		        '-webkit-border-radius': '10px', 
 		        '-moz-border-radius': '10px', 
 		        opacity: .5, 
 		        color: '#fff' },
-*/
+                        message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'});
+        var confCuenta;
       return {
         /**
          * Método encargado de cargar tabla en el contenedor con el id
@@ -24,7 +25,7 @@ console.log('iniciando eventos de cuenta');
          * @param {String} tabla
          * @returns {undefined}
          */
-        /*cargarTabla: function() {
+        cargarTabla: function() {
           $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
           //var randomnumber=Math.random()*11;
           $('#page-wrapper').load('Cuenta.php',function(){ 
@@ -42,7 +43,7 @@ console.log('iniciando eventos de cuenta');
           
           });
           console.log('tabla cargada');
-        },*/
+        },
         
         
         

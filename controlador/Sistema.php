@@ -8,7 +8,7 @@ include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
 include_once 'Session.php';
-include_once 'Cuenta.php';
+//include_once 'Cuenta.php';
 include_once 'Comuna.php';
 include_once 'Provincia.php';
 /**
