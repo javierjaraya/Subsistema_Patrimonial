@@ -194,6 +194,38 @@ console.log('iniciando eventos de rodal');
             
             
         },
+        
+        cargarListaInventario: function(id){
+            var idRodal= id;
+            //predio.mostrarModificar();
+            console.log(idPredio);
+            var datos = 'idrodal='+ idRodal ;
+            $.ajax({
+                type: "POST",
+                url: "listarInventarioRodal.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editPredioDialog').html(response);
+                    rodal.mostrarInventarios();
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+        },
+        mostrarInventarios: function (){
+            $( "#editPredioDialog" ).dialog({
+              title: "Edición Predio",
+              height: 500,
+              width: 800,
+              modal: true,
+             
+              resizable: false,
+            });
+        },
         modificarPredio: function(id){
             var idPredio = id;
             //predio.mostrarModificar();
