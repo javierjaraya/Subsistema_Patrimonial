@@ -29,15 +29,31 @@ class InventarioDAO  implements interfaceDAO{
     }
     
     public function findBetweenDate($idRodal, $fi, $ff){
+        $inventarios = array();
         $this->conexion->conectar();
         $laConsulta = "SELECT * FROM inventario
             WHERE  ID_RODAL = '".$idRodal."'
-            AND (FECHA_MEDICION BETWEEN '".$fi."' AND '".$ff."')
+            AND (FECHA_MEDICION BETWEEN to_date('".$fi."', 'yyyy-mm-dd') AND to_date('".$ff."','yyyy-mm-dd'))
             ORDER BY FECHA_MEDICION";
-        echo $laConsulta;
         $query = $this->conexion->ejecutar($laConsulta);
+        while(ocifetch($query)){
+            $inventario = new Inventario();
+            $inventario->setAltura(ociresult($query,"ALTURA"));
+            $inventario->setAlturaDominante(ociresult($query,"ALTURA_DOMINANTE"));
+            $inventario->setAreaBasal(ociresult($query,"AREA_BASAL"));
+            $inventario->setDiametroMedio(ociresult($query,"DIAMETRO_MEDIO"));
+            $inventario->setFechaMedicion(ociresult($query,"FECHA_MEDICION"));
+            $inventario->setIdInventario(ociresult($query,"ID_INVENTARIO"));
+            $inventario->setIdRodal(ociresult($query,"ID_RODAL"));
+            $inventario->setNumeroArboles(ociresult($query,"NUMERO_ARBOLES"));
+            $inventario->setServicio(ociresult($query,"SERVICIO"));
+            $inventario->setSistemaInventario(ociresult($query,"SISTEMA_INVENTARIO"));
+            $inventario->setVolumen(ociresult($query,"VOLUMNE"));
+            $inventarios[] = $inventario;
+            
+        }
         $this->conexion->desconectar();
-        return $query;
+        return $inventarios;
     }
 
     public function findAll() {

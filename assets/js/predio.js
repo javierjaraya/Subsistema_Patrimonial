@@ -8,6 +8,10 @@
 console.log('iniciando eventos de predio');
     var predio = (function() {
       var variablePublica = "podria iniciar un widget aqui";
+      /*
+       * Configuración de UIBLOCK para la carga de un contenedor
+       * @type type
+       */
        var confLoad = ({css: {border: 'none', 
 		        padding: '15px', 
 		        backgroundColor: '#000', 
@@ -16,7 +20,32 @@ console.log('iniciando eventos de predio');
 		        opacity: .5, 
 		        color: '#fff' },
                         message: '<img src="../assets/ico/ajax.gif" class="" />Cargando...'});
-        var confPredio;
+                    /*
+                     * Configuracion de UIBLOCK para mostrar un mensaje
+                     * @type type
+                     */
+        var confMsg = { 
+            message: $('notify_correct'), 
+            fadeIn: 700, 
+            fadeOut: 700, 
+            timeout: 2000, 
+            showOverlay: false, 
+            centerY: false, 
+            css: { 
+                    background: "url('assets/ico/check')",
+                    width: '350px', 
+                    top: '10px', 
+                    left: '', 
+                    right: '10px', 
+                    border: 'none', 
+                    padding: '5px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    opacity: .6, 
+                    color: '#fff' 
+                } 
+            };
       return {
         /**
          * Método encargado de cargar tabla en el contenedor con el id
@@ -158,6 +187,7 @@ console.log('iniciando eventos de predio');
                   valida = valida && ok_id_predio && ok_comuna && ok_nombre && ok_superficie && ok_valor;
                   
                   if(valida){
+                      $( "#nuevoPredio" ).dialog("destroy");
                        predio.aceptarIngresoPredio();
                        predio.cargarTabla();
                        $( this ).dialog( "close" );
@@ -206,9 +236,8 @@ console.log('iniciando eventos de predio');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editPredioDialog').html(response);
-                    
+                    predio.autocompleteModificar();
                     predio.mostrarModificar();
-                    //predio.cargarTabla();
                    
                 },
                 error: function() {
@@ -227,6 +256,7 @@ console.log('iniciando eventos de predio');
               modal: true,
               position: { my: "center top", at: "center top", of: "#page-wrapper" },
               resizable: false,
+              draggable: false,
               buttons: {
                 Actualizar: function() {
                     $(document).ajaxStart($.blockUI(confLoad));
@@ -425,30 +455,37 @@ console.log('iniciando eventos de predio');
             });
         },
                 
-        mostrarMensaje: function(mensaje){
-            confi = { 
-            message: $('notify_correct'), 
-            fadeIn: 700, 
-            fadeOut: 700, 
-            timeout: 2000, 
-            showOverlay: false, 
-            centerY: false, 
-            css: { 
-                    background: "url('assets/ico/check')",
-                    width: '350px', 
-                    top: '10px', 
-                    left: '', 
-                    right: '10px', 
-                    border: 'none', 
-                    padding: '5px', 
-                    backgroundColor: '#000', 
-                    '-webkit-border-radius': '10px', 
-                    '-moz-border-radius': '10px', 
-                    opacity: .6, 
-                    color: '#fff' 
-                } 
-            };
-            $.blockUI(confi);
+
+              
+        autocompleteModificar: function(){
+            $("#comuna").autocomplete({
+                source: "buscaComuna.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    $(".comuna").attr("comuna",ui.item.id);
+                     $(".comuna").attr("ok", "true");
+                    $('#comuna_check').attr("src","../assets/ico/tick.gif");
+                        $('#comuna_check').show();
+                     $(".comuna").tooltip('destroy');
+                },
+                change: function(event, ui){
+                    if(!ui.item){
+                        $(".id_comuna").tooltip(
+                                {
+                                title: 'Seleccione una opción válida',
+                                placement: 'bottom'});
+                        /*
+                         * Agrega check_error en input comuna
+                         */
+                        $(".comuna").attr("ok", "false");
+                        $('#comuna_check').attr("src","../assets/ico/error.png");
+                        $('#comuna_check').show();
+                        
+                    }
+                }
+            }).css('z-index',1000);;
+            console.log("Autocomplete comuna modificar cargado");
         },
         
       };
