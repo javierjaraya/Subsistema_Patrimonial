@@ -75,7 +75,26 @@ class CuentaDAO{
     }
 
     public function findAll() {
+        $cuentas = array(); // Lista contenedora de los empleados
+        $idCuenta = $this->queryMaxId();
+        $this->conexion->conectar();
+        $laConsulta = "SELECT * FROM cuenta";
         
+        $query = $this->conexion->ejecutar($laConsulta);
+        $i = 0;
+        while(ocifetch($query)){
+            $cuenta = new Cuenta();
+            $cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
+            $cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
+            $cuenta->setPassword(ociresult($query, "PASSWORD"));
+            $cuenta->setEstado(ociresult($query, "ESTADO"));
+            $cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
+            $cuentas[$i] = $cuenta;
+            $i++;
+            
+        }
+        $this->conexion->desconectar();
+        return $cuentas;
     }
 
     public function findByID($id) {

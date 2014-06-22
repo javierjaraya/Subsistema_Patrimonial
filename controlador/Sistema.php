@@ -83,7 +83,9 @@ class Sistema {
         $this->cuentaDAO->save($cuenta);
     }
 
-
+    public function findAllCuentas(){
+        return $this->cuentaDAO->findAll();
+    } 
     /**
      * Metodo que retorna una cuenta de usuario segun un determinado dni y password
      * @author Javier

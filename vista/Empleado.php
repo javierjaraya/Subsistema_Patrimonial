@@ -12,7 +12,7 @@ $control = Sistema::getInstancia();
 $empleados = $control->findAllEmpleados();
 ?>
 <div class="row">
-    <h1>Lista de Empleados  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="empleado.ingresaNuevoEmpleado()">Nuevo</button></h1>
+    <h1>Lista de Empleados  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="empleado.ingresaNuevoEmpleado()">Holi</button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
