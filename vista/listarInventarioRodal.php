@@ -14,10 +14,10 @@ $inventario = $control->getInventarios($idRodal);
 <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable dataTable">
         <thead>
             <tr>
-                <th >ID Inventario <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >ID  <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Servicio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th id="columna_rodal">Sist. Inventario <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Diámentro Medio <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Ø Medio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Altura Dominante <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Área Basal <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Volumen <i class='fa fa-sort' style="cursor:hand"></i></th>
