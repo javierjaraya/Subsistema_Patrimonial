@@ -142,6 +142,7 @@
      <script type="text/javascript" src="../assets/js/rodal.js"></script>
     <script type="text/javascript" src="../assets/js/predio.js"></script>
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
+    <script type="text/javascript" src="../assets/js/cuenta.js"></script>
     <script type="text/javascript" src="../assets/js/camino.js"></script>
     <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
