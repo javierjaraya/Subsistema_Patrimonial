@@ -220,7 +220,7 @@ console.log('iniciando eventos de rodal');
         mostrarInventarios: function (idRodal){
             $( "#editPredioDialog" ).dialog({
               title: "Inventarios del Rodal "+idRodal,
-              height: 650,
+              height: 600,
               width: 1000,
               modal: true,
               resizable: false,
