@@ -222,10 +222,10 @@ console.log('iniciando eventos de predio');
         mostrarModificar: function(){
               $( "#editPredioDialog" ).dialog({
               title: "Edición Predio",
-              height: 500,
+              height: 560,
               width: 500,
               modal: true,
-             
+              position: { my: "center top", at: "center top", of: "#page-wrapper" },
               resizable: false,
               buttons: {
                 Actualizar: function() {
