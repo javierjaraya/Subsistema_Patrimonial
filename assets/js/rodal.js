@@ -207,6 +207,7 @@ console.log('iniciando eventos de rodal');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editPredioDialog').html(response);
+                    
                     rodal.mostrarInventarios(idRodal);
                 },
                 error: function() {
@@ -219,12 +220,12 @@ console.log('iniciando eventos de rodal');
         mostrarInventarios: function (idRodal){
             $( "#editPredioDialog" ).dialog({
               title: "Inventarios del Rodal "+idRodal,
-              height: 500,
+              height: 650,
               width: 1000,
               modal: true,
-             
               resizable: false,
             });
+            
         },
         modificarPredio: function(id){
             var idPredio = id;
