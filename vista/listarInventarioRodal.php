@@ -11,6 +11,7 @@ $control = Sistema::getInstancia();
 $inventario = $control->getInventarios($idRodal);
 
 ?>
+
 <table cellpadding="0" cellspacing="0" border="0" id="tabla_inventarios" class="table table-striped table-bordered bootstrap-datatable dataTable">
         <thead>
             <tr>

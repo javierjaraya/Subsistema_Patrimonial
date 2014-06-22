@@ -8,6 +8,8 @@ include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
 include_once '../modelo/InventarioDAO.php';
+include_once '../modelo/EspecieArboreaDAO.php';
+
 
 include_once 'Session.php';
 include_once 'Cuenta.php';
@@ -31,6 +33,7 @@ class Sistema {
      private $provinciaDAO;
      private $rodalDAO;
      private $inventarioDAO;
+     private $especieArborea;
 
 
 
@@ -45,6 +48,7 @@ class Sistema {
          $this->provinciaDAO = new ProvinciaDAO();
          $this->rodalDAO  = new RodalDAO();
          $this->inventarioDAO = new InventarioDAO();
+         $this->especieArborea = new EspecieArboreaDAO();
          
      }
      
@@ -211,6 +215,15 @@ class Sistema {
     
     public function getInventarios($idRodal){
         return $this->inventarioDAO->findInventarioByIdRodal($idRodal);
+    }
+    
+    public function findRodalById($idrodal){
+        return $this->rodalDAO->findById($idrodal);
+        
+    }
+    
+    public function getEspeciesArborea(){
+        return $this->especieArboreaDAO->findAll();
     }
 
 

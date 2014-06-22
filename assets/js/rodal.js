@@ -221,27 +221,25 @@ console.log('iniciando eventos de rodal');
             $( "#editPredioDialog" ).dialog({
               title: "Inventarios del Rodal "+idRodal,
               height: 600,
-              width: 1000,
+              width: 1050,
               modal: true,
               resizable: false,
             });
             
         },
-        modificarPredio: function(id){
-            var idPredio = id;
-            //predio.mostrarModificar();
-            console.log(idPredio);
-            var datos = 'idpredio='+ idPredio ;
+        modificarRodal: function(id){
+            var idRodal = id;
+            var datos = 'idrodal='+ idRodal ;
             $.ajax({
                 type: "POST",
-                url: "modificarPredio.php",
+                url: "modificarRodal.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editPredioDialog').html(response);
                     
-                    predio.mostrarModificar();
-                    predio.cargarTabla();
+                    rodal.mostrarModificar();
+                    rodal.cargarTabla();
                    
                 },
                 error: function() {
@@ -254,8 +252,8 @@ console.log('iniciando eventos de rodal');
         },
         mostrarModificar: function(){
               $( "#editPredioDialog" ).dialog({
-              title: "Edición Predio",
-              height: 500,
+              title: "Edición Rodal",
+              height: 600,
               width: 500,
               modal: true,
              
@@ -281,7 +279,7 @@ console.log('iniciando eventos de rodal');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
-                    predio.cargarTabla();
+                    rodal.cargarTabla();
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
