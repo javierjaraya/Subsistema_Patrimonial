@@ -15,7 +15,7 @@ $inventarios = $control->findInventarios($idRodal, $fi, $ff);
 $miCabecera = array('Identificador', 'Servicio', 'Sistema Inventario', 'Diáemtro Medio',
             'Altura Dominante','Área Basal', 'Volumen','N° Árboles', 'Altura');
      
-$tituloPagina = "Invetarios del Rodal ".$idRodal. " entre las fechas ".$fi." y ".$ff;
+$tituloPagina = "Inventarios del Rodal ".$idRodal. " entre las fechas ".$fi." y ".$ff;
 
 $pdf->tablaHorizontalInventario($miCabecera, $inventarios,$tituloPagina);
  

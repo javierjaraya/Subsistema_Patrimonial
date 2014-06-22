@@ -31,6 +31,16 @@ class PDF extends FPDF {
             $this->CellFitSpace(40, 7, utf8_decode($fila), 1, 0, 'L', true);
         }
     }
+    
+    function cabeceraHorizontalInventario($cabecera) {
+        $this->SetXY(10, 20);
+        $this->SetFont('Arial', 'B', 10);
+        $this->SetFillColor(2, 157, 116); //Fondo verde de celda
+        $this->SetTextColor(240, 255, 240); //Letra color blanco
+        foreach ($cabecera as $fila) {
+            $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+        }
+    }
 
     function datosHorizontalPredio($predios) {
         $this->SetXY(10, 27);
@@ -60,15 +70,15 @@ class PDF extends FPDF {
         $bandera = false; //Para alternar el relleno
         foreach ($inventarios as $inventario) {
             //Usaremos CellFitSpace en lugar de Cell
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getIdInventario()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getServicio()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getSistemaInventario()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getDiametroMedio()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getAlturaDominante()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getAreaBasal()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(40, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getIdInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getServicio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getSistemaInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getDiametroMedio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAlturaDominante()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAreaBasal()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
             
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
@@ -95,7 +105,7 @@ class PDF extends FPDF {
     
     function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
         $this->logoAndTitulo($tituloPagina);
-        $this->cabeceraHorizontal($cabeceraHorizontal);
+        $this->cabeceraHorizontalInventario($cabeceraHorizontal);
         $this->datosHorizontalInventario($datosHorizontal);
         $this->Footer();
     }

@@ -12,19 +12,22 @@ $inventario = $control->getInventarios($idRodal);
 
 ?>
 <div class="row">
-    <div class="span7">
+    <div class="col-lg-2">
+        
+    </div>
+    <div class="col-lg-10">
         <form action="inventarioReportes.php" target="_blank" name="form "method="POST" class="form-horizontal" role="form">
                         
-                           <div class="col-sm-3">
-                                <input type="date" title="Seleccione la Fecha de Inicio" class="form-control" id="fechaInicio" name="fechaInicio" required>
+                           <div class="col-lg-3">
+                                <input type="date" title="Seleccione la Fecha de Inicio de la Medición" class="form-control" id="fechaInicio" name="fechaInicio" required>
                             </div>
-                            <div class="col-sm-3">
-                                <input type="date" title="Seleccione la Fecha de Fin" class="form-control" id="fechaFin" name="fechaFin" required>
+                            <div class="col-lg-3">
+                                <input type="date" title="Seleccione la Fecha de Fin de la Medición" class="form-control" id="fechaFin" name="fechaFin" required>
                             </div>
                             <input type="hidden" value =<?php echo $idRodal ?> id="idRodal" name="idRodal">
                         
                         <div class="form-group">
-                            <div class="col-sm-2"><input type="submit" title="Generar un PDF entre las fechas seleccionadas" class="btn btn-default"value="Generar Reporte"></div>
+                            <div class="col-lg-2"><input type="submit" class='btn btn-danger' onclick=" return validarFechas()" title="Generar un PDF entre las fechas seleccionadas" value='Generar PDF'> </div>
                         </div>
         </form>
     </div>
