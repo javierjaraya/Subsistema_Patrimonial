@@ -104,7 +104,7 @@ console.log('iniciando eventos de cuenta');
         modificarCuenta: function(id){
             
             var idCuenta = id;
-            //predio.mostrarModificar();
+            //cuenta.mostrarModificar();
             console.log(idCuenta);
             var datos = 'idCuenta='+ idCuenta ;
             $.ajax({
@@ -113,7 +113,7 @@ console.log('iniciando eventos de cuenta');
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    $('#editPredioDialog').html(response);
+                    $('#editCuentaDialog').html(response);
                     
                     cuenta.mostrarModificar();
                     cuenta.cargarTabla();
@@ -156,7 +156,7 @@ console.log('iniciando eventos de cuenta');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
-                    predio.cargarTabla();
+                    cuenta.cargarTabla();
                     
                     
                    

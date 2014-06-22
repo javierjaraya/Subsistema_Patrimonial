@@ -96,9 +96,39 @@ class CuentaDAO{
         $this->conexion->desconectar();
         return $cuentas;
     }
+    
+    public function actualizarCuentaDAO($cuenta, $id_original) {
+        $this->conexion->conectar();
+        $laConsulta = "UPDATE cuenta 
+                        SET     ID_CUENTA='".$cuenta->getIdCuenta()."',
+                                FECHACREACION='".$cuenta->getFechaCreacion()."',
+                                PASSWORD='".$cuenta->getPassword()."',                     
+                                ESTADO='".$cuenta->getEstado()."',   
+                                ID_PERFIL='".$cuenta->getIdPerfil()."'
+                        WHERE ID_CUENTA='".$id_original."' ";
+        
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+    }
 
     public function findByID($id) {
-        
+        $cuenta= new Cuenta();
+        $this->conexion->conectar();
+        $laConsulta = " SELECT * 
+                        FROM cuenta, 
+                        WHERE cuenta.ID_CUENTA.$id.";
+        $query = $this->conexion->ejecutar($laConsulta);
+        while(ocifetch($query)){
+            $cuenta = new Cuenta();
+            $cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
+            $cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
+            $cuenta->setPassword(ociresult($query, "PASSWORD"));
+            $cuenta->setEstado(ociresult($query, "ESTADO"));
+            $cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
+  
+        }
+        $this->conexion->desconectar();
+        return $cuenta;
     }
 
     public function findLikeAtrr($name) {

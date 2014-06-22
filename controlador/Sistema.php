@@ -86,6 +86,14 @@ class Sistema {
     public function findAllCuentas(){
         return $this->cuentaDAO->findAll();
     } 
+    
+    public function findCuentaById($idCuenta){
+        return $this->cuentaDAO->findById($idCuenta);
+    }
+    
+    public function actualizarCuenta($cuenta, $id_original){
+        $this->cuentaDAO->actualizarCuentaDAO($cuenta, $id_original);
+    }
     /**
      * Metodo que retorna una cuenta de usuario segun un determinado dni y password
      * @author Javier

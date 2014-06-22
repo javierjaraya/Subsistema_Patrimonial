@@ -7,7 +7,7 @@ $idCuenta = $_POST['idCuenta'];
 
 $control = Sistema::getInstancia();
 
-$cuenta = $control->getCuenta($dni);
+$cuenta = $control->findCuentaById($idCuenta);
 
 
 $fechaCreacion = $cuenta->getFechaCreacion();
@@ -28,7 +28,7 @@ $idOriginal = $idCuenta;
             <div><label>ID Perfil: </label><input class="form-control" cols="30" rows="5" id="idperfil" name="idperfil" <?php echo "value='$idPerfil'"?> /></div>
             <input type="hidden" <?php echo "value=$idOriginal" ?> id="idOriginal" />
             <div><label>Estado: </label><select id="estado" name="estado" class="form-control input-sm" size="1">
-				   <option value="-1">Estado Predio </option>
+				   <option value="-1">Estado Cuenta </option>
 				                          <?php 
                                                             if($estado == "0"){
                                                           ?>
@@ -47,4 +47,4 @@ $idOriginal = $idCuenta;
 								</select>
             </div>
         </fieldset>
-  </form>
+</form>

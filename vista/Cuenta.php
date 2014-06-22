@@ -41,7 +41,7 @@ $cuentas = $control->findAllCuentas();
                 echo "<td>".$cuenta->getIdPerfil()."</td>";
                 echo "<td>";
                               
-                echo "<button type='button' class='btn btn-warning'>Modificar</button>";
+                echo "<button type='button' class='btn btn-warning' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'>Modificar</button>";
                 
                 echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
                 
@@ -63,3 +63,13 @@ $cuentas = $control->findAllCuentas();
             <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>            
         </fieldset>
 </div>     
+
+<div  style="display:none; cursor: default"> 
+           <div id="editCuentaDialog" title="Create new user">
+        
+</div>
+    
+<div class="notify_correct" style="display:none">
+     <h1>Cuenta Agregado</h1>
+     <h2>Correctamente!</h2>
+</div>

@@ -20,7 +20,7 @@ $cuenta->setIdPerfil($id_perfil);
 $cuenta->setEstado($estado);
 
 
-$control->actualizarPredio($cuenta, $id_original);
+$control->actualizarCuenta($cuenta, $id_original);
 
 
 ?>
