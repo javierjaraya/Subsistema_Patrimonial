@@ -195,7 +195,6 @@ console.log('iniciando eventos de rodal');
             
         },
         modificarPredio: function(id){
-            
             var idPredio = id;
             //predio.mostrarModificar();
             console.log(idPredio);
@@ -250,14 +249,10 @@ console.log('iniciando eventos de rodal');
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
                     predio.cargarTabla();
-                    
-                    
-                   
-                },
+                },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
                     $('#page-wrapper').html('Consulta mal hecha');
-                                  
                 }
             });
             
@@ -303,6 +298,9 @@ console.log('iniciando eventos de rodal');
             }
             
         },
+        
+        
+        
         /**
          * Metodo encargado de inicializar el autocomplete
          * @returns {undefined}

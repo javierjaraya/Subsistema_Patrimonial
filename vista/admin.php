@@ -43,6 +43,10 @@
     height: 100px;
   }
   
+  #columna_rodal{
+      background-color: #428bca;
+  }
+  
   </style>
     </head>
 
