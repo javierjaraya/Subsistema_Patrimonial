@@ -37,10 +37,11 @@ $idOriginal = $idpredio;
 <fieldset>
             <div><label>Identificador Predio: </label><input class="form-control" type="text" id="idpredio" name="idpredio" <?php echo "value='$idpredio'"?> /></div>
             <div><label>Nombre: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="nombre" <?php echo "value='$nombrePredio'"?> /></div>
-            <div><label>Superficie: </label><input class="form-control" type="text" id="superficie" name="superficie" <?php echo "value='$superficiePredio'"?> /></div>
+            <div><label>Comuna: </label><input class="form-control" cols="30" rows="5" id="comuna" name="comuna" <?php echo "value='$nombreComuna'"?> /></div>
+            <div><label>Superficie: </label><input class="form-control" type="text" id="superficie" name="superficie" <?php echo "value='$superficiePredio'"?> /></div>
             <div><label>Valor Comercial:</label><input class="form-control" cols="30" rows="5" id="valorcomercial" name="valorcomercial" <?php echo "value='$valorComercialPredio'"?> /></div>
             
-            <div><label>Comuna: </label><input class="form-control" cols="30" rows="5" id="comuna" name="comuna" <?php echo "value='$nombreComuna'"?> /></div>
+            
             <input type="hidden" <?php echo "value=$idOriginal" ?> id="idOriginal" />
             <div><label>Estado: </label><select id="estado" name="estado" class="form-control input-sm" size="1">
 				   <option value="-1">Estado Predio </option>

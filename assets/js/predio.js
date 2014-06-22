@@ -65,7 +65,6 @@ console.log('iniciando eventos de predio');
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idPredio = $(".idpredio").val();
             nombre = $(".nombre").val();
-            validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
             superficie = $(".superficie").val();
             valorcomercial = $(".valorcomercial").val();
             idComuna = $(".id_comuna").attr("idcomuna");
@@ -195,7 +194,7 @@ console.log('iniciando eventos de predio');
             
         },
         modificarPredio: function(id){
-            
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idPredio = id;
             //predio.mostrarModificar();
             console.log(idPredio);
@@ -209,7 +208,7 @@ console.log('iniciando eventos de predio');
                     $('#editPredioDialog').html(response);
                     
                     predio.mostrarModificar();
-                    predio.cargarTabla();
+                    //predio.cargarTabla();
                    
                 },
                 error: function() {
@@ -223,14 +222,14 @@ console.log('iniciando eventos de predio');
         mostrarModificar: function(){
               $( "#editPredioDialog" ).dialog({
               title: "Edición Predio",
-              height: 500,
+              height: 560,
               width: 500,
               modal: true,
-             
+              position: { my: "center top", at: "center top", of: "#page-wrapper" },
               resizable: false,
               buttons: {
                 Actualizar: function() {
-                  var bValid = true;
+                    $(document).ajaxStart($.blockUI(confLoad));
                   var idPredio = $("#idpredio").val();
                   
                     nombre = $("#nombre").val();
@@ -240,15 +239,15 @@ console.log('iniciando eventos de predio');
                     superficie = $("#superficie").val();
                     valorcomercial = $("#valorcomercial").val();
                     estado = $("#estado").val();
-                    
+                   $('#editPredioDialog').empty();
             var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&comuna=' + comuna + '&idOriginal=' + idOriginal+ '&estado=' + estado;
+            console.log("Datos nuevos: " + datos);
             $.ajax({
                 type: "POST",
                 url: "guardarCambiosActualizacionPredio.php",
                 data: datos,
-                success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
-                    $('#page-wrapper').html(response);
+                success: function() {
+                $( "#editPredioDialog" ).dialog( "destroy" );
                     predio.cargarTabla();
                     
                     
