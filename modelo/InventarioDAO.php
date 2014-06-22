@@ -8,23 +8,47 @@
 
 include_once 'Conexion.php';
 include_once '../controlador/Inventario.php';
+include_once 'interfaceDAO.php';
 
-class InventarioDAO {
+class InventarioDAO  implements interfaceDAO{
     private $conexion;
 
-    public function __construct() {
+    public function InventarioDAO() {
         $this->conexion = new Conexion();
     }
     
     public function findInventarioByIdRodal($idRodal){
-        
-        $this->cone->conectar();
+        $this->conexion->conectar();
         $laConsulta = "SELECT * FROM inventario
             WHERE  ID_RODAL = '".$idRodal."'
             ORDER BY ID_INVENTARIO";
         
-        $query = $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $query = $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
         return $query;
+    }
+
+    public function findAll() {
+        
+    }
+
+    public function findByExample($object) {
+        
+    }
+
+    public function findByID($id) {
+        
+    }
+
+    public function findLikeAtrr($name) {
+        
+    }
+
+    public function save($object) {
+        
+    }
+
+    public function update($object) {
+        
     }
 }
