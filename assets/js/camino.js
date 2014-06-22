@@ -40,7 +40,7 @@ var camino = (function() {
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idCamino = $(".idcamino").val();
             longitud = $(".longitud").val();
-            tipoSuperficie = $(".tipoSuperficie").val();
+            tipoSuperficie = $(".superficie").val();
             idPredio = $(".idpredio").val();
             
             

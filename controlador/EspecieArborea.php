@@ -1,15 +1,13 @@
 <?php
 
-/**
- * Description of EspecieArborea
- *
- * @author Pipe
- */
-class EspecieArborea {
+
+
+class EspecieArborea{
+    
     private $idEspecieArborea;
     private $nombreEspecieArborea;
-    private $descripcion;
-    
+    private $descripcionEspecieArborea;
+            
     function __construct() {
         
     }
@@ -17,25 +15,28 @@ class EspecieArborea {
         return $this->idEspecieArborea;
     }
 
-    public function getNombreEspecieArborea() {
-        return $this->nombreEspecieArborea;
-    }
-
-    public function getDescripcion() {
-        return $this->descripcion;
-    }
-
     public function setIdEspecieArborea($idEspecieArborea) {
         $this->idEspecieArborea = $idEspecieArborea;
+    }
+
+    public function getNombreEspecieArborea() {
+        return $this->nombreEspecieArborea;
     }
 
     public function setNombreEspecieArborea($nombreEspecieArborea) {
         $this->nombreEspecieArborea = $nombreEspecieArborea;
     }
 
-    public function setDescripcion($descripcion) {
-        $this->descripcion = $descripcion;
+    public function getDescripcionEspecieArborea() {
+        return $this->descripcionEspecieArborea;
+    }
+
+    public function setDescripcionEspecieArborea($descripcionEspecieArborea) {
+        $this->descripcionEspecieArborea = $descripcionEspecieArborea;
     }
 
 
+    
+    
 }
+?>

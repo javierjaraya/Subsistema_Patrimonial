@@ -13,6 +13,7 @@ class Rodal {
     private $idPredio;
     private $manejo;
     private $zonaCrecimiento;
+    private $estado;
     
     function __construct() {
         
@@ -80,6 +81,16 @@ class Rodal {
     public function setZonaCrecimiento($zonaCrecimiento) {
         $this->zonaCrecimiento = $zonaCrecimiento;
     }
+    
+    public function getEstado() {
+        return $this->estado;
+    }
+
+    public function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+
 
 
 }

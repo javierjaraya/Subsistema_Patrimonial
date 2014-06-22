@@ -9,18 +9,19 @@ include_once '../controlador/Predio.php';
  * @author Renato Hormazabal <nato.ehv@gmail.com>
  */
 class PDF extends FPDF {
-    
-    function  logoAndTitulo($titulo){
+
+    function logoAndTitulo($titulo) {
         // Logo                               x  y  escala tamaño
-        $this->Image('../assets/img/Logo.jpg',10,8,35);
+        $this->Image('../assets/img/Logo.jpg', 10, 8, 35);
         // Título
         $this->SetXY(60, 9);
         $this->SetFont('Arial', 'B', 15);
-                                            //Borde,
-        $this->Cell(40,10,utf8_decode($titulo), 0, 0, 'L', false);
+        //Borde,
+        $this->Cell(40, 10, utf8_decode($titulo), 0, 0, 'L', false);
         // Salto de línea
         $this->Ln(5);
     }
+
     function cabeceraHorizontal($cabecera) {
         $this->SetXY(10, 20);
         $this->SetFont('Arial', 'B', 10);
@@ -28,6 +29,16 @@ class PDF extends FPDF {
         $this->SetTextColor(240, 255, 240); //Letra color blanco
         foreach ($cabecera as $fila) {
             $this->CellFitSpace(40, 7, utf8_decode($fila), 1, 0, 'L', true);
+        }
+    }
+    
+    function cabeceraHorizontalInventario($cabecera) {
+        $this->SetXY(10, 20);
+        $this->SetFont('Arial', 'B', 10);
+        $this->SetFillColor(2, 157, 116); //Fondo verde de celda
+        $this->SetTextColor(240, 255, 240); //Letra color blanco
+        foreach ($cabecera as $fila) {
+            $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
         }
     }
 
@@ -42,19 +53,61 @@ class PDF extends FPDF {
             $this->CellFitSpace(40, 7, utf8_decode($predio->getIdPredio()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(40, 7, utf8_decode($predio->getNombre()), 1, 0, 'L', $bandera);
             $a = number_format($predio->getSuperficie());
-            $this->CellFitSpace(40, 7, utf8_decode($a.' ha'), 1, 0, 'R', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($a . ' ha'), 1, 0, 'R', $bandera);
             //Damos formato numerico
             $a = number_format($predio->getValorComercial());
-            $this->CellFitSpace(40, 7, utf8_decode('$'.$a), 1, 0, 'R', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode('$' . $a), 1, 0, 'R', $bandera);
+            $this->Ln(); //Salto de línea para generar otra fila
+            $bandera = !$bandera; //Alterna el valor de la bandera
+        }
+    }
+    
+    function datosHorizontalInventario($inventarios) {
+        $this->SetXY(10, 27);
+        $this->SetFont('Arial', '', 10);
+        $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
+        $this->SetTextColor(3, 3, 3); //Color del texto: Negro
+        $bandera = false; //Para alternar el relleno
+        foreach ($inventarios as $inventario) {
+            //Usaremos CellFitSpace en lugar de Cell
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getIdInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getServicio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getSistemaInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getDiametroMedio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAlturaDominante()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAreaBasal()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
+            
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
 
-    function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal,$tituloPagina) {
+    // Pie de página
+    function Footer() {
+        // Posición: a 1,5 cm del final
+        $this->SetY(-15);
+        // Arial italic 8
+        $this->SetFont('Arial', 'I', 8);
+        // Número de página
+        $this->Cell(0, 10, 'Pagina ' . $this->PageNo() , 0, 0, 'C');
+    }
+
+    function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontal($cabeceraHorizontal);
         $this->datosHorizontalPredio($datosHorizontal);
+        $this->Footer();
+        
+    }
+    
+    function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
+        $this->logoAndTitulo($tituloPagina);
+        $this->cabeceraHorizontalInventario($cabeceraHorizontal);
+        $this->datosHorizontalInventario($datosHorizontal);
+        $this->Footer();
     }
 
     //***** Aquí comienza código para ajustar texto *************

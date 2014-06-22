@@ -194,22 +194,55 @@ console.log('iniciando eventos de rodal');
             
             
         },
-        modificarPredio: function(id){
-            
-            var idPredio = id;
+        
+        cargarListaInventario: function(id){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idRodal= id;
             //predio.mostrarModificar();
-            console.log(idPredio);
-            var datos = 'idpredio='+ idPredio ;
+            console.log(idRodal);
+            var datos = 'idrodal='+ idRodal ;
             $.ajax({
                 type: "POST",
-                url: "modificarPredio.php",
+                url: "listarInventarioRodal.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editPredioDialog').html(response);
                     
-                    predio.mostrarModificar();
-                    predio.cargarTabla();
+                    rodal.mostrarInventarios(idRodal);
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+        },
+        mostrarInventarios: function (idRodal){
+            $( "#editPredioDialog" ).dialog({
+              title: "Inventarios del Rodal "+idRodal,
+              height:500,
+              width: 1050,
+              modal: true,
+              position: { my: "center top", at: "center top", of: "#page-wrapper" },
+              resizable: false,
+            });
+            
+        },
+        modificarRodal: function(id){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idRodal = id;
+            var datos = 'idrodal='+ idRodal ;
+            $.ajax({
+                type: "POST",
+                url: "modificarRodal.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editPredioDialog').html(response);
+                    
+                    rodal.mostrarModificar();
+                    rodal.cargarTabla();
                    
                 },
                 error: function() {
@@ -222,42 +255,47 @@ console.log('iniciando eventos de rodal');
         },
         mostrarModificar: function(){
               $( "#editPredioDialog" ).dialog({
-              title: "Edición Predio",
-              height: 500,
+              title: "Edición Rodal",
+              height: 600,
               width: 500,
               modal: true,
              
               resizable: false,
               buttons: {
                 Actualizar: function() {
+                  
                   var bValid = true;
                   var idPredio = $("#idpredio").val();
-                  
-                    nombre = $("#nombre").val();
-                    
-                    comuna = $("#comuna").val();
-                    idOriginal = $("#idOriginal").val();
-                    superficie = $("#superficie").val();
-                    valorcomercial = $("#valorcomercial").val();
-                    estado = $("#estado").val();
+                  idRodal = $("#idrodal").val();
+                  anioPlantacion = $("#anioPlantacion").val();
+                  superficie = $("#superficie").val();
+                  console.log(superficie);
+                  valorComercial = $("#valorComercial").val();
+                  idEspecieArborea = $("#idEspecieArborea").val();
+                  manejo = $("#manejo").val();
+                  zonaCrecimiento = $("#zonaCrecimiento").val();
+                  estado = $("#estado").val();
             
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&comuna=' + comuna + '&idOriginal=' + idOriginal+ '&estado=' + estado;
+            var datos = 'idrodal='+ idRodal
+                        + '&anioPlantacion=' + anioPlantacion 
+                        + '&superficie=' + superficie 
+                        + '&valorComercial=' + valorComercial 
+                        + '&idEspecieArborea=' + idEspecieArborea
+                        + '&manejo=' + manejo
+                        + '&zonaCrecimiento=' + zonaCrecimiento
+                        + '&estado=' + estado;
             $.ajax({
                 type: "POST",
-                url: "guardarCambiosActualizacionPredio.php",
+                url: "guardarCambiosActualizacionRodal.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
-                    predio.cargarTabla();
-                    
-                    
-                   
-                },
+                    rodal.cargarTabla();
+                },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
                     $('#page-wrapper').html('Consulta mal hecha');
-                                  
                 }
             });
             
@@ -279,20 +317,20 @@ console.log('iniciando eventos de rodal');
          * Metodo encargado de eliminar un predio
          * @returns {undefined}
          */
-        eliminarPredio: function(id){
+        eliminarRodal: function(id){
             var confirmacion = confirm("¿Está seguro que desea eliminar?");
             if(confirmacion){
-                var idPredio = id;
+                var idRodal = id;
                 //predio.mostrarModificar();
-                console.log("Id predio a eliminar: "+idPredio);
-                var datos = 'idpredio='+ idPredio ;
+                console.log("Id rodal a eliminar: "+idRodal);
+                var datos = 'idrodal='+ idRodal ;
                 $.ajax({
                     type: "POST",
-                    url: "eliminarPredio.php",
+                    url: "eliminarRodal.php",
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
-                        predio.cargarTabla();
+                        rodal.cargarTabla();
                     },
                     error: function() {
                         console.log("Error al ejecutar AJAX");
@@ -303,6 +341,9 @@ console.log('iniciando eventos de rodal');
             }
             
         },
+        
+        
+        
         /**
          * Metodo encargado de inicializar el autocomplete
          * @returns {undefined}

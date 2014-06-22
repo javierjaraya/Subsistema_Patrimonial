@@ -6,7 +6,6 @@
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Predio.php';
 include_once '../controlador/Comuna.php';
-
 $control = Sistema::getInstancia();
 $predios = $control->findAllPredios();
 ?>
@@ -30,14 +29,13 @@ $predios = $control->findAllPredios();
         <tbody id="tbody">
             <?PHP
             foreach($predios as $predio){
-                //getNombreComuna
                 $comuna = $predio->getComuna();
                 echo "<tr>";
                 echo "<td >".$predio->getIdPredio()."</td>";
                 echo "<td>".$predio->getNombre()."</td>";
                 echo "<td>".$comuna->getNombreComuna()."</td>";
                 echo "<td class='text-right'>".$predio->getSuperficie()."</td>";
-                echo "<td class='text-right'>".$predio->getValorComercial()."</td>";
+                echo "<td class='text-right'>".number_format($predio->getValorComercial())."</td>";
                 echo "<td>";
                 echo "<button type='button' onclick='predio.modificarPredio(".$predio->getIdPredio().")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                 echo "<button type='button' onclick='predio.eliminarPredio(".$predio->getIdPredio().")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";

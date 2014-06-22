@@ -7,6 +7,10 @@ include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
+include_once '../modelo/InventarioDAO.php';
+include_once '../modelo/EspecieArboreaDAO.php';
+
+
 include_once 'Session.php';
 //include_once 'Cuenta.php';
 include_once 'Comuna.php';
@@ -28,6 +32,10 @@ class Sistema {
      private $caminoDAO;
      private $provinciaDAO;
      private $rodalDAO;
+     private $inventarioDAO;
+     private $especieArboreaDAO;
+
+
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -39,7 +47,9 @@ class Sistema {
          $this->caminoDAO = new CaminoDAO();
          $this->provinciaDAO = new ProvinciaDAO();
          $this->rodalDAO  = new RodalDAO();
-
+         $this->inventarioDAO = new InventarioDAO();
+         $this->especieArboreaDAO = new EspecieArboreaDAO();
+         
      }
      
      public static function  getInstancia(){
@@ -208,7 +218,36 @@ class Sistema {
     public function eliminarPredio($idPredio){
         $this->predioDAO->delete($idPredio);
     }
-            
+    
+    public function eliminarRodal($idRodal){
+        $this->rodalDAO->delete($idRodal);
+    }
+    
+    public function getInventarios($idRodal){
+        return $this->inventarioDAO->findInventarioByIdRodal($idRodal);
+    }
+    
+    public function findRodalById($idrodal){
+        return $this->rodalDAO->findById($idrodal);
+        
+    }
+    
+    public function getEspeciesArborea(){
+        return $this->especieArboreaDAO->findAll();
+    }
+    
+    public function actualizarRodal($rodal){
+        $this->rodalDAO->update($rodal);
+    }
+    
+    public function findInventarios($idRodal, $fi, $ff){
+        return $this->inventarioDAO->findBetweenDate($idRodal, $fi, $ff);
+    }
+
+
+
+
+
 }
 
 

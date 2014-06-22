@@ -43,7 +43,26 @@
     height: 100px;
   }
   
+  #columna_rodal{
+      background-color: #428bca;
+  }
+  
   </style>
+  <script type="text/javascript">
+      function validarFechas(){
+           fi = document.getElementById("fechaInicio").value;
+           ff = document.getElementById("fechaFin").value;
+             if(fi.toString()> ff.toString() ){
+                alert("La fecha de inicio debe ser menor que la fecha actual");
+                return false;
+                
+             }else{
+                 return true;
+             }
+             
+      }
+  </script>
+  
     </head>
 
     <body>
