@@ -16,7 +16,7 @@ $inventario = $control->getInventarios($idRodal);
             <tr>
                 <th >ID  <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Servicio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th id="columna_rodal">Sist. Inventario <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Sist. Inventario <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Ø Medio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Altura Dominante <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Área Basal <i class='fa fa-sort' style="cursor:hand"></i></th>
