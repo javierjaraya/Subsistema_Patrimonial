@@ -7,7 +7,7 @@ $fi = $_POST['fechaInicio'];
 $ff = $_POST['fechaFin'];
 $idRodal = $_POST['idRodal'];
  
-$pdf = new PDF();
+$pdf = new PDF('L');
 $control = Sistema::getInstancia();
 $pdf->AddPage();
 
