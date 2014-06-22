@@ -7,7 +7,7 @@ include_once '../modelo/EmpleadoDAO.php';
 include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
-include_once '../modelo/EspecieArboreaDAO.php';
+;
 include_once 'Session.php';
 include_once 'Cuenta.php';
 include_once 'Comuna.php';
@@ -29,7 +29,7 @@ class Sistema {
      private $caminoDAO;
      private $provinciaDAO;
      private $rodalDAO;
-     private $especieArborea;
+     
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -41,7 +41,7 @@ class Sistema {
          $this->caminoDAO = new CaminoDAO();
          $this->provinciaDAO = new ProvinciaDAO();
          $this->rodalDAO  = new RodalDAO();
-         $this->especieArborea = new EspecieArborea();
+         
      }
      
      public static function  getInstancia(){
@@ -205,9 +205,7 @@ class Sistema {
         $this->rodalDAO->delete($idRodal);
     }
     
-    public function getEspeciesArboreas($idRodal){
-        return $this->especieArborea->findAll($idRodal);
-    }
+   
 
 
 }

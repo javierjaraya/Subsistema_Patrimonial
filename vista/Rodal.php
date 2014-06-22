@@ -20,8 +20,9 @@ $predios = $control->findAllRodales();
             <tr>
                 <th >ID Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >ID Rodal <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th id="columna_rodal">ID Rodal <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Manejo <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Esp. Arbórea <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Zona Crecimiento <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Sup. <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Año Plantación <i class='fa fa-sort' style="cursor:hand"></i></th>
@@ -37,6 +38,7 @@ $predios = $control->findAllRodales();
                 echo "<td>".$row['NOMBRE']."</td>";
                 echo "<td class='text-right'>".$row['ID_RODAL']."</td>";
                 echo "<td >".$row['MANEJO']."</td>";
+                echo "<td >".$row['NOMBRE_ESPECIE_ARBOREA']."</td>";
                 echo "<td >".$row['ZONA_CRECIMIENTO']."</td>";
                 echo "<td class='text-right'>".$row['SUPERFICIE']."</td>";
                 echo "<td class='text-right'>".$row['ANIO_PLANTACION']."</td>";

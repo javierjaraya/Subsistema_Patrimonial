@@ -14,8 +14,9 @@ class RodalDAO implements interfaceDAO{
     public function findAll(){
         $estado = 1;
         $this->cone->conectar();
-        $laConsulta = "SELECT * FROM rodal  r, predio  p 
+        $laConsulta = "SELECT * FROM rodal  r, predio  p, especiearborea e
             WHERE  r.ID_PREDIO = p.ID_PREDIO
+            AND r.id_especie_arborea = e.id_especie_arborea
             AND r.ESTADO = '".$estado."'
             
             ORDER BY p.ID_PREDIO";
