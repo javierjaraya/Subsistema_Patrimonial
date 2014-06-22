@@ -173,6 +173,7 @@ class PredioDAO implements interfaceDAO{
         
     }
     public function actualizarPredioDAO($predio, $id_original) {
+        
         $this->cone->conectar();
         $laConsulta = "UPDATE predio 
                         SET     ID_PREDIO='".$predio->getIdPredio()."',

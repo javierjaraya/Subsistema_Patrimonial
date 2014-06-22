@@ -47,7 +47,7 @@ $estado = $rodal->getEstado();
                     
                 }
             
-        ?>
+                ?>
         </select>
             <div><label>Manejo: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="manejo" <?php echo "value='$manejo'"?> /></div>
             <div><label>Zona Crecimiento: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="zonaCrecimiento" <?php echo "value='$zonaCrecimiento'"?> /></div>

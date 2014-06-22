@@ -196,6 +196,7 @@ console.log('iniciando eventos de rodal');
         },
         
         cargarListaInventario: function(id){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idRodal= id;
             //predio.mostrarModificar();
             console.log(idRodal);
@@ -228,6 +229,7 @@ console.log('iniciando eventos de rodal');
             
         },
         modificarRodal: function(id){
+            
             var idRodal = id;
             var datos = 'idrodal='+ idRodal ;
             $.ajax({
@@ -262,19 +264,27 @@ console.log('iniciando eventos de rodal');
                 Actualizar: function() {
                   var bValid = true;
                   var idPredio = $("#idpredio").val();
-                  
-                    nombre = $("#nombre").val();
-                    
-                    comuna = $("#comuna").val();
-                    idOriginal = $("#idOriginal").val();
-                    superficie = $("#superficie").val();
-                    valorcomercial = $("#valorcomercial").val();
-                    estado = $("#estado").val();
+                  idRodal = $("#idrodal").val();
+                  anioPlantacion = $("#anioPlantacion").val();
+                  superficie = $("#superficie").val();
+                  console.log(superficie);
+                  valorComercial = $("#valorComercial").val();
+                  idEspecieArborea = $("#idEspecieArborea").val();
+                  manejo = $("#manejo").val();
+                  zonaCrecimiento = $("#zonaCrecimiento").val();
+                  estado = $("#estado").val();
             
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&comuna=' + comuna + '&idOriginal=' + idOriginal+ '&estado=' + estado;
+            var datos = 'idrodal='+ idRodal
+                        + '&anioPlantacion=' + anioPlantacion 
+                        + '&superficie=' + superficie 
+                        + '&valorComercial=' + valorComercial 
+                        + '&idEspecieArborea=' + idEspecieArborea
+                        + '&manejo=' + manejo
+                        + '&zonaCrecimiento=' + zonaCrecimiento
+                        + '&estado=' + estado;
             $.ajax({
                 type: "POST",
-                url: "guardarCambiosActualizacionPredio.php",
+                url: "guardarCambiosActualizacionRodal.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");

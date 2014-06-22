@@ -225,6 +225,10 @@ class Sistema {
     public function getEspeciesArborea(){
         return $this->especieArboreaDAO->findAll();
     }
+    
+    public function actualizarRodal($rodal){
+        $this->rodalDAO->update($rodal);
+    }
 
 
 
