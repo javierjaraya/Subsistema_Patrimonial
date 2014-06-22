@@ -35,7 +35,7 @@ $estado = $rodal->getEstado();
             <div><label>Superficie: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="superficie" <?php echo "value='$superficie'"?> /></div>
             <div><label>Valor Comercial: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="valorComercial" <?php echo "value='$valorComercial'"?> /></div>
             <div><label>Especie Arborea: </label>
-            <select id="tEquip" name="id_tipo_equip" required>
+            <select id="tEquip" name="id_tipo_equip" required class="form-control input-sm" size="1">
               <option class="span2"> Ingrese Tipo</option>
               <?php
                 while($row = oci_fetch_array ($listaEspecieArborea,OCI_RETURN_NULLS )){

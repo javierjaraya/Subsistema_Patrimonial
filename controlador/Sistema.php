@@ -33,7 +33,7 @@ class Sistema {
      private $provinciaDAO;
      private $rodalDAO;
      private $inventarioDAO;
-     private $especieArborea;
+     private $especieArboreaDAO;
 
 
 
@@ -48,7 +48,7 @@ class Sistema {
          $this->provinciaDAO = new ProvinciaDAO();
          $this->rodalDAO  = new RodalDAO();
          $this->inventarioDAO = new InventarioDAO();
-         $this->especieArborea = new EspecieArboreaDAO();
+         $this->especieArboreaDAO = new EspecieArboreaDAO();
          
      }
      

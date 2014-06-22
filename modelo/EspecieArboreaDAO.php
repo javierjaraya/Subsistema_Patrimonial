@@ -5,23 +5,22 @@ include_once '../controlador/EspecieArborea.php';
 
 
 /**
- * Description of PredioDAO
+ * Description of EspecieArborea
  * 
- * @author Renato
+ * @author Ivan
  */
 class EspecieArboreaDAO {
-    private $cone;
+    private $conexion;
     
-    public function PredioDAO(){
-            $this->cone= new Conexion();
+    public function EspecieArboreaDAO(){
+            $this->conexion= new Conexion();
     }
     
     public function findAll(){
-        
-        $this->cone->conectar();
+        $this->conexion->conectar();
         $laConsulta = "SELECT * FROM especiearborea";
-        $query = $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $query = $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
         return $query;
     }
 }
