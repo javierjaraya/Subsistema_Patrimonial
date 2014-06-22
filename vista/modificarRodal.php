@@ -31,16 +31,16 @@ $estado = $rodal->getEstado();
 <fieldset>
             <div><label>Identificador Predio: </label><input class="form-control" type="text" id="idpredio" name="idpredio" <?php echo "value='$idpredio'"?> readonly/></div>
             <div><label>Identificador Rodal: </label><input class="form-control" type="text" id="idrodal" name="idrodal" <?php echo "value='$idrodal'"?> /></div>
-            <div><label>Año Plantación: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="anioPlantacion" <?php echo "value='$anioPlantacion'"?> /></div>
-            <div><label>Superficie: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="superficie" <?php echo "value='$superficie'"?> /></div>
-            <div><label>Valor Comercial: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="valorComercial" <?php echo "value='$valorComercial'"?> /></div>
+            <div><label>Año Plantación: </label><input type="text" class="form-control" id="anioPlantacion" <?php echo "value='$anioPlantacion'"?> /></div>
+            <div><label>Superficie: </label><input type="text" class="form-control" id="superficie" <?php echo "value='$superficie'"?> /></div>
+            <div><label>Valor Comercial: </label><input type="text" class="form-control" id="valorComercial" <?php echo "value='$valorComercial'"?> /></div>
             <div><label>Especie Arborea: </label>
-            <select id="tEquip" name="id_tipo_equip" required class="form-control input-sm" size="1">
-              <option class="span2"> Ingrese Tipo</option>
+            <select name="idEspecieArborea" id="idEspecieArborea"  class="form-control " >
+              <option value="-1">Tipo de Especie Arborea </option>
               <?php
                 while($row = oci_fetch_array ($listaEspecieArborea,OCI_RETURN_NULLS )){
                     if($row['ID_ESPECIE_ARBOREA'] == $idespecieArborea){
-                        echo "<option selected='selected' value='".$row['ID_ESPECIE_ARBOREA']."' >".$row['NOMBRE_ESPECIE_ARBOREA']."</option>\n";
+                        echo "<option selected='selected' '  value='".$row['ID_ESPECIE_ARBOREA']."' >".$row['NOMBRE_ESPECIE_ARBOREA']."</option>\n";
                     }else{
                         echo "<option value='".$row['ID_ESPECIE_ARBOREA']."' >".$row['NOMBRE_ESPECIE_ARBOREA']."</option>\n";
                     }
@@ -52,7 +52,7 @@ $estado = $rodal->getEstado();
             <div><label>Manejo: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="manejo" <?php echo "value='$manejo'"?> /></div>
             <div><label>Zona Crecimiento: </label><input type="text" class="text ui-widget-content ui-corner-all form-control" id="zonaCrecimiento" <?php echo "value='$zonaCrecimiento'"?> /></div>
       
-            <div><label>Estado: </label><select id="estado" name="estado" class="form-control input-sm" size="1">
+            <div><label>Estado: </label><select id="estado" name="estado" class="form-control " size="1">
 				   <option value="-1">Estado Rodal </option>
 				                          <?php 
                                                             if($estado == "0"){

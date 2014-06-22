@@ -18,7 +18,7 @@ class EspecieArboreaDAO {
     
     public function findAll(){
         $this->conexion->conectar();
-        $laConsulta = "SELECT * FROM especiearborea";
+        $laConsulta = "SELECT * FROM especiearborea ORDER BY NOMBRE_ESPECIE_ARBOREA";
         $query = $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
         return $query;
