@@ -100,6 +100,88 @@ console.log('iniciando eventos de cuenta');
             });
             return false;
         },
+        
+        modificarCuenta: function(id){
+            
+            var idCuenta = id;
+            //predio.mostrarModificar();
+            console.log(idCuenta);
+            var datos = 'idCuenta='+ idCuenta ;
+            $.ajax({
+                type: "POST",
+                url: "modificarCuenta.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editPredioDialog').html(response);
+                    
+                    cuenta.mostrarModificar();
+                    cuenta.cargarTabla();
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+        },
+        
+        mostrarModificar: function(){
+              $( "#editCuentaDialog" ).dialog({
+              title: "Edición Cuenta",
+              height: 500,
+              width: 500,
+              modal: true,
+             
+              resizable: false,
+              buttons: {
+                Actualizar: function() {
+                  var bValid = true;
+                  var idCuenta = $("#idCuenta").val();
+                  
+                    fechaCreacion = $("#fechaCreacion").val();
+                    
+                    password = $("#passwor").val();
+                    idOriginal = $("#idOriginal").val();
+                    idPerfil = $("#idPerfil").val();
+                    estado = $("#estado").val();
+            
+            var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password + '&idOriginal=' + idOriginal+ 'idPerfil=' + idPerfil + '&estado=' + estado;
+            $.ajax({
+                type: "POST",
+                url: "guardarCambiosActualizacionCuenta.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#page-wrapper').html(response);
+                    predio.cargarTabla();
+                    
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+            $( this ).dialog( "close" );
+                    return true;
+                  
+            }
+            ,
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        $( this ).dialog( "close" );
+              }
+            });
+        },
               
       };
     })();

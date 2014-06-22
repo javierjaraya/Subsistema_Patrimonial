@@ -97,7 +97,7 @@
                         </li>
                         
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Cuentas <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Administrar Cuentas <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:cuenta.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
       
