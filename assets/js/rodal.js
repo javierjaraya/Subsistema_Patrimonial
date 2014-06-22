@@ -198,7 +198,7 @@ console.log('iniciando eventos de rodal');
         cargarListaInventario: function(id){
             var idRodal= id;
             //predio.mostrarModificar();
-            console.log(idPredio);
+            console.log(idRodal);
             var datos = 'idrodal='+ idRodal ;
             $.ajax({
                 type: "POST",
@@ -218,9 +218,9 @@ console.log('iniciando eventos de rodal');
         },
         mostrarInventarios: function (){
             $( "#editPredioDialog" ).dialog({
-              title: "Edición Predio",
+              title: "Inventarios del Rodal",
               height: 500,
-              width: 800,
+              width: 1000,
               modal: true,
              
               resizable: false,

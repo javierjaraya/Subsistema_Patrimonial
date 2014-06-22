@@ -29,7 +29,9 @@ class Sistema {
      private $caminoDAO;
      private $provinciaDAO;
      private $rodalDAO;
-     
+     private $inventarioDAO;
+
+
 
      private function Sistema(){
          $this->cuentaDAO = new CuentaDAO();
@@ -41,6 +43,7 @@ class Sistema {
          $this->caminoDAO = new CaminoDAO();
          $this->provinciaDAO = new ProvinciaDAO();
          $this->rodalDAO  = new RodalDAO();
+         $this->inventarioDAO = new InventarioDAO();
          
      }
      
@@ -205,7 +208,13 @@ class Sistema {
         $this->rodalDAO->delete($idRodal);
     }
     
-   
+    public function getInventarios($idRodal){
+        return $this->inventarioDAO->findInventarioByIdRodal($idRodal);
+    }
+
+
+
+
 
 
 }

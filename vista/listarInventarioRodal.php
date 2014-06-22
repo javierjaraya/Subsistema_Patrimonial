@@ -5,7 +5,15 @@ include_once '../controlador/Inventario.php';
 
 $idRodal = $_POST['idrodal'];
 
+
 $control = Sistema::getInstancia();
+
+$inventario = $control->getInventarios($idRodal);
+
+
+
+
+
 
  
 ?>
