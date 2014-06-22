@@ -221,15 +221,16 @@ console.log('iniciando eventos de rodal');
         mostrarInventarios: function (idRodal){
             $( "#editPredioDialog" ).dialog({
               title: "Inventarios del Rodal "+idRodal,
-              height: 600,
+              height:600,
               width: 1050,
               modal: true,
+              position: { my: "center top", at: "center top", of: "#page-wrapper" },
               resizable: false,
             });
             
         },
         modificarRodal: function(id){
-            
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idRodal = id;
             var datos = 'idrodal='+ idRodal ;
             $.ajax({
@@ -262,6 +263,7 @@ console.log('iniciando eventos de rodal');
               resizable: false,
               buttons: {
                 Actualizar: function() {
+                  
                   var bValid = true;
                   var idPredio = $("#idpredio").val();
                   idRodal = $("#idrodal").val();

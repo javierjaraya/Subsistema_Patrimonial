@@ -11,7 +11,26 @@ $control = Sistema::getInstancia();
 $inventario = $control->getInventarios($idRodal);
 
 ?>
-
+<div class="row">
+    <div class="span7">
+        <form action="inventarioReportes.php" target="_blank" name="form "method="POST" class="form-horizontal" role="form">
+                        
+                           <div class="col-sm-3">
+                                <input type="date" title="Seleccione la Fecha de Inicio" class="form-control" id="fechaInicio" name="fechaInicio" >
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="date" title="Seleccione la Fecha de Fin" class="form-control" id="fechaFin" name="fechaFin">
+                            </div>
+                            <input type="hidden" value =<?php echo $idRodal ?> id="idRodal" name="idRodal">
+                        
+                        <div class="form-group">
+                            <div class="col-sm-2"><input type="submit" title="Generar un PDF entre las fechas seleccionadas" class="btn btn-default"value="Generar Reporte"></div>
+                        </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="panel panel-default">
 <table cellpadding="0" cellspacing="0" border="0" id="tabla_inventarios" class="table table-striped table-bordered bootstrap-datatable dataTable">
         <thead>
             <tr>
@@ -51,7 +70,8 @@ $inventario = $control->getInventarios($idRodal);
     </table>
 
 
-
+    </div>
+</div>
  
 
 <script type="text/javascript" >
