@@ -46,6 +46,7 @@ $predios = $control->findAllRodales();
                 echo "<td>";
                 echo "<button type='button'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                 echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";
+                echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-info glyphicon glyphicon-th-list'  title='Ver Inventarios'></button>";
                 echo "</td>";
                 echo "</tr>";
             }
