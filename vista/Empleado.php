@@ -12,7 +12,7 @@ $control = Sistema::getInstancia();
 $empleados = $control->findAllEmpleados();
 ?>
 <div class="row">
-    <h1>Lista de Empleados  <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="empleado.ingresaNuevoEmpleado()">Nuevo</button></h1>
+    <h1>Lista de Empleados  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="empleado.ingresaNuevoEmpleado()"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -39,9 +39,13 @@ $empleados = $control->findAllEmpleados();
                 echo "<td>".$empleado->getApMaternoEmpleado()."</td>";
                 echo "<td>".$empleado->getFechaIngreso()."</td>";
                 echo "<td>";
-                echo "<button type='button' class='btn btn-warning'>Modificar</button>";
-                echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
-                echo "<button type='button' class='btn btn-primary btn-lg' onClick='empleado.ingresaNuevaCuenta()'>Agregar Cuenta</button>";
+                echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                if($empleado->getIdCuenta()==null){
+                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta()'>Cuenta</button>";
+                }else{
+                    echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta()' disabled>Cuenta</button>";
+                }
                 echo "</td>";
                 echo "</tr>";
             }
@@ -69,10 +73,10 @@ $empleados = $control->findAllEmpleados();
     
 <div id="nuevaCuenta" style="display:none; cursor: default"> 
         <fieldset>
-                <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" value="2004" /></div>
-                <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" value="08/06/14" /></div>
-                <div><label>Password: </label><input type="text" class="password" name="password" value="admin" /></div>
-    <div><label>Estado: </label><input type="text" class="estado" name="estado" value="1" /></div>
-    <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" value="1111" /></div>            
+            <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" /></div>
+            <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" /></div>
+            <div><label>Password: </label><input type="text" class="password" name="password" /></div>
+            <div><label>Estado: </label><input type="text" class="estado" name="estado" /></div>
+            <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>            
         </fieldset>
 </div>     

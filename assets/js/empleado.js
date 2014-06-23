@@ -97,60 +97,6 @@ console.log('iniciando eventos de empleado');
             
             
         },
-        
-        ingresaNuevaCuenta: function(){
-            $( "#nuevaCuenta" ).dialog({
-              height: 400,
-              width: 500,
-              modal: true,
-              buttons: {
-                Aceptar: function() {
-                  empleado.aceptarIngresoCuenta();
-                  $( this ).dialog( "close" );
-            },
-                Cancelar: function() {
-                  $( this ).dialog( "close" );
-                  
-                }
-              },
-              close: function() {
-        
-              }
-            });            
-            console.log('abriendo contenedor nueva Cuenta');
-            
-            
-        },
-        
-        aceptarIngresoCuenta: function(){
-            
-            var idCuenta = $(".idCuenta").val();
-            fechaCreacion = $(".fechaCreacion").val();
-            password = $(".password").val();
-            estado = $(".estado").val();
-            idPerfil = $(".idPerfil").val();         
-            
-            var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
-                    + '&estado=' + estado + '&idPerfil=' + idPerfil;
-                    
-            $.ajax({
-                type: "POST",
-                url: "ingresaCuenta.php",
-                data: datos,
-                success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
-                    $('#page-wrapper').html(response);
-                    
-                   
-                },
-                error: function() {
-                    console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Error al ingresar la Cuenta');
-                                  
-                }
-            });
-            return false;
-        },
-              
+                     
       };
     })();
