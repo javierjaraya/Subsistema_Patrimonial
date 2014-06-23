@@ -19,6 +19,12 @@ $cuenta->setPassword($pass);
 $cuenta->setIdPerfil($id_perfil);
 $cuenta->setEstado($estado);
 
+/*echo $id_original;
+echo $id;
+echo $id_perfil;
+echo $fecha;
+echo $pass;
+echo $estado;*/
 
 $control->actualizarCuenta($cuenta, $id_original);
 

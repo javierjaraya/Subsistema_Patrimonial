@@ -13,7 +13,7 @@ $cuentas = $control->findAllCuentas();
 
 ?>
 <div class="row">
-    <h1>Cuentas de Usuario <button type="button" class="btn btn-primary btn-lg" id="agregarContacto" onClick="cuenta.ingresaNuevaCuenta()">Nueva</button></h1>
+    <h1>Cuentas de Usuario <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="cuenta.ingresaNuevaCuenta()"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -41,9 +41,9 @@ $cuentas = $control->findAllCuentas();
                 echo "<td>".$cuenta->getIdPerfil()."</td>";
                 echo "<td>";
                               
-                echo "<button type='button' class='btn btn-warning' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'>Modificar</button>";
+                echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'></button>";
                 
-                echo "<button type='button' class='btn btn-danger'>Eliminar</button>";
+                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 
                 echo "</td>";
                 echo "</tr>";

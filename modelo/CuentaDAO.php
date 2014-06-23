@@ -111,12 +111,12 @@ class CuentaDAO{
         $this->conexion->desconectar();
     }
 
-    public function findByID($id) {
+    public function findByID($idCuenta) {
         $cuenta= new Cuenta();
         $this->conexion->conectar();
         $laConsulta = " SELECT * 
-                        FROM cuenta, 
-                        WHERE cuenta.ID_CUENTA.$id.";
+                        FROM cuenta
+                        WHERE cuenta.ID_CUENTA = ".$idCuenta."";
         $query = $this->conexion->ejecutar($laConsulta);
         while(ocifetch($query)){
             $cuenta = new Cuenta();

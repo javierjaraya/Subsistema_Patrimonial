@@ -101,12 +101,11 @@ console.log('iniciando eventos de cuenta');
             return false;
         },
         
-        modificarCuenta: function(id){
-            
+        modificarCuenta: function(id){            
             var idCuenta = id;
             //cuenta.mostrarModificar();
-            console.log(idCuenta);
-            var datos = 'idCuenta='+ idCuenta ;
+            //console.log(idCuenta);
+            var datos = '&idCuenta='+ idCuenta ;
             $.ajax({
                 type: "POST",
                 url: "modificarCuenta.php",
@@ -143,12 +142,13 @@ console.log('iniciando eventos de cuenta');
                   
                     fechaCreacion = $("#fechaCreacion").val();
                     
-                    password = $("#passwor").val();
+                    password = $("#password").val();
                     idOriginal = $("#idOriginal").val();
                     idPerfil = $("#idPerfil").val();
+                    console.log("cuenta:"+idCuenta);
                     estado = $("#estado").val();
             
-            var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password + '&idOriginal=' + idOriginal+ 'idPerfil=' + idPerfil + '&estado=' + estado;
+            var datos = '&idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password + '&idOriginal=' + idOriginal+ '&idPerfil=' + idPerfil + '&estado=' + estado;
             $.ajax({
                 type: "POST",
                 url: "guardarCambiosActualizacionCuenta.php",
