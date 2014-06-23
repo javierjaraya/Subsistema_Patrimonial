@@ -27,7 +27,7 @@ $predios = $control->findAllRodales();
                 <th >Sup. <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Año Plantación <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Valor Comercial ($) <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th  >Acción</th>
+                <th >Acción</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -47,6 +47,7 @@ $predios = $control->findAllRodales();
                 echo "<button type='button' onclick='rodal.modificarRodal(".$row['ID_RODAL'].")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                 echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";
                 echo "<button type='button' onclick='rodal.cargarListaInventario(".$row['ID_RODAL'].")' class='btn btn-info glyphicon glyphicon-list-alt'  title='Ver Inventarios'></button>";
+                echo "<button type='button' onclick='inventario.ingresaNuevoPredio(".$row['ID_RODAL'].")' class='btn btn-primary glyphicon glyphicon-plus-sign'  title='Agregar Inventario'></button>";
                 echo "</td>";
                 echo "</tr>";
             }
@@ -55,13 +56,22 @@ $predios = $control->findAllRodales();
     </table>
 </div>
     
-<div id="nuevoPredio"  class="ui-front"style="display:none; cursor: default" > 
+<div id="nuevoInventario"  class="ui-front"style="display:none; cursor: default" > 
         <fieldset>
-            <div><label>Identificador Predio: </label>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;"><input type="number" class="idpredio form-control" name="idpredio" ok="false"/></div>
-            <div><label>Nombre: </label><input type="text" class="nombre form-control" name="nombre" required="required"/></div>
-            <div class="ui-widget"><label>Comuna: </label>&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false"></div>
-            <div><label>Superficie: </label><input type="number" class="superficie form-control" name="superficie" required="required" /></div>
-            <div><label>Valor Comercial:</label><input type="number" cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
+            
+            <div><label>Servicio: </label>&nbsp;&nbsp;<img id="id_servicio_check" src="" style="display: none;"><input type="text" class="servicio form-control" name="servicio" ok="false"/></div>
+            <div><label>Sistema Inventario: </label><input type="text" class="sistInventario form-control" name="sistemaInventario" required="required"/></div>
+            <div><label>Diámetro Medio: </label><input type="number" class="diaMedio form-control" name="diametroMedio" required="required"/></div>
+            <div><label>Altura Dominante: </label><input type="number" class="altDom form-control" name="alturaDominante" required="required"/></div>
+            <div><label>Área Basal: </label><input type="number" class="areaBasal form-control" name="areaBasal" required="required"/></div>
+            <div><label>Volumen: </label><input type="number" class="volumen form-control" name="volumen" required="required"/></div>
+            <div><label>Número de Árboles: </label><input type="number" class="altDom form-control" name="numeroArboles" required="required"/></div>
+            <div><label>Altura: </label><input type="number" class="altura form-control" name="altura" required="required"/></div>
+            <div><label>Fecha Medición: </label><input type="date" class="fecha form-control" name="fecha" required="required"/></div>
+
+
+
+            
             
             
         </fieldset>
