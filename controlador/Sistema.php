@@ -9,6 +9,7 @@ include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
 include_once '../modelo/InventarioDAO.php';
 include_once '../modelo/EspecieArboreaDAO.php';
+include_once '../modelo/ZonaDAO.php';
 
 
 include_once 'Session.php';
@@ -34,6 +35,7 @@ class Sistema {
      private $rodalDAO;
      private $inventarioDAO;
      private $especieArboreaDAO;
+     private $zonaDAO;
 
 
 
@@ -49,7 +51,7 @@ class Sistema {
          $this->rodalDAO  = new RodalDAO();
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
-         
+         $this->zonaDAO = new ZonaDAO();
      }
      
      public static function  getInstancia(){
@@ -145,55 +147,9 @@ class Sistema {
     public function findComunaByExample($comuna){
         return $this->comunaDAO->findByExample($comuna);
     }
-    /**
-     * Metodo encargado de obtener la zona donde se encuentra una comuna
-     * 
-     * @param $idcomuna
-     */
-    public function getIdZonaByIdComuna($idComuna){
-        $comuna = $this->comunaDAO->findById($idComuna);
-        $idProvincia = $comuna->getIdProvincia();
-        $provincia = new Provincia();
-        $provincia = $this->provinciaDAO->getProvincia($idProvincia);
-        $idRegion = $provincia->getIdRegion();
-        $NORTE = 1;
-        $CENTRO = 2;
-        $SUR = 3;
-        switch ($idRegion) {
-            case 2: // TARAPACA
-               return $NORTE; 
-            case 3: // ANTOFAGASTA
-               return $NORTE;
-            case 1: // ARICA Y PARINACOTA
-                return $NORTE;
-            case 4: //ATACAMA
-                return $NORTE;
-            case 5: // COQUIMBO
-                return $NORTE;
-            case 6: // VALPARAISO
-                return $CENTRO;
-            case 7: //LIB BERNARDO
-                return $CENTRO;
-            case 8: // MAULE
-                return $CENTRO;
-            case 9: // BIO BIO
-                return $CENTRO;
-            case 15: // SANTIAGO
-                return $CENTRO;
-            case 10: // ARAUCANIA
-                return $SUR;
-            case 11: // LOS LAGOS
-                return $SUR;
-            case 12: // LOS RIOS
-                return $SUR;
-            case 13: // AISEN Y MAGALLANES
-                return $SUR;
-            case 14: // LA ANTARTICA
-                return $SUR;
-            default:
-                break;
-        }
-        return "";
+    
+    public function findAllZonas(){
+        return $this->zonaDAO->findAll();
     }
     
     

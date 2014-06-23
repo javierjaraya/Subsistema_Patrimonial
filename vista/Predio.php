@@ -8,6 +8,7 @@ include_once '../controlador/Predio.php';
 include_once '../controlador/Comuna.php';
 $control = Sistema::getInstancia();
 $predios = $control->findAllPredios();
+$zonas = $control->findAllZonas();
 ?>
 <div class="row">
     <h1>Lista de Predios  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('predioReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
@@ -54,7 +55,20 @@ $predios = $control->findAllPredios();
             <div class="ui-widget"><label>Comuna: </label>&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false"></div>
             <div><label>Superficie: </label><input type="number" class="superficie form-control" name="superficie" required="required" /></div>
             <div><label>Valor Comercial:</label><input type="number" cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
+            <div><label>Zona: </label><select id="zona_agregar" name="zona" class="form-control input-sm" size="1">
+				                          <?php 
+                                                            foreach($zonas as $zona){
+                                                          ?>
             
+                                                            <option  value="<?php echo $zona->getIdZona();?>"><?php echo $zona->getNombre();?></option>
+                         
+                                                            <?php    
+                                                            }
+                       
+				                           ?> 
+                                            
+								</select>
+            </div>
             
         </fieldset>
  
