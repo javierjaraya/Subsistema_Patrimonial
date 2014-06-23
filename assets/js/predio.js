@@ -46,6 +46,7 @@ console.log('iniciando eventos de predio');
                     color: '#fff' 
                 } 
             };
+            var idPredioModificar;
       return {
         /**
          * Método encargado de cargar tabla en el contenedor con el id
@@ -238,6 +239,7 @@ console.log('iniciando eventos de predio');
                     $('#editPredioDialog').html(response);
                     predio.mostrarModificar();
                     predio.autocompleteModificar();
+                    predio.cargaFuncioneskeyPressModificar();
                     
                    
                 },
@@ -528,6 +530,62 @@ console.log('iniciando eventos de predio');
                             $('#comuna_check_modificar').show();
                }
              });
+        },
+        
+        cargaFuncioneskeyPressModificar: function(){
+            idPredioModificar = $('.idpredio_modificar').val();
+            $(".idpredio_modificar").focusout(function(){
+               
+                var idPredio = $('.idpredio_modificar').val();
+                if(idPredio != idPredioModificar){
+                    if (idPredio != ""){
+                        $.ajax({
+                            url:'verificaIdPredio.php',
+                            type:'POST',
+                            dataType:'json',
+                            data:{ idpredio:$('.idpredio_modificar').val()}
+                        }).done(function(respuesta){
+                            console.log(respuesta);
+                            console.log("llamada post terminada");
+
+                            if(respuesta.error == "1"){
+                                console.log("codigo retornado : "+respuesta.error);
+                                $(".idpredio_modificar").tooltip('destroy');
+                                $(".idpredio_modificar").attr("ok", "true");
+                                $('#id_predio_modificar').attr("src","../assets/ico/tick.gif");
+                                $('#id_predio_modificar').show();
+                            }else{
+                                console.log("el id ya esta en el sistema");
+                                $(".idpredio_modificar").tooltip('destroy');
+                                $(".idpredio_modificar").tooltip(
+                                        {
+                                        title: 'El id seleccionado no se encuentra disponible',
+                                        placement: 'bottom'});
+                                $(".idpredio_modificar").attr("ok", "false");
+                                $('#id_predio_modificar').attr("src","../assets/ico/error.png");
+                                $('#id_predio_modificar').show();
+                            }
+                        });
+                    }else{
+                        $('#id_predio_modificar').attr("src","../assets/ico/error.png");
+                                $('#id_predio_check').show();
+                                $(".idpredio_modificar").tooltip('destroy');
+                        $(".idpredio_modificar").tooltip(
+                                    {
+                                    title: 'El Campo predio No puede estar vacio',
+                                    placement: 'bottom'});
+                       $(".idpredio_modificar").attr("ok", "false"); 
+                    }
+                }else{
+                    /*
+                     * No se ha modificado id predio
+                     */
+                    $(".idpredio_modificar").tooltip('destroy');
+                    $(".idpredio_modificar").attr("ok", "true");
+                    $('#id_predio_modificar').attr("src","../assets/ico/tick.gif");
+                    $('#id_predio_modificar').show();
+                }
+            });
         },
         
       };
