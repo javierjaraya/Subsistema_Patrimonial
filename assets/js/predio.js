@@ -134,6 +134,7 @@ console.log('iniciando eventos de predio');
               width: 500,
               modal: true,
               position: { my: "center top", at: "center top", of: "#page-wrapper" },
+              draggable: false,
               resizable: false,
               buttons: {
                 Aceptar: function() {
@@ -226,7 +227,6 @@ console.log('iniciando eventos de predio');
         modificarPredio: function(id){
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idPredio = id;
-            //predio.mostrarModificar();
             console.log(idPredio);
             var datos = 'idpredio='+ idPredio ;
             $.ajax({
@@ -236,8 +236,9 @@ console.log('iniciando eventos de predio');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editPredioDialog').html(response);
-                    predio.autocompleteModificar();
                     predio.mostrarModificar();
+                    predio.autocompleteModificar();
+                    
                    
                 },
                 error: function() {
@@ -458,13 +459,14 @@ console.log('iniciando eventos de predio');
 
               
         autocompleteModificar: function(){
-            $("#comuna").autocomplete({
+            console.log("se inicia autocompletar modifica comuna");
+            $(".comuna_modificar").autocomplete({
                 source: "buscaComuna.php",
                 minLength: 2,
 //                appendTo: '#nuevoPredio',
                 select: function(event, ui){
-                    $(".comuna").attr("comuna",ui.item.id);
-                     $(".comuna").attr("ok", "true");
+                    $(".comuna_modificar").attr("comuna",ui.item.id);
+                     $(".comuna_modificar").attr("ok", "true");
                     $('#comuna_check').attr("src","../assets/ico/tick.gif");
                         $('#comuna_check').show();
                      $(".comuna").tooltip('destroy');
@@ -484,7 +486,7 @@ console.log('iniciando eventos de predio');
                         
                     }
                 }
-            }).css('z-index',1000);;
+            }).css('z-index',1000);
             console.log("Autocomplete comuna modificar cargado");
         },
         
