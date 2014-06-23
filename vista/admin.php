@@ -79,7 +79,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <img src="../assets/img/Logo.png" width="130px" height="50px" style="float: left;">
+                    <a class="navbar-brand" style="float: left;" href="admin.php">SB Admin</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -147,8 +148,8 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!</h1>
-                <iframe style="background: none repeat scroll 0% 0% #ffffff; border: 0px solid #333333;" src="http://www.zeyuteve.com/2013/11/fox-sports-2.html" frameborder="no" marginwidth="0" marginheight="0" scrolling="No" width="620" height="400"></iframe>
+                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
+                
                 <!--<img src="../assets/img/fondo.jpg" width="100%" height="75%"> -->
             </div><!-- /#page-wrapper -->
 
@@ -166,7 +167,8 @@
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-     <script type="text/javascript" src="../assets/js/rodal.js"></script>
+    <script type="text/javascript" src="../assets/js/rodal.js"></script>
+    <script type="text/javascript" src="../assets/js/inventario.js"></script>
     <script type="text/javascript" src="../assets/js/predio.js"></script>
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/cuenta.js"></script>

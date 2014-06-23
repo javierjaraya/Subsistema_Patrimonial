@@ -60,8 +60,8 @@ $predios = $control->findAllPredios();
  
 </div> 
     
-<div  style="display:none; cursor: default"> 
-           <div id="editPredioDialog" title="Create new user">
+<div   style="display:none; cursor: default"> 
+           <div id="editPredioDialog" class="ui-front" title="Create new user">
         
 </div>
     
