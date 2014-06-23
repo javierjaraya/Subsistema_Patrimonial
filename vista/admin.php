@@ -158,7 +158,8 @@
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-     <script type="text/javascript" src="../assets/js/rodal.js"></script>
+    <script type="text/javascript" src="../assets/js/rodal.js"></script>
+    <script type="text/javascript" src="../assets/js/inventario.js"></script>
     <script type="text/javascript" src="../assets/js/predio.js"></script>
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/camino.js"></script>
