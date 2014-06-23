@@ -467,27 +467,67 @@ console.log('iniciando eventos de predio');
                 select: function(event, ui){
                     $(".comuna_modificar").attr("comuna",ui.item.id);
                      $(".comuna_modificar").attr("ok", "true");
-                    $('#comuna_check').attr("src","../assets/ico/tick.gif");
-                        $('#comuna_check').show();
+                    $('#comuna_check_modificar').attr("src","../assets/ico/tick.gif");
+                        $('#comuna_check_modificar').show();
                      $(".comuna").tooltip('destroy');
                 },
                 change: function(event, ui){
                     if(!ui.item){
-                        $(".id_comuna").tooltip(
+                        $(".comuna_modificar").tooltip(
                                 {
                                 title: 'Seleccione una opción válida',
                                 placement: 'bottom'});
                         /*
                          * Agrega check_error en input comuna
                          */
-                        $(".comuna").attr("ok", "false");
-                        $('#comuna_check').attr("src","../assets/ico/error.png");
-                        $('#comuna_check').show();
+                        $(".comuna_modificar").attr("ok", "false");
+                        $('#comuna_check_modificar').attr("src","../assets/ico/error.png");
+                        $('#comuna_check_modificar').show();
                         
                     }
                 }
             }).css('z-index',1000);
             console.log("Autocomplete comuna modificar cargado");
+            $(".comuna_modificar").focusout(function(){
+               if($('.comuna_modificar').val()!=""){ 
+                    $.ajax({
+                        url:'buscaComuna.php',
+                        type:'POST',
+                        dataType:'json',
+                        data:{ nombreComuna:$('.comuna_modificar').val()}
+                    }).done(function(respuesta){
+                        console.log("llamada post terminada");
+                        if(respuesta.error == "1"){
+                            console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
+                            $(".comuna_modificar").val(respuesta.nombre);
+                            $(".comuna_modificar").attr("idcomuna", respuesta.id);
+                            $(".comuna_modificar").attr("ok", "true");
+                            $(".comuna_modificar").tooltip('destroy');
+                            $('#comuna_check_modificar').attr("src","../assets/ico/tick.gif");
+                            $('#comuna_check_modificar').show();
+                        }else{
+                            console.log("No se encuentra comuna");
+                            $(".comuna_modificar").tooltip('destroy');
+                            $(".comuna_modificar").tooltip(
+                                    {
+                                    title: 'Seleccione una opción válida',
+                                    placement: 'bottom'});
+                            $(".comuna_modificar").attr("ok", "false");
+                            $('#comuna_check_modificar').attr("src","../assets/ico/error.png");
+                            $('#comuna_check_modificar').show();
+                        }
+                    });
+               }else{
+                   console.log("No se encuentra comuna");
+                            $(".comuna_modificar").tooltip(
+                                    {
+                                    title: 'El Campo Comuna no puede estar vacio',
+                                    placement: 'bottom'});
+                            $(".comuna_modificar").attr("ok", "false");
+                            $('#comuna_check_modificar').attr("src","../assets/ico/error.png");
+                            $('#comuna_check_modificar').show();
+               }
+             });
         },
         
       };
