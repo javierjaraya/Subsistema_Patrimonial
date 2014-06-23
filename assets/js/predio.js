@@ -98,9 +98,9 @@ console.log('iniciando eventos de predio');
             superficie = $(".superficie").val();
             valorcomercial = $(".valorcomercial").val();
             idComuna = $(".id_comuna").attr("idcomuna");
+            zona = $("#zona_agregar").val();
             
-            
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna;
+            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna + '&zona' + zona;
             $.ajax({
                 type: "POST",
                 url: "ingresaPredio.php",

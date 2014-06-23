@@ -35,25 +35,36 @@ console.log('iniciando eventos de inventario');
          * por ajax a php
          * @returns {Boolean}
          */
-        aceptarIngresoPredio: function(id){
+        aceptarIngresoInventario: function(id){
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
-            var idRodal = id
-            idPredio = $(".idpredio").val();
-            nombre = $(".nombre").val();
-            validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-            superficie = $(".superficie").val();
-            valorcomercial = $(".valorcomercial").val();
-            idComuna = $(".id_comuna").attr("idcomuna");
+                  var idRodal = id;
+                  val_servicio = $(".servicio").val();
+                  val_sistemaInventario = $(".sistemaInventario").val();
+                  val_diametroMedio = $(".diametroMedio").val();
+                  val_alturaDominante = $(".alturaDominante").val();
+                  val_areaBasal = $(".areaBasal").val();
+                  val_volumen = $(".volumen").val();
+                  val_numeroArboles = $(".numeroArboles").val();
+                  val_altura = $(".altura").val();
+                  val_fecha = $(".fecha").val();
             
-            
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna;
+            var datos = 'idrodal='+ idRodal 
+                    + '&servicio=' + val_servicio
+                    + '&sistemaInventario=' + val_sistemaInventario 
+                    + '&diametroMedio=' + val_diametroMedio
+                    + '&alturaDominante=' + val_alturaDominante
+                    + '&areaBasal=' + val_areaBasal
+                    + '&volumen=' + val_volumen
+                    + '&numeroArboles=' + val_numeroArboles
+                    + '&altura=' + val_altura
+                    + '&fecha=' + val_fecha;
             $.ajax({
                 type: "POST",
-                url: "ingresaPredio.php",
+                url: "ingresaInventario.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    predio.cargarTabla();
+                    rodal.cargarTabla();
                    // $(document).ajaxStop(predio.mostrarMensaje(""));
                     
 //                    $('#page-wrapper').html(response);
@@ -74,7 +85,7 @@ console.log('iniciando eventos de inventario');
          * un nuevo predio
          * @returns {undefined}
          */
-        ingresaNuevoPredio: function(id){
+        ingresaNuevoInventario: function(id){
              $( "#nuevoInventario" ).dialog({
               title: "Nuevo Inventario para el Rodal "+id,
               height: 560,
@@ -86,69 +97,156 @@ console.log('iniciando eventos de inventario');
                 Aceptar: function() {
                   console.log("Se inicia validacion");
                   valida = true;
-                  ok_id_predio = false;
-                  ok_comuna = false;
-                  ok_nombre = false;
-                  ok_superficie = false;
-                  ok_valor = false;
+                  ok_servicio = false;
+                  ok_sistemaInventario = false;
+                  ok_diametroMedio = false;
+                  ok_alturaDominante = false;
+                  ok_areaBasal = false;
+                  ok_volumen = false;
+                  ok_numeroArboles = false;
+                  ok_altura =  false;
+                  ok_fecha = false;
                   
-                  if($(".idpredio").attr("ok") == "true") ok_id_predio = true;
-                  if($(".id_comuna").attr("ok") == "true" ) ok_comuna = true;
+                 
+                  val_idRodal = id;
+                  val_servicio = $(".servicio").val();
+                  val_sistemaInventario = $(".sistemaInventario").val();
+                  val_diametroMedio = $(".diametroMedio").val();
+                  val_alturaDominante = $(".alturaDominante").val();
+                  val_areaBasal = $(".areaBasal").val();
+                  val_volumen = $(".volumen").val();
+                  val_numeroArboles = $(".numeroArboles").val();
+                  val_altura = $(".altura").val();
+                  val_fecha = $(".fecha").val();
                   
-                  val_nombre = $(".nombre").val();
-                  val_superficie = $(".superficie").val();
-                  val_valor = $(".valorcomercial").val();
-                  
-                  if(val_nombre != ""){
-                      console.log("nombre es correcto")
-                      $(".nombre").tooltip('destroy');
-                      ok_nombre = true;
+                  console.log("valor servicio "+val_servicio);
+                  if(val_servicio != ""){
+                      console.log("servicio es correcto")
+                      $(".servicio").tooltip('destroy');
+                      ok_servicio = true;
+                      
                   }else{
-                      $(".nombre").tooltip(
+                      $(".servicio").tooltip(
                                     {
-                                    title: 'El campo nombre no puede ser vacio',
+                                    title: 'El campo servicio no puede ser vacio',
+                                    placement: 'bottom'});
+                                $(".servicio").addClass("error");
+                  }
+                  
+                  if(val_sistemaInventario != ""){
+                      console.log("Sistema Inventario es correcto")
+                      $(".sistemaInventario").tooltip('destroy');
+                      ok_sistemaInventario= true;
+                  }else{
+                      $(".sistemaInventario").tooltip(
+                                    {
+                                    title: 'El campo Sistema Inventario es texto, y no puede ser vacio',
                                     placement: 'bottom'});
                   }
                   
-                  if(val_superficie != ""){
-                      console.log("superficie es correcto")
-                      $(".superficie").tooltip('destroy');
-                      ok_superficie = true;
-                  }else{
-                      $(".superficie").tooltip(
-                                    {
-                                    title: 'El campo superficie es númerico, y no puede ser vacio',
-                                    placement: 'bottom'});
-                  }
-                  
-                  if(val_valor != ""){
+                  if(val_diametroMedio != ""){
                       console.log("valor comercial es correcto")
-                      $(".valorcomercial").tooltip('destroy');
-                      ok_valor = true;
+                      $(".diametroMedio").tooltip('destroy');
+                      ok_diametroMedio = true;
                   }else{
-                      $(".valorcomercial").tooltip(
+                      $(".diametroMedio").tooltip(
                                     {
-                                    title: 'El campo valor comercial es númerico, y no puede ser vacio',
+                                    title: 'El campo valor diámetro medio comercial es númerico, y no puede ser vacio',
                                     placement: 'bottom'});
                   }
-                  valida = valida && ok_id_predio && ok_comuna && ok_nombre && ok_superficie && ok_valor;
+                  
+                  if(val_alturaDominante != ""){
+                      console.log("valor comercial es correcto")
+                      $(".alturaDominante").tooltip('destroy');
+                      ok_alturaDominante = true;
+                  }else{
+                      $(".alturaDominante").tooltip(
+                                    {
+                                    title: 'El campo valor altura dominante  es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_areaBasal != ""){
+                      console.log("valor comercial es correcto")
+                      $(".areaBasal").tooltip('destroy');
+                      ok_areaBasal = true;
+                  }else{
+                      $(".areaBasal").tooltip(
+                                    {
+                                    title: 'El campo valor altura área basal es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_volumen != ""){
+                      console.log("valor volumen es correcto")
+                      $(".volumen").tooltip('destroy');
+                      ok_volumen = true;
+                  }else{
+                      $(".volumen").tooltip(
+                                    {
+                                    title: 'El campo valor volumen es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_numeroArboles != ""){
+                      console.log("valor numero de arboles es correcto")
+                      $(".numeroArboles").tooltip('destroy');
+                      ok_numeroArboles = true;
+                  }else{
+                      $(".numeroArboles").tooltip(
+                                    {
+                                    title: 'El campo numero arboles es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_altura != ""){
+                      console.log("valor altura es correcto")
+                      $(".altura").tooltip('destroy');
+                      ok_altura = true;
+                  }else{
+                      $(".altura").tooltip(
+                                    {
+                                    title: 'El campo altura es númerico, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  if(val_fecha != ""){
+                      console.log("valor fecha es correcto")
+                      $(".fecha").tooltip('destroy');
+                      ok_fecha = true;
+                  }else{
+                      $(".fecha").tooltip(
+                                    {
+                                    title: 'El campo fecha es una date, y no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  
+                  
+                  valida = valida && ok_servicio && ok_sistemaInventario && ok_diametroMedio && ok_alturaDominante 
+                          && ok_areaBasal && ok_volumen && ok_numeroArboles && ok_altura && ok_fecha;
                   
                   if(valida){
-                       predio.aceptarIngresoPredio();
-                       predio.cargarTabla();
+                       inventario.aceptarIngresoInventario(id);
                        $( this ).dialog( "close" );
                   }else{
                       switch(false){
-                          case ok_id_predio: $(".idpredio").focus();
+                          case ok_servicio: $(".servicio").focus();
                               break;
-                          case ok_nombre: $(".nombre").focus();
-                              
+                          case ok_sistemaInventario: $(".sistemaInventario").focus();
                               break;
-                          case ok_comuna: $(".id_comuna").focus();
+                          case ok_diametroMedio: $(".diametroMedio").focus();
                               break;
-                          case ok_superficie: $(".superficie").focus();
+                          case ok_alturaDominante: $(".alturaDominante").focus();
                               break;
-                          case ok_valor: $(".valorcomercial").focus();
+                          case ok_areaBasal: $(".areaBasal").focus();
+                              break;
+                          case ok_volumen: $(".volumen").focus();
+                              break;
+                          case ok_numeroArboles: $(".numeroArboles").focus();
+                              break;
+                          case ok_altura: $(".altura").focus();
+                              break;
+                          case ok_fecha: $(".fecha").focus();
                               break;
                               
                       }

@@ -47,7 +47,7 @@ $predios = $control->findAllRodales();
                 echo "<button type='button' onclick='rodal.modificarRodal(".$row['ID_RODAL'].")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                 echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";
                 echo "<button type='button' onclick='rodal.cargarListaInventario(".$row['ID_RODAL'].")' class='btn btn-info glyphicon glyphicon-list-alt'  title='Ver Inventarios'></button>";
-                echo "<button type='button' onclick='inventario.ingresaNuevoPredio(".$row['ID_RODAL'].")' class='btn btn-primary glyphicon glyphicon-plus-sign'  title='Agregar Inventario'></button>";
+                echo "<button type='button' onclick='inventario.ingresaNuevoInventario(".$row['ID_RODAL'].")' class='btn btn-primary glyphicon glyphicon-plus-sign'  title='Agregar Inventario'></button>";
                 echo "</td>";
                 echo "</tr>";
             }
@@ -68,10 +68,6 @@ $predios = $control->findAllRodales();
             <div><label>Número de Árboles: </label><input type="number" class="altDom form-control" name="numeroArboles" required="required"/></div>
             <div><label>Altura: </label><input type="number" class="altura form-control" name="altura" required="required"/></div>
             <div><label>Fecha Medición: </label><input type="date" class="fecha form-control" name="fecha" required="required"/></div>
-
-
-
-            
             
             
         </fieldset>
