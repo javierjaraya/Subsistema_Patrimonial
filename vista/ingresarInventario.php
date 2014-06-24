@@ -16,6 +16,7 @@ $numeroArboles = $_POST['numeroArboles'];
 $altura = $_POST['altura'];
 $fecha = $_POST['fecha'];
 
+
 $control = Sistema::getInstancia();
 
 $inventario = new Inventario();
@@ -29,7 +30,8 @@ $inventario->setAreaBasal($areaBasal);
 $inventario->setVolumen($volumen);
 $inventario->setNumeroArboles($numeroArboles);
 $inventario->setAltura($altura);
-$inventario->setFechaMedicion($fechaMedicion);
+$inventario->setFechaMedicion($fecha);
+
 
 $control->saveInventario($inventario);
 

@@ -63,11 +63,8 @@ console.log('iniciando eventos de inventario');
                 url: "ingresarInventario.php",
                 data: datos,
                 success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
-                    rodal.cargarTabla();
-                   // $(document).ajaxStop(predio.mostrarMensaje(""));
+                    console.log("Ajax ejecutado correctamente aceptar ingreso inventario");
                     
-//                    $('#page-wrapper').html(response);
                     
                    
                 },
