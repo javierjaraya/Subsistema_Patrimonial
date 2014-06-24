@@ -20,20 +20,19 @@ class ZonaDAO {
      * Metodo que busca y retorna todas las Zonas almacenadas
      * @return Array Zona Description: retorna un array de Zonas
      */
-    public function getAllZonas(){
+    public function findAll(){
         $this->conexion->conectar();
         $consultaZona = "SELECT * FROM zona";
-        $query = $this->conexion->ejecutar($consultaComuna);
+        $query = $this->conexion->ejecutar($consultaZona);
         $zonas = array(); // Lista contenedora de zonas
         $i = 0;
         while(ocifetch($query)){
             $zona = new Zona();
             $zona->setIdZona(ociresult($query, "ID_ZONA"));
             $zona->setNombre(ociresult($query, "NOMBRE"));
-            $zonas[$i] = $zona;
-            $i++;
+            $zonas[] = $zona;
         }
-        $this->cone->desconectar();
+        $this->conexion->desconectar();
         return $zonas;
     }
     /**

@@ -168,7 +168,7 @@ console.log('iniciando eventos de cuenta');
                 }
             });
             
-            $( this ).dialog( "close" );
+            $( this ).dialog( "destroy" );
                     return true;
                   
             }
