@@ -106,6 +106,10 @@ class Sistema {
     public function actualizarCuenta($cuenta, $id_original){
         $this->cuentaDAO->actualizarCuentaDAO($cuenta, $id_original);
     }
+    
+    public function eliminarCuenta($idCuenta){
+        $this->cuentaDAO->delete($idCuenta);
+    }
     /**
      * Metodo que retorna una cuenta de usuario segun un determinado dni y password
      * @author Javier

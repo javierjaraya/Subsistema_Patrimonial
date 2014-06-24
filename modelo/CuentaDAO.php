@@ -130,6 +130,18 @@ class CuentaDAO{
         $this->conexion->desconectar();
         return $cuenta;
     }
+    
+    public function delete($idCuenta){
+        $this->conexion->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE cuenta 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_CUENTA='".$idCuenta."' ";
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+        
+    }
 
     public function findLikeAtrr($name) {
         
