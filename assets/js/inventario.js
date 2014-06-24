@@ -60,7 +60,7 @@ console.log('iniciando eventos de inventario');
                     + '&fecha=' + val_fecha;
             $.ajax({
                 type: "POST",
-                url: "ingresaInventario.php",
+                url: "ingresarInventario.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
@@ -73,7 +73,7 @@ console.log('iniciando eventos de inventario');
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Error al Ingresar Predio');
+                    $('#page-wrapper').html('Error al Ingresar Inventario');
                                   
                 }
             });

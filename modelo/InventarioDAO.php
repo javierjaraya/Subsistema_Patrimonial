@@ -71,9 +71,23 @@ class InventarioDAO  implements interfaceDAO{
     public function findLikeAtrr($name) {
         
     }
-
+    
+    private function queryMaxID(){
+        $consultaMaxId ="SELECT (max(id_inventario)+1) AS id FROM inventario";
+        $queryId = $this->cone->ejecutar($consultaMaxId);
+        while(OCIFetch($queryId)){
+            $id = ociresult($queryId, "ID");
+        }
+        return $id;
+    }
+    
     public function save($object) {
-        
+        $this->cone->conectar();
+        $id_inventario = queryMaxID();
+        $laConsulta = "INSERT into INVENTARIO (ID_INVENTARIO, SERVICIO, SISTEMA_INVENTARIO, DIAMETRO_MEDIO, ALTURA_DOMINANTE, AREA_BASAL, VOLUMNE, NUMERO_ARBOLES, ALTURA, FECHA_MEDICION, ID_RODAL) 
+            VALUES ('".$id_inventario."','".$object->getServicio()."','".$object->getSistemaInventario()."','".$object->getDiametroMedio()."','".$object->getAlturaDominante()."','".$object->getAreaBasal()."','".$object->getVolumen()."','".$object->getNumeroArboles()."','".$object->getAltura()."','".$object->getFechaMedicion()."','".$object->getIdRodal()."')";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
     }
 
     public function update($object) {

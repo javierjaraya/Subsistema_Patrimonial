@@ -243,6 +243,10 @@ class Sistema {
     public function findInventarios($idRodal, $fi, $ff){
         return $this->inventarioDAO->findBetweenDate($idRodal, $fi, $ff);
     }
+    
+    public function saveInventario($inventario){
+        $this->inventarioDAO->save($inventario);
+    }
 
 
 
