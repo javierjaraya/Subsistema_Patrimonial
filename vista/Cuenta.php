@@ -43,7 +43,7 @@ $cuentas = $control->findAllCuentas();
                               
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'></button>";
                 
-                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='cuenta.eliminarCuenta(".$cuenta->getIdCuenta().")'></button>";
                 
                 echo "</td>";
                 echo "</tr>";

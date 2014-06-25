@@ -182,6 +182,31 @@ console.log('iniciando eventos de cuenta');
               }
             });
         },
+        
+        eliminarCuenta: function(id){
+            var confirmacion = confirm("¿Está seguro que desea eliminar?");
+            if(confirmacion){
+                var idCuenta = id;
+                //cuenta.mostrarModificar();
+                console.log("Id cuenta a eliminar: "+idCuenta);
+                var datos = 'idCuenta='+ idCuenta ;
+                $.ajax({
+                    type: "POST",
+                    url: "eliminarCuenta.php",
+                    data: datos,
+                    success: function(response) {
+                        console.log("Ajax ejecutado correctamente");
+                        cuenta.cargarTabla();
+                    },
+                    error: function() {
+                        console.log("Error al ejecutar AJAX");
+                        //$('#page-wrapper').html('Consulta mal hecha');
+                                      
+                    }
+                });
+            }
+            
+        },
               
       };
     })();
