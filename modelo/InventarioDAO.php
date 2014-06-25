@@ -33,9 +33,11 @@ class InventarioDAO  implements interfaceDAO{
     public function findBetweenDate($idRodal, $fi, $ff){
         $inventarios = array();
         $this->conexion->conectar();
+        $estado = 1;
         $laConsulta = "SELECT * FROM inventario
             WHERE  ID_RODAL = '".$idRodal."'
             AND (FECHA_MEDICION BETWEEN to_date('".$fi."', 'yyyy-mm-dd') AND to_date('".$ff."','yyyy-mm-dd'))
+            AND ESTADO = '".$estado."'
             ORDER BY FECHA_MEDICION";
         $query = $this->conexion->ejecutar($laConsulta);
         while(ocifetch($query)){
@@ -76,7 +78,7 @@ class InventarioDAO  implements interfaceDAO{
     
     private function queryMaxID(){
         $consultaMaxId ="SELECT (max(id_inventario)+1) AS id FROM inventario";
-        $queryId = $this->cone->ejecutar($consultaMaxId);
+        $queryId = $this->conexion->ejecutar($consultaMaxId);
         while(OCIFetch($queryId)){
             $id = ociresult($queryId, "ID");
         }
