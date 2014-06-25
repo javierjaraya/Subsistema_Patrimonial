@@ -95,4 +95,5 @@ $("#tabla_inventarios").dataTable(
                   
                   );
  </script>
+ <script type="text/javascript" src="../assets/js/inventario.js"></script>
  

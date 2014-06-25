@@ -102,7 +102,7 @@ class InventarioDAO  implements interfaceDAO{
         $laConsulta = "UPDATE inventario 
                         SET     
                             ESTADO='".$estadoEliminado."'   
-                        WHERE ID_PREDIO='".$id."' ";
+                        WHERE ID_INVENTARIO='".$id."' ";
         $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
     }

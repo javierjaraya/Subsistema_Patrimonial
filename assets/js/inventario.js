@@ -302,7 +302,7 @@ console.log('iniciando eventos de inventario');
             var confirmacion = confirm("¿Está seguro que desea eliminar?");
             if(confirmacion){
                 var idInventario = id;
-                //predio.mostrarModificar();
+                
                 console.log("Id Inventario a eliminar: "+idInventario);
                 var datos = 'idinventario='+ idInventario ;
                 $.ajax({
@@ -311,7 +311,7 @@ console.log('iniciando eventos de inventario');
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
-                        predio.cargarTabla();
+                        
                     },
                     error: function() {
                         console.log("Error al ejecutar AJAX");
