@@ -1,3 +1,4 @@
+
 <?php
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Inventario.php';
@@ -94,3 +95,4 @@ $("#tabla_inventarios").dataTable(
                   
                   );
  </script>
+ 

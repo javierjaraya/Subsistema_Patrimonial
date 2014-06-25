@@ -207,6 +207,10 @@ class Sistema {
     public function saveInventario($inventario){
         $this->inventarioDAO->save($inventario);
     }
+    
+    public function eliminarInventario($id){
+        $this->inventarioDAO->delete($id);
+    }
 
 
 

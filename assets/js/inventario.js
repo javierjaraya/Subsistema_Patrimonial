@@ -298,6 +298,30 @@ console.log('iniciando eventos de inventario');
             };
             $.blockUI(confi);
         },
+         eliminarInventario: function(id){
+            var confirmacion = confirm("¿Está seguro que desea eliminar?");
+            if(confirmacion){
+                var idInventario = id;
+                //predio.mostrarModificar();
+                console.log("Id Inventario a eliminar: "+idInventario);
+                var datos = 'idinventario='+ idInventario ;
+                $.ajax({
+                    type: "POST",
+                    url: "eliminarInventario.php",
+                    data: datos,
+                    success: function(response) {
+                        console.log("Ajax ejecutado correctamente");
+                        predio.cargarTabla();
+                    },
+                    error: function() {
+                        console.log("Error al ejecutar AJAX");
+                        //$('#page-wrapper').html('Consulta mal hecha');
+                                      
+                    }
+                });
+            }
+            
+        },
         
       };
     })();

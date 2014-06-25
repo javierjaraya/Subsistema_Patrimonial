@@ -95,4 +95,15 @@ class InventarioDAO  implements interfaceDAO{
     public function update($object) {
         
     }
+    
+    public function delete($id){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE inventario 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_PREDIO='".$id."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+    }
 }
