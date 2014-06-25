@@ -306,11 +306,12 @@ console.log('iniciando eventos de inventario');
                 console.log("Id Inventario a eliminar: "+idInventario);
                 var datos = 'idinventario='+ idInventario ;
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "eliminarInventario.php",
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
+                        
                         
                     },
                     error: function() {

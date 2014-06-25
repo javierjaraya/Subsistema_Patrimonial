@@ -19,8 +19,10 @@ class InventarioDAO  implements interfaceDAO{
     
     public function findInventarioByIdRodal($idRodal){
         $this->conexion->conectar();
+        $estado = 1;
         $laConsulta = "SELECT * FROM inventario
             WHERE  ID_RODAL = '".$idRodal."'
+                AND ESTADO = '".$estado."'
             ORDER BY ID_INVENTARIO";
         
         $query = $this->conexion->ejecutar($laConsulta);
@@ -99,10 +101,10 @@ class InventarioDAO  implements interfaceDAO{
     public function delete($id){
         $this->cone->conectar();
         $estadoEliminado = 0;
-        $laConsulta = "UPDATE inventario 
+        $laConsulta = "UPDATE INVENTARIO 
                         SET     
                             ESTADO='".$estadoEliminado."'   
-                        WHERE ID_INVENTARIO='".$id."' ";
+                        WHERE ID_INVENTARIO=".$id." ";
         $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
     }
