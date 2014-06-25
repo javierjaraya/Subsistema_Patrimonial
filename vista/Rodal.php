@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $predios = $control->findAllRodales();
 ?>
 <div class="row">
-    <h1>Lista de Rodales  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('rodalReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
+    <h1>Lista de Rodales  <button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('rodalReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -44,8 +44,8 @@ $predios = $control->findAllRodales();
                 echo "<td class='text-right'>".$row['ANIO']."</td>";
                 echo "<td class='text-right'>".$row['VALOR']."</td>";
                 echo "<td>";
-                echo "<button type='button' onclick='rodal.modificarRodal(".$row['ID_RODAL'].")' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  ></button>";
+                echo "<button type='button' onclick='rodal.modificarRodal(".$row['ID_RODAL'].")' class='btn btn-warning glyphicon glyphicon-pencil' title='Editar Rodal'></button>";
+                echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  title='Eliminar Rodal'></button>";
                 echo "<button type='button' onclick='rodal.cargarListaInventario(".$row['ID_RODAL'].")' class='btn btn-info glyphicon glyphicon-list-alt'  title='Ver Inventarios'></button>";
                 echo "<button type='button' onclick='inventario.ingresaNuevoInventario(".$row['ID_RODAL'].")' class='btn btn-primary glyphicon glyphicon-plus-sign'  title='Agregar Inventario'></button>";
                 echo "</td>";

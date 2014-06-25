@@ -46,7 +46,8 @@ $inventario = $control->getInventarios($idRodal);
                 <th >Volumen <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >N° Arboles <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Altura <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Fecha Medición <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Fecha<i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Acción</th>
                
             </tr>
         </thead>
@@ -64,7 +65,11 @@ $inventario = $control->getInventarios($idRodal);
                 echo "<td class='text-right'>".$row['NUMERO_ARBOLES']."</td>";
                 echo "<td class='text-right'>".$row['ALTURA']."</td>";
                 echo "<td class='text-right'>".$row['FECHA_MEDICION']."</td>";
-
+                echo "<td>";
+                echo "<button type='button' onclick='inventario.modificarInventario(".$row['ID_INVENTARIO'].")' class='btn btn-warning glyphicon glyphicon-pencil' title='Editar Inventario'></button>";
+                echo "<button type='button' onclick='inventario.eliminarInventario(".$row['ID_INVENTARIO'].")' class='btn btn-danger glyphicon glyphicon-trash'  title='Eliminar Inventario'></button>";
+                
+                echo "</td>";
                 
                 echo "</tr>";
             }
