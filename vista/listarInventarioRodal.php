@@ -68,7 +68,7 @@ $inventario = $control->getInventarios($idRodal);
                 echo "<td class='text-right'>".$row['FECHA_MEDICION']."</td>";
                 echo "<td>";
                 echo "<button type='button' onclick='inventario.modificarInventario(".$row['ID_INVENTARIO'].")' class='btn btn-warning glyphicon glyphicon-pencil' title='Editar Inventario'></button>";
-                echo "<button type='button' onclick='inventario.eliminarInventario(".$row['ID_INVENTARIO'].")' class='btn btn-danger glyphicon glyphicon-trash'  title='Eliminar Inventario'></button>";
+                echo "<button type='button' onclick='inventario.eliminarInventario(".$row['ID_INVENTARIO'].",".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  title='Eliminar Inventario'></button>";
                 
                 echo "</td>";
                 

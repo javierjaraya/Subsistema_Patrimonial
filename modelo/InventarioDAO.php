@@ -86,9 +86,9 @@ class InventarioDAO  implements interfaceDAO{
     public function save($object) {
         $this->conexion->conectar();
         $id_inventario = queryMaxID();
-            
-        $laConsulta = "INSERT into INVENTARIO (ID_INVENTARIO, SERVICIO, SISTEMA_INVENTARIO, DIAMETRO_MEDIO, ALTURA_DOMINANTE, AREA_BASAL, VOLUMNE, NUMERO_ARBOLES, ALTURA, FECHA_MEDICION, ID_RODAL) 
-            VALUES ('".$id_inventario."','".$object->getServicio()."','".$object->getSistemaInventario()."','".$object->getDiametroMedio()."','".$object->getAlturaDominante()."','".$object->getAreaBasal()."','".$object->getVolumen()."','".$object->getNumeroArboles()."','".$object->getAltura()."',to_date('".$object->getFechaMedicion()."', 'yyyy-mm-dd'),'".$object->getIdRodal()."')";
+        $estado =1;  
+        $laConsulta = "INSERT into INVENTARIO (ID_INVENTARIO, SERVICIO, SISTEMA_INVENTARIO, DIAMETRO_MEDIO, ALTURA_DOMINANTE, AREA_BASAL, VOLUMNE, NUMERO_ARBOLES, ALTURA, FECHA_MEDICION, ID_RODAL, ESTADO) 
+            VALUES ('".$id_inventario."','".$object->getServicio()."','".$object->getSistemaInventario()."','".$object->getDiametroMedio()."','".$object->getAlturaDominante()."','".$object->getAreaBasal()."','".$object->getVolumen()."','".$object->getNumeroArboles()."','".$object->getAltura()."',to_date('".$object->getFechaMedicion()."', 'yyyy-mm-dd'),'".$object->getIdRodal()."','".$estado."')";
         echo $laConsulta;
         $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();

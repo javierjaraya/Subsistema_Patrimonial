@@ -298,7 +298,7 @@ console.log('iniciando eventos de inventario');
             };
             $.blockUI(confi);
         },
-         eliminarInventario: function(id){
+         eliminarInventario: function(id, idRodal){
             var confirmacion = confirm("¿Está seguro que desea eliminar?");
             if(confirmacion){
                 var idInventario = id;
@@ -311,7 +311,7 @@ console.log('iniciando eventos de inventario');
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
-                        
+                        rodal.cargarListaInventario(idRodal);
                         
                     },
                     error: function() {
