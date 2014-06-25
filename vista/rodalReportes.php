@@ -5,9 +5,10 @@ $pdf = new PDF();
 $control = Sistema::getInstancia();
 $pdf->AddPage();
 $predios = $control->findAllRodales();
+$fechaActual =  date("d/m/Y"); 
 $miCabecera = array('Id Predio','Id', 'Manejo', 'Esp.Arbórea', 'Zona Crecimiento', 'Superficie', 'Año Plant.', 'Valor Comercial');
  
-$tituloPagina = "Listado de Rodales";
+$tituloPagina = "Listado de Rodales al ".$fechaActual;
 $pdf->tablaHorizontalRodal($miCabecera, $predios, $tituloPagina);
  
 $pdf->Output(); //Salida al navegador
