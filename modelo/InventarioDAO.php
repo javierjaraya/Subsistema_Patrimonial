@@ -84,14 +84,14 @@ class InventarioDAO  implements interfaceDAO{
     }
     
     public function save($object) {
-        $this->cone->conectar();
+        $this->conexion->conectar();
         $id_inventario = queryMaxID();
             
         $laConsulta = "INSERT into INVENTARIO (ID_INVENTARIO, SERVICIO, SISTEMA_INVENTARIO, DIAMETRO_MEDIO, ALTURA_DOMINANTE, AREA_BASAL, VOLUMNE, NUMERO_ARBOLES, ALTURA, FECHA_MEDICION, ID_RODAL) 
             VALUES ('".$id_inventario."','".$object->getServicio()."','".$object->getSistemaInventario()."','".$object->getDiametroMedio()."','".$object->getAlturaDominante()."','".$object->getAreaBasal()."','".$object->getVolumen()."','".$object->getNumeroArboles()."','".$object->getAltura()."',to_date('".$object->getFechaMedicion()."', 'yyyy-mm-dd'),'".$object->getIdRodal()."')";
         echo $laConsulta;
-        $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
 
     public function update($object) {
@@ -99,13 +99,13 @@ class InventarioDAO  implements interfaceDAO{
     }
     
     public function delete($id){
-        $this->cone->conectar();
+        $this->conexion->conectar();
         $estadoEliminado = 0;
         $laConsulta = "UPDATE INVENTARIO 
                         SET     
                             ESTADO='".$estadoEliminado."'   
                         WHERE ID_INVENTARIO=".$id." ";
-        $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
 }
