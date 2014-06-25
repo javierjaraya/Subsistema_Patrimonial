@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $predios = $control->findAllRodales();
 ?>
 <div class="row">
-    <h1>Lista de Rodales  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('predioReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
+    <h1>Lista de Rodales  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('rodalReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -60,12 +60,12 @@ $predios = $control->findAllRodales();
         <fieldset>
             
             <div><label>Servicio: </label>&nbsp;&nbsp;<img id="id_servicio_check" src="" style="display: none;"><input type="text" class="servicio form-control" name="servicio" ok="false"/></div>
-            <div><label>Sistema Inventario: </label><input type="text" class="sistInventario form-control" name="sistemaInventario" required="required"/></div>
-            <div><label>Diámetro Medio: </label><input type="number" class="diaMedio form-control" name="diametroMedio" required="required"/></div>
-            <div><label>Altura Dominante: </label><input type="number" class="altDom form-control" name="alturaDominante" required="required"/></div>
+            <div><label>Sistema Inventario: </label><input type="text" class="sistemaInventario form-control" name="sistemaInventario" required="required"/></div>
+            <div><label>Diámetro Medio: </label><input type="number" class="diametroMedio form-control" name="diametroMedio" required="required"/></div>
+            <div><label>Altura Dominante: </label><input type="number" class="alturaDominante form-control" name="alturaDominante" required="required"/></div>
             <div><label>Área Basal: </label><input type="number" class="areaBasal form-control" name="areaBasal" required="required"/></div>
             <div><label>Volumen: </label><input type="number" class="volumen form-control" name="volumen" required="required"/></div>
-            <div><label>Número de Árboles: </label><input type="number" class="altDom form-control" name="numeroArboles" required="required"/></div>
+            <div><label>Número de Árboles: </label><input type="number" class="numeroArboles form-control" name="numeroArboles" required="required"/></div>
             <div><label>Altura: </label><input type="number" class="altura form-control" name="altura" required="required"/></div>
             <div><label>Fecha Medición: </label><input type="date" class="fecha form-control" name="fecha" required="required"/></div>
             

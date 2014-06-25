@@ -29,6 +29,9 @@ class RodalDAO implements interfaceDAO{
         return $query;
     }
     
+   
+
+
     public function findByExample($rodal){
         
         

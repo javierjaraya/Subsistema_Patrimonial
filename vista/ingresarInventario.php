@@ -30,7 +30,7 @@ $inventario->setAreaBasal($areaBasal);
 $inventario->setVolumen($volumen);
 $inventario->setNumeroArboles($numeroArboles);
 $inventario->setAltura($altura);
-$inventario->setFechaMedicion($fecha);
+
 
 
 $control->saveInventario($inventario);

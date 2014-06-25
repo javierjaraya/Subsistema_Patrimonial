@@ -40,6 +40,7 @@ console.log('iniciando eventos de inventario');
                   var idRodal = id;
                   val_servicio = $(".servicio").val();
                   val_sistemaInventario = $(".sistemaInventario").val();
+                  console.log("sistema inventario: "+val_sistemaInventario);
                   val_diametroMedio = $(".diametroMedio").val();
                   val_alturaDominante = $(".alturaDominante").val();
                   val_areaBasal = $(".areaBasal").val();
@@ -58,11 +59,12 @@ console.log('iniciando eventos de inventario');
                     + '&numeroArboles=' + val_numeroArboles
                     + '&altura=' + val_altura
                     + '&fecha=' + val_fecha;
+                    console.log(datos);
             $.ajax({
                 type: "POST",
                 url: "ingresarInventario.php",
                 data: datos,
-                success: function(response) {
+                success: function(response) {
                     console.log("Ajax ejecutado correctamente aceptar ingreso inventario");
                     
                     
@@ -260,7 +262,7 @@ console.log('iniciando eventos de inventario');
         
               }
             });            
-            console.log('abriendo contenedor nuevo predio');
+            console.log('abriendo contenedor nuevo inventario');
             
             
         },
