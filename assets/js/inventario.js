@@ -323,6 +323,89 @@ console.log('iniciando eventos de inventario');
             }
             
         },
+        modificarRodal: function(id, idRodal){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idInventario = id;
+            var datos = 'idinventario='+ idInventario ;
+            $.ajax({
+                type: "POST",
+                url: "modificarInventario.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editPredioDialog').html(response);
+                    rodal.cargarListaInventario(idRodal);
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+        },
+        mostrarModificar: function(){
+              $( "#editPredioDialog" ).dialog({
+              title: "Edición Rodal",
+              height: 600,
+              width: 500,
+              modal: true,
+             
+              resizable: false,
+              buttons: {
+                Actualizar: function() {
+                  
+                  var bValid = true;
+                  var idPredio = $("#idpredio").val();
+                  idRodal = $("#idrodal").val();
+                  anioPlantacion = $("#anioPlantacion").val();
+                  superficie = $("#superficie").val();
+                  console.log(superficie);
+                  valorComercial = $("#valorComercial").val();
+                  idEspecieArborea = $("#idEspecieArborea").val();
+                  manejo = $("#manejo").val();
+                  zonaCrecimiento = $("#zonaCrecimiento").val();
+                  estado = $("#estado").val();
+            
+            var datos = 'idrodal='+ idRodal
+                        + '&anioPlantacion=' + anioPlantacion 
+                        + '&superficie=' + superficie 
+                        + '&valorComercial=' + valorComercial 
+                        + '&idEspecieArborea=' + idEspecieArborea
+                        + '&manejo=' + manejo
+                        + '&zonaCrecimiento=' + zonaCrecimiento
+                        + '&estado=' + estado;
+            $.ajax({
+                type: "POST",
+                url: "guardarCambiosActualizacionRodal.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#page-wrapper').html(response);
+                    rodal.cargarTabla();
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Consulta mal hecha');
+                }
+            });
+            
+            $( this ).dialog( "close" );
+                    return true;
+                  
+            }
+            ,
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        $( this ).dialog( "close" );
+              }
+            });
+        },
         
       };
     })();

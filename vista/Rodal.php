@@ -42,7 +42,7 @@ $predios = $control->findAllRodales();
                 echo "<td >".$row['ZONA']."</td>";
                 echo "<td class='text-right'>".$row['SUP']."</td>";
                 echo "<td class='text-right'>".$row['ANIO']."</td>";
-                echo "<td class='text-right'>".$row['VALOR']."</td>";
+                echo "<td class='text-right'>".number_format($row['VALOR'])."</td>";
                 echo "<td>";
                 echo "<button type='button' onclick='rodal.modificarRodal(".$row['ID_RODAL'].")' class='btn btn-warning glyphicon glyphicon-pencil' title='Editar Rodal'></button>";
                 echo "<button type='button' onclick='rodal.eliminarRodal(".$row['ID_RODAL'].")' class='btn btn-danger glyphicon glyphicon-trash'  title='Eliminar Rodal'></button>";
