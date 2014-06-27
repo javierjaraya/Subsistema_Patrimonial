@@ -361,17 +361,27 @@ console.log('iniciando eventos de inventario');
                   var bValid = true;
                   var idinventario = id;
                   idRodal = $("#idRodal").val();
-                  anioPlantacion = $("#anioPlantacion").val();
+                  servicio = $("#servicio").val();
+                  sistemaInventario = $("#sistemaInventario").val();
+                  diametroMedio = $("#diametroMedio").val();
+                  alturaDominante = $("#alturaDominante").val();
+                  areaBasal = $("#areaBasal").val();
+                  volumen = $("#volumen").val();
+                  numeroArboles = $("#numeroArboles").val();
+                  altura = $("#altura").val();
+                  fechaMedicion = $("#fecha").val();
                   
             
             var datos = 'idrodal='+ idRodal
-                        + '&anioPlantacion=' + anioPlantacion 
-                        + '&superficie=' + superficie 
-                        + '&valorComercial=' + valorComercial 
-                        + '&idEspecieArborea=' + idEspecieArborea
-                        + '&manejo=' + manejo
-                        + '&zonaCrecimiento=' + zonaCrecimiento
-                        + '&estado=' + estado;
+                        + '&servicio=' + servicio 
+                        + '&sistemaInventario=' + sistemaInventario 
+                        + '&diametroMedio=' + diametroMedio 
+                        + '&alturaDominante=' + alturaDominante
+                        + '&areaBasal=' + areaBasal
+                        + '&volumen=' + volumen
+                        + '&numeroArboles=' + numeroArboles
+                        + '&altura=' + altura
+                        + '&fechaMedicion=' + fechaMedicion;
             $.ajax({
                 type: "POST",
                 url: "guardarCambiosActualizacionRodal.php",
