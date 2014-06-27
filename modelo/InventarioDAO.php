@@ -69,7 +69,25 @@ class InventarioDAO  implements interfaceDAO{
     }
 
     public function findByID($id) {
-        
+        $inventarioEncontrado;
+        $this->conexion->conectar();
+        $laConsulta = "SELECT * FROM inventario WHERE ID_INVENTARIO = '".$id."'";
+        $query = $this->conexion->ejecutar($laConsulta);
+        while(ocifetch($query)){
+            $inventarioEncontrado = new Inventario();
+            $inventarioEncontrado->setIdInventario(ociresult($query, "ID_INVENTARIO"));
+            $inventarioEncontrado->setServicio(ociresult($query, "SERVICIO"));
+            $inventarioEncontrado->setSistemaInventario(ociresult($query, "SISTEMA_INVENTARIO"));
+            $inventarioEncontrado->setDiametroMedio(ociresult($query, "DIAMETRO_MEDIO"));
+            $inventarioEncontrado->setAlturaDominante(ociresult($query, "ALTURA_DOMINANTE"));
+            $inventarioEncontrado->setAreaBasal(ociresult($query, "AREA_BASAL"));
+            $inventarioEncontrado->setVolumen(ociresult($query, "VOLUMNE"));
+            $inventarioEncontrado->setNumeroArboles(ociresult($query, "NUMERO_ARBOLES"));
+            $inventarioEncontrado->setAltura(ociresult($query, "ALTURA"));
+            $inventarioEncontrado->setFechaMedicion(ociresult($query, "FECHA_MEDICION"));
+        }
+        $this->conexion->desconectar();
+        return $inventarioEncontrado;
     }
 
     public function findLikeAtrr($name) {

@@ -48,7 +48,7 @@ class RodalDAO implements interfaceDAO{
     }
 
     public function findById($idRodal) {
-        $rodalEncontrado = new Rodal();
+        $rodalEncontrado;
         $this->cone->conectar();
         $laConsulta = "SELECT * FROM rodal WHERE ID_RODAL = '".$idRodal."'";
         $query = $this->cone->ejecutar($laConsulta);

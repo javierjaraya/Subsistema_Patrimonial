@@ -211,6 +211,11 @@ class Sistema {
     public function eliminarInventario($id){
         $this->inventarioDAO->delete($id);
     }
+    
+    public function findInventarioById($idinventario){
+        return $this->inventarioDAO->findById($idinventario);
+        
+    }
 
 
 

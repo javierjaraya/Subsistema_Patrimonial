@@ -323,7 +323,7 @@ console.log('iniciando eventos de inventario');
             }
             
         },
-        modificarRodal: function(id, idRodal){
+        modificarInventario: function(id, idRodal){
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idInventario = id;
             var datos = 'idinventario='+ idInventario ;
@@ -334,7 +334,8 @@ console.log('iniciando eventos de inventario');
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editPredioDialog').html(response);
-                    rodal.cargarListaInventario(idRodal);
+                    
+                    inventario.mostrarModificar(id,idRodal);
                     
                    
                 },
@@ -346,10 +347,10 @@ console.log('iniciando eventos de inventario');
             });
             
         },
-        mostrarModificar: function(){
+        mostrarModificar: function(id,idRodal){
               $( "#editPredioDialog" ).dialog({
-              title: "Edición Rodal",
-              height: 600,
+              title: "Edición Inventario "+id,
+              height: 560,
               width: 500,
               modal: true,
              
@@ -358,16 +359,10 @@ console.log('iniciando eventos de inventario');
                 Actualizar: function() {
                   
                   var bValid = true;
-                  var idPredio = $("#idpredio").val();
-                  idRodal = $("#idrodal").val();
+                  var idinventario = id;
+                  idRodal = $("#idRodal").val();
                   anioPlantacion = $("#anioPlantacion").val();
-                  superficie = $("#superficie").val();
-                  console.log(superficie);
-                  valorComercial = $("#valorComercial").val();
-                  idEspecieArborea = $("#idEspecieArborea").val();
-                  manejo = $("#manejo").val();
-                  zonaCrecimiento = $("#zonaCrecimiento").val();
-                  estado = $("#estado").val();
+                  
             
             var datos = 'idrodal='+ idRodal
                         + '&anioPlantacion=' + anioPlantacion 
@@ -399,10 +394,12 @@ console.log('iniciando eventos de inventario');
             ,
                 Cancelar: function() {
                   $( this ).dialog( "close" );
+                  rodal.cargarListaInventario(idRodal);
                 }
               },
               close: function() {
-        $( this ).dialog( "close" );
+                $( this ).dialog( "close" );
+                rodal.cargarListaInventario(idRodal);
               }
             });
         },
