@@ -5,7 +5,7 @@ include_once '../controlador/Sistema.php';
 include_once '../controlador/Inventario.php';
 
 
-$idRodal = $_POST['idpredio'];
+$idRodal = $_POST['idrodal'];
 $servicio = $_POST['servicio'];
 $sistemaInventario = $_POST['sistemaInventario'];
 $diametroMedio = $_POST['diametroMedio'];
@@ -30,6 +30,7 @@ $inventario->setAreaBasal($areaBasal);
 $inventario->setVolumen($volumen);
 $inventario->setNumeroArboles($numeroArboles);
 $inventario->setAltura($altura);
+$inventario->setFechaMedicion($fecha);
 
 
 
