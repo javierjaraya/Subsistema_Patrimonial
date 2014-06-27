@@ -216,6 +216,10 @@ class Sistema {
         return $this->inventarioDAO->findById($idinventario);
         
     }
+    
+    public function actualizarInventario($inventario){
+        $this->inventarioDAO->update($inventario);
+    }
 
 
 

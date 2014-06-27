@@ -333,7 +333,7 @@ console.log('iniciando eventos de inventario');
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    $('#editPredioDialog').html(response);
+                    $('#editInventarioDialog').html(response);
                     
                     inventario.mostrarModificar(id,idRodal);
                     
@@ -348,7 +348,7 @@ console.log('iniciando eventos de inventario');
             
         },
         mostrarModificar: function(id,idRodal){
-              $( "#editPredioDialog" ).dialog({
+              $( "#editInventarioDialog" ).dialog({
               title: "Edición Inventario "+id,
               height: 560,
               width: 500,
@@ -381,15 +381,18 @@ console.log('iniciando eventos de inventario');
                         + '&volumen=' + volumen
                         + '&numeroArboles=' + numeroArboles
                         + '&altura=' + altura
-                        + '&fechaMedicion=' + fechaMedicion;
+                        + '&fechaMedicion=' + fechaMedicion
+                        + '&idInventario='+ idinventario;
+                console.log(datos);
+                
             $.ajax({
+                
                 type: "POST",
-                url: "guardarCambiosActualizacionRodal.php",
+                url: "guardarCambiosActualizacionInventario.php",
                 data: datos,
                 success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
+                    console.log("Actualizacion correcta");
                     $('#page-wrapper').html(response);
-                    rodal.cargarTabla();
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
@@ -404,15 +407,15 @@ console.log('iniciando eventos de inventario');
             ,
                 Cancelar: function() {
                   $( this ).dialog( "close" );
-                  rodal.cargarListaInventario(idRodal);
+                  //rodal.cargarListaInventario(idRodal);
                 }
               },
               close: function() {
                 $( this ).dialog( "close" );
-                rodal.cargarListaInventario(idRodal);
+                //rodal.cargarListaInventario(idRodal);
               }
             });
-        },
+        }
         
       };
     })();

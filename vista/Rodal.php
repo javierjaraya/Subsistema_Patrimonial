@@ -75,9 +75,18 @@ $predios = $control->findAllRodales();
 </div> 
     
 <div  style="display:none; cursor: default"> 
-           <div id="editPredioDialog" title="Create new user">
+           <div id="listaInventarioDialog" title="Create new user">
         
 </div>
+    
+<div id="editInventarioDialog" title="Create new user">
+        
+</div>
+    
+     <div id="editRodalDialog" title="Create new user">
+        
+</div>
+    
     
 <div class="notify_correct" style="display:none">
      <h1>Predio Agregado</h1>

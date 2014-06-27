@@ -105,7 +105,7 @@ class InventarioDAO  implements interfaceDAO{
     
     public function save($object) {
         $this->conexion->conectar();
-        $id_inventario = queryMaxID();
+        $id_inventario = $this->queryMaxID();
         $estado =1;  
         $laConsulta = "INSERT into INVENTARIO (ID_INVENTARIO, SERVICIO, SISTEMA_INVENTARIO, DIAMETRO_MEDIO, ALTURA_DOMINANTE, AREA_BASAL, VOLUMNE, NUMERO_ARBOLES, ALTURA, FECHA_MEDICION, ID_RODAL, ESTADO) 
             VALUES ('".$id_inventario."','".$object->getServicio()."','".$object->getSistemaInventario()."','".$object->getDiametroMedio()."','".$object->getAlturaDominante()."','".$object->getAreaBasal()."','".$object->getVolumen()."','".$object->getNumeroArboles()."','".$object->getAltura()."',to_date('".$object->getFechaMedicion()."', 'yyyy-mm-dd'),'".$object->getIdRodal()."','".$estado."')";
@@ -115,7 +115,22 @@ class InventarioDAO  implements interfaceDAO{
     }
 
     public function update($object) {
-        
+        $this->conexion->conectar();
+        echo "id: ".$object->getIdInventario();
+        $laConsulta = "UPDATE INVENTARIO 
+                        SET     SERVICIO = '".$object->getServicio()."',
+                                SISTEMA_INVENTARIO = '".$object->getSistemaInventario()."',
+                                DIAMETRO_MEDIO = '".$object->getDiametroMedio()."',
+                                ALTURA_DOMINANTE = '".$object->getAlturaDominante()."',
+                                AREA_BASAL = '".$object->getAreaBasal()."',
+                                VOLUMNE = '".$object->getVolumen()."',
+                                NUMERO_ARBOLES = '".$object->getNumeroArboles()."',
+                                ALTURA = '".$object->getAltura()."',
+                                FECHA_MEDICION = to_date('".$object->getFechaMedicion()."', 'yyyy-mm-dd')
+                        WHERE ID_INVENTARIO='".$object->getIdInventario()."' ";
+        echo $laConsulta;
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
     
     public function delete($id){
