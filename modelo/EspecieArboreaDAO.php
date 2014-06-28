@@ -9,7 +9,7 @@ include_once '../controlador/EspecieArborea.php';
  * 
  * @author Ivan
  */
-class EspecieArboreaDAO {
+class EspecieArboreaDAO implements interfaceDAO{
     private $conexion;
     
     public function EspecieArboreaDAO(){
@@ -21,7 +21,26 @@ class EspecieArboreaDAO {
         $laConsulta = "SELECT * FROM especiearborea ORDER BY NOMBRE_ESPECIE_ARBOREA";
         $query = $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
-        return $query;
+    }
+
+    public function findByExample($object) {
+        
+    }
+
+    public function findByID($id) {
+        
+    }
+
+    public function findLikeAtrr($name) {
+        
+    }
+
+    public function save($object) {
+        
+    }
+
+    public function update($object) {
+        
     }
 }
 ?>

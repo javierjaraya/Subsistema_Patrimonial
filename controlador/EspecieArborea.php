@@ -11,19 +11,19 @@ class EspecieArborea{
     function __construct() {
         
     }
-    public function getIdEspecieArborea() {
+    public function getId() {
         return $this->idEspecieArborea;
     }
 
-    public function setIdEspecieArborea($idEspecieArborea) {
+    public function setId($idEspecieArborea) {
         $this->idEspecieArborea = $idEspecieArborea;
     }
 
-    public function getNombreEspecieArborea() {
+    public function getNombre() {
         return $this->nombreEspecieArborea;
     }
 
-    public function setNombreEspecieArborea($nombreEspecieArborea) {
+    public function setNombre($nombreEspecieArborea) {
         $this->nombreEspecieArborea = $nombreEspecieArborea;
     }
 
