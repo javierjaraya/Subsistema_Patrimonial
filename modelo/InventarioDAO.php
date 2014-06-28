@@ -115,7 +115,22 @@ class InventarioDAO  implements interfaceDAO{
     }
 
     public function update($object) {
-        
+        $this->conexion->conectar();
+        echo "id: ".$object->getIdInventario();
+        $laConsulta = "UPDATE INVENTARIO 
+                        SET     SERVICIO = '".$object->getServicio()."',
+                                SISTEMA_INVENTARIO = '".$object->getSistemaInventario()."',
+                                DIAMETRO_MEDIO = '".$object->getDiametroMedio()."',
+                                ALTURA_DOMINANTE = '".$object->getAlturaDominante()."',
+                                AREA_BASAL = '".$object->getAreaBasal()."',
+                                VOLUMNE = '".$object->getVolumen()."',
+                                NUMERO_ARBOLES = '".$object->getNumeroArboles()."',
+                                ALTURA = '".$object->getAltura()."',
+                                FECHA_MEDICION = to_date('".$object->getFechaMedicion()."', 'yyyy-mm-dd')
+                        WHERE ID_INVENTARIO='".$object->getIdInventario()."' ";
+        echo $laConsulta;
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
     
     public function delete($id){

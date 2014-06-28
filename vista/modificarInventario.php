@@ -25,7 +25,9 @@ $yy = substr($fecha, 6, 4);
 if($yy>= 0 && $yy<=70){
     $anioFormato = 2000 + $yy;
     $fechaMedicion = $anioFormato."-".$mm."-".$dd;
-    
+}else{
+    $anioFormato = 1000 + $yy;
+    $fechaMedicion = $anioFormato."-".$mm."-".$dd;
 }
 
 
@@ -38,7 +40,7 @@ if($yy>= 0 && $yy<=70){
 ?>
 <form>
 <fieldset>
-            <div><label>Servicio: </label><input class="form-control" type="text" id="idservicio" name="idservicio" <?php echo "value='$servicio'"?> /></div>
+            <div><label>Servicio: </label><input class="form-control" type="text" id="servicio" name="servicio" <?php echo "value='$servicio'"?> /></div>
             <div><label>Sistema Inventario: </label><input class="form-control" type="text" id="sistemaInventario" name="sistemaInventario" <?php echo "value='$sistemaInventario'"?> /></div>
             <div><label>Diámetro Medio: </label><input type="text" class="form-control" id="diametroMedio" name="diametroMedio" <?php echo "value='$diametroMedio'"?> /></div>
             <div><label>Altura Dominante: </label><input type="text" class="form-control" id="alturaDominante" name="alturaDominante" <?php echo "value='$alturaDominante'"?> /></div>

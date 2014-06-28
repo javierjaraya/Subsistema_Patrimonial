@@ -333,7 +333,7 @@ console.log('iniciando eventos de inventario');
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    $('#editPredioDialog').html(response);
+                    $('#editInventarioDialog').html(response);
                     
                     inventario.mostrarModificar(id,idRodal);
                     
@@ -348,7 +348,7 @@ console.log('iniciando eventos de inventario');
             
         },
         mostrarModificar: function(id,idRodal){
-              $( "#editPredioDialog" ).dialog({
+              $( "#editInventarioDialog" ).dialog({
               title: "Edición Inventario "+id,
               height: 560,
               width: 500,
@@ -361,25 +361,38 @@ console.log('iniciando eventos de inventario');
                   var bValid = true;
                   var idinventario = id;
                   idRodal = $("#idRodal").val();
-                  anioPlantacion = $("#anioPlantacion").val();
+                  servicio = $("#servicio").val();
+                  sistemaInventario = $("#sistemaInventario").val();
+                  diametroMedio = $("#diametroMedio").val();
+                  alturaDominante = $("#alturaDominante").val();
+                  areaBasal = $("#areaBasal").val();
+                  volumen = $("#volumen").val();
+                  numeroArboles = $("#numeroArboles").val();
+                  altura = $("#altura").val();
+                  fechaMedicion = $("#fecha").val();
                   
             
             var datos = 'idrodal='+ idRodal
-                        + '&anioPlantacion=' + anioPlantacion 
-                        + '&superficie=' + superficie 
-                        + '&valorComercial=' + valorComercial 
-                        + '&idEspecieArborea=' + idEspecieArborea
-                        + '&manejo=' + manejo
-                        + '&zonaCrecimiento=' + zonaCrecimiento
-                        + '&estado=' + estado;
+                        + '&servicio=' + servicio 
+                        + '&sistemaInventario=' + sistemaInventario 
+                        + '&diametroMedio=' + diametroMedio 
+                        + '&alturaDominante=' + alturaDominante
+                        + '&areaBasal=' + areaBasal
+                        + '&volumen=' + volumen
+                        + '&numeroArboles=' + numeroArboles
+                        + '&altura=' + altura
+                        + '&fechaMedicion=' + fechaMedicion
+                        + '&idInventario='+ idinventario;
+                console.log(datos);
+                
             $.ajax({
+                
                 type: "POST",
-                url: "guardarCambiosActualizacionRodal.php",
+                url: "guardarCambiosActualizacionInventario.php",
                 data: datos,
                 success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
+                    console.log("Actualizacion correcta");
                     $('#page-wrapper').html(response);
-                    rodal.cargarTabla();
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
@@ -394,15 +407,15 @@ console.log('iniciando eventos de inventario');
             ,
                 Cancelar: function() {
                   $( this ).dialog( "close" );
-                  rodal.cargarListaInventario(idRodal);
+                  //rodal.cargarListaInventario(idRodal);
                 }
               },
               close: function() {
                 $( this ).dialog( "close" );
-                rodal.cargarListaInventario(idRodal);
+                //rodal.cargarListaInventario(idRodal);
               }
             });
-        },
+        }
         
       };
     })();

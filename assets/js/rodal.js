@@ -207,8 +207,7 @@ console.log('iniciando eventos de rodal');
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    $('#editPredioDialog').html(response);
-                    
+                    $('#listaInventarioDialog').html(response);
                     rodal.mostrarInventarios(idRodal);
                 },
                 error: function() {
@@ -219,7 +218,7 @@ console.log('iniciando eventos de rodal');
             });
         },
         mostrarInventarios: function (idRodal){
-            $( "#editPredioDialog" ).dialog({
+            $( "#listaInventarioDialog" ).dialog({
               title: "Inventarios del Rodal "+idRodal,
               height:550,
               width: 1120,
@@ -239,7 +238,7 @@ console.log('iniciando eventos de rodal');
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
-                    $('#editPredioDialog').html(response);
+                    $('#editRodalDialog').html(response);
                     
                     rodal.mostrarModificar();
                     rodal.cargarTabla();
@@ -254,7 +253,7 @@ console.log('iniciando eventos de rodal');
             
         },
         mostrarModificar: function(){
-              $( "#editPredioDialog" ).dialog({
+              $( "#editRodalDialog" ).dialog({
               title: "Edición Rodal",
               height: 600,
               width: 500,
