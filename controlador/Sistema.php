@@ -216,6 +216,10 @@ class Sistema {
         return $this->inventarioDAO->findById($idinventario);
         
     }
+    
+    public function findAllEspecies(){
+        return $this->especieArboreaDAO->findAll();
+    }
 
 
 
