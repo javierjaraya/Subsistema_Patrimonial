@@ -61,11 +61,10 @@ console.log('iniciando eventos de rodal');
          * por ajax a php
          * @returns {Boolean}
          */
-        aceptarIngresoPredio: function(){
+        aceptarIngresoRodal: function(){
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idPredio = $(".idpredio").val();
             nombre = $(".nombre").val();
-            validacion_email = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
             superficie = $(".superficie").val();
             valorcomercial = $(".valorcomercial").val();
             idComuna = $(".id_comuna").attr("idcomuna");
@@ -95,29 +94,30 @@ console.log('iniciando eventos de rodal');
         },
         
         /**
-         * metodo encargado de mostrar formulario para ingresar
-         * un nuevo predio
+         * 
+         * @param {int} idPredio
          * @returns {undefined}
          */
-        ingresaNuevoPredio: function(){
-             $( "#nuevoPredio" ).dialog({
-              title: "Nuevo Predio",
+        ingresaNuevoRodal: function(idPredio){
+             $( "#nuevoRodal" ).dialog({
+              title: "Nuevo Rodal para predio: "+idPredio,
               height: 560,
               width: 500,
               modal: true,
               position: { my: "center top", at: "center top", of: "#page-wrapper" },
               resizable: false,
+              draggable: false,
               buttons: {
                 Aceptar: function() {
                   console.log("Se inicia validacion");
                   valida = true;
-                  ok_id_predio = false;
-                  ok_comuna = false;
-                  ok_nombre = false;
+                  ok_id_rodal = false;
+                  ok_anio_plantacion = false;
+                  ok_zona = false;
                   ok_superficie = false;
                   ok_valor = false;
                   
-                  if($(".idpredio").attr("ok") == "true") ok_id_predio = true;
+                  if($("#id_rodal").attr("ok") == "true") ok_id_predio = true;
                   if($(".id_comuna").attr("ok") == "true" ) ok_comuna = true;
                   
                   val_nombre = $(".nombre").val();
@@ -159,7 +159,7 @@ console.log('iniciando eventos de rodal');
                   valida = valida && ok_id_predio && ok_comuna && ok_nombre && ok_superficie && ok_valor;
                   
                   if(valida){
-                       predio.aceptarIngresoPredio();
+                       rodal.aceptarIngresoRodal();
                        predio.cargarTabla();
                        $( this ).dialog( "close" );
                   }else{
@@ -343,101 +343,26 @@ console.log('iniciando eventos de rodal');
         },
         
         
-        
-        /**
-         * Metodo encargado de inicializar el autocomplete
-         * @returns {undefined}
-         */
-        cargaFuncionesAutocompletar: function(){
-            $(".id_comuna").autocomplete({
-                source: "buscaComuna.php",
-                minLength: 2,
-//                appendTo: '#nuevoPredio',
-                select: function(event, ui){
-                    $(".id_comuna").attr("idcomuna",ui.item.id);
-                     $(".id_comuna").attr("ok", "true");
-                    $('#comuna_check').attr("src","../assets/ico/tick.gif");
-                        $('#comuna_check').show();
-                     $(".id_comuna").tooltip('destroy');
-                },
-                change: function(event, ui){
-                    if(!ui.item){
-                        $(".id_comuna").tooltip(
-                                {
-                                title: 'Seleccione una opción válida',
-                                placement: 'bottom'});
-                        /*
-                         * Agrega check_error en input comuna
-                         */
-                        $(".id_comuna").attr("ok", "false");
-                        $('#comuna_check').attr("src","../assets/ico/error.png");
-                        $('#comuna_check').show();
-                        
-                    }
-                }
-            }).css('z-index',1000);;
-            console.log("Autocomplete iniciado");
-            $(".id_comuna").focusout(function(){
-               if($('.id_comuna').val()!=""){ 
-                    $.ajax({
-                        url:'buscaComuna.php',
-                        type:'POST',
-                        dataType:'json',
-                        data:{ nombreComuna:$('.id_comuna').val()}
-                    }).done(function(respuesta){
-                        console.log("llamada post terminada");
-                        if(respuesta.error == "1"){
-                            console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
-                            $(".id_comuna").val(respuesta.nombre);
-                            $(".id_comuna").attr("idcomuna", respuesta.id);
-                            $(".id_comuna").attr("ok", "true");
-                            $(".id_comuna").tooltip('destroy');
-                            $('#comuna_check').attr("src","../assets/ico/tick.gif");
-                            $('#comuna_check').show();
-                        }else{
-                            console.log("No se encuentra comuna");
-                            $(".id_comuna").tooltip('destroy');
-                            $(".id_comuna").tooltip(
-                                    {
-                                    title: 'Seleccione una opción válida',
-                                    placement: 'bottom'});
-                            $(".id_comuna").attr("ok", "false");
-                            $('#comuna_check').attr("src","../assets/ico/error.png");
-                            $('#comuna_check').show();
-                        }
-                    });
-               }else{
-                   console.log("No se encuentra comuna");
-                            $(".id_comuna").tooltip(
-                                    {
-                                    title: 'El Campo Comuna no puede estar vacio',
-                                    placement: 'bottom'});
-                            $(".id_comuna").attr("ok", "false");
-                            $('#comuna_check').attr("src","../assets/ico/error.png");
-                            $('#comuna_check').show();
-               }
-             });
-        },
         /**
          * Método encargado de validar el input de id_predio al momento de ingresar
          * una nueva tabla
          * @returns {undefined}
          */
         cargaFuncioneskeyPress: function(){
-            $(".idpredio").focusout(function(){
-                var idPredio = $('.idpredio').val();
-                if (idPredio != ""){
+            $("#id_rodal_check").focusout(function(){
+                var idRodal = $('#id_rodal_check').val();
+                if (idRodal != ""){
                     $.ajax({
-                        url:'verificaIdPredio.php',
+                        url:'verificaIdRodal.php',
                         type:'POST',
                         dataType:'json',
-                        data:{ idpredio:$('.idpredio').val()}
+                        data:{ idrodal:$('#id_rodal_check').val()}
                     }).done(function(respuesta){
                         console.log(respuesta);
                         console.log("llamada post terminada");
                         
                         if(respuesta.error == "1"){
-                            console.log("codigo retornado : "+respuesta.error);
+                            console.log("codigo retvac dornado : "+respuesta.error);
                             $(".idpredio").tooltip('destroy');
                             $(".idpredio").attr("ok", "true");
                             $('#id_predio_check').attr("src","../assets/ico/tick.gif");
