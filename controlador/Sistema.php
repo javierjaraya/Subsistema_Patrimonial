@@ -220,6 +220,10 @@ class Sistema {
     public function findAllEspecies(){
         return $this->especieArboreaDAO->findAll();
     }
+    
+    public function actualizarInventario($inventario){
+        $this->inventarioDAO->update($inventario);
+    }
 
 
 
