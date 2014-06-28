@@ -30,7 +30,6 @@ class PredioDAO implements interfaceDAO{
         $predios = array(); // Lista contenedora de predios resultados
         $this->cone->conectar();
         $estadoActivo = 1;
-        $id = $this->queryMaxID();
         $laConsulta = " SELECT * 
                         FROM predio , comuna
                         WHERE ESTADO = '".$estadoActivo."' 
