@@ -70,6 +70,7 @@ console.log('iniciando eventos de predio');
                   
                   );
           predio.cargaFuncioneskeyPress();
+          predio.cargaFuncioneskeyPressRodal();
           predio.cargaFuncionesAutocompletar();
           });
           console.log('tabla cargada');
@@ -603,6 +604,57 @@ console.log('iniciando eventos de predio');
                     $(".idpredio_modificar").attr("ok", "true");
                     $('#id_predio_modificar').attr("src","../assets/ico/tick.gif");
                     $('#id_predio_modificar').show();
+                }
+            });
+        },
+        /**
+         * Método encargado de validar el input de id_predio al momento de ingresar
+         * una nueva tabla
+         * @returns {undefined}
+         */
+        cargaFuncioneskeyPressRodal: function(){
+            console.log("cargando funciones KEYPRESS para rodal");
+            $("#id_rodal_nuevo").focusout(function(){
+                
+                var idRodal = $('#id_rodal_nuevo').val();
+                console.log("id a consultar: "+idRodal);
+                if (idRodal != ""){
+                    $.ajax({
+                        url:'verificaIdRodal.php',
+                        type:'POST',
+                        dataType:'json',
+                        data:{ idrodal:idRodal}
+                    }).done(function(respuesta){
+                        console.log(respuesta);
+                        console.log("llamada post terminada");
+                        
+                        if(respuesta.error == "1"){
+                            console.log("codigo respuesta : "+respuesta.error);
+                            $("#id_rodal_nuevo").tooltip('destroy');
+                            $("#id_rodal_nuevo").attr("ok", "true");
+                            $('#id_rodal_check').attr("src","../assets/ico/tick.gif");
+                            $('#id_rodal_check').show();
+                        }else{
+                            console.log("el id ya esta en el sistema");
+                            $("#id_rodal_nuevo").tooltip('destroy');
+                            $("#id_rodal_nuevo").tooltip(
+                                    {
+                                    title: 'El id seleccionado no se encuentra disponible',
+                                    placement: 'bottom'});
+                            $("#id_rodal_nuevo").attr("ok", "false");
+                            $('#id_rodal_check').attr("src","../assets/ico/error.png");
+                            $('#id_rodal_check').show();
+                        }
+                    });
+                }else{
+                    $('#id_predio_check').attr("src","../assets/ico/error.png");
+                            $('#id_predio_check').show();
+                            $(".idpredio").tooltip('destroy');
+                    $(".idpredio").tooltip(
+                                {
+                                title: 'El Campo predio No puede estar vacio',
+                                placement: 'bottom'});
+                   $(".idpredio").attr("ok", "false"); 
                 }
             });
         },
