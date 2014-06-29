@@ -647,14 +647,14 @@ console.log('iniciando eventos de predio');
                         }
                     });
                 }else{
-                    $('#id_predio_check').attr("src","../assets/ico/error.png");
-                            $('#id_predio_check').show();
-                            $(".idpredio").tooltip('destroy');
-                    $(".idpredio").tooltip(
+                    $('#id_rodal_check').attr("src","../assets/ico/error.png");
+                            $('#id_rodal_check').show();
+                            $("#id_rodal_nuevo").tooltip('destroy');
+                    $("#id_rodal_nuevo").tooltip(
                                 {
                                 title: 'El Campo predio No puede estar vacio',
                                 placement: 'bottom'});
-                   $(".idpredio").attr("ok", "false"); 
+                   $("#id_rodal_nuevo").attr("ok", "false"); 
                 }
             });
         },
