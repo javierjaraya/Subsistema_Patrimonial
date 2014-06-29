@@ -12,7 +12,7 @@ $control = Sistema::getInstancia();
 $empleados = $control->findAllEmpleados();
 ?>
 <div class="row">
-    <h1>Lista de Empleados  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="empleado.ingresaNuevoEmpleado()"></button></h1>
+    <h1>Lista de Empleados </h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -42,9 +42,9 @@ $empleados = $control->findAllEmpleados();
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                 echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 if($empleado->getIdCuenta()==null){
-                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta()'>Cuenta</button>";
+                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta()'>&nbsp;Cuenta</button>";
                 }else{
-                    echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta()' disabled>Cuenta</button>";
+                    echo "<button type='button' class='btn btn-success glyphicon glyphicon-search'>&nbsp;Cuenta</button>";
                 }
                 echo "</td>";
                 echo "</tr>";

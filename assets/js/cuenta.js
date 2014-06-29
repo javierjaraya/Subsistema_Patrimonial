@@ -49,6 +49,7 @@ console.log('iniciando eventos de cuenta');
         
         ingresaNuevaCuenta: function(){
             $( "#nuevaCuenta" ).dialog({
+              title: "Ingresar Cuenta",
               height: 400,
               width: 500,
               modal: true,
@@ -87,8 +88,10 @@ console.log('iniciando eventos de cuenta');
                 url: "ingresaCuenta.php",
                 data: datos,
                 success: function(response) {
+                    //$('#showCuentaDialog').dialog({height: 300, width: 400});
                     console.log("Ajax ejecutado correctamente");
                     $('#page-wrapper').html(response);
+                    //cuenta.cargarTabla();
                     
                    
                 },
@@ -206,6 +209,62 @@ console.log('iniciando eventos de cuenta');
                 });
             }
             
+        },
+        
+        mostrarCuenta: function(){
+              $( "#showCuentaDialog" ).dialog({
+              title: "Cuenta",
+              height: 300,
+              width: 400,
+              modal: true,
+             
+              resizable: false,
+              buttons: {
+                Actualizar: function() {
+                  var bValid = true;
+                  var idCuenta = $("#idCuenta").val();
+                  
+                    fechaCreacion = $("#fechaCreacion").val();
+                    
+                    password = $("#password").val();
+                    idOriginal = $("#idOriginal").val();
+                    idPerfil = $("#idPerfil").val();
+                    console.log("cuenta:"+idCuenta);
+                    estado = $("#estado").val();
+            
+            var datos = '&idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password + '&idOriginal=' + idOriginal+ '&idPerfil=' + idPerfil + '&estado=' + estado;
+            $.ajax({
+                type: "POST",
+                url: "guardarCambiosActualizacionCuenta.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#page-wrapper').html(response);
+                    cuenta.cargarTabla();
+                    
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+            $( this ).dialog( "close" );
+                    return true;
+                  
+            }
+            ,
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        $( this ).dialog( "close" );
+              }
+            });
         },
               
       };

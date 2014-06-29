@@ -6,7 +6,9 @@
  * @author Javier
  */
 include_once 'Conexion.php';
+include_once '../controlador/Empleado.php';
 include_once '../controlador/Cuenta.php';
+include_once '../controlador/Perfil.php';
 include_once 'interfaceDAO.php';
 
 class CuentaDAO{
@@ -56,6 +58,7 @@ class CuentaDAO{
             $this->cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
             
         }
+        
         $this->conexion->desconectar();
         return $this->cuenta;
     }
@@ -68,7 +71,7 @@ class CuentaDAO{
         //'.$cuenta->getIdCuenta().','.".$cuenta->getFechaCreacion().".','".$cuenta->getPassword()."','".$cuenta->getEstado()."','.$cuenta->getIdPerfil().'
         //$laConsulta = 'INSERT into CUENTA VALUES (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL)(2004,08/06/14,admin,1,1111)';
         $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) VALUES (".$cuenta->getIdCuenta().",'".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."',".$cuenta->getIdPerfil().")";
-        echo $laConsulta; 
+        //echo $laConsulta; 
         $query = $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
         
@@ -78,17 +81,22 @@ class CuentaDAO{
         $cuentas = array(); // Lista contenedora de los empleados
         $idCuenta = $this->queryMaxId();
         $this->conexion->conectar();
-        $laConsulta = "SELECT * FROM cuenta";
+        $laConsulta = "SELECT empleado.NOMBRE_EMPLEADO, cuenta.ID_CUENTA, cuenta.FECHACREACION, cuenta.PASSWORD, cuenta.ESTADO, cuenta.ID_PERFIL, perfil.NOMBRE_PERFIL
+                       FROM empleado JOIN cuenta ON empleado.ID_CUENTA= cuenta.ID_CUENTA JOIN perfil ON cuenta.ID_PERFIL = perfil.ID_PERFIL";
         
         $query = $this->conexion->ejecutar($laConsulta);
         $i = 0;
         while(ocifetch($query)){
             $cuenta = new Cuenta();
+            $cuenta->setNombreEmpleado(ociresult($query, "NOMBRE_EMPLEADO"));
             $cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
             $cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
             $cuenta->setPassword(ociresult($query, "PASSWORD"));
             $cuenta->setEstado(ociresult($query, "ESTADO"));
             $cuenta->setIdPerfil(ociresult($query, "ID_PERFIL"));
+            //cargando los perfiles
+            $cuenta->setNombrePerfil(ociresult($query, "NOMBRE_PERFIL"));
+            
             $cuentas[$i] = $cuenta;
             $i++;
             

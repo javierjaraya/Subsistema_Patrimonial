@@ -22,10 +22,11 @@ $cuentas = $control->findAllCuentas();
         <thead>
             <tr>
                 <th >ID </th>
+                <th >Nombre </th>
                 <th >Creacion </th>
                 <th >Password </th>
                 <th >Estado </th>
-                <th >ID Perfil </th>
+                <th >Perfil </th>
                 <th >Accion</th>
                 
             </tr>
@@ -33,12 +34,17 @@ $cuentas = $control->findAllCuentas();
         <tbody id="tbody">
             <?PHP
               foreach($cuentas as $cuenta){
+                $estado="Inactiva";
+                if($cuenta->getEstado()=="1"){
+                    $estado="Activa";
+                }
                 echo "<tr>";
                 echo "<td>".$cuenta->getIdCuenta()."</td>";
+                echo "<td>".$cuenta->getNombreEmpleado()."</td>";
                 echo "<td>".$cuenta->getFechaCreacion()."</td>";
                 echo "<td>".$cuenta->getPassword()."</td>";
-                echo "<td>".$cuenta->getEstado()."</td>";
-                echo "<td>".$cuenta->getIdPerfil()."</td>";
+                echo "<td>".$estado."</td>";
+                echo "<td>".$cuenta->getNombrePerfil()."</td>";
                 echo "<td>";
                               
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'></button>";
@@ -66,6 +72,12 @@ $cuentas = $control->findAllCuentas();
 
 <div  style="display:none; cursor: default"> 
            <div id="editCuentaDialog" title="Create new user">
+        
+</div>
+    
+<div  style="display:none; cursor: default"> 
+           <div id="showCuentaDialog" title="Create new user">
+        <p>La cuenta ha sido agregada exitosamente!</p>
         
 </div>
     
