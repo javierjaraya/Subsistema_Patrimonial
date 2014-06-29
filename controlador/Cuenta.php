@@ -11,7 +11,7 @@ class Cuenta {
     private $password;
     private $estado;
     private $idPerfil;
-    
+    private $nombrePerfil;
     function __construct() {
         
     }
@@ -54,6 +54,14 @@ class Cuenta {
 
     public function setIdPerfil($idPerfil) {
         $this->idPerfil = $idPerfil;
+    }
+    
+    public function getNombrePerfil() {
+        return $this->nombrePerfil;
+    }
+
+    public function setNombrePerfil($perfil) {
+        $this->nombrePerfil = $perfil;
     }
 }
 ?>
