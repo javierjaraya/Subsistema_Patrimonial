@@ -42,18 +42,21 @@ class RodalDAO implements interfaceDAO{
      * 
      * 
      */
-    public function save($predio) {
-        
+    public function save($rodal) {
+        $this->cone->conectar();
+        $laConsulta = "INSERT into RODAL (ID_RODAL, ANIO_PLANTACION, SUPERFICIE, VALOR_COMERCIAL, ID_ESPECIE_ARBOREA, ID_PREDIO, MANEJO, ZONA_CRECIMIENTO, ESTADO) 
+            VALUES ('".$rodal->getIdRodal()."','".$rodal->getAnioPlantacion()."','".$rodal->getSuperficie()."','".$rodal->getValorComercial()."','".$rodal->getIdEspecieArborea()."','".$rodal->getIdPredio()."','".$rodal->getManejo()."','".$rodal->getZonaCrecimiento()."','".$rodal->getEstado()."')";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
         
     }
 
     public function findById($idRodal) {
-        $rodalEncontrado;
+        $rodalEncontrado = new Rodal();
         $this->cone->conectar();
         $laConsulta = "SELECT * FROM rodal WHERE ID_RODAL = '".$idRodal."'";
         $query = $this->cone->ejecutar($laConsulta);
-        while(ocifetch($query)){
-            $rodalEncontrado = new Rodal();
+        while(ocifetch($query)){   
             $rodalEncontrado->setIdRodal(ociresult($query, "ID_RODAL"));
             $rodalEncontrado->setAnioPlantacion(ociresult($query, "ANIO_PLANTACION"));
             $rodalEncontrado->setSuperficie(ociresult($query, "SUPERFICIE"));

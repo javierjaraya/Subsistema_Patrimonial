@@ -158,6 +158,10 @@ class Sistema {
             $this->predioDAO->save($predio);
     }
     
+    public function saveRodal($rodal){
+        $this->rodalDAO->save($rodal);
+    }
+    
     public function findComunaByExample($comuna){
         return $this->comunaDAO->findByExample($comuna);
     }

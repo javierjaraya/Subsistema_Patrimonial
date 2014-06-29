@@ -53,12 +53,14 @@ $especies = $control->findAllEspecies();
     
 <div id="nuevoRodal"  class="ui-front"style="display:none; cursor: default" > 
         <fieldset>
-            <div><label>Identificador Rodal: </label>&nbsp;&nbsp;<img id="id_rodal_check" src="" style="display: none;"><input type="text" class="form-control" name="idrodal" id ok="false"/></div>
-            <div><label>Manejo: </label><input type="text" class="manejo form-control" name="manejo"/></div>
+            <div><label>Identificador Rodal: </label>&nbsp;&nbsp;<img id="id_rodal_check" src="" style="display: none;"><input type="text" class="form-control" name="idrodal" id="id_rodal_nuevo" ok="false"/></div>
+            <div><label>Manejo: </label><input type="text" class="form-control" id="manejo_nuevo" name="manejo"/></div>
+            <div><label>Zona de Crecimiento: </label><input type="text" class="form-control" id="zonaCrecimiento_nuevo" name="manejo"/></div>
             <!--div class="ui-widget"><label>Comuna: </label>&nbsp;&nbsp;<img id="comuna_check" src="" style="display: none;"><input cols="30" rows="5" name="comuna" id="comuna" class="id_comuna form-control" idcomuna="" required="required" ok="false"></div-->
-            <div><label>Superficie: </label><input type="number" class="superficie form-control" name="superficie" required="required" /></div>
-            <div><label>Valor Comercial:</label><input type="number" cols="30" rows="5" class="valorcomercial form-control" name="valorcomercial" required="required"/></div>
-            <div><label>Especie: </label><select id="id_especie" name="especie" class="form-control input-sm" size="1">
+            <div><label>Año de Plantación: </label><input type="number" class="form-control" name="anio_plantacion" id="anioPlantacion_nuevo" /></div>
+            <div><label>Superficie: </label><input type="number" class="form-control" id="superficie_nuevo" name="superficie_nuevo"/></div>
+            <div><label>Valor Comercial:</label><input type="number" cols="30" rows="5" class="form-control" name="valorcomercial_nuevo" id="valor_nuevo"/></div>
+            <div><label>Especie: </label><select id="id_especie_nuevo" name="especie" class="form-control input-sm" size="1">
 				                          <?php 
                                                             foreach($especies as $especie){
                                                           ?>
