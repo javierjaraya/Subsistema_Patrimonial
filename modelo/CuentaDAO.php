@@ -6,6 +6,7 @@
  * @author Javier
  */
 include_once 'Conexion.php';
+include_once '../controlador/Empleado.php';
 include_once '../controlador/Cuenta.php';
 include_once '../controlador/Perfil.php';
 include_once 'interfaceDAO.php';
@@ -80,14 +81,14 @@ class CuentaDAO{
         $cuentas = array(); // Lista contenedora de los empleados
         $idCuenta = $this->queryMaxId();
         $this->conexion->conectar();
-        $laConsulta = "SELECT cuenta.ID_CUENTA, cuenta.FECHACREACION, cuenta.PASSWORD, cuenta.ESTADO, cuenta.ID_PERFIL, perfil.NOMBRE_PERFIL
-                       FROM cuenta JOIN perfil ON cuenta.ID_PERFIL = perfil.ID_PERFIL";
+        $laConsulta = "SELECT empleado.NOMBRE_EMPLEADO, cuenta.ID_CUENTA, cuenta.FECHACREACION, cuenta.PASSWORD, cuenta.ESTADO, cuenta.ID_PERFIL, perfil.NOMBRE_PERFIL
+                       FROM empleado JOIN cuenta ON empleado.ID_CUENTA= cuenta.ID_CUENTA JOIN perfil ON cuenta.ID_PERFIL = perfil.ID_PERFIL";
         
         $query = $this->conexion->ejecutar($laConsulta);
         $i = 0;
         while(ocifetch($query)){
             $cuenta = new Cuenta();
-            
+            $cuenta->setNombreEmpleado(ociresult($query, "NOMBRE_EMPLEADO"));
             $cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
             $cuenta->setFechaCreacion(ociresult($query, "FECHACREACION"));
             $cuenta->setPassword(ociresult($query, "PASSWORD"));

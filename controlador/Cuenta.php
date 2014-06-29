@@ -6,6 +6,7 @@
  * @author Javier
  */
 class Cuenta {
+    private $nombreEmpleado;
     private $idCuenta;
     private $fechaCreacion;
     private $password;
@@ -14,6 +15,10 @@ class Cuenta {
     private $nombrePerfil;
     function __construct() {
         
+    }
+    
+    public function getNombreEmpleado() {
+        return $this->nombreEmpleado;
     }
     
     public function getIdCuenta() {
@@ -35,7 +40,16 @@ class Cuenta {
     public function getIdPerfil() {
         return $this->idPerfil;
     }
-
+    
+    
+    public function getNombrePerfil() {
+        return $this->nombrePerfil;
+    }
+    
+    public function setNombreEmpleado($nombreEmpleado) {
+        $this->nombreEmpleado = $nombreEmpleado;
+    }
+    
     public function setIdCuenta($idCuenta) {
         $this->idCuenta = $idCuenta;
     }
@@ -56,10 +70,6 @@ class Cuenta {
         $this->idPerfil = $idPerfil;
     }
     
-    public function getNombrePerfil() {
-        return $this->nombrePerfil;
-    }
-
     public function setNombrePerfil($perfil) {
         $this->nombrePerfil = $perfil;
     }

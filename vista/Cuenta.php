@@ -22,6 +22,7 @@ $cuentas = $control->findAllCuentas();
         <thead>
             <tr>
                 <th >ID </th>
+                <th >Nombre </th>
                 <th >Creacion </th>
                 <th >Password </th>
                 <th >Estado </th>
@@ -33,11 +34,16 @@ $cuentas = $control->findAllCuentas();
         <tbody id="tbody">
             <?PHP
               foreach($cuentas as $cuenta){
+                $estado="Inactiva";
+                if($cuenta->getEstado()=="1"){
+                    $estado="Activa";
+                }
                 echo "<tr>";
                 echo "<td>".$cuenta->getIdCuenta()."</td>";
+                echo "<td>".$cuenta->getNombreEmpleado()."</td>";
                 echo "<td>".$cuenta->getFechaCreacion()."</td>";
                 echo "<td>".$cuenta->getPassword()."</td>";
-                echo "<td>".$cuenta->getEstado()."</td>";
+                echo "<td>".$estado."</td>";
                 echo "<td>".$cuenta->getNombrePerfil()."</td>";
                 echo "<td>";
                               

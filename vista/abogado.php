@@ -32,22 +32,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <img src="../assets/img/Logo.png" width="130px" height="50px" style="float: left;">
                     <a class="navbar-brand" href="index.html">SB Abogado</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-briefcase"></i> Carpeta Legal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Buscar Predio</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
+                                <li><a href="javascript:predio.cargarTabla();" class="glyphicon glyphicon-folder-open"> Ver Datos</a></li>
+                                
                             </ul>
                         </li>
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
+                 
                         <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
                         <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
                     </ul>
