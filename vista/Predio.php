@@ -110,9 +110,7 @@ $especies = $control->findAllEspecies();
         
 </div>
     
-<div class="notify_correct" style="display:none">
-     <h1>Predio Agregado</h1>
-     <h2>Correctamente!</h2>
+<div id="notify_correct" style="display:none">
 </div>
 </div> 
 

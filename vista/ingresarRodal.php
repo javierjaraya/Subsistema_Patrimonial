@@ -5,7 +5,7 @@
  */
     include_once '../controlador/Sistema.php';
     include_once '../controlador/Rodal.php';
-    $anioPlantacion= $_POST['anioplantacion'];
+    $anioPlantacion= $_POST['anioPlantacion'];
     $zona = $_POST['zona'];
     $superficie = $_POST['superficie'];
     $valor = $_POST['valor'];
