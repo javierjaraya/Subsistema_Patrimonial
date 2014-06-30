@@ -79,7 +79,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="../assets/img/Logo.png" width="130px" height="50px" style="float: left;">
+                    <img src="../assets/img/Logo.png" width="150px" height="50px" style="float: left;">
                     <a class="navbar-brand" style="float: left;" href="admin.php">SB Admin</a>
                 </div>
 
@@ -123,8 +123,13 @@
       
                             </ul>
                         </li>
-                        
-                        <li><a href=""><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop"></i> Flora y Fauna <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="fa fa-table"> Fauna Predio</a></li>
+                                <li><a href="" class="fa fa-table"> Flora Predio</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i> Caminos <b class="caret"></b></a>
                             <ul class="dropdown-menu">
