@@ -67,3 +67,5 @@ $caminos = $control->findAllCaminos();
             <h2>Correctamente!</h2>
         </div>
     </div> 
+    
+</div>>

@@ -12,7 +12,6 @@ class FaunaImagen {
     private $ruta;
     
     function __construct() {
-        
     }
     public function getIdImagen() {
         return $this->idImagen;

@@ -10,6 +10,7 @@ include_once '../modelo/ProvinciaDAO.php';
 include_once '../modelo/InventarioDAO.php';
 include_once '../modelo/EspecieArboreaDAO.php';
 include_once '../modelo/ZonaDAO.php';
+include_once '../modelo/FaunaDAO.php';
 
 
 include_once 'Session.php';
@@ -36,7 +37,7 @@ class Sistema {
      private $inventarioDAO;
      private $especieArboreaDAO;
      private $zonaDAO;
-
+     private $faunaDAO;
 
 
      private function Sistema(){
@@ -52,6 +53,7 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
+         $this->faunaDAO = new FaunaDAO();
      }
      
      public static function  getInstancia(){
@@ -229,9 +231,9 @@ class Sistema {
         $this->inventarioDAO->update($inventario);
     }
 
-
-
-
+    public function findALlFauna(){
+        return $this->faunaDAO->findAll();
+    }
 
 }
 
