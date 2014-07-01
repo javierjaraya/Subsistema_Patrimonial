@@ -1,16 +1,15 @@
 <?php
 include_once 'Conexion.php';
-//include_once '../controlador/FaunaImagen.php';
-//include_once '../controlador/Fauna.php';
+include_once '../controlador/Fauna.php';
 /**
  * Description of FaunaImagenDAO
  *
  * @author Javier
  */
-class FaunaImagenDAO{
+class FaunaDAO implements interfaceDAO{
     private $conexion;
     
-    public function FaunaImagenDAO(){
+    public function FaunaDAO(){
         $this->conexion= new Conexion();
     }
     /**
@@ -18,7 +17,7 @@ class FaunaImagenDAO{
      */
     public function findAll() {
         $this->conexion->conectar();
-        $consultaSQL = "SELECT FAUNA.ID_FAUNA, FAUNA.NOMBRE_FAUNA, FAUNA.ESPECIE, FAUNA.DESCRIPCION, FAUNAIMAGEN.ID_IMAGEN, FAUNAIMAGEN.NOMBRE, FAUNAIMAGEN.RUTA FROM FAUNA JOIN FAUNAIMAGEN ON FAUNAIMAGEN.ID_FAUNA = FAUNA.ID_FAUNA";
+        $consultaSQL = "SELECT * FROM FAUNA";
         $query = $this->conexion->ejecutar($consultaSQL);
         $i = 0;
         $faunas = array();
@@ -28,8 +27,7 @@ class FaunaImagenDAO{
             $faunaImagen->setNombreFauna(ociresult($query, "NOMBRE_FAUNA"));
             $faunaImagen->setEspecie(ociresult($query, "ESPECIE"));
             $faunaImagen->setDescripcion(ociresult($query, "DESCRIPCION"));
-            $faunaImagen->setIdImagen(ociresult($query, "ID_IMAGEN"));
-            $faunaImagen->setNombreImagen(ociresult($query, "NOMBRE"));
+            $faunaImagen->setNombreImagen(ociresult($query, "NOMBRE_IMAGEN"));
             $faunaImagen->setRutaImagen(ociresult($query, "RUTA"));
             $faunas[$i] = $faunaImagen;
             $i++;
@@ -57,8 +55,5 @@ class FaunaImagenDAO{
     public function update($object) {
         
     }
-
-//put your code here
 }
-
 ?>

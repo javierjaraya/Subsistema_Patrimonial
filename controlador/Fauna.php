@@ -6,17 +6,15 @@
  * @author Pipe
  */
 
-include_once '../controlador/FaunaImagen.php';
-
 class Fauna {
     private $idFauna;
     private $nombreFauna;
     private $especie;
     private $descripcion;
-    private $imagen;
+    private $nombreImagen;
+    private $rutaImagen;
     
     function __construct() {
-        $this->imagen = new FaunaImagen();
     }
     public function getIdFauna() {
         return $this->idFauna;
@@ -33,10 +31,16 @@ class Fauna {
     public function getDescripcion() {
         return $this->descripcion;
     }
+    public function getNombreImagen() {
+        return $this->nombreImagen;
+    }
+
+    public function getRutaImagen() {
+        return $this->rutaImagen;
+    }
 
     public function setIdFauna($idFauna) {
         $this->idFauna = $idFauna;
-        $this->imagen->setIdFauna($idFauna);
     }
 
     public function setNombreFauna($nombreFauna) {
@@ -51,16 +55,11 @@ class Fauna {
         $this->descripcion = $descripcion;
     }
     
-    public function setIdImagen($idImagen){
-        $this->imagen->setIdImagen($idImagen);
+    public function setNombreImagen($nombreImagen) {
+        $this->nombreImagen = $nombreImagen;
     }
 
-    public function setNombreImagen($nombre){
-        $this->imagen->setNombre($nombre);
+    public function setRutaImagen($rutaImagen) {
+        $this->rutaImagen = $rutaImagen;
     }
-    
-    public function setRutaImagen($ruta){
-        $this->imagen->setRuta($ruta);
-    }
-
 }

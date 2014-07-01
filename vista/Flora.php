@@ -5,15 +5,15 @@
  * @author Javier
  */
 include_once '../controlador/Sistema.php';
-include_once '../controlador/Fauna.php';
+include_once '../controlador/Flora.php';
 
 $control = Sistema::getInstancia();
-$faunas = $control->findAllFaunas();
+$floras = $control->findAllFloras();
 
 ?>
 
 <div class="row">
-    <h1>Lista de Fauna</h1>
+    <h1>Lista de Flora</h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -29,12 +29,12 @@ $faunas = $control->findAllFaunas();
             </thead>
             <tbody id="tbody">
                 <?PHP
-                foreach ($faunas as $fauna) {
+                foreach ($floras as $flora) {
                     echo "<tr>";
-                    echo "<td ><img src = '". $fauna->getRutaImagen()  . "' width='135px' height='120px'></td>";
-                    echo "<td>" . $fauna->getNombreFauna() . " m</td>";
-                    echo "<td>" . $fauna->getEspecie()     . "</td>";
-                    echo "<td>" . $fauna->getDescripcion() . "</td>";                    
+                    echo "<td ><img src = '". $flora->getRutaImagen()  . "' width='135px' height='120px'></td>";
+                    echo "<td>" . $flora->getNombreFlora() . " m</td>";
+                    echo "<td>" . $flora->getEspecie()     . "</td>";
+                    echo "<td>" . $flora->getDescripcion() . "</td>";                    
                     echo "</tr>";
                 }
                 ?>

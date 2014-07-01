@@ -1,17 +1,18 @@
 <?php
+
+include_once '../modelo/CaminoDAO.php';
+include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CuentaDAO.php';
+include_once '../modelo/EmpleadoDAO.php';
+include_once '../modelo/EspecieArboreaDAO.php';
+include_once '../modelo/FaunaDAO.php';
+include_once '../modelo/FloraDAO.php';
+include_once '../modelo/InventarioDAO.php';
 include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
-include_once '../modelo/RodalDAO.php';
-include_once '../modelo/EmpleadoDAO.php';
-include_once '../modelo/ComunaDAO.php';
-include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
-include_once '../modelo/InventarioDAO.php';
-include_once '../modelo/EspecieArboreaDAO.php';
+include_once '../modelo/RodalDAO.php';
 include_once '../modelo/ZonaDAO.php';
-include_once '../modelo/FaunaDAO.php';
-
 
 include_once 'Session.php';
 //include_once 'Cuenta.php';
@@ -53,7 +54,8 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
-         //$this->faunaDAO = new FaunaDAO();
+         $this->faunaDAO = new FaunaDAO();
+         $this->floraDAO = new FloraDAO();
      }
      
      public static function  getInstancia(){
@@ -230,11 +232,13 @@ class Sistema {
     public function actualizarInventario($inventario){
         $this->inventarioDAO->update($inventario);
     }
-/*
+
     public function findALlFaunas(){
         return $this->faunaDAO->findAll();
-    }*/
-
+    }
+    public function findALlFloras(){
+        return $this->floraDAO->findAll();
+    }
 }
 
 

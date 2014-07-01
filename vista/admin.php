@@ -126,8 +126,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop"></i> Flora y Fauna <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="" class="fa fa-table"> Fauna Predio</a></li>
-                                <li><a href="" class="fa fa-table"> Flora Predio</a></li>
+                                <li><a href="javascript:fauna.cargarTabla();" class="fa fa-table"> Fauna Predio</a></li>
+                                <li><a href="javascript:flora.cargarTabla();" class="fa fa-table"> Flora Predio</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -178,6 +178,8 @@
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/cuenta.js"></script>
     <script type="text/javascript" src="../assets/js/camino.js"></script>
+    <script type="text/javascript" src="../assets/js/fauna.js"></script>
+    <script type="text/javascript" src="../assets/js/flora.js"></script>
     <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>

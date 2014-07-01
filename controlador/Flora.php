@@ -9,6 +9,8 @@ class Flora {
     private $nombreFlora;
     private $especie;
     private $descripcion;
+    private $nombreImagen;
+    private $rutaImagen;
     
     function __construct() {
         
@@ -29,6 +31,14 @@ class Flora {
         return $this->descripcion;
     }
 
+    public function getNombreImagen() {
+        return $this->nombreImagen;
+    }
+
+    public function getRutaImagen() {
+        return $this->rutaImagen;
+    }
+
     public function setIdFlora($idFlora) {
         $this->idFlora = $idFlora;
     }
@@ -44,6 +54,13 @@ class Flora {
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }
+    
+    public function setNombreImagen($nombreImagen) {
+        $this->nombreImagen = $nombreImagen;
+    }
 
+    public function setRutaImagen($rutaImagen) {
+        $this->rutaImagen = $rutaImagen;
+    }
 
 }
