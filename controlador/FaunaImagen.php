@@ -9,7 +9,7 @@ class FaunaImagen {
     private $idImagen;
     private $idFauna;
     private $nombre;
-    private $binario;
+    private $ruta;
     
     function __construct() {
         
@@ -26,8 +26,8 @@ class FaunaImagen {
         return $this->nombre;
     }
 
-    public function getBinario() {
-        return $this->binario;
+    public function getRuta() {
+        return $this->ruta;
     }
 
     public function setIdImagen($idImagen) {
@@ -42,9 +42,7 @@ class FaunaImagen {
         $this->nombre = $nombre;
     }
 
-    public function setBinario($binario) {
-        $this->binario = $binario;
+    public function setRuta($ruta) {
+        $this->ruta = $ruta;
     }
-
-
 }

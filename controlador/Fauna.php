@@ -11,6 +11,7 @@ class Fauna {
     private $especie;
     private $descripcion;
     
+    
     function __construct() {
         
     }
