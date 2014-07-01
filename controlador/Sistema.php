@@ -53,7 +53,7 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
-         $this->faunaDAO = new FaunaDAO();
+         //$this->faunaDAO = new FaunaDAO();
      }
      
      public static function  getInstancia(){
@@ -230,10 +230,10 @@ class Sistema {
     public function actualizarInventario($inventario){
         $this->inventarioDAO->update($inventario);
     }
-
-    public function findALlFauna(){
+/*
+    public function findALlFaunas(){
         return $this->faunaDAO->findAll();
-    }
+    }*/
 
 }
 

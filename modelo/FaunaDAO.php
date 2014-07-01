@@ -1,13 +1,13 @@
 <?php
 include_once 'Conexion.php';
-include_once '../controlador/FaunaImagen.php';
-include_once '../controlador/Fauna.php';
+//include_once '../controlador/FaunaImagen.php';
+//include_once '../controlador/Fauna.php';
 /**
  * Description of FaunaImagenDAO
  *
  * @author Javier
  */
-class FaunaImagenDAO implements interfaceDAO{
+class FaunaImagenDAO{
     private $conexion;
     
     public function FaunaImagenDAO(){

@@ -8,6 +8,6 @@ include_once '../controlador/Sistema.php';
 include_once '../controlador/Fauna.php';
 
 $control = Sistema::getInstancia();
-$faunas = $control->findAllCaminos();
+$faunas = $control->findAllFaunas();
 
 ?>
