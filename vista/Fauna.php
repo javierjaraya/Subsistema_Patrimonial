@@ -32,9 +32,9 @@ $faunas = $control->findAllFaunas();
                 foreach ($faunas as $fauna) {
                     echo "<tr>";
                     echo "<td ><img src = '". $fauna->getRutaImagen()  . "' width='135px' height='120px'></td>";
-                    echo "<td>" . $fauna->getNombreFauna() . " m</td>";
-                    echo "<td>" . $fauna->getEspecie()     . "</td>";
-                    echo "<td>" . $fauna->getDescripcion() . "</td>";                    
+                    echo "<td>" . utf8_encode($fauna->getNombreFauna()) . " m</td>";
+                    echo "<td>" . utf8_encode($fauna->getEspecie())     . "</td>";
+                    echo "<td>" . utf8_encode($fauna->getDescripcion()) . "</td>";                    
                     echo "</tr>";
                 }
                 ?>
