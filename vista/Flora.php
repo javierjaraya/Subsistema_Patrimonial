@@ -32,9 +32,9 @@ $floras = $control->findAllFloras();
                 foreach ($floras as $flora) {
                     echo "<tr>";
                     echo "<td ><img src = '". $flora->getRutaImagen()  . "' width='135px' height='120px'></td>";
-                    echo "<td>" . $flora->getNombreFlora() . " m</td>";
-                    echo "<td>" . $flora->getEspecie()     . "</td>";
-                    echo "<td>" . $flora->getDescripcion() . "</td>";                    
+                    echo "<td>" . utf8_encode($flora->getNombreFlora()) . " m</td>";
+                    echo "<td>" . utf8_encode($flora->getEspecie())     . "</td>";
+                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";                    
                     echo "</tr>";
                 }
                 ?>
