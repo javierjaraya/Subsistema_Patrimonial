@@ -14,6 +14,7 @@ $faunas = $control->findAllFaunas();
 
 <div class="row">
     <h1>Lista de Fauna</h1>
+    <form action="" method="POST">Filtrar por codigo predio<input type="text" name="" value=""><input type="submit" name="Buscar" value="Buscar"></form>
 </div>
 <div class="row">
     <div class="panel panel-default">

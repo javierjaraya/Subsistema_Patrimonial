@@ -150,11 +150,19 @@ class Sistema {
         return $this->caminoDAO->findById($idCamino);
     }
     
+    public function getMaxIdCamino(){
+        return $this->caminoDAO->queryMaxID();
+    }
+
     public function saveCamino($camino){
         $this->caminoDAO->save($camino);
     }
+    
+    public function actualizarCamino($camino, $id_original){
+        $this->caminoDAO->actualizarCaminoDAO($camino, $id_original);
+    }
 
-        /**
+    /**
      * ;etodo encargado de guardar predio
      * @param type $predio
      */
