@@ -62,7 +62,6 @@ var camino = (function() {
                         }
 
                 );
-                camino.cargaFuncioneskeyPressRodal();
                 camino.cargaFuncionesAutocompletar();
             });
             console.log('tabla cargada');
