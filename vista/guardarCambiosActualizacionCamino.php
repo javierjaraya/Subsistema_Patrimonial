@@ -5,17 +5,18 @@ include_once '../controlador/Camino.php';
 $camino = new Camino();
 $control = Sistema::getInstancia();
 
-$id_original = $_POST['idOriginal'];
-$id = $_POST['idcamino'];
+$id_camino = $_POST['idcamino'];
 $longitud = $_POST['longitud'];
-$superficie = $_POST['tiposuperficie'];
-$idpredio = $_POST['idpredio'];
+$id_superficie = $_POST['superficie'];
+$id_predio = $_POST['idpredio'];
 
-$camino->setIdCamino($id);
+echo "idcamino = ".$id_camino."  longitud =".$longitud."    idsuperficie = ".$id_superficie."  idpredio".$id_predio;
+
+$camino->setIdCamino($id_camino);
 $camino->setLongitud($longitud);
-$camino->setTipoSuperficie($superficie);
-$camino->setIdPredio($idpredio);
+$camino->setTipoSuperficie($id_superficie);
+$camino->setIdPredio($id_predio);
 
-$control->actualizarCamino($camino, $id_original);
+$control->actualizarCamino($camino);
 
 ?>

@@ -73,7 +73,7 @@ class CaminoDAO {
         $this->conexion->desconectar();
     }
     
-    public function actualizarCaminoDAO($camino, $id_original) {
+    public function actualizarCaminoDAO($camino) {
         $this->conexion->conectar();
         $laConsulta = "UPDATE camino 
                         SET     ID_CAMINO='".$camino->getIdCamino()."',
@@ -81,9 +81,16 @@ class CaminoDAO {
                                 TIPO_SUPERFICIE='".$camino->getTipoSuperficie()."',
                                 ID_PREDIO='".$camino->getIdPredio()."'   
                                
-                        WHERE ID_CAMINO='".$id_original."' ";
+                        WHERE ID_CAMINO='".$camino->getIdCamino()."' ";
         
         $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+    }
+    
+    public function eliminarCamino($id){
+        $this->conexion->conectar();
+        $consulta = "DELETE FROM camino WHERE ID_CAMINO = '".$id."'";
+        $this->conexion->ejecutar($consulta);
         $this->conexion->desconectar();
     }
 }

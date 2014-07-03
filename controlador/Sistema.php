@@ -164,8 +164,12 @@ class Sistema {
         $this->caminoDAO->save($camino);
     }
     
-    public function actualizarCamino($camino, $id_original){
-        $this->caminoDAO->actualizarCaminoDAO($camino, $id_original);
+    public function actualizarCamino($camino){
+        $this->caminoDAO->actualizarCaminoDAO($camino);
+    }
+    
+    public function eliminarCamino($id){
+        $this->caminoDAO->eliminarCamino($id);
     }
 
     /**
