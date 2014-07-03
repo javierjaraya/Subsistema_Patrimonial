@@ -35,6 +35,52 @@ var fauna = (function() {
             //var value1 = document.formulario.idpredio.value;
             //alert("El contenido del formulario es : " + value1);
             alest("El contenido del formulario es ajvier javeri : "+datos.idpredio);
-        }
+        },
+        
+        autocompletePredioFiltro: function(){
+            $("#idprediofiltro").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){
+
+                        
+                   
+                }
+            });
+        },
+        cancelarIngresoCamino: function() {
+            console.log("Ingreso de camino cancelado");
+            $.unblockUI();
+        },
+        aceptarIngresoCamino: function() {
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idCamino = $(".idcamino").val();
+                        longitud = $(".longitud").val();
+                        tipoSuperficie = $(".superficie").val();
+                        idPredio = $(".idpredio").val();
+
+
+            var datos = 'idcamino=' + idCamino + '&longitud=' + longitud + '&tipoSuperficie=' + tipoSuperficie + '&idPredio=' + idPredio;
+            $.ajax({
+                    type: "POST",
+                    url: "ingresarCamino.php",
+                    data: datos,
+                    success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    camino.cargarTabla();
+                   
+                    },
+                    error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Error al Ingresar Camino');
+                                  
+                    }
+            });
+            return false;
+        },
     };
 })();
