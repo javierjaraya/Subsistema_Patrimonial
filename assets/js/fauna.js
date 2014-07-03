@@ -94,7 +94,7 @@ var fauna = (function() {
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editFaunaDialog').html(response);
-                    fauna.mostrarModificar();
+                    fauna.mostrarModificar(id);
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
@@ -104,7 +104,7 @@ var fauna = (function() {
             });
             
         },
-        mostrarModificar: function(){
+        mostrarModificar: function(id){
               $( "#editFaunaDialog" ).dialog({
               title: "Edición Fauna",
               height: 500,
@@ -115,28 +115,16 @@ var fauna = (function() {
                 Actualizar: function() {
                   var confirmacion = confirm("¿Está seguro que desea actualizar?");
                   if(confirmacion){
-                            var bValid = true;
-                         var idPredio = $("#idpredio").val();
-                         console.log("Predio: "+idPredio);
-                         idRodal = $("#idrodal").val();
-                         anioPlantacion = $("#anioPlantacion").val();
-                         superficie = $("#superficie").val();
-                         console.log(superficie);
-                         valorComercial = $("#valorComercial").val();
-                         idEspecieArborea = $("#idEspecieArborea").val();
-                         manejo = $("#manejo").val();
-                         zonaCrecimiento = $("#zonaCrecimiento").val();
-                         estado = $("#estado").val();
+                         var idFauna = id
+                         nombre = $("#nombre").val();
+                         descripcion = $("#descripcion").val();
+                         especie = $("#especie").val();
 
-                   var datos = 'idrodal='+ idRodal
-                               + '&anioPlantacion=' + anioPlantacion 
-                               + '&superficie=' + superficie 
-                               + '&valorComercial=' + valorComercial 
-                               + '&idEspecieArborea=' + idEspecieArborea
-                               + '&manejo=' + manejo
-                               + '&zonaCrecimiento=' + zonaCrecimiento
-                               + '&estado=' + estado
-                               + '&idpredio=' + idPredio;
+                   var datos = 'idFauna='+ idFauna
+                               + '&nombre=' + nombre 
+                               + '&descripcion=' + descripcion 
+                               + '&especie=' + especie ;
+                               
                    $.ajax({
                        type: "POST",
                        url: "guardarCambiosActualizacionRodal.php",
