@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <img src="../assets/img/Logo.png" width="130px" height="50px" style="float: left;">
-                    <a class="navbar-brand" href="index.html">SB Abogado</a>
+                    <a class="navbar-brand" href="abogado.php">SB Abogado</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

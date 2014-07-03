@@ -32,7 +32,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Consultor</a>
+                    <img src="../assets/img/Logo.png" width="150px" height="50px" style="float: left;">
+                    <a class="navbar-brand" href="consultor.php">SB Consultor</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
