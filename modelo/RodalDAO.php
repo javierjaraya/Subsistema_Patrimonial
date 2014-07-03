@@ -189,12 +189,14 @@ class RodalDAO implements interfaceDAO{
         
         
     }
+    
     /**
      * @author Renato Hormazabal <nato.ehv@gmail.com>
      * @param Predio $predio la cual será guardada
      * 
      * 
      */
+    
     public function save($rodal) {
         $this->cone->conectar();
         $laConsulta = "INSERT into RODAL (ID_RODAL, ANIO_PLANTACION, SUPERFICIE, VALOR_COMERCIAL, ID_ESPECIE_ARBOREA, ID_PREDIO, MANEJO, ZONA_CRECIMIENTO, ESTADO) 
