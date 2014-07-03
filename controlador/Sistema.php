@@ -131,8 +131,9 @@ class Sistema {
             if($cuenta->getPassword() == $password){
                 return $cuenta;
             }
+        }else{
+            return null;
         }
-        return $cuenta;
     }
     
     public function getComunaLike($nombre){

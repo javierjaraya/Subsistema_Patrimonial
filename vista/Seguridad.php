@@ -16,8 +16,12 @@ if (isset($_POST["Ingresar"])) {
     $password = trim(htmlentities(htmlspecialchars(strip_tags($_POST["password"]))));
     
     
+    
     $cuenta = $control->verifyUser($dni, $password);
+    
     if ($cuenta != null) {
+        //echo "-> ".$cuenta ;
+        
         $session = $control->getSession();
         $idCuenta = $cuenta->getIdCuenta();
         $idPerfil = $cuenta->getIdPerfil();
@@ -28,6 +32,8 @@ if (isset($_POST["Ingresar"])) {
         $session->starSession($idCuenta, $idPerfil,$empl->getNombreEmpleado());
         $direccion = $session->securityCheck();
         header('Location: ' . $direccion);
+    }else{
+        header('Location: ../index.php');
     }
 }else{
     if($_GET['id']=="cerrar"){
@@ -37,6 +43,5 @@ if (isset($_POST["Ingresar"])) {
         header('Location: ' . $direccion);
     }
 }
-
 ?>
 Error de usuario o contraseña
