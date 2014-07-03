@@ -9,10 +9,15 @@ include_once '../controlador/Flora.php';
 
 $control = Sistema::getInstancia();
 $floras = $control->findAllFloras();
-
 ?>
 
 <div class="row">
+    <div style="float:right;">    
+        <form action="floraReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
+            Id Predio : <input type="text" name="idprediofiltro" id="idprediofiltro" value=""> 
+            <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte"></button>
+        </form>
+    </div>
     <h1>Lista de Flora</h1>
 </div>
 <div class="row">
@@ -32,10 +37,10 @@ $floras = $control->findAllFloras();
                 foreach ($floras as $flora) {
                     echo "<tr>";
                     echo "<td ><img onclick='javascript:this.width=450;this.height=338'  ondblclick='javascript:this.width=135;this.height=120' "
-                    . "src = '". $flora->getRutaImagen()  . "' width='135px' height='120px'></td>";
+                    . "src = '" . $flora->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($flora->getNombreFlora()) . "</td>";
-                    echo "<td>" . utf8_encode($flora->getEspecie())     . "</td>";
-                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";                    
+                    echo "<td>" . utf8_encode($flora->getEspecie()) . "</td>";
+                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";
                     echo "</tr>";
                 }
                 ?>
