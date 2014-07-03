@@ -41,7 +41,7 @@ $floras = $control->findAllFloras();
                     . "src = '" . $flora->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($flora->getNombreFlora()) . "</td>";
                     echo "<td>" . utf8_encode($flora->getEspecie()) . "</td>";
-                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";
+                    echo "<td class='text-justify'>" . utf8_encode($flora->getDescripcion()) . "</td>";
                     echo "<td>";
                     echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
