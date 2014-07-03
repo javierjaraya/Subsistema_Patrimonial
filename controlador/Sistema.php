@@ -278,9 +278,14 @@ class Sistema {
     public function eliminarCarpeta($codigo){
         return $this->carpetaDAO->delete($codigo);
     }
-
-
-
+    
+    public function existePredio($idPredio){
+        return $this->predioDAO->existe($idPredio);
+    }
+    
+    public function findFaunaById($idfauna){
+        return $this->faunaDAO->findById($idfauna);
+    }
 }
 
 

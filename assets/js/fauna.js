@@ -82,5 +82,91 @@ var fauna = (function() {
             });
             return false;
         },
+        modificarFauna: function(id){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idFauna = id;
+            var datos = 'idfauna='+ idFauna ;
+            console.log(idFauna);
+            $.ajax({
+                type: "POST",
+                url: "modificarFauna.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editFaunaDialog').html(response);
+                    fauna.mostrarModificar();
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+        },
+        mostrarModificar: function(){
+              $( "#editFaunaDialog" ).dialog({
+              title: "Edición Fauna",
+              height: 500,
+              width: 500,
+              modal: true,
+              resizable: false,
+              buttons: {
+                Actualizar: function() {
+                  var confirmacion = confirm("¿Está seguro que desea actualizar?");
+                  if(confirmacion){
+                            var bValid = true;
+                         var idPredio = $("#idpredio").val();
+                         console.log("Predio: "+idPredio);
+                         idRodal = $("#idrodal").val();
+                         anioPlantacion = $("#anioPlantacion").val();
+                         superficie = $("#superficie").val();
+                         console.log(superficie);
+                         valorComercial = $("#valorComercial").val();
+                         idEspecieArborea = $("#idEspecieArborea").val();
+                         manejo = $("#manejo").val();
+                         zonaCrecimiento = $("#zonaCrecimiento").val();
+                         estado = $("#estado").val();
+
+                   var datos = 'idrodal='+ idRodal
+                               + '&anioPlantacion=' + anioPlantacion 
+                               + '&superficie=' + superficie 
+                               + '&valorComercial=' + valorComercial 
+                               + '&idEspecieArborea=' + idEspecieArborea
+                               + '&manejo=' + manejo
+                               + '&zonaCrecimiento=' + zonaCrecimiento
+                               + '&estado=' + estado
+                               + '&idpredio=' + idPredio;
+                   $.ajax({
+                       type: "POST",
+                       url: "guardarCambiosActualizacionRodal.php",
+                       data: datos,
+                       success: function(response) {
+                           console.log("Ajax ejecutado correctamente");
+                           $('#page-wrapper').html(response);
+                           rodal.cargarTabla();
+                       },
+                       error: function() {
+                           console.log("Error al ejecutar AJAX");
+                           $('#page-wrapper').html('Consulta mal hecha');
+                       }
+                   });
+
+                   $( this ).dialog( "destroy" );
+                           return true; 
+                  }
+                  
+                  
+            }
+            ,
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        $( this ).dialog( "close" );
+              }
+            });
+        }
     };
 })();
