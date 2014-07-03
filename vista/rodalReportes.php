@@ -3,13 +3,15 @@ include_once('../controlador/PDF.php');
 include_once '../controlador/Sistema.php';
 $seleccion = $_GET['seleccionFiltro'];
 $seleccionCantidad = $_GET['seleccionCantidad'];
+$predio = $_GET['idprediofiltroRodal'];
 
 
 
 $pdf = new PDF('L','mm','A4');
 $control = Sistema::getInstancia();
 $pdf->AddPage();
-$predios = $control->findAllRodalesSelection($seleccion, $seleccionCantidad);
+$predios = $control->findAllRodalesSelection($seleccion, $seleccionCantidad, $predio );
+
 
 $fechaActual =  date("d/m/Y"); 
 $miCabecera = array('Id Predio','Id Rodal', 'Nombre Predio', 'Manejo', 'Zona Crecimiento','Superficie (ha)', 'Año Plant.', 'Valor Comercial ($)');
@@ -41,6 +43,9 @@ if($seleccion == 0){
 }
 $tituloPagina = "Rodales al ".$fechaActual. " ordenados por: ".$modoOrden;
 $pdf->tablaHorizontalRodal($miCabecera, $predios, $tituloPagina);
- 
 $pdf->Output(); //Salida al navegador
+
+
+
+
 ?>

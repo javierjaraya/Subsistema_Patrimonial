@@ -34,6 +34,7 @@ $predios = $control->findAllRodales();
                                     <option value="100">100</option>
                                     
                              </select>
+         <input type="text" id="idprediofiltroRodal" name="idprediofiltroRodal" value="" placeholder="Filtre por ID Predio">
         <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte" onclick=" return validarSeleccionReporteRodal()" ></button>
          
      </form>
@@ -52,7 +53,7 @@ $predios = $control->findAllRodales();
                 <th >Manejo <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Esp. Arbórea <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Zona Crecimiento <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Sup. <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Sup. (ha) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Año Plantación <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Valor Comercial ($) <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Acción</th>

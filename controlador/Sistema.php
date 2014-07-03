@@ -78,9 +78,10 @@ class Sistema {
     public function findAllRodales(){
         return $this->rodalDAO->findAll();
     }
-    public function findAllRodalesSelection($selection, $seleccionCantidad){
-        return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad);
+    public function findAllRodalesSelection($selection, $seleccionCantidad, $idPredio){
+        return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
     }
+   
 
     /**
      * Metodo encargado de buscar un predio por Id
@@ -269,6 +270,10 @@ class Sistema {
     
     public function findAllFlorasPredio($idpredio){
         return $this->floraDAO->findAllFlorasPredio($idpredio);
+    }
+    
+    public function existePredio($idPredio){
+        return $this->predioDAO->existe($idPredio);
     }
 }
 

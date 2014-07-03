@@ -214,6 +214,22 @@ class PredioDAO implements interfaceDAO{
         $this->cone->desconectar();
         
     }
+    
+    public function existe($idPredio){
+        $this->cone->conectar();
+        $consultaCantidad ="SELECT count(*) AS ID FROM predio WHERE ID_PREDIO = '".$idPredio."' ";
+        $queryId = $this->cone->ejecutar($consultaCantidad);
+        
+        while(OCIFetch($queryId)){
+            $id = ociresult($queryId, "ID");
+        }
+        $this->cone->desconectar();
+        if($id>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
 
