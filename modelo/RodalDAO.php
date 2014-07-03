@@ -47,8 +47,9 @@ class RodalDAO implements interfaceDAO{
                             FROM rodal  r, predio  p, especiearborea e
                             WHERE  r.ID_PREDIO = p.ID_PREDIO
                             AND r.id_especie_arborea = e.id_especie_arborea
-                            AND r.ESTADO = '".$estado."' ORDER BY anio)
                             AND r.ID_PREDIO = '".$idPredio."'
+                            AND r.ESTADO = '".$estado."' ORDER BY anio)
+                            
                             WHERE ROWNUM <= $seleccionCantidad";  
 
 
@@ -74,8 +75,9 @@ class RodalDAO implements interfaceDAO{
                             FROM rodal  r, predio  p, especiearborea e
                             WHERE  r.ID_PREDIO = p.ID_PREDIO
                             AND r.id_especie_arborea = e.id_especie_arborea
-                            AND r.ESTADO = '".$estado."' ORDER BY r.ID_PREDIO)
                             AND r.ID_PREDIO = '".$idPredio."'
+                            AND r.ESTADO = '".$estado."' ORDER BY r.ID_PREDIO)
+                            
                             WHERE ROWNUM <= $seleccionCantidad";
                 }else{
                     $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
@@ -100,8 +102,9 @@ class RodalDAO implements interfaceDAO{
                             FROM rodal  r, predio  p, especiearborea e
                             WHERE  r.ID_PREDIO = p.ID_PREDIO
                             AND r.id_especie_arborea = e.id_especie_arborea
-                            AND r.ESTADO = '".$estado."' ORDER BY r.ID_RODAL)
                             AND r.ID_PREDIO = '".$idPredio."'
+                            AND r.ESTADO = '".$estado."' ORDER BY r.ID_RODAL)
+                            
                             WHERE ROWNUM <= $seleccionCantidad";
                 }else{
                    $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
@@ -126,8 +129,9 @@ class RodalDAO implements interfaceDAO{
                             FROM rodal  r, predio  p, especiearborea e
                             WHERE  r.ID_PREDIO = p.ID_PREDIO
                             AND r.id_especie_arborea = e.id_especie_arborea
-                            AND r.ESTADO = '".$estado."' ORDER BY nombre)
                             AND r.ID_PREDIO = '".$idPredio."'
+                            AND r.ESTADO = '".$estado."' ORDER BY nombre)
+                            
                             WHERE ROWNUM <= $seleccionCantidad";
                 }else{
                   $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
@@ -152,8 +156,9 @@ class RodalDAO implements interfaceDAO{
                             FROM rodal  r, predio  p, especiearborea e
                             WHERE  r.ID_PREDIO = p.ID_PREDIO
                             AND r.id_especie_arborea = e.id_especie_arborea
-                            AND r.ESTADO = '".$estado."' ORDER BY sup)
                             AND r.ID_PREDIO = '".$idPredio."'
+                            AND r.ESTADO = '".$estado."' ORDER BY sup)
+                            
                             WHERE ROWNUM <= $seleccionCantidad";
                 }else{
                   $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
@@ -178,8 +183,9 @@ class RodalDAO implements interfaceDAO{
                             FROM rodal  r, predio  p, especiearborea e
                             WHERE  r.ID_PREDIO = p.ID_PREDIO
                             AND r.id_especie_arborea = e.id_especie_arborea
-                            AND r.ESTADO = '".$estado."' ORDER BY zona)
                             AND r.ID_PREDIO = '".$idPredio."'
+                            AND r.ESTADO = '".$estado."' ORDER BY zona)
+                            
                             WHERE ROWNUM <= $seleccionCantidad";
                 }else{
                    $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
@@ -196,7 +202,7 @@ class RodalDAO implements interfaceDAO{
             }   
         }else{
             // id predio vacio
-            echo "VACIO PO";
+            
             if($seleccion == 0){
                 if($seleccionCantidad<=100){
 
