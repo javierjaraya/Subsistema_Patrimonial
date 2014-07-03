@@ -150,67 +150,8 @@ class PDF extends FPDF {
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getAreaBasal()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
-
-            $this->Ln(); //Salto de línea para generar otra fila
-            $bandera = !$bandera; //Alterna el valor de la bandera
-        }
-    }
-
-    function datosVerticalFauna($faunas) {
-        $this->SetXY(10, 27);
-        $this->SetFont('Arial', '', 10);
-        $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
-        $this->SetTextColor(3, 3, 3); //Color del texto: Negro
-        $cont = 0;
-        $distancia = 55;
-        foreach ($faunas as $fauna) {
-            //Cell(float w , float h, string texto , mixed borde, int ln , string align , boolean fill, mixed link)
-            /* w: ancho de la celda. Si ponemos 0 la celda se extiende hasta el margen derecho.
-              H: alto de la celda.
-              Texto: el texto que le vamos a añadir.
-              Borde: nos dice si van a ser visibles o no. si es 0 no serán visibles, si es 1 se verán los bordes.
-              Ln: nos dice donde se empezara a escribir después de llamar a esta función. Siendo 0 a la derecha, 1 al comienzo de la siguiente línea, 2 debajo.
-              Align: para alinear el texto. L alineado a la izquierda, C centrado y R alineado a la derecha.
-              Fill: nos dice si el fondo de la celda va a ir con color o no. los valores son True o False
-             */
-            $this->Cell(55, $distancia, $this->Image($fauna->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 1, 0, 'L');
-            $this->CellFitSpace(20, 55, utf8_decode($fauna->getNombreFauna()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(20, 55, utf8_decode($fauna->getEspecie()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(95, 55, utf8_decode($fauna->getDescripcion()), 1, 0, 'L', $bandera);
-            $cont++;
-            if ($cont == 4) {
-                $this->Ln(); //Salto de línea para generar otra fila    
-                $cont == 1;
-                $distancia = 110;
-            }else{
-                $distancia = 55;
-            }
-            $this->Ln(); //Salto de línea para generar otra fila
-            $bandera = !$bandera; //Alterna el valor de la bandera
-        }
-    }
-    
-    function datosVerticalFlora($floras) {
-        $this->SetXY(10, 27);
-        $this->SetFont('Arial', '', 10);
-        $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
-        $this->SetTextColor(3, 3, 3); //Color del texto: Negro
-        $cont = 0;
-        $distancia = 55;
-        foreach ($floras as $flora) {
-            $this->Cell(55, $distancia, $this->Image($flora->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 1, 0, 'L');
-            $this->CellFitSpace(20, 55, utf8_decode($flora->getNombreFlora()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(20, 55, utf8_decode($flora->getEspecie()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(95, 55, utf8_decode($flora->getDescripcion()), 1, 0, 'L', $bandera);
-            $cont++;
-            if ($cont == 4) {
-                $this->Ln(); //Salto de línea para generar otra fila    
-                $cont == 1;
-                $distancia = 110;
-            }else{
-                $distancia = 55;
-            }
+            $this->CellFitSpace(15, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getFechaMedicion()), 1, 0, 'L', $bandera);
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
