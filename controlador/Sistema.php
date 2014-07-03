@@ -39,7 +39,7 @@ class Sistema {
      private $inventarioDAO;
      private $especieArboreaDAO;
      private $zonaDAO;
-     private $carpetaDAO;
+     private $faunaDAO;
 
 
      private function Sistema(){
@@ -55,7 +55,8 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
-         $this->carpetaDAO = new CarpetaLegalDAO();
+         $this->faunaDAO = new FaunaDAO();
+         $this->floraDAO = new FloraDAO();
      }
      
      public static function  getInstancia(){
@@ -81,7 +82,9 @@ class Sistema {
     public function findAllRodalesSelection($selection, $seleccionCantidad, $idPredio){
         return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
     }
-   
+    public function findAllPrediosSelection($selection, $seleccionCantidad, $idPredio){
+        return $this->predioDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
+    }
 
     /**
      * Metodo encargado de buscar un predio por Id
@@ -261,8 +264,11 @@ class Sistema {
         $this->inventarioDAO->update($inventario);
     }
 
-    public function findAllCarpetas(){
-        return $this->carpetaDAO->findAll();
+    public function findALlFaunas(){
+        return $this->faunaDAO->findAll();
+    }
+    public function findALlFloras(){
+        return $this->floraDAO->findAll();
     }
     
     public function saveCarpeta($carpeta){
