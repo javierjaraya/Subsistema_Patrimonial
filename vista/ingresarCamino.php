@@ -14,8 +14,8 @@ echo "longitud = $longitud  superficie = $tipoSuperficie  predio = $idPredio";
 
 $control = Sistema::getInstancia();
 $camino = new Camino();
-$ID = $control->getMaxIdCamino;
-echo $ID;
+$ID = $control->getMaxIdCamino();
+
 $camino->setIdCamino($ID);
 $camino->setLongitud($longitud);
 $camino->setTipoSuperficie($tipoSuperficie);

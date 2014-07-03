@@ -40,7 +40,7 @@ console.log('iniciando eventos de rodal');
 	}
                   
                   );
-          
+                      consultor_rodal.autocompletePredioFiltro();
           });
           console.log('tabla cargada');
         },
@@ -65,7 +65,7 @@ console.log('iniciando eventos de rodal');
             var datos = 'idrodal='+ idRodal ;
             $.ajax({
                 type: "POST",
-                url: "listarInventarioRodal.php",
+                url: "listarInventarioRodalConsultor.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
@@ -114,6 +114,19 @@ console.log('iniciando eventos de rodal');
                 } 
             };
             $.blockUI(confi);
+        },
+        autocompletePredioFiltro: function(){
+            console.log("cargando autocomplete rodal");
+            $("#idprediofiltroRodal").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){                   
+                }
+            });
         }
       };
     })();

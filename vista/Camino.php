@@ -53,11 +53,17 @@ $caminos = $control->findAllCaminos();
            </div>
            <div class="ui-widget">
                <label>Tipo Superficie: </label>&nbsp;&nbsp;<img id="superficie_check" src="" style="display: none;">
-               <input cols="30" rows="5" name="superficie" id="superficie" class="superficie form-control"  required="required" ok="false">
+               <select id="superficie" name="superficie" class="superficie form-control" size="1">
+                   |<option value="1">Ripio</option>
+                    <option value="2">Gravilla</option>
+                    <option value="3">Arena</option>
+                    <option value="4">Tierra</option>
+                    <option value="5">Pavimento</option>
+               </select>
            </div>
            <div>
                <label>Id Predio: </label>
-               <input type="text" class="idpredio form-control" name="idpredio" required="required" />
+               <input type="text" class="idpredio form-control" id="idpredio" name="idpredio" required="required" />
            </div>
         </fieldset>
          
@@ -67,7 +73,7 @@ $caminos = $control->findAllCaminos();
         <div id="editCaminoDialog" title="Create new user">
         </div>
 
-        <div class="notify_correct" style="display:none">
+        <div id="notify_correct" class="notify_correct" style="display:none">
             <h1>Camino Agregado</h1>
             <h2>Correctamente!</h2>
         </div>
