@@ -1,5 +1,5 @@
 
-<<html>
+<html>
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>

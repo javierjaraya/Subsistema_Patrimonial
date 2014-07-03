@@ -6,6 +6,7 @@
     $session = $control->getSession();
     
     $empleado = $session->getNombreEmpleado();
+    
     if(!isset($empleado)){
         $direccion = $session->securityCheck();
         header('Location: '.$direccion);
@@ -15,17 +16,56 @@
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.css" rel="stylesheet" type="text/css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.structure.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
         <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Add custom CSS here -->
         <link href="../assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+        <style>
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+	</style>
         <style>
             .ui-autocomplete-loading {
     background: white url('../assets/ico/ajax.gif') right center no-repeat;
@@ -62,6 +102,19 @@
              
       }
   </script>
+  <script type="text/javascript">
+      function validarSeleccionReporteRodal(){
+           seleccion = document.getElementById("seleccionFiltro").value;
+            if(seleccion == -1 ){
+                alert("Para generar el reporte de Rodal debe escoger un tipo de ordenamiento");
+                return false;
+                
+             }else{
+                 return true;
+             }
+             
+      }
+  </script>
   
     </head>
 
@@ -79,7 +132,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img src="../assets/img/Logo.png" width="130px" height="50px" style="float: left;">
+                    <img src="../assets/img/Logo.png" width="150px" height="50px" style="float: left;">
                     <a class="navbar-brand" style="float: left;" href="admin.php">SB Admin</a>
                 </div>
 
@@ -123,8 +176,13 @@
       
                             </ul>
                         </li>
-                        
-                        <li><a href=""><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop"></i> Flora y Fauna <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:fauna.cargarTabla();" class="fa fa-table"> Fauna Predio</a></li>
+                                <li><a href="javascript:flora.cargarTabla();" class="fa fa-table"> Flora Predio</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i> Caminos <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -135,7 +193,7 @@
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $empleado;?><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo " ".$empleado;?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Perfil</a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i> Configuracion</a></li>
@@ -148,7 +206,11 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
+                <div class="col-sm-9">
+                    <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
+                    
+                </div>
+                
                 
                 <!--<img src="../assets/img/fondo.jpg" width="100%" height="75%"> -->
             </div><!-- /#page-wrapper -->
@@ -161,7 +223,8 @@
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
     <!-- jQuery UI (estilos) -->
-    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-ui-1.11.0/jquery-ui.min.js"></script>
+    
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <!-- BlockUI core JS -->
@@ -173,6 +236,8 @@
     <script type="text/javascript" src="../assets/js/empleado.js"></script>
     <script type="text/javascript" src="../assets/js/cuenta.js"></script>
     <script type="text/javascript" src="../assets/js/camino.js"></script>
+    <script type="text/javascript" src="../assets/js/fauna.js"></script>
+    <script type="text/javascript" src="../assets/js/flora.js"></script>
     <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>

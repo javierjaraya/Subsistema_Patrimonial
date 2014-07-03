@@ -2,6 +2,8 @@
 
 include_once '../controlador/Sistema.php';
 include_once '../controlador/Rodal.php';
+include_once '../controlador/EspecieArborea.php';
+
 
 $idrodal = $_POST['idrodal'];
 
@@ -16,7 +18,7 @@ $superficie = $rodal->getSuperficie();
 $valorComercial = $rodal->getValorComercial();
 $idespecieArborea = $rodal->getIdEspecieArborea();
 
-$listaEspecieArborea = $control->getEspeciesArborea();
+$listaEspecieArborea = $control->findAllEspecies();
 
 
 
@@ -38,11 +40,11 @@ $estado = $rodal->getEstado();
             <select name="idEspecieArborea" id="idEspecieArborea"  class="form-control " >
               <option value="-1">Tipo de Especie Arborea </option>
               <?php
-                while($row = oci_fetch_array ($listaEspecieArborea,OCI_RETURN_NULLS )){
-                    if($row['ID_ESPECIE_ARBOREA'] == $idespecieArborea){
-                        echo "<option selected='selected' '  value='".$row['ID_ESPECIE_ARBOREA']."' >".$row['NOMBRE_ESPECIE_ARBOREA']."</option>\n";
+                foreach($listaEspecieArborea as $especie){
+                    if($especie->getId() == $idespecieArborea){
+                        echo "<option selected='selected'  value='".$especie->getId()."' >".$especie->getNombre()."</option>\n";
                     }else{
-                        echo "<option value='".$row['ID_ESPECIE_ARBOREA']."' >".$row['NOMBRE_ESPECIE_ARBOREA']."</option>\n";
+                        echo "<option value='".$especie->getId()."' >".$especie->getNombre()."</option>\n";
                     }
                     
                 }

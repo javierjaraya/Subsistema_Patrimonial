@@ -250,7 +250,7 @@ console.log('iniciando eventos de inventario');
                               
                       }
                   }
-                 
+                 //$( "#nuevoInventario" ).dialog("destroy");
                   
             },
                 Cancelar: function() {
@@ -357,8 +357,9 @@ console.log('iniciando eventos de inventario');
               resizable: false,
               buttons: {
                 Actualizar: function() {
-                  
-                  var bValid = true;
+                  var confirmacion = confirm("¿Está seguro que desea actualizar?");
+                  if(confirmacion){
+                     var bValid = true;
                   var idinventario = id;
                   idRodal = $("#idRodal").val();
                   servicio = $("#servicio").val();
@@ -392,20 +393,23 @@ console.log('iniciando eventos de inventario');
                 data: datos,
                 success: function(response) {
                     console.log("Actualizacion correcta");
-                    $('#page-wrapper').html(response);
+                    
+                    rodal.cargarListaInventario(idRodal);
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Consulta mal hecha');
+                    
                 }
             });
             
             $( this ).dialog( "close" );
-                    return true;
+                    return true; 
+                  }
+                  
                   
             }
             ,
-                Cancelar: function() {
+             Cancelar: function() {
                   $( this ).dialog( "close" );
                   //rodal.cargarListaInventario(idRodal);
                 }

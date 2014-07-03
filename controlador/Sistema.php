@@ -1,14 +1,17 @@
 <?php
+
+include_once '../modelo/CaminoDAO.php';
+include_once '../modelo/ComunaDAO.php';
 include_once '../modelo/CuentaDAO.php';
+include_once '../modelo/EmpleadoDAO.php';
+include_once '../modelo/EspecieArboreaDAO.php';
+include_once '../modelo/FaunaDAO.php';
+include_once '../modelo/FloraDAO.php';
+include_once '../modelo/InventarioDAO.php';
 include_once '../modelo/PerfilDAO.php';
 include_once '../modelo/PredioDAO.php';
-include_once '../modelo/RodalDAO.php';
-include_once '../modelo/EmpleadoDAO.php';
-include_once '../modelo/ComunaDAO.php';
-include_once '../modelo/CaminoDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
-include_once '../modelo/InventarioDAO.php';
-include_once '../modelo/EspecieArboreaDAO.php';
+include_once '../modelo/RodalDAO.php';
 include_once '../modelo/ZonaDAO.php';
 include_once '../modelo/CarpetaLegalDAO.php';
 
@@ -75,6 +78,11 @@ class Sistema {
     public function findAllRodales(){
         return $this->rodalDAO->findAll();
     }
+    public function findAllRodalesSelection($selection, $seleccionCantidad, $idPredio){
+        return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
+    }
+   
+
     /**
      * Metodo encargado de buscar un predio por Id
      * @return Array de Predios
@@ -124,8 +132,9 @@ class Sistema {
             if($cuenta->getPassword() == $password){
                 return $cuenta;
             }
+        }else{
+            return null;
         }
-        return $cuenta;
     }
     
     public function getComunaLike($nombre){
@@ -147,16 +156,28 @@ class Sistema {
         return $this->caminoDAO->findById($idCamino);
     }
     
+    public function getMaxIdCamino(){
+        return $this->caminoDAO->queryMaxID();
+    }
+
     public function saveCamino($camino){
         $this->caminoDAO->save($camino);
     }
+    
+    public function actualizarCamino($camino, $id_original){
+        $this->caminoDAO->actualizarCaminoDAO($camino, $id_original);
+    }
 
-        /**
+    /**
      * ;etodo encargado de guardar predio
      * @param type $predio
      */
     public function savePredio($predio){
             $this->predioDAO->save($predio);
+    }
+    
+    public function saveRodal($rodal){
+        $this->rodalDAO->save($rodal);
     }
     
     public function findComunaByExample($comuna){
@@ -174,10 +195,20 @@ class Sistema {
     public function actualizarPredio($predio, $id_original){
         $this->predioDAO->actualizarPredioDAO($predio, $id_original);
     }
+    public function findPredioByExample($predio){
+        return $this->predioDAO->findByExample($predio);
+    }
+    public function findPredioLikeId($id){
+        return $this->predioDAO->findLikeAtrr($id);
+    }
     
     /** Método encargado de elimnar un Predio mediante su Id - Iván*/
     public function eliminarPredio($idPredio){
         $this->predioDAO->delete($idPredio);
+    }
+    
+    public function eliminarRodalesDelPredio($idPredio){
+        $this->rodalDAO->deleteRodalByIdPredio($idPredio);
     }
     
     public function eliminarRodal($idRodal){

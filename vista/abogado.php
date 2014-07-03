@@ -1,8 +1,15 @@
 <?php
-    /*include_once 'controlador/Sistema.php';
+    include_once '../controlador/Sistema.php';
+    include_once '../controlador/Session.php';
     
     $control = Sistema::getInstancia();
-    $empleado = $control->getEmpleadoCuenta();*/
+    $session = $control->getSession();
+    
+    $empleado = $session->getNombreEmpleado();
+    if(!isset($empleado)){
+        $direccion = $session->securityCheck();
+        header('Location: '.$direccion);
+    }
 ?>
 <html>
     <head>
@@ -34,7 +41,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <img src="../assets/img/Logo.png" width="130px" height="50px" style="float: left;">
-                    <a class="navbar-brand" href="index.html">SB Abogado</a>
+                    <a class="navbar-brand" href="abogado.php">SB Abogado</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,14 +55,11 @@
                                 
                             </ul>
                         </li>
-                 
-                        <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
-                        <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><!-- <?php echo $empleado;?> --><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo " ".$empleado;?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Perfil</a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i> Configuracion</a></li>
@@ -68,7 +72,7 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!</h1>
+                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
 
             </div><!-- /#page-wrapper -->
 
@@ -79,6 +83,8 @@
     </body> 
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
+    <!-- jQuery UI (estilos) -->
+    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>

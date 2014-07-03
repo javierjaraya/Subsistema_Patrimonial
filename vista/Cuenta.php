@@ -59,11 +59,11 @@ $cuentas = $control->findAllCuentas();
 
 <div id="nuevaCuenta" style="display:none; cursor: default"> 
         <fieldset>
-            <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" /></div>
-            <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" /></div>
-            <div><label>Password: </label><input type="text" class="password" name="password" /></div>
-            <div><label>Estado: </label><input type="text" class="estado" name="estado" /></div>
-            <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>            
+            <div><label>ID Cuenta: </label><input type="text" class="form-control" name="idCuenta" /></div>
+            <div><label>Fecha de Creacion: </label><input type="text" class="form-control" name="fechaCreacion" /></div>
+            <div><label>Password: </label><input type="text" class="form-control" name="password" /></div>
+            <div><label>Estado: </label><input type="text" class="form-control" name="estado" /></div>
+            <div><label>ID Perfil: </label><input cols="30" rows="5" class="form-control" name="idPerfil" /></div>            
         </fieldset>
 </div>     
 

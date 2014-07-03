@@ -1,15 +1,52 @@
 <?php
 include_once('../controlador/PDF.php');
 include_once '../controlador/Sistema.php';
-$pdf = new PDF();
+$seleccion = $_GET['seleccionFiltro'];
+$seleccionCantidad = $_GET['seleccionCantidad'];
+$predio = $_GET['idprediofiltroRodal'];
+
+
+
+$pdf = new PDF('L','mm','A4');
 $control = Sistema::getInstancia();
 $pdf->AddPage();
-$predios = $control->findAllRodales();
+$predios = $control->findAllRodalesSelection($seleccion, $seleccionCantidad, $predio );
+
+
 $fechaActual =  date("d/m/Y"); 
-$miCabecera = array('Id Predio','Id', 'Manejo', 'Esp.Arbórea', 'Zona Crecimiento', 'Superficie', 'Año Plant.', 'Valor Comercial');
- 
-$tituloPagina = "Listado de Rodales al ".$fechaActual;
+$miCabecera = array('Id Predio','Id Rodal', 'Nombre Predio', 'Manejo', 'Zona Crecimiento','Superficie (ha)', 'Año Plant.', 'Valor Comercial ($)');
+
+if($seleccion == 0){
+    $modoOrden = 'Año Plantación';
+}else{
+    if($seleccion == 1){
+       $modoOrden = 'Id Predio'; 
+    }else{
+        if($seleccion == 2){
+           $modoOrden = 'Id Rodal';  
+        }else{
+            if($seleccion == 3){
+                $modoOrden = 'Nombre Predio';
+            }else{
+                if($seleccion == 4){
+                    $modoOrden = 'Superficie';
+                }else{
+                   if($seleccion == 5){
+                        $modoOrden = 'Zona Crecimiento';
+                    }  
+                }
+            }
+        }
+        
+    }
+    
+}
+$tituloPagina = "Rodales al ".$fechaActual. " ordenados por: ".$modoOrden;
+$pdf->SetAutoPageBreak(TRUE);
 $pdf->tablaHorizontalRodal($miCabecera, $predios, $tituloPagina);
- 
 $pdf->Output(); //Salida al navegador
+
+
+
+
 ?>

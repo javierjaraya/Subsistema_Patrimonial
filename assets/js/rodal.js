@@ -40,8 +40,9 @@ console.log('iniciando eventos de rodal');
 	}
                   
                   );
-          
+                      rodal.autocompletePredioFiltro();
           });
+          
           console.log('tabla cargada');
         },
         /**
@@ -58,26 +59,21 @@ console.log('iniciando eventos de rodal');
         },
         /**
          * metodo el cual recibirá los parametros, validará y enviará
-         * por ajax a php
+         * por ajax a php 
          * @returns {Boolean}
          */
-        aceptarIngresoRodal: function(){
+        aceptarIngresoRodal: function(datos){
+            console.log(datos);
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
-            var idPredio = $(".idpredio").val();
-            nombre = $(".nombre").val();
-            superficie = $(".superficie").val();
-            valorcomercial = $(".valorcomercial").val();
-            idComuna = $(".id_comuna").attr("idcomuna");
-            
-            
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna;
             $.ajax({
                 type: "POST",
-                url: "ingresaPredio.php",
+                url: "ingresarRodal.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     predio.cargarTabla();
+                    rodal.mostrarMensaje("Rodal agregado exitosamente!");
+                    
                    // $(document).ajaxStop(predio.mostrarMensaje(""));
                     
 //                    $('#page-wrapper').html(response);
@@ -116,66 +112,98 @@ console.log('iniciando eventos de rodal');
                   ok_zona = false;
                   ok_superficie = false;
                   ok_valor = false;
+                  ok_manejo = false;
                   
-                  if($("#id_rodal").attr("ok") == "true") ok_id_predio = true;
-                  if($(".id_comuna").attr("ok") == "true" ) ok_comuna = true;
+                  ok_id_rodal = ($("#id_rodal_nuevo").attr("ok") == "true")? true: false;
                   
-                  val_nombre = $(".nombre").val();
-                  val_superficie = $(".superficie").val();
-                  val_valor = $(".valorcomercial").val();
+                  val_anio_plantacion = $("#anioPlantacion_nuevo").val();
+                  val_zona = $("#zonaCrecimiento_nuevo").val();
+                  val_superficie = $("#superficie_nuevo").val();
+                  val_valor = $("#valor_nuevo").val();
+                  val_manejo = $("#manejo_nuevo").val();
+                  val_especie = $("#id_especie_nuevo").val();
+                  val_id_rodal = $("#id_rodal_nuevo").val()
                   
-                  if(val_nombre != ""){
-                      console.log("nombre es correcto")
-                      $(".nombre").tooltip('destroy');
-                      ok_nombre = true;
+                  if(val_anio_plantacion != ""){
+                      console.log("año es correcto")
+                      $("#anioPlantacion_nuevo").tooltip('destroy');
+                      ok_anio_plantacion = true;
                   }else{
-                      $(".nombre").tooltip(
+                      $("#anioPlantacion_nuevo").tooltip(
                                     {
-                                    title: 'El campo nombre no puede ser vacio',
+                                    title: 'El campo es numérico y no puede ser vacio',
                                     placement: 'bottom'});
                   }
                   
+                  if(val_zona != ""){
+                      console.log("zona es correcto")
+                      $("#zonaCrecimiento_nuevo").tooltip('destroy');
+                      ok_zona = true;
+                  }else{
+                      $("#zonaCrecimiento_nuevo").tooltip(
+                                    {
+                                    title: 'El campo no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
                   if(val_superficie != ""){
                       console.log("superficie es correcto")
-                      $(".superficie").tooltip('destroy');
+                      $("#superficie_nuevo").tooltip('destroy');
                       ok_superficie = true;
                   }else{
-                      $(".superficie").tooltip(
+                      $("#superficie_nuevo").tooltip(
                                     {
-                                    title: 'El campo superficie es númerico, y no puede ser vacio',
+                                    title: 'El campo valor comercial es númerico, y no puede ser vacio',
                                     placement: 'bottom'});
                   }
                   
                   if(val_valor != ""){
                       console.log("valor comercial es correcto")
-                      $(".valorcomercial").tooltip('destroy');
+                      $("#valor_nuevo").tooltip('destroy');
                       ok_valor = true;
                   }else{
-                      $(".valorcomercial").tooltip(
+                      $("#valor_nuevo").tooltip(
                                     {
                                     title: 'El campo valor comercial es númerico, y no puede ser vacio',
                                     placement: 'bottom'});
                   }
-                  valida = valida && ok_id_predio && ok_comuna && ok_nombre && ok_superficie && ok_valor;
+                  
+                  if(val_manejo != ""){
+                      console.log("manejo es correcto")
+                      $("#manejo_nuevo").tooltip('destroy');
+                      ok_manejo = true;
+                  }else{
+                      $("#manejo_nuevo").tooltip(
+                                    {
+                                    title: 'El campo no puede ser vacio',
+                                    placement: 'bottom'});
+                  }
+                  valida = valida && ok_id_rodal && ok_anio_plantacion && ok_zona && ok_superficie && ok_valor && ok_manejo;
                   
                   if(valida){
-                       rodal.aceptarIngresoRodal();
-                       predio.cargarTabla();
+                       var datos = "?anioplantacion="+val_anio_plantacion
+                               +"&zona="+val_zona
+                               +"&superficie="+val_superficie
+                               +"&valor="+val_valor
+                               +"&manejo="+val_manejo
+                               +"&idpredio="+idPredio
+                               +"&especie="+val_especie
+                               +"&idrodal="+val_id_rodal;
+                       rodal.aceptarIngresoRodal(datos);
                        $( this ).dialog( "close" );
                   }else{
                       switch(false){
-                          case ok_id_predio: $(".idpredio").focus();
+                          case ok_id_rodal: $("#id_rodal_nuevo").focus();
                               break;
-                          case ok_nombre: $(".nombre").focus();
-                              
+                          case ok_manejo: $("#manejo_nuevo").focus();
                               break;
-                          case ok_comuna: $(".id_comuna").focus();
+                          case ok_zona: $("#zonaCrecimiento_nuevo").focus();
                               break;
-                          case ok_superficie: $(".superficie").focus();
+                          case ok_anio_plantacion: $("#anioPlantacion_nuevo").focus();
                               break;
-                          case ok_valor: $(".valorcomercial").focus();
+                          case ok_superficie: $("#superficie_nuevo").focus();
                               break;
-                              
+                          case ok_valor: $("#valor_nuevo").focus();
+                              break;   
                       }
                   }
                  
@@ -258,48 +286,52 @@ console.log('iniciando eventos de rodal');
               height: 600,
               width: 500,
               modal: true,
-             
               resizable: false,
               buttons: {
                 Actualizar: function() {
+                  var confirmacion = confirm("¿Está seguro que desea actualizar?");
+                  if(confirmacion){
+                            var bValid = true;
+                         var idPredio = $("#idpredio").val();
+                         console.log("Predio: "+idPredio);
+                         idRodal = $("#idrodal").val();
+                         anioPlantacion = $("#anioPlantacion").val();
+                         superficie = $("#superficie").val();
+                         console.log(superficie);
+                         valorComercial = $("#valorComercial").val();
+                         idEspecieArborea = $("#idEspecieArborea").val();
+                         manejo = $("#manejo").val();
+                         zonaCrecimiento = $("#zonaCrecimiento").val();
+                         estado = $("#estado").val();
+
+                   var datos = 'idrodal='+ idRodal
+                               + '&anioPlantacion=' + anioPlantacion 
+                               + '&superficie=' + superficie 
+                               + '&valorComercial=' + valorComercial 
+                               + '&idEspecieArborea=' + idEspecieArborea
+                               + '&manejo=' + manejo
+                               + '&zonaCrecimiento=' + zonaCrecimiento
+                               + '&estado=' + estado
+                               + '&idpredio=' + idPredio;
+                   $.ajax({
+                       type: "POST",
+                       url: "guardarCambiosActualizacionRodal.php",
+                       data: datos,
+                       success: function(response) {
+                           console.log("Ajax ejecutado correctamente");
+                           $('#page-wrapper').html(response);
+                           rodal.cargarTabla();
+                       },
+                       error: function() {
+                           console.log("Error al ejecutar AJAX");
+                           $('#page-wrapper').html('Consulta mal hecha');
+                       }
+                   });
+
+                   $( this ).dialog( "destroy" );
+                           return true; 
+                  }
                   
-                  var bValid = true;
-                  var idPredio = $("#idpredio").val();
-                  idRodal = $("#idrodal").val();
-                  anioPlantacion = $("#anioPlantacion").val();
-                  superficie = $("#superficie").val();
-                  console.log(superficie);
-                  valorComercial = $("#valorComercial").val();
-                  idEspecieArborea = $("#idEspecieArborea").val();
-                  manejo = $("#manejo").val();
-                  zonaCrecimiento = $("#zonaCrecimiento").val();
-                  estado = $("#estado").val();
-            
-            var datos = 'idrodal='+ idRodal
-                        + '&anioPlantacion=' + anioPlantacion 
-                        + '&superficie=' + superficie 
-                        + '&valorComercial=' + valorComercial 
-                        + '&idEspecieArborea=' + idEspecieArborea
-                        + '&manejo=' + manejo
-                        + '&zonaCrecimiento=' + zonaCrecimiento
-                        + '&estado=' + estado;
-            $.ajax({
-                type: "POST",
-                url: "guardarCambiosActualizacionRodal.php",
-                data: datos,
-                success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
-                    $('#page-wrapper').html(response);
-                    rodal.cargarTabla();
-                },
-                error: function() {
-                    console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Consulta mal hecha');
-                }
-            });
-            
-            $( this ).dialog( "close" );
-                    return true;
                   
             }
             ,
@@ -342,80 +374,47 @@ console.log('iniciando eventos de rodal');
         },
         
         
-        /**
-         * Método encargado de validar el input de id_predio al momento de ingresar
-         * una nueva tabla
-         * @returns {undefined}
-         */
-        cargaFuncioneskeyPress: function(){
-            $("#id_rodal_check").focusout(function(){
-                var idRodal = $('#id_rodal_check').val();
-                if (idRodal != ""){
-                    $.ajax({
-                        url:'verificaIdRodal.php',
-                        type:'POST',
-                        dataType:'json',
-                        data:{ idrodal:$('#id_rodal_check').val()}
-                    }).done(function(respuesta){
-                        console.log(respuesta);
-                        console.log("llamada post terminada");
-                        
-                        if(respuesta.error == "1"){
-                            console.log("codigo retvac dornado : "+respuesta.error);
-                            $(".idpredio").tooltip('destroy');
-                            $(".idpredio").attr("ok", "true");
-                            $('#id_predio_check').attr("src","../assets/ico/tick.gif");
-                            $('#id_predio_check').show();
-                        }else{
-                            console.log("el id ya esta en el sistema");
-                            $(".idpredio").tooltip('destroy');
-                            $(".idpredio").tooltip(
-                                    {
-                                    title: 'El id seleccionado no se encuentra disponible',
-                                    placement: 'bottom'});
-                            $(".idpredio").attr("ok", "false");
-                            $('#id_predio_check').attr("src","../assets/ico/error.png");
-                            $('#id_predio_check').show();
-                        }
-                    });
-                }else{
-                    $('#id_predio_check').attr("src","../assets/ico/error.png");
-                            $('#id_predio_check').show();
-                            $(".idpredio").tooltip('destroy');
-                    $(".idpredio").tooltip(
-                                {
-                                title: 'El Campo predio No puede estar vacio',
-                                placement: 'bottom'});
-                   $(".idpredio").attr("ok", "false"); 
-                }
-            });
-        },
+        
                 
         mostrarMensaje: function(mensaje){
+            $('#notify_correct').html(mensaje);
             confi = { 
-            message: $('notify_correct'), 
+            message: $('#notify_correct'), 
             fadeIn: 700, 
             fadeOut: 700, 
-            timeout: 2000, 
+            timeout: 4000, 
             showOverlay: false, 
             centerY: false, 
             css: { 
-                    background: "url('assets/ico/check')",
+                
                     width: '350px', 
-                    top: '10px', 
+                    top: '60px', 
                     left: '', 
-                    right: '10px', 
+                    right: '20px', 
                     border: 'none', 
                     padding: '5px', 
                     backgroundColor: '#000', 
                     '-webkit-border-radius': '10px', 
                     '-moz-border-radius': '10px', 
-                    opacity: .6, 
                     color: '#fff' 
                 } 
             };
             $.blockUI(confi);
         },
+                
+       autocompletePredioFiltro: function(){
+            console.log("cargando autocomplete rodal");
+            $("#idprediofiltroRodal").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){                   
+                }
+            });
+        }
         
       };
     })();

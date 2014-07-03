@@ -6,16 +6,17 @@
  */
 include_once '../controlador/Sistema.php';
 
-$idCamino = $_POST['idcamino'];
-$longitud = $_POST['longitud'];
-$tipoSuperficie = $_POST['superficie'];
-$idPredio = $_POST['predio'];
+$longitud       = $_POST['longitud'];
+$tipoSuperficie = $_POST['tipoSuperficie'];
+$idPredio       = $_POST['idPredio'];
 
-echo "camino = $idCamino  longitud = $longitud  superficie = $tipoSuperficie  predio = $idPredio";
+echo "longitud = $longitud  superficie = $tipoSuperficie  predio = $idPredio";
 
 $control = Sistema::getInstancia();
 $camino = new Camino();
-$camino->setIdCamino($idCamino);
+$ID = $control->getMaxIdCamino();
+
+$camino->setIdCamino($ID);
 $camino->setLongitud($longitud);
 $camino->setTipoSuperficie($tipoSuperficie);
 $camino->setIdPredio($idPredio);

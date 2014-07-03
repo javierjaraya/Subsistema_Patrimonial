@@ -5,14 +5,16 @@
  *
  * @author Pipe
  */
+
 class Fauna {
     private $idFauna;
     private $nombreFauna;
     private $especie;
     private $descripcion;
+    private $nombreImagen;
+    private $rutaImagen;
     
     function __construct() {
-        
     }
     public function getIdFauna() {
         return $this->idFauna;
@@ -28,6 +30,13 @@ class Fauna {
 
     public function getDescripcion() {
         return $this->descripcion;
+    }
+    public function getNombreImagen() {
+        return $this->nombreImagen;
+    }
+
+    public function getRutaImagen() {
+        return $this->rutaImagen;
     }
 
     public function setIdFauna($idFauna) {
@@ -45,6 +54,12 @@ class Fauna {
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }
+    
+    public function setNombreImagen($nombreImagen) {
+        $this->nombreImagen = $nombreImagen;
+    }
 
-
+    public function setRutaImagen($rutaImagen) {
+        $this->rutaImagen = $rutaImagen;
+    }
 }

@@ -10,6 +10,9 @@ $control = Sistema::getInstancia();
 
 
 $idrodal = $_POST['idrodal'];
+$idpredio = $_POST['idpredio'];
+
+
 $anioPlantacion = $_POST['anioPlantacion'];
 $superficie = $_POST['superficie'];
 $valorComercial = $_POST['valorComercial'];
@@ -20,6 +23,7 @@ $estado = $_POST['estado'];
 
 
 $rodal->setIdRodal($idrodal);
+$rodal->setIdPredio($idpredio);
 $rodal->setAnioPlantacion($anioPlantacion);
 $rodal->setSuperficie($superficie);
 $rodal->setValorComercial($valorComercial);

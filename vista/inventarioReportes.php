@@ -12,11 +12,11 @@ if(isset($_POST['fechaInicio'])){
     $pdf->AddPage();
 
     $inventarios = $control->findInventarios($idRodal, $fi, $ff);
-    $miCabecera = array('Identificador', 'Servicio', 'Sistema Inventario', 'Diáemtro Medio',
-                'Altura Dominante','Área Basal', 'Volumen','N° Árboles', 'Altura');
+    $miCabecera = array('Id', 'Servicio', 'Sistema Inventario', 'Diámetro Medio (m)',
+                'Altura Dominante (m)','Área Basal (m2)', 'Volumen (m3)','N° Árboles', 'Altura (m)', 'Fecha');
 
     $tituloPagina = "Inventarios del Rodal ".$idRodal. " entre las fechas ".$fi." y ".$ff;
-
+    $pdf->SetAutoPageBreak(TRUE);
     $pdf->tablaHorizontalInventario($miCabecera, $inventarios,$tituloPagina);
 
     $pdf->Output();

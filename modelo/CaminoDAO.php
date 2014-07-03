@@ -54,11 +54,36 @@ class CaminoDAO {
         return $camino;
     }
     
+    public function queryMaxID(){
+        $consultaMaxId ="SELECT (max(id_camino)+1) AS id FROM camino";
+        $this->conexion->conectar();
+        $queryId = $this->conexion->ejecutar($consultaMaxId);
+        while(OCIFetch($queryId)){
+            $id = ociresult($queryId, "ID");
+        }
+        $this->conexion->desconectar();
+        return $id;
+    }
+    
     public function save($camino){
         $this->conexion->conectar();
-        $laConsulta = "INSERT into CAMINO (ID_CAMINO, LONGITUD, TIPO_SUPERFICIE, TIPO_SUPERFICIE) 
+        $laConsulta = "INSERT into CAMINO (ID_CAMINO, LONGITUD, TIPO_SUPERFICIE, ID_PREDIO) 
             VALUES ('".$camino->getIdCamino()."','".$camino->getLongitud()."','".$camino->getTipoSuperficie()."','".$camino->getIdPredio()."')";
-        $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+    }
+    
+    public function actualizarCaminoDAO($camino, $id_original) {
+        $this->conexion->conectar();
+        $laConsulta = "UPDATE camino 
+                        SET     ID_CAMINO='".$camino->getIdCamino()."',
+                                LONGITUD='".$camino->getLongitud()."',
+                                TIPO_SUPERFICIE='".$camino->getTipoSuperficie()."',
+                                ID_PREDIO='".$camino->getIdPredio()."'   
+                               
+                        WHERE ID_CAMINO='".$id_original."' ";
+        
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
 }
