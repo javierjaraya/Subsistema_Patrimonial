@@ -153,9 +153,9 @@ var camino = (function() {
             });
         },
         /**
-         *
+         *Metodo encargado de mostrar la ventada de edicion de caminos
          */
-        modificarCamino: function(id) {
+        mostrarModificar: function(id) {
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idCamino = id;
             console.log(idCamino);
@@ -167,9 +167,8 @@ var camino = (function() {
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editCaminoDialog').html(response);
-                    camino.mostrarModificar();
-                    camino.autocompleteModificar();
-                    camino.cargaFuncioneskeyPressModificar();
+                    camino.modificarCamino();
+                    
                     },
                     error: function() {
                     console.log("Error al ejecutar AJAX");
@@ -178,9 +177,9 @@ var camino = (function() {
 
         },
         /**
-         * Metodo encargado de mostrar el formulario para modificar un camino
+         * Metodo encargado de validar el formulario para modificar un camino
          * */
-        mostrarModificar: function() {
+        modificarCamino: function() {
             $("#editCaminoDialog").dialog({
                 title: "Edición Camino",
                 height: 560,
@@ -191,16 +190,10 @@ var camino = (function() {
                 draggable: false,
                 buttons: {
                     Actualizar: function() {
-                        validacion = true;
-                        ok_longitud = false;
-                        ok_tipo_superficie = false;
-                        ok_idOriginal = false;
-                        ok_id_predio = false;
-
-                        ok_longitud = $("#longitud").val();
-                        idOriginal = $("#idOriginal").val();
-                                        ok_tipo_superficie = $("#superficie").val();
-                                ok_id_predio = $("#idpredio").val();
+                        longitud = $("#longitud").val();
+                        idsuperficie = $("#tipoSuperficie").val();
+                        idpredio = $("#predio").val();
+                        idcamino = $("#idcamino").val();
 
                         camino.aceptaModificarCamino();
                         
@@ -218,30 +211,30 @@ var camino = (function() {
                 }
             });
         },
+        
         aceptaModificarCamino: function() {
             $(document).ajaxStart($.blockUI(confLoad));
-            var idCamino = $("#idcamino").val();
-
-                                longitud = $("#longitud").val();
-            idOriginal = $("#idOriginal").val();
-                                tipo_superficie = $("#superficie").val();
-                        id_predio = $("#idpredio").val();
+            var longitud = $("#longitud").val();
+            var idsuperficie = $("#tipoSuperficie").val();
+            var idpredio = $("#predio").val();
+            var idcamino = $("#idcamino").val();
 
             $('#editCaminoDialog').empty();
-            var datos = 'idcamino=' + idCamino + '&longitud=' + longitud + '&superficie=' + tipo_superficie + '&idpredio=' + id_predio + '&idOriginal=' + idOriginal;
+            var datos = 'idcamino=' + idcamino + '&longitud=' + longitud + '&superficie=' + idsuperficie + '&idpredio=' + idpredio;
+            
             console.log("Datos nuevos: " + datos);
             $.ajax({
                     type: "POST",
                     url: "guardarCambiosActualizacionCamino.php",
                     data: datos,
                     success: function() {
-                    $("#editCaminoDialog").dialog("destroy");
-                    camino.cargarTabla();
+                        $("#editCaminoDialog").dialog("destroy");
+                        camino.cargarTabla();
+                        camino.mostrarMensaje("Se editado un camino");
                     },
                     error: function() {
-                    console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Consulta mal hecha');
-                                  
+                        console.log("Error al ejecutar AJAX");
+                        $('#page-wrapper').html('Consulta mal hecha');          
                     }
             });
         },
@@ -419,6 +412,7 @@ var camino = (function() {
                 }
             });
         },
+        
         mostrarMensaje: function(mensaje){
             $('#notify_correct').html(mensaje);
             confi = { 
