@@ -42,7 +42,7 @@ $empleados = $control->findAllEmpleados();
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                 echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 if($empleado->getIdCuenta()==null){
-                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta()'>&nbsp;Cuenta</button>";
+                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta(".$empleado->getDni().")'>&nbsp;Cuenta</button>";
                 }else{
                     echo "<button type='button' class='btn btn-success glyphicon glyphicon-search'>&nbsp;Cuenta</button>";
                 }

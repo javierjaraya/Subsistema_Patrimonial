@@ -8,6 +8,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
         <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
@@ -43,7 +44,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-briefcase"></i> Carpeta Legal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla();" class="glyphicon glyphicon-folder-open"> Ver Datos</a></li>
+                                <li><a href="javascript:carpeta.cargarTabla();" class="glyphicon glyphicon-folder-open"> Ver Datos</a></li>
                                 
                             </ul>
                         </li>
@@ -79,12 +80,17 @@
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
     <!-- Boostrap core JS -->
+    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    
+    <!-- Boostrap core JS -->
+    <!-- BlockUI core JS -->
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-    <script type="text/javascript" src="../assets/js/predio.js"></script>
-    <script type="text/javascript" src="../assets/js/seguridad.js"></script>
+    
+    <!--<script type="text/javascript" src="../assets/js/seguridad.js"></script>-->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/carpeta.js"></script>
 </html>

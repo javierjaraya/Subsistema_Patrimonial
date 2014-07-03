@@ -48,7 +48,7 @@ class CuentaDAO{
                             where empleado.dni = '$dni'";
         $query = $this->conexion->ejecutar($consultaCuenta);
         $this->cuenta = new Cuenta();
-
+        
         while (OCIFetch($query)) {
             $this->nombreEmpleado = ociresult($query, "NOMBRE_EMPLEADO");
             $this->cuenta->setIdCuenta(ociresult($query, "ID_CUENTA"));
@@ -73,6 +73,7 @@ class CuentaDAO{
         $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) VALUES (".$cuenta->getIdCuenta().",'".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."',".$cuenta->getIdPerfil().")";
         //echo $laConsulta; 
         $query = $this->conexion->ejecutar($laConsulta);
+        $laConsulta = "UPDATE EMPLEADO SET ID_CUENTA=".$cuenta->getIdCuenta()." WHERE DNI=".$cuenta->getDniCta()."";
         $this->conexion->desconectar();
         
     }
@@ -101,6 +102,8 @@ class CuentaDAO{
             $i++;
             
         }
+        
+        
         $this->conexion->desconectar();
         return $cuentas;
     }

@@ -9,6 +9,7 @@ $fechaCreacion = $_POST['fechaCreacion'];
 $password = $_POST['password'];
 $estado = $_POST['estado'];
 $idPerfil = $_POST['idPerfil'];
+$dniCta = $_POST['dniCta'];
 
 $cuenta = new Cuenta();
 
@@ -17,6 +18,7 @@ $cuenta->setFechaCreacion($fechaCreacion);
 $cuenta->setPassword($password);
 $cuenta->setEstado($estado);
 $cuenta->setIdPerfil($idPerfil);
+$cuenta->setDniCta($dniCta);
 
 //echo $cuenta->getIdCuenta();
 

@@ -1,7 +1,7 @@
 /**
  * 
  * Propuesta uso de javascript en subsistema_patrimonio
- * @type predio._L10.Anonym$0
+ * @type cuenta._L10.Anonym$0
  */
 
 
@@ -47,7 +47,9 @@ console.log('iniciando eventos de cuenta');
         
         
         
-        ingresaNuevaCuenta: function(){
+        ingresaNuevaCuenta: function(dni){
+            var dniCta = dni;
+            console.log(dniCta);
             $( "#nuevaCuenta" ).dialog({
               title: "Ingresar Cuenta",
               height: 400,
@@ -55,7 +57,7 @@ console.log('iniciando eventos de cuenta');
               modal: true,
               buttons: {
                 Aceptar: function() {
-                  cuenta.aceptarIngresoCuenta();
+                  cuenta.aceptarIngresoCuenta(dniCta);
                   $( this ).dialog( "close" );
             },
                 Cancelar: function() {
@@ -72,16 +74,16 @@ console.log('iniciando eventos de cuenta');
             
         },
         
-        aceptarIngresoCuenta: function(){
+        aceptarIngresoCuenta: function(dniCta){
             
             var idCuenta = $(".idCuenta").val();
             fechaCreacion = $(".fechaCreacion").val();
             password = $(".password").val();
             estado = $(".estado").val();
-            idPerfil = $(".idPerfil").val();         
+            idPerfil = $(".idPerfil").val(); 
             
             var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
-                    + '&estado=' + estado + '&idPerfil=' + idPerfil;
+                    + '&estado=' + estado + '&idPerfil=' + idPerfil + '&dniCta'+ dniCta;
                     
             $.ajax({
                 type: "POST",

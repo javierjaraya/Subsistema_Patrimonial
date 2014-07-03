@@ -10,7 +10,7 @@ include_once '../modelo/ProvinciaDAO.php';
 include_once '../modelo/InventarioDAO.php';
 include_once '../modelo/EspecieArboreaDAO.php';
 include_once '../modelo/ZonaDAO.php';
-
+include_once '../modelo/CarpetaLegalDAO.php';
 
 include_once 'Session.php';
 //include_once 'Cuenta.php';
@@ -36,7 +36,7 @@ class Sistema {
      private $inventarioDAO;
      private $especieArboreaDAO;
      private $zonaDAO;
-
+     private $carpetaDAO;
 
 
      private function Sistema(){
@@ -52,6 +52,7 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
+         $this->carpetaDAO = new CarpetaLegalDAO();
      }
      
      public static function  getInstancia(){
@@ -225,7 +226,17 @@ class Sistema {
         $this->inventarioDAO->update($inventario);
     }
 
-
+    public function findAllCarpetas(){
+        return $this->carpetaDAO->findAll();
+    }
+    
+    public function saveCarpeta($carpeta){
+        return $this->carpetaDAO->save($carpeta);
+    }
+    
+    public function eliminarCarpeta($codigo){
+        return $this->carpetaDAO->delete($codigo);
+    }
 
 
 
