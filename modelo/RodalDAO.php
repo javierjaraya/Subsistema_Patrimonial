@@ -196,7 +196,6 @@ class RodalDAO implements interfaceDAO{
             }   
         }else{
             // id predio vacio
-            echo "VACIO PO";
             if($seleccion == 0){
                 if($seleccionCantidad<=100){
 
