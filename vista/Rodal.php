@@ -10,8 +10,33 @@ $control = Sistema::getInstancia();
 $predios = $control->findAllRodales();
 ?>
 <div class="row">
-    <h1>Lista de Rodales  <button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('rodalReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
-</div>
+    <div class="col-lg-9">
+        <h1>Lista de Rodales <h1>
+    </div>
+    <div class="col-lg-3">
+     <form action="rodalReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
+     
+         <select id="seleccionFiltro" name="seleccionFiltro" size="1">
+				    <option value="-1">Ordenar por...</option>
+				    <option value="0">Año Plantación</option>
+			           |<option value="1">Id Predio</option>
+                                    <option value="2">Id Rodal</option>
+                                    <option value="3">Nombre Rodal</option>
+                                    <option value="4">Superficie</option>
+                                    <option value="5">Zona Crecimiento</option>
+                             </select>
+         <select id="seleccionCantidad" name="seleccionCantidad" size="1" title="Cantidad de Resultados">
+				    <option value="101">*</option>
+				    <option value="10">10</option>
+			            <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    
+                             </select>
+        <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte" onclick=" return validarSeleccionReporteRodal()" ></button>
+     </form>
+    </div>
+    </div>
 <div class="row">
     <div class="panel panel-default">
 						
@@ -63,7 +88,7 @@ $predios = $control->findAllRodales();
             <div><label>Sistema Inventario: </label><input type="text" class="sistemaInventario form-control" name="sistemaInventario" required="required"/></div>
             <div><label>Diámetro Medio (m): </label><input type="number" class="diametroMedio form-control" name="diametroMedio" required="required"/></div>
             <div><label>Altura Dominante (m): </label><input type="number" class="alturaDominante form-control" name="alturaDominante" required="required"/></div>
-            <div><label>Área Basal (m): </label><input type="number" class="areaBasal form-control" name="areaBasal" required="required"/></div>
+            <div><label>Área Basal (m2): </label><input type="number" class="areaBasal form-control" name="areaBasal" required="required"/></div>
             <div><label>Volumen (m3): </label><input type="number" class="volumen form-control" name="volumen" required="required"/></div>
             <div><label>Número de Árboles: </label><input type="number" class="numeroArboles form-control" name="numeroArboles" required="required"/></div>
             <div><label>Altura (m): </label><input type="number" class="altura form-control" name="altura" required="required"/></div>

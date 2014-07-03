@@ -78,6 +78,10 @@ class Sistema {
     public function findAllRodales(){
         return $this->rodalDAO->findAll();
     }
+    public function findAllRodalesSelection($selection, $seleccionCantidad){
+        return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad);
+    }
+
     /**
      * Metodo encargado de buscar un predio por Id
      * @return Array de Predios

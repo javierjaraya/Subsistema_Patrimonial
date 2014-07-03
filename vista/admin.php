@@ -62,6 +62,19 @@
              
       }
   </script>
+  <script type="text/javascript">
+      function validarSeleccionReporteRodal(){
+           seleccion = document.getElementById("seleccionFiltro").value;
+            if(seleccion == -1 ){
+                alert("Para generar el reporte de Rodal debe escoger un tipo de ordenamiento");
+                return false;
+                
+             }else{
+                 return true;
+             }
+             
+      }
+  </script>
   
     </head>
 
