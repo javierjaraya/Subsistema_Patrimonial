@@ -37,7 +37,7 @@ $caminos = $control->findAllCaminos();
                     //echo "<a href='#'><i class='btn btn-warning glyphicon glyphicon-pencil'></i> Editar</a> ";
                     //echo "<a href='#'><i class='btn btn-danger glyphicon glyphicon-trash'></i> Eliminar</a>";
                     echo "<button type='button' onclick='camino.modificarCamino(" . $camino->getIdCamino() . ")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                    echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                    echo "<button type='button' onclick='camino.eliminarCamino(" . $camino->getIdCamino() . ")'class='btn btn-danger glyphicon glyphicon-trash'></button>";
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -49,10 +49,9 @@ $caminos = $control->findAllCaminos();
     <!--VENTA DIALOGO : AGREGAR CAMINO -->    
     <div id="nuevoCamino"  class="ui-front"style="display:none; cursor: default" > 
         <fieldset>
-            <div><label>Identificador Camino: </label>&nbsp;&nbsp;<img id="id_camino_check" src="" style="display: none;"><input type="number" class="idcamino form-control" name="idcamino" ok="false"/></div>
             <div><label>Longitud: </label><input type="number" class="nombre form-control" name="longitud" required="required"/></div>
-            <div class="ui-widget"><label>Tipo Superficie: </label>&nbsp;&nbsp;<img id="superficie_check" src="" style="display: none;"><input cols="30" rows="5" name="superficie" id="comuna" class="id_superficie form-control"  required="required" ok="false"></div>
-            <div><label>Nombre Predio: </label><input type="text" class="superficie form-control" name="superficie" required="required" /></div>
+            <div class="ui-widget"><label>Tipo Superficie: </label>&nbsp;&nbsp;<img id="superficie_check" src="" style="display: none;"><input cols="30" rows="5" name="superficie" id="superficie" class="id_superficie form-control"  required="required" ok="false"></div>
+            <div><label>Id Predio: </label><input type="text" class="idpredio form-control" name="idpredio" required="required" /></div>
        </fieldset>
          
     </div> 
