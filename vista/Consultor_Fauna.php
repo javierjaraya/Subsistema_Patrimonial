@@ -24,7 +24,7 @@ $faunas = $control->findAllFaunas();
     function funcion1(datos) {
         //var value1 = document.formulario.idpredio.value;
         //alert("El contenido del formulario es : " + value1);
-        
+
         alert("El contenido del formulario es : " + datos.idpredio.value);
     }
 </script> 
@@ -53,7 +53,8 @@ $faunas = $control->findAllFaunas();
                 <?PHP
                 foreach ($faunas as $fauna) {
                     echo "<tr>";
-                    echo "<td ><img src = '" . $fauna->getRutaImagen() . "' width='135px' height='120px'></td>";
+                    echo "<td ><img onclick='javascript:this.width=450;this.height=338'  ondblclick='javascript:this.width=135;this.height=120' "
+                    . "src = '" . $fauna->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($fauna->getNombreFauna()) . " m</td>";
                     echo "<td>" . utf8_encode($fauna->getEspecie()) . "</td>";
                     echo "<td>" . utf8_encode($fauna->getDescripcion()) . "</td>";
