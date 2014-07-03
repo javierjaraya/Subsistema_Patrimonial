@@ -18,23 +18,32 @@ $faunas = $control->findAllFaunas();
   alert("El contenido del formulario es : "+value1);
   }
   </script>
+ * 
+ * 
+ * <form name="formulario">
+        Filtrar por codigo predio
+        <input type="text" name="idpredio" value="" onblur="funcion1(document.formulario);">
+    </form>
  */
 ?>
 <script language="JavaScript" type="text/javascript">
     function funcion1(datos) {
         //var value1 = document.formulario.idpredio.value;
         //alert("El contenido del formulario es : " + value1);
-
+        
         alert("El contenido del formulario es : " + datos.idpredio.value);
     }
+    
 </script> 
 
-<div class="row">
+<div class="row">   
+    <div style="float:right;">    
+        <form action="faunaReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
+            Id Predio : <input type="text" id="idprediofiltro" name="idprediofiltro" name="idprediofiltro" value=""> 
+            <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte"></button>
+        </form>
+    </div>
     <h1>Lista de Fauna</h1>
-    <form name="formulario">
-        Filtrar por codigo predio
-        <input type="text" name="idpredio" value="" onblur="funcion1(document.formulario);"><br>
-    </form>
 
 </div>
 <div class="row">
@@ -55,7 +64,7 @@ $faunas = $control->findAllFaunas();
                     echo "<tr>";
                     echo "<td ><img onclick='javascript:this.width=450;this.height=338'  ondblclick='javascript:this.width=135;this.height=120' "
                     . "src = '" . $fauna->getRutaImagen() . "' width='135px' height='120px'></td>";
-                    echo "<td>" . utf8_encode($fauna->getNombreFauna()) . " m</td>";
+                    echo "<td>" . utf8_encode($fauna->getNombreFauna()) . "</td>";
                     echo "<td>" . utf8_encode($fauna->getEspecie()) . "</td>";
                     echo "<td>" . utf8_encode($fauna->getDescripcion()) . "</td>";
                     echo "</tr>";

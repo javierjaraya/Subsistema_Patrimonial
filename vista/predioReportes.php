@@ -8,6 +8,7 @@ $predios = $control->findAllPredios();
 $miCabecera = array('Identificador', 'Nombre', 'Superficie', 'Valor');
  
 $tituloPagina = "Listado de predios";
+$pdf->SetAutoPageBreak(TRUE);
 $pdf->tablaHorizontalPredio($miCabecera, $predios,$tituloPagina);
  
 $pdf->Output(); //Salida al navegador

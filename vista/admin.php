@@ -6,6 +6,7 @@
     $session = $control->getSession();
     
     $empleado = $session->getNombreEmpleado();
+    
     if(!isset($empleado)){
         $direccion = $session->securityCheck();
         header('Location: '.$direccion);

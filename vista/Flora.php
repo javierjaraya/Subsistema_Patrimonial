@@ -14,7 +14,7 @@ $floras = $control->findAllFloras();
 <div class="row">
     <div style="float:right;">    
         <form action="floraReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
-            Id Predio : <input type="text" name="idprediofiltro" name="idprediofiltro" value=""> 
+            Id Predio : <input type="number" name="idprediofiltro" id="idprediofiltro" value=""> 
             <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte"></button>
         </form>
     </div>
@@ -41,7 +41,7 @@ $floras = $control->findAllFloras();
                     . "src = '" . $flora->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($flora->getNombreFlora()) . "</td>";
                     echo "<td>" . utf8_encode($flora->getEspecie()) . "</td>";
-                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";
+                    echo "<td class='text-justify'>" . utf8_encode($flora->getDescripcion()) . "</td>";
                     echo "<td>";
                     echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";

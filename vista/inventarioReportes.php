@@ -16,7 +16,7 @@ if(isset($_POST['fechaInicio'])){
                 'Altura Dominante (m)','Área Basal (m2)', 'Volumen (m3)','N° Árboles', 'Altura (m)', 'Fecha');
 
     $tituloPagina = "Inventarios del Rodal ".$idRodal. " entre las fechas ".$fi." y ".$ff;
-
+    $pdf->SetAutoPageBreak(TRUE);
     $pdf->tablaHorizontalInventario($miCabecera, $inventarios,$tituloPagina);
 
     $pdf->Output();

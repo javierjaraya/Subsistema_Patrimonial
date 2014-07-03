@@ -82,30 +82,5 @@ var fauna = (function() {
             });
             return false;
         },
-        ingresaNuevoCamino: function() {
-            $("#nuevoCamino").dialog({
-                title: "Nuevo Camino",
-                height: 400,
-                width: 500,
-                modal: true,
-                position: {my: "center top", at: "center top", of: "#page-wrapper"},
-                resizable: false,
-                buttons: {
-                    Aceptar: function() {
-
-                        camino.aceptarIngresoCamino();
-                        //$(this).dialog("close");
-                    },
-                    Cancelar: function() {
-                        $(this).dialog("close");
-
-                    }
-                },
-                close: function() {
-
-                }
-            });
-            console.log('abriendo contenedor nuevo camino');
-        }
     };
 })();

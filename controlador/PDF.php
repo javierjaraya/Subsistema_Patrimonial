@@ -156,24 +156,30 @@ class PDF extends FPDF {
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
-function datosVerticalFauna($faunas,$cabeceraVertical) {
+function datosVerticalFauna($faunas) {
         $this->SetXY(10, 27);
         $this->SetFont('Arial', '', 10);
         $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $cont = 0;
         $distancia = 27;
-        foreach ($faunas as $fauna) {       
-            $this->SetFont('Arial', '', 10);
-            $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
-            $this->SetTextColor(1, 1, 1); //Color del texto: Negro
+        $bandera = FALSE;
+        foreach ($faunas as $fauna) {   
+            if($cont == 2){
+                $this->AddPage();
+                $distancia = 27;
+                $cont = 0;
+            }else{
+                if($cont == 1)
+                $distancia = $distancia+110;
+            }
             //POSICION DEL NOMBRE
             $this->Sety($distancia);
             $this->SetX(10);
-            $this->MultiCell(30, 5, "Nombre : ", 0, 0, 'L', $bandera);
+            $this->MultiCell(30, 5, "Nombre : $distancia", 0, 0, 'L', $bandera);
             $this->Sety($distancia);
             $this->SetX(50);
-            $this->MultiCell(40, 5, utf8_decode($fauna->getNombreFauna()), 0, 'L', $bandera);
+            $this->MultiCell(40, 5, utf8_decode($fauna->getNombreFauna()).$distancia, 0, 'L', $bandera);
             //POSICION DE LA ESPECIE
             $this->Sety($distancia+10);
             $this->SetX(10);
@@ -186,15 +192,17 @@ function datosVerticalFauna($faunas,$cabeceraVertical) {
             $this->SetX(10);
             $this->MultiCell(30, 5, "Descripcion : ", 0, 0, 'L', $bandera);
             $this->SetX(10);
-            $this->MultiCell(135, 5, utf8_decode($fauna->getDescripcion()), 0, 'J', $bandera);
+            $this->MultiCell(130, 5, utf8_decode($fauna->getDescripcion()), 0, 'J', $bandera);
             //POSICION DE LA IMAGEN
             $this->Sety($distancia);
             $this->SetX(145);
             $this->Cell(55, $distancia, $this->Image($fauna->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 0, 0, 'L');
 
             $this->Ln(); //Salto de línea para generar otra fila
-            //$bandera = !$bandera; //Alterna el valor de la bandera
-            $distancia = $distancia+80;
+            
+            $cont++;
+            
+            
         }
     }
     
@@ -204,22 +212,49 @@ function datosVerticalFauna($faunas,$cabeceraVertical) {
         $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $cont = 0;
-        $distancia = 55;
+        $distancia = 27;
+        $bandera = FALSE;
         foreach ($floras as $flora) {
-            $this->Cell(55, $distancia, $this->Image($flora->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 1, 0, 'L');
-            $this->CellFitSpace(20, 55, utf8_decode($flora->getNombreFlora()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(20, 55, utf8_decode($flora->getEspecie()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(95, 55, utf8_decode($flora->getDescripcion()), 1, 0, 'L', $bandera);
-            $cont++;
-            if ($cont == 4) {
-                $this->Ln(); //Salto de línea para generar otra fila    
-                $cont == 1;
-                $distancia = 110;
+            if($cont == 2){
+//                $distancia = $distancia+250;
+                $cont = 0;
+                $this->addPage();   
+                $distancia = 27;
             }else{
-                $distancia = 55;
+                if($cont == 1)
+                $distancia = $distancia+90;
             }
+            //POSICION DEL NOMBRE
+            $this->Sety($distancia);
+            $this->SetX(10);
+            $this->MultiCell(30, 5, "Nombre : $distancia", 0, 0, 'L', $bandera);
+            $this->Sety($distancia);
+            $this->SetX(50);
+            $this->MultiCell(40, 5, utf8_decode($flora->getNombreFlora()).$distancia, 0, 'L', $bandera);
+            //POSICION DE LA ESPECIE
+            $this->Sety($distancia+10);
+            $this->SetX(10);
+            $this->MultiCell(30, 5, "Especie : ", 0, 0, 'L', $bandera);
+            $this->Sety($distancia+10);
+            $this->SetX(50);
+            $this->MultiCell(40, 5, utf8_decode($flora->getEspecie()), 0, 'L', $bandera);
+            //POSICION DE LA DESCRIPCION
+            $this->Sety($distancia+20);
+            $this->SetX(10);
+            $this->MultiCell(30, 5, "Descripcion : ", 0, 0, 'L', $bandera);
+            $this->SetX(10);
+            $this->MultiCell(130, 5, utf8_decode($flora->getDescripcion()), 0, 'J', $bandera);
+            //POSICION DE LA IMAGEN
+            $this->Sety($distancia);
+            $this->SetX(145);
+            $this->Cell(55, $distancia, $this->Image($flora->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 0, 0, 'L');
+
             $this->Ln(); //Salto de línea para generar otra fila
-            $bandera = !$bandera; //Alterna el valor de la bandera
+            
+            $cont++;
+
+            
+            
         }
     }
 
@@ -257,13 +292,13 @@ function datosVerticalFauna($faunas,$cabeceraVertical) {
     function tablaVerticalFauna($cabeceraVertical, $faunas, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         //$this->cabeceraVerticalFloraFauna($cabeceraVertical);
-        $this->datosVerticalFauna($faunas, $cabeceraVertical);
+        $this->datosVerticalFauna($faunas);
         $this->Footer();
     }
     
     function tablaVerticalFlora($cabeceraVertical, $floras, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
-        $this->cabeceraVerticalFloraFauna($cabeceraVertical);
+        //$this->cabeceraVerticalFloraFauna($cabeceraVertical);
         $this->datosVerticalFlora($floras);
         $this->Footer();
     }

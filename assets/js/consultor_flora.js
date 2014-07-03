@@ -1,6 +1,6 @@
 
 console.log('iniciando eventos de caminos');
-var flora = (function() {
+var consultor_flora = (function() {
     var confLoad = ({css: {border: 'none',
             padding: '15px',
             backgroundColor: '#000',

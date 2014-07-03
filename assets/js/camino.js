@@ -81,10 +81,12 @@ var camino = (function() {
         aceptarIngresoCamino: function() {
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var longitud = $(".longitud").val();
-                        tipoSuperficie = $(".superficie").val();
-                        idPredio = $(".idpredio").val();
+            var tipoSuperficie = $(".superficie").val();
+            var idPredio = $(".idpredio").val();
 
             var datos = 'longitud=' + longitud + '&tipoSuperficie=' + tipoSuperficie + '&idPredio=' + idPredio;
+            
+            console.log("datos " + datos);
             $.ajax({
                     type: "POST",
                     url: "ingresarCamino.php",
@@ -118,62 +120,9 @@ var camino = (function() {
                 resizable: false,
                 buttons: {
                     Aceptar: function() {
-                        console.log("Se inicia validacion");
-                        valida = true;
-                        ok_longitud = false;
-                        ok_tipo_superficie = false;
-                        ok_id_predio = false;
-
-                        if ($(".idpredio").attr("ok") == "true")
-                            ok_id_predio = true;
-                        val_longitud = $(".nombre").val();
-                        val_tipo_superficie = $(".superficie").val();
-
-                        //VALIDAMOS LA LONGITUD
-                        if (val_longitud > 0) {
-                            console.log("longitud correcta")
-                            $(".longitud").tooltip('destroy');
-                            ok_longitud = true;
-                        } else {
-                            $(".longitud").tooltip(
-                                    {
-                                        title: 'La longitud no puede ser cero',
-                                        placement: 'bottom'});
-                        }
-                        //Validamos el campo de TIPO SUPERFICIE
-                        if (val_tipo_superficie != "") {
-                            console.log("tipo superficie es correcta")
-                            $(".superficie").tooltip('destroy');
-                            ok_tipo_superficie = true;
-                        } else {
-                            $(".superficie").tooltip(
-                                    {
-                                        title: 'El campo tipo superficie no puede ser vacio',
-                                        placement: 'bottom'});
-                        }
-
-                        valida = valida && ok_id_predio && ok_longitud && ok_tipo_superficie;
-
-                        //VERIFICAMOS SI TODO A SIDO VALIDADO CORRECTAMENTE
-                        if (valida) {
-                            $("#nuevoCamino").dialog("destroy");
-                            camino.aceptarIngresoCamino();
-                            camino.cargarTabla();
-                            $(this).dialog("close");
-                        } else {
-                            switch (false) {
-                                case ok_id_predio:
-                                    $(".idpredio").focus();
-                                    break;
-                                case ok_longitud:
-                                    $(".longitud").focus();
-
-                                    break;
-                                case ok_tipo_superficie:
-                                    $(".superficie").focus();
-                                    break;
-                            }
-                        }
+                        camino.aceptarIngresoCamino();
+                        //camino.cargarTabla();
+                        $(this).dialog("close");
                     },
                     Cancelar: function() {
                         $(this).dialog("close");
@@ -308,150 +257,150 @@ var camino = (function() {
          * Metodo encargado de inicializar el autocomplete
          * @returns {undefined}
          */
-        cargaFuncionesAutocompletar: function(){
+        cargaFuncionesAutocompletar: function() {
             $(".tipo_superficie").autocomplete({
                 source: "buscaSuperficie.php",
                 minLength: 2,
-                select: function(event, ui){
-                    $(".tipo_superficie").attr("tiposuperficie",ui.item.id);
-                     $(".tipo_superficie").attr("ok", "true");
-                    $('#superficie_check').attr("src","../assets/ico/tick.gif");
-                        $('#superficie_check').show();
-                     $(".tipo_superficie").tooltip('destroy');
+                select: function(event, ui) {
+                    $(".tipo_superficie").attr("tiposuperficie", ui.item.id);
+                    $(".tipo_superficie").attr("ok", "true");
+                    $('#superficie_check').attr("src", "../assets/ico/tick.gif");
+                    $('#superficie_check').show();
+                    $(".tipo_superficie").tooltip('destroy');
                 },
-                change: function(event, ui){
-                    if(!ui.item){
+                change: function(event, ui) {
+                    if (!ui.item) {
                         $(".tipo_superficie").tooltip(
                                 {
-                                title: 'Seleccione una opción válida',
-                                placement: 'bottom'});
+                                    title: 'Seleccione una opción válida',
+                                    placement: 'bottom'});
                         /*
                          * Agrega check_error en input comuna
                          */
                         $(".tipo_superficie").attr("ok", "false");
-                        $('#comuna_check').attr("src","../assets/ico/error.png");
+                        $('#comuna_check').attr("src", "../assets/ico/error.png");
                         $('#comuna_check').show();
-                        
+
                     }
                 }
-            }).css('z-index',1000);;
+            }).css('z-index', 1000);
+            ;
             console.log("Autocomplete iniciado");
-            $(".tipo_superficie").focusout(function(){
-               if($('.tipo_superficie').val()!=""){ 
+            $(".tipo_superficie").focusout(function() {
+                if ($('.tipo_superficie').val() != "") {
                     $.ajax({
-                        url:'buscaSuperficie.php',
-                        type:'POST',
-                        dataType:'json',
-                        data:{ nombreSuperficie:$('.tipo_superficie').val()}
-                    }).done(function(respuesta){
+                        url: 'buscaSuperficie.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {nombreSuperficie: $('.tipo_superficie').val()}
+                    }).done(function(respuesta) {
                         console.log("llamada post terminada");
-                        if(respuesta.error == "1"){
-                            console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
+                        if (respuesta.error == "1") {
+                            console.log(respuesta.nombre + " y " + respuesta.id + " obtenidos");
                             $(".tipo_superficie").val(respuesta.nombre);
                             $(".tipo_superficie").attr("tiposuperficie", respuesta.id);
                             $(".tipo_superficie").attr("ok", "true");
                             $(".tipo_superficie").tooltip('destroy');
-                            $('#comuna_check').attr("src","../assets/ico/tick.gif");
+                            $('#comuna_check').attr("src", "../assets/ico/tick.gif");
                             $('#comuna_check').show();
-                        }else{
+                        } else {
                             console.log("No se encuentra la superficie");
                             $(".tipo_superficie").tooltip('destroy');
                             $(".tipo_superficie").tooltip(
                                     {
-                                    title: 'Seleccione una opción válida',
-                                    placement: 'bottom'});
+                                        title: 'Seleccione una opción válida',
+                                        placement: 'bottom'});
                             $(".tipo_superficie").attr("ok", "false");
-                            $('#superficie_check').attr("src","../assets/ico/error.png");
+                            $('#superficie_check').attr("src", "../assets/ico/error.png");
                             $('#superficie_check').show();
                         }
                     });
-               }else{
-                   console.log("No se encuentra la superficie");
-                            $(".tipo_superficie").tooltip(
-                                    {
-                                    title: 'El Campo Tipo Superficie no puede estar vacio',
-                                    placement: 'bottom'});
-                            $(".tipo_superficie").attr("ok", "false");
-                            $('#superficie_check').attr("src","../assets/ico/error.png");
-                            $('#superficie_check').show();
-               }
-             });
+                } else {
+                    console.log("No se encuentra la superficie");
+                    $(".tipo_superficie").tooltip(
+                            {
+                                title: 'El Campo Tipo Superficie no puede estar vacio',
+                                placement: 'bottom'});
+                    $(".tipo_superficie").attr("ok", "false");
+                    $('#superficie_check').attr("src", "../assets/ico/error.png");
+                    $('#superficie_check').show();
+                }
+            });
         },
-        
         /**
          * 
          * @returns {undefined}
          */
-        autocompleteModificar: function(){
+        autocompleteModificar: function() {
             console.log("se inicia autocompletar modifica camino");
             $(".camino_modificar").autocomplete({
                 source: "buscaSuperficie.php",
                 minLength: 2,
 //                appendTo: '#nuevoCamino',
-                select: function(event, ui){
-                    $(".superficie_modificar").attr("tiposuperficie",ui.item.id);
-                     $(".superficie_modificar").attr("ok", "true");
-                    $('#superficie_check_modificar').attr("src","../assets/ico/tick.gif");
-                        $('#superficie_check_modificar').show();
-                     $(".superficie").tooltip('destroy');
+                select: function(event, ui) {
+                    $(".superficie_modificar").attr("tiposuperficie", ui.item.id);
+                    $(".superficie_modificar").attr("ok", "true");
+                    $('#superficie_check_modificar').attr("src", "../assets/ico/tick.gif");
+                    $('#superficie_check_modificar').show();
+                    $(".superficie").tooltip('destroy');
                 },
-                change: function(event, ui){
-                    if(!ui.item){
+                change: function(event, ui) {
+                    if (!ui.item) {
                         $(".superficie_modificar").tooltip(
                                 {
-                                title: 'Seleccione una opción válida',
-                                placement: 'bottom'});
+                                    title: 'Seleccione una opción válida',
+                                    placement: 'bottom'});
                         /*
                          * Agrega check_error en input superficie
                          */
                         $(".superficie_modificar").attr("ok", "false");
-                        $('#superficie_check_modificar').attr("src","../assets/ico/error.png");
+                        $('#superficie_check_modificar').attr("src", "../assets/ico/error.png");
                         $('#superficie_check_modificar').show();
-                        
+
                     }
                 }
-            }).css('z-index',1000);
+            }).css('z-index', 1000);
             console.log("Autocomplete superficie modificar cargado");
-            $(".superficie_modificar").focusout(function(){
-               if($('.superficie_modificar').val()!=""){ 
+            $(".superficie_modificar").focusout(function() {
+                if ($('.superficie_modificar').val() != "") {
                     $.ajax({
-                        url:'buscaSuperficie.php',
-                        type:'POST',
-                        dataType:'json',
-                        data:{ nombreSuperficie:$('.superficie_modificar').val()}
-                    }).done(function(respuesta){
+                        url: 'buscaSuperficie.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {nombreSuperficie: $('.superficie_modificar').val()}
+                    }).done(function(respuesta) {
                         console.log("llamada post terminada");
-                        if(respuesta.error == "1"){
-                            console.log(respuesta.nombre + " y " + respuesta.id +" obtenidos");
+                        if (respuesta.error == "1") {
+                            console.log(respuesta.nombre + " y " + respuesta.id + " obtenidos");
                             $(".superficie_modificar").val(respuesta.nombre);
                             $(".superficie_modificar").attr("tiposuperficie", respuesta.id);
                             $(".superficie_modificar").attr("ok", "true");
                             $(".superficie_modificar").tooltip('destroy');
-                            $('#superficie_check_modificar').attr("src","../assets/ico/tick.gif");
+                            $('#superficie_check_modificar').attr("src", "../assets/ico/tick.gif");
                             $('#superficie_check_modificar').show();
-                        }else{
+                        } else {
                             console.log("No se encuentra superficie");
                             $(".superficie_modificar").tooltip('destroy');
                             $(".superficie_modificar").tooltip(
                                     {
-                                    title: 'Seleccione una opción válida',
-                                    placement: 'bottom'});
+                                        title: 'Seleccione una opción válida',
+                                        placement: 'bottom'});
                             $(".superficie_modificar").attr("ok", "false");
-                            $('#superficie_check_modificar').attr("src","../assets/ico/error.png");
+                            $('#superficie_check_modificar').attr("src", "../assets/ico/error.png");
                             $('#superficie_check_modificar').show();
                         }
                     });
-               }else{
-                   console.log("No se encuentra superficie");
-                            $(".superficie_modificar").tooltip(
-                                    {
-                                    title: 'El Campo Tipo superficie no puede estar vacio',
-                                    placement: 'bottom'});
-                            $(".superficie_modificar").attr("ok", "false");
-                            $('#superficie_check_modificar').attr("src","../assets/ico/error.png");
-                            $('#superficie_check_modificar').show();
-               }
-             });
+                } else {
+                    console.log("No se encuentra superficie");
+                    $(".superficie_modificar").tooltip(
+                            {
+                                title: 'El Campo Tipo superficie no puede estar vacio',
+                                placement: 'bottom'});
+                    $(".superficie_modificar").attr("ok", "false");
+                    $('#superficie_check_modificar').attr("src", "../assets/ico/error.png");
+                    $('#superficie_check_modificar').show();
+                }
+            });
         }
     };
 })();

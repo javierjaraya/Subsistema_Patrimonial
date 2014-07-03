@@ -26,6 +26,7 @@ var flora = (function() {
                         }
 
                 );
+                flora.autocompletePredioFiltro();
             });
             console.log('tabla cargada');
         },
@@ -61,6 +62,21 @@ var flora = (function() {
                 }
             });
             return false;
+        },
+        autocompletePredioFiltro: function(){
+            $("#idprediofiltro").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){
+
+                        
+                   
+                }
+            });
         },
                 
         ingresaNuevoCamino: function() {

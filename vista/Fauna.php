@@ -40,7 +40,7 @@ $faunas = $control->findAllFaunas();
     
     <div style="float:right;">    
         <form action="faunaReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
-            Id Predio : <input type="text" id="idprediofiltro" name="idprediofiltro" name="idprediofiltro" value=""> 
+            Id Predio : <input type="number" id="idprediofiltro" name="idprediofiltro" name="idprediofiltro" value=""> 
             <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte"></button>
         </form>
     </div>
@@ -68,7 +68,7 @@ $faunas = $control->findAllFaunas();
                     . "src = '" . $fauna->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($fauna->getNombreFauna()) . "</td>";
                     echo "<td>" . utf8_encode($fauna->getEspecie()) . "</td>";
-                    echo "<td>" . utf8_encode($fauna->getDescripcion()) . "</td>";
+                    echo "<td class='text-justify'>" . utf8_encode($fauna->getDescripcion()) . "</td>";
                     echo "<td>";
                     echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
