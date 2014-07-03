@@ -31,7 +31,8 @@ $floras = $control->findAllFloras();
                 <?PHP
                 foreach ($floras as $flora) {
                     echo "<tr>";
-                    echo "<td ><img src = '". $flora->getRutaImagen()  . "' width='135px' height='120px'></td>";
+                    echo "<td ><img onclick='javascript:this.width=450;this.height=338'  ondblclick='javascript:this.width=135;this.height=120' "
+                         . "src = '". $flora->getRutaImagen()  . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($flora->getNombreFlora()) . "</td>";
                     echo "<td>" . utf8_encode($flora->getEspecie())     . "</td>";
                     echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";                    
