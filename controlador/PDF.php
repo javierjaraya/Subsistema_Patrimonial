@@ -163,6 +163,7 @@ function datosVerticalFauna($faunas,$cabeceraVertical) {
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $cont = 0;
         $distancia = 27;
+        $bandera = FALSE;
         foreach ($faunas as $fauna) {       
             $this->SetFont('Arial', '', 10);
             $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
@@ -186,7 +187,7 @@ function datosVerticalFauna($faunas,$cabeceraVertical) {
             $this->SetX(10);
             $this->MultiCell(30, 5, "Descripcion : ", 0, 0, 'L', $bandera);
             $this->SetX(10);
-            $this->MultiCell(135, 5, utf8_decode($fauna->getDescripcion()), 0, 'J', $bandera);
+            $this->MultiCell(130, 5, utf8_decode($fauna->getDescripcion()), 0, 'J', $bandera);
             //POSICION DE LA IMAGEN
             $this->Sety($distancia);
             $this->SetX(145);
@@ -194,7 +195,7 @@ function datosVerticalFauna($faunas,$cabeceraVertical) {
 
             $this->Ln(); //Salto de línea para generar otra fila
             //$bandera = !$bandera; //Alterna el valor de la bandera
-            $distancia = $distancia+80;
+            $distancia = $distancia+90;
         }
     }
     
