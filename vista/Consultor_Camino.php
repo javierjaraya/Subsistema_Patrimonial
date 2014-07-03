@@ -10,7 +10,7 @@ $control = Sistema::getInstancia();
 $caminos = $control->findAllCaminos();
 ?>
 <div class="row">
-    <h1>Lista de Caminos <button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick="camino.ingresaNuevoCamino()"></button></h1>
+    <h1>Lista de Caminos</h1>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -22,7 +22,6 @@ $caminos = $control->findAllCaminos();
                     <th >Longitud <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Tipo Superficie <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Nombre Predio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                    <th >Accion</th>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -33,13 +32,11 @@ $caminos = $control->findAllCaminos();
                     echo "<td>" . $camino->getLongitud() . " m</td>";
                     echo "<td>" . $camino->getTipoSuperficie() . "</td>";
                     echo "<td>" . $camino->getIdPredio() . "</td>";
-                    echo "<td>";
-                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>
             </tbody>
         </table>
     </div>
-    
+
 </div>

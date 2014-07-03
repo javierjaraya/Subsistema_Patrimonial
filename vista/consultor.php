@@ -44,26 +44,33 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                        <li><a href="consultor.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Predio <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tree-deciduous"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Buscar Predio</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
+                                <li><a href="javascript:consultor_predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Rodal <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tree-conifer"></i> Rodal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:predio.cargarTabla('vista/Predio.php');" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Buscar Rodal</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
+                                <li><a href="javascript:consultor_rodal.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
+                            </ul>
+                        </li>                        
+                                                
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop"></i> Flora y Fauna <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:consultor_fauna.cargarTabla();" class="fa fa-table"> Fauna Predio</a></li>
+                                <li><a href="javascript:consultor_flora.cargarTabla();" class="fa fa-table"> Flora Predio</a></li>
                             </ul>
                         </li>
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Flora y Fauna</a></li>
-                        <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Configuracion</a></li>
-                        <li><a href="blank-page.html"><i class="fa fa-file"></i> Ayuda</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i> Caminos <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:consultor_camino.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
@@ -92,13 +99,28 @@
     </body> 
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
+    <!-- jQuery UI (estilos) -->
+    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
+    <script type="text/javascript" src="../assets/js/rodal.js"></script>
+    <script type="text/javascript" src="../assets/js/inventario.js"></script>
     <script type="text/javascript" src="../assets/js/predio.js"></script>
-    <script type="text/javascript" src="../assets/js/seguridad.js"></script>
+    <script type="text/javascript" src="../assets/js/empleado.js"></script>
+    <script type="text/javascript" src="../assets/js/cuenta.js"></script>
+    <script type="text/javascript" src="../assets/js/camino.js"></script>
+    <script type="text/javascript" src="../assets/js/fauna.js"></script>
+    <script type="text/javascript" src="../assets/js/flora.js"></script>
+    
+    <script type="text/javascript" src="../assets/js/consultor_camino.js"></script>
+    <script type="text/javascript" src="../assets/js/consultor_fauna.js"></script>
+    <script type="text/javascript" src="../assets/js/consultor_flora.js"></script>
+    <script type="text/javascript" src="../assets/js/consultor_rodal.js"></script>
+    <script type="text/javascript" src="../assets/js/consultor_predio.js"></script>
+    <!-- DataTable JS -->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
 </html>
