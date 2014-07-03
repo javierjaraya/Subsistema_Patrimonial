@@ -103,6 +103,9 @@ class Sistema {
     public function findAllEmpleados(){
         return $this->empleadoDAO->findAll();
     } 
+        public function saveCarpeta($carpeta){
+        return $this->carpetaDAO->save($carpeta);
+    }
     
     public function saveCuenta($cuenta){
         $this->cuentaDAO->save($cuenta);
