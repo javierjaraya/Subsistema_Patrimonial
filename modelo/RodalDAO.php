@@ -20,7 +20,7 @@ class RodalDAO implements interfaceDAO{
             FROM rodal  r, predio  p, especiearborea e
             WHERE  r.ID_PREDIO = p.ID_PREDIO
             AND r.id_especie_arborea = e.id_especie_arborea
-            AND r.ESTADO = '".$estado."'
+            AND r.ESTADO = '".$estado."' AND p.ESTADO = '".$estado."'
             
             ORDER BY p.ID_PREDIO";
         
@@ -222,6 +222,7 @@ class RodalDAO implements interfaceDAO{
             $rodalEncontrado->setZonaCrecimiento(ociresult($query, "ZONA_CRECIMIENTO"));
             $rodalEncontrado->setEstado(ociresult($query, "ESTADO"));
         }
+        
         $this->cone->desconectar();
         return $rodalEncontrado;
     }
@@ -241,8 +242,8 @@ class RodalDAO implements interfaceDAO{
                                 ID_ESPECIE_ARBOREA = '".$object->getIdEspecieArborea()."',
                                 MANEJO = '".$object->getManejo()."',
                                 ZONA_CRECIMIENTO = '".$object->getZonaCrecimiento()."',
-                                ESTADO='".$object->getEstado()."'   
-                               
+                                ESTADO= '".$object->getEstado()."', 
+                                ID_PREDIO= '".$object->getIdPredio()."'
                         WHERE ID_RODAL='".$object->getIdRodal()."' ";
         
         $this->cone->ejecutar($laConsulta);
@@ -256,6 +257,18 @@ class RodalDAO implements interfaceDAO{
                         SET     
                             ESTADO='".$estadoEliminado."'   
                         WHERE ID_RODAL='".$idRodal."' ";
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+        
+    }
+    
+    public function deleteRodalByIdPredio($idPredio){
+        $this->cone->conectar();
+        $estadoEliminado = 0;
+        $laConsulta = "UPDATE rodal 
+                        SET     
+                            ESTADO='".$estadoEliminado."'   
+                        WHERE ID_PREDIO='".$idPredio."' ";
         $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
         
