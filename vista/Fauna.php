@@ -9,12 +9,17 @@ include_once '../controlador/Fauna.php';
 
 $control = Sistema::getInstancia();
 $faunas = $control->findAllFaunas();
-
+/*
+   <form name="formularioFiltrar" action="javascript:fauna.cargarTabla();" method="POST">
+        Filtrar por codigo predio
+        <input type="text" name="idpredio" value="">
+        <input type="submit" name="Filtrar" value="Filtrar" class="glyphicon glyphicon-glass">
+    </form>
+ */
 ?>
-
 <div class="row">
     <h1>Lista de Fauna</h1>
-    <form action="" method="POST">Filtrar por codigo predio<input type="text" name="" value=""><input type="submit" name="Buscar" value="Buscar"></form>
+    
 </div>
 <div class="row">
     <div class="panel panel-default">
