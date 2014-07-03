@@ -63,6 +63,7 @@ var camino = (function() {
 
                 );
                 camino.cargaFuncionesAutocompletar();
+                camino.autocompleteCaminoFiltro();
             });
             console.log('tabla cargada');
         },
@@ -93,8 +94,9 @@ var camino = (function() {
                     data: datos,
                     success: function(response) {
                     console.log("Ajax ejecutado correctamente");
+                    $("#nuevoCamino").dialog("destroy");
                     camino.cargarTabla();
-                   
+                    camino.mostrarMensaje("Se agrego un camino");
                     },
                     error: function() {
                     console.log("Error al ejecutar AJAX");
@@ -134,6 +136,21 @@ var camino = (function() {
                 }
             });
             console.log('abriendo contenedor nuevo camino');
+        },
+        autocompleteCaminoFiltro: function(){
+            $("#idpredio").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){
+
+                        
+                   
+                }
+            });
         },
         /**
          *
@@ -186,7 +203,7 @@ var camino = (function() {
                                 ok_id_predio = $("#idpredio").val();
 
                         camino.aceptaModificarCamino();
-
+                        
                         $(this).dialog("close");
                         return true;
 
@@ -401,6 +418,31 @@ var camino = (function() {
                     $('#superficie_check_modificar').show();
                 }
             });
+        },
+        mostrarMensaje: function(mensaje){
+            $('#notify_correct').html(mensaje);
+            confi = { 
+            message: $('#notify_correct'), 
+            fadeIn: 700, 
+            fadeOut: 700, 
+            timeout: 4000, 
+            showOverlay: false, 
+            centerY: false, 
+            css: { 
+                
+                    width: '350px', 
+                    top: '60px', 
+                    left: '', 
+                    right: '20px', 
+                    border: 'none', 
+                    padding: '5px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    color: '#fff' 
+                } 
+            };
+            $.blockUI(confi);
         }
     };
 })();

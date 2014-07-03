@@ -399,7 +399,7 @@ console.log('iniciando eventos de rodal');
                 } 
             };
             $.blockUI(confi);
-        },
+        }
         
       };
     })();
