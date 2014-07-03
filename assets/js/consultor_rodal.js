@@ -65,7 +65,7 @@ console.log('iniciando eventos de rodal');
             var datos = 'idrodal='+ idRodal ;
             $.ajax({
                 type: "POST",
-                url: "listarInventarioRodal.php",
+                url: "listarInventarioRodalConsultor.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
