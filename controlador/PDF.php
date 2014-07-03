@@ -31,7 +31,7 @@ class PDF extends FPDF {
             $this->CellFitSpace(40, 7, utf8_decode($fila), 1, 0, 'L', true);
         }
     }
-    
+
     function cabeceraHorizontalInventario($cabecera) {
         $this->SetXY(10, 20);
         $this->SetFont('Arial', 'B', 10);
@@ -50,30 +50,44 @@ class PDF extends FPDF {
             
         }
     }
-    
+
     function cabeceraHorizontalRodal($cabecera) {
         $this->SetXY(10, 20);
         $this->SetFont('Arial', 'B', 10);
         $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
         foreach ($cabecera as $fila) {
-            if($fila == 'Id Predio' ){
+            if ($fila == 'Id Predio') {
                 $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
-            }else{
-                if($fila == 'Id Rodal'){
-                $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
-            }else{
-                if($fila == 'Año Plant.'){
-                    $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
-                }else{
-                    $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else {
+                if ($fila == 'Id Rodal') {
+                    $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
+                } else {
+                    if ($fila == 'Año Plant.') {
+                        $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+                    } else {
+                        $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+                    }
                 }
-                
             }
+        }
+    }
+
+    function cabeceraVerticalFloraFauna($cabeceraVertical) {
+        $this->SetXY(10, 20);
+        $this->SetFont('Arial', 'B', 10);
+        $this->SetFillColor(2, 157, 116); //Fondo verde de celda
+        $this->SetTextColor(240, 255, 240); //Letra color blanco
+        foreach ($cabeceraVertical as $fila) {
+            if (utf8_decode($fila) == "Imagen") {
+                $this->CellFitSpace(55, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else if (utf8_decode($fila) == "Nombre") {
+                $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else if (utf8_decode($fila) == "Especie") {
+                $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else if (utf8_decode($fila) == "Descripcion") {
+                $this->CellFitSpace(95, 7, utf8_decode($fila), 1, 0, 'L', true);
             }
-            
-            
-               
         }
     }
 
@@ -96,14 +110,14 @@ class PDF extends FPDF {
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
-    
+
     function datosHorizontalRodal($rodal) {
         $this->SetXY(10, 27);
         $this->SetFont('Arial', '', 10);
         $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $bandera = false; //Para alternar el relleno
-        while($row =  oci_fetch_array($rodal,OCI_RETURN_NULLS)){
+        while ($row = oci_fetch_array($rodal, OCI_RETURN_NULLS)) {
             //Usaremos CellFitSpace en lugar de
             $this->CellFitSpace(15, 7, utf8_decode($row['ID_PREDIO']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(15, 7, utf8_decode($row['ID_RODAL']), 1, 0, 'L', $bandera);
@@ -119,7 +133,7 @@ class PDF extends FPDF {
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
-    
+
     function datosHorizontalInventario($inventarios) {
         $this->SetXY(10, 27);
         $this->SetFont('Arial', '', 10);
@@ -150,7 +164,7 @@ class PDF extends FPDF {
         // Arial italic 8
         $this->SetFont('Arial', 'I', 8);
         // Número de página
-        $this->Cell(0, 10, 'Pagina ' . $this->PageNo() , 0, 0, 'C');
+        $this->Cell(0, 10, 'Pagina ' . $this->PageNo(), 0, 0, 'C');
     }
 
     function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
@@ -158,20 +172,33 @@ class PDF extends FPDF {
         $this->cabeceraHorizontal($cabeceraHorizontal);
         $this->datosHorizontalPredio($datosHorizontal);
         $this->Footer();
-        
     }
-    
-    function tablaHorizontalRodal($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
+
+    function tablaHorizontalRodal($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontalRodal($cabeceraHorizontal);
         $this->datosHorizontalRodal($datosHorizontal);
         $this->Footer();
     }
-    
-    function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
+
+    function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontalInventario($cabeceraHorizontal);
         $this->datosHorizontalInventario($datosHorizontal);
+        $this->Footer();
+    }
+
+    function tablaVerticalFauna($cabeceraVertical, $faunas, $tituloPagina) {
+        $this->logoAndTitulo($tituloPagina);
+        $this->cabeceraVerticalFloraFauna($cabeceraVertical);
+        $this->datosVerticalFauna($faunas);
+        $this->Footer();
+    }
+    
+    function tablaVerticalFlora($cabeceraVertical, $floras, $tituloPagina) {
+        $this->logoAndTitulo($tituloPagina);
+        $this->cabeceraVerticalFloraFauna($cabeceraVertical);
+        $this->datosVerticalFlora($floras);
         $this->Footer();
     }
 

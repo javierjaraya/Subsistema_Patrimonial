@@ -34,8 +34,6 @@ $caminos = $control->findAllCaminos();
                     echo "<td>" . $camino->getTipoSuperficie() . "</td>";
                     echo "<td>" . $camino->getIdPredio() . "</td>";
                     echo "<td>";
-                    //echo "<a href='#'><i class='btn btn-warning glyphicon glyphicon-pencil'></i> Editar</a> ";
-                    //echo "<a href='#'><i class='btn btn-danger glyphicon glyphicon-trash'></i> Eliminar</a>";
                     echo "<button type='button' onclick='camino.modificarCamino(" . $camino->getIdCamino() . ")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick='camino.eliminarCamino(" . $camino->getIdCamino() . ")'class='btn btn-danger glyphicon glyphicon-trash'></button>";
                     echo "</td>";
