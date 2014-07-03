@@ -12,6 +12,7 @@ $fechaActual = date("d/m/Y");
 $tituloPagina = "";
 
 $idpredio = trim(htmlentities(htmlspecialchars(strip_tags($_GET['idprediofiltro']))));
+
 if($idpredio == ""){
     $idpredio = $_GET['idprediofiltro'];
     $faunas = $control->findALlFaunas();
