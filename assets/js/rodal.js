@@ -40,8 +40,9 @@ console.log('iniciando eventos de rodal');
 	}
                   
                   );
-          
+                      rodal.autocompletePredioFiltro();
           });
+          
           console.log('tabla cargada');
         },
         /**
@@ -399,6 +400,23 @@ console.log('iniciando eventos de rodal');
                 } 
             };
             $.blockUI(confi);
+        },
+                
+       autocompletePredioFiltro: function(){
+            console.log("cargando autocomplete rodal");
+            $("#idprediofiltroRodal").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){
+
+                        
+                   
+                }
+            });
         }
         
       };
