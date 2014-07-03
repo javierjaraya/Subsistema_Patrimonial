@@ -40,6 +40,7 @@ if($seleccion == 0){
     
 }
 $tituloPagina = "Rodales al ".$fechaActual. " ordenados por: ".$modoOrden;
+$pdf->SetAutoPageBreak(TRUE);
 $pdf->tablaHorizontalRodal($miCabecera, $predios, $tituloPagina);
  
 $pdf->Output(); //Salida al navegador

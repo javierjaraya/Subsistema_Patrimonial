@@ -23,7 +23,7 @@ if($idpredio == ""){
 }
 
 $miCabecera = array('Imagen', 'Nombre', 'Especie', 'Descripcion');
-
+$pdf->SetAutoPageBreak(TRUE);
 $pdf->tablaVerticalFlora($miCabecera, $floras, $tituloPagina);
 
 $pdf->Output(); //Salida al navegador
