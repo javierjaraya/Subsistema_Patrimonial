@@ -70,7 +70,7 @@ $faunas = $control->findAllFaunas();
                     echo "<td>" . utf8_encode($fauna->getEspecie()) . "</td>";
                     echo "<td class='text-justify'>" . utf8_encode($fauna->getDescripcion()) . "</td>";
                     echo "<td>";
-                    echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                    echo "<button type='button' onclick='fauna.modificarFauna(".$fauna->getIdFauna().")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
                     echo "</td>";
                     echo "</tr>";

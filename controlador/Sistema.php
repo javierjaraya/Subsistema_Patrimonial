@@ -275,6 +275,10 @@ class Sistema {
     public function existePredio($idPredio){
         return $this->predioDAO->existe($idPredio);
     }
+    
+    public function findFaunaById($idfauna){
+        $this->faunaDAO->findById($idfauna);
+    }
 }
 
 
