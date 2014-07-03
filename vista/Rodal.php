@@ -61,12 +61,12 @@ $predios = $control->findAllRodales();
             
             <div><label>Servicio: </label>&nbsp;&nbsp;<img id="id_servicio_check" src="" style="display: none;"><input type="text" class="servicio form-control" name="servicio" ok="false"/></div>
             <div><label>Sistema Inventario: </label><input type="text" class="sistemaInventario form-control" name="sistemaInventario" required="required"/></div>
-            <div><label>Diámetro Medio: </label><input type="number" class="diametroMedio form-control" name="diametroMedio" required="required"/></div>
-            <div><label>Altura Dominante: </label><input type="number" class="alturaDominante form-control" name="alturaDominante" required="required"/></div>
-            <div><label>Área Basal: </label><input type="number" class="areaBasal form-control" name="areaBasal" required="required"/></div>
-            <div><label>Volumen: </label><input type="number" class="volumen form-control" name="volumen" required="required"/></div>
+            <div><label>Diámetro Medio (m): </label><input type="number" class="diametroMedio form-control" name="diametroMedio" required="required"/></div>
+            <div><label>Altura Dominante (m): </label><input type="number" class="alturaDominante form-control" name="alturaDominante" required="required"/></div>
+            <div><label>Área Basal (m): </label><input type="number" class="areaBasal form-control" name="areaBasal" required="required"/></div>
+            <div><label>Volumen (m3): </label><input type="number" class="volumen form-control" name="volumen" required="required"/></div>
             <div><label>Número de Árboles: </label><input type="number" class="numeroArboles form-control" name="numeroArboles" required="required"/></div>
-            <div><label>Altura: </label><input type="number" class="altura form-control" name="altura" required="required"/></div>
+            <div><label>Altura (m): </label><input type="number" class="altura form-control" name="altura" required="required"/></div>
             <div><label>Fecha Medición: </label><input type="date" class="fecha form-control" name="fecha" required="required"/></div>
             
             
