@@ -14,7 +14,7 @@ $floras = $control->findAllFloras();
 <div class="row">
     <div style="float:right;">    
         <form action="floraReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
-            Id Predio : <input type="text" name="idprediofiltro" name="idprediofiltro" value=""> 
+            Id Predio : <input type="text" name="idprediofiltro" id="idprediofiltro" value=""> 
             <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte"></button>
         </form>
     </div>
