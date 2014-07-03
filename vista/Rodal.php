@@ -22,7 +22,7 @@ $predios = $control->findAllRodales();
 				    <option value="0">Año Plantación</option>
 			           |<option value="1">Id Predio</option>
                                     <option value="2">Id Rodal</option>
-                                    <option value="3">Nombre Rodal</option>
+                                    <option value="3">Nombre Predio</option>
                                     <option value="4">Superficie</option>
                                     <option value="5">Zona Crecimiento</option>
                              </select>
