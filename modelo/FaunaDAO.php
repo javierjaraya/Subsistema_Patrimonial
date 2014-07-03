@@ -69,7 +69,7 @@ class FaunaDAO implements interfaceDAO{
         $laConsulta = "UPDATE fauna 
                         SET     NOMBRE_FAUNA='".$object->getNombreFauna()."',
                                 ESPECIE='".$object->getEspecie()."',
-                                DESCRIPCION='".$object->getDescripcion()."',
+                                DESCRIPCION='".$object->getDescripcion()."'
                                 
                         WHERE ID_FAUNA='".$object->getIdFauna()."' ";
         
