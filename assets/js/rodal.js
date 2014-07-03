@@ -285,7 +285,6 @@ console.log('iniciando eventos de rodal');
               height: 600,
               width: 500,
               modal: true,
-             
               resizable: false,
               buttons: {
                 Actualizar: function() {
