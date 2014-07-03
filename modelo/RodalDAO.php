@@ -245,7 +245,7 @@ class RodalDAO implements interfaceDAO{
                                 ESTADO= '".$object->getEstado()."', 
                                 ID_PREDIO= '".$object->getIdPredio()."'
                         WHERE ID_RODAL='".$object->getIdRodal()."' ";
-        echo $laConsulta;
+        
         $this->cone->ejecutar($laConsulta);
         $this->cone->desconectar();
     }
