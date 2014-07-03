@@ -16,17 +16,56 @@
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.css" rel="stylesheet" type="text/css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.structure.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
         <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Add custom CSS here -->
         <link href="../assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+        <style>
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+	</style>
         <style>
             .ui-autocomplete-loading {
     background: white url('../assets/ico/ajax.gif') right center no-repeat;
@@ -167,7 +206,11 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
+                <div class="col-sm-9">
+                    <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
+                    
+                </div>
+                
                 
                 <!--<img src="../assets/img/fondo.jpg" width="100%" height="75%"> -->
             </div><!-- /#page-wrapper -->
@@ -180,7 +223,8 @@
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
     <!-- jQuery UI (estilos) -->
-    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-ui-1.11.0/jquery-ui.min.js"></script>
+    
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <!-- BlockUI core JS -->

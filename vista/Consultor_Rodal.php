@@ -19,7 +19,7 @@ $predios = $control->findAllRodales();
          <select id="seleccionFiltro" name="seleccionFiltro" size="1">
 				    <option value="-1">Ordenar por...</option>
 				    <option value="0">Año Plantación</option>
-			           |<option value="1">Id Predio</option>
+			            <option value="1">Id Predio</option>
                                     <option value="2">Id Rodal</option>
                                     <option value="3">Nombre Rodal</option>
                                     <option value="4">Superficie</option>
@@ -33,6 +33,7 @@ $predios = $control->findAllRodales();
                                     <option value="100">100</option>
                                     
                              </select>
+         <input type="text" id="idprediofiltroRodal" name="idprediofiltroRodal" value="" placeholder="Filtre por ID Predio">
         <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte" onclick=" return validarSeleccionReporteRodal()" ></button>
      </form>
     </div>

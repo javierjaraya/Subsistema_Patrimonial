@@ -19,10 +19,24 @@
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
         <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
         <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Add custom CSS here -->
         <link href="../assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+        <script type="text/javascript">
+      function validarSeleccionReporteRodal(){
+           seleccion = document.getElementById("seleccionFiltro").value;
+            if(seleccion == -1 ){
+                alert("Para generar el reporte de Rodal debe escoger un tipo de ordenamiento");
+                return false;
+                
+             }else{
+                 return true;
+             }
+             
+      }
+  </script>
     </head>
 
     <body>
