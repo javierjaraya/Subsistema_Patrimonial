@@ -1,8 +1,15 @@
 <?php
-    /*include_once 'controlador/Sistema.php';
+    include_once '../controlador/Sistema.php';
+    include_once '../controlador/Session.php';
     
     $control = Sistema::getInstancia();
-    $empleado = $control->getEmpleadoCuenta();*/
+    $session = $control->getSession();
+    
+    $empleado = $session->getNombreEmpleado();
+    if(!isset($empleado)){
+        $direccion = $session->securityCheck();
+        header('Location: '.$direccion);
+    }
 ?>
 <html>
     <head>
@@ -54,7 +61,7 @@
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><!-- <?php echo $empleado;?> --><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $empleado;?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Perfil</a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i> Configuracion</a></li>
@@ -67,7 +74,7 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!</h1>
+                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
 
             </div><!-- /#page-wrapper -->
 

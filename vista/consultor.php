@@ -1,8 +1,15 @@
 <?php
-    /*include_once 'controlador/Sistema.php';
+    include_once '../controlador/Sistema.php';
+    include_once '../controlador/Session.php';
     
     $control = Sistema::getInstancia();
-    $empleado = $control->getEmpleadoCuenta();*/
+    $session = $control->getSession();
+    
+    $empleado = $session->getNombreEmpleado();
+    if(!isset($empleado)){
+        $direccion = $session->securityCheck();
+        header('Location: '.$direccion);
+    }
 ?>
 <html>
     <head>
@@ -19,9 +26,7 @@
     </head>
 
     <body>
-
         <div id="wrapper">
-
             <!-- Sidebar -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,7 +81,7 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!</h1>
+                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
 
             </div><!-- /#page-wrapper -->
 
