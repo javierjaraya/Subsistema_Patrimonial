@@ -6,6 +6,7 @@
  * @author Javier
  */
 class Cuenta {
+    
     private $nombreEmpleado;
     private $idCuenta;
     private $fechaCreacion;
@@ -13,6 +14,8 @@ class Cuenta {
     private $estado;
     private $idPerfil;
     private $nombrePerfil;
+    private $dniCta;
+    
     function __construct() {
         
     }
@@ -46,6 +49,10 @@ class Cuenta {
         return $this->nombrePerfil;
     }
     
+    public function getDniCta() {
+        return $this->dniCta;
+    }
+    
     public function setNombreEmpleado($nombreEmpleado) {
         $this->nombreEmpleado = $nombreEmpleado;
     }
@@ -72,6 +79,10 @@ class Cuenta {
     
     public function setNombrePerfil($perfil) {
         $this->nombrePerfil = $perfil;
+    }
+    
+    public function setDniCta($dniCta) {
+        $this->dniCta = $dniCta;
     }
 }
 ?>

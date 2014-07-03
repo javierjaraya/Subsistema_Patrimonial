@@ -45,12 +45,9 @@ $cuentas = $control->findAllCuentas();
                 echo "<td>".$cuenta->getPassword()."</td>";
                 echo "<td>".$estado."</td>";
                 echo "<td>".$cuenta->getNombrePerfil()."</td>";
-                echo "<td>";
-                              
+                echo "<td>";              
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'></button>";
-                
                 echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='cuenta.eliminarCuenta(".$cuenta->getIdCuenta().")'></button>";
-                
                 echo "</td>";
                 echo "</tr>";
             }

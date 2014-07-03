@@ -13,6 +13,7 @@ include_once '../modelo/PredioDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
 include_once '../modelo/RodalDAO.php';
 include_once '../modelo/ZonaDAO.php';
+include_once '../modelo/CarpetaLegalDAO.php';
 
 include_once 'Session.php';
 //include_once 'Cuenta.php';
@@ -82,7 +83,9 @@ class Sistema {
     public function findAllRodalesSelection($selection, $seleccionCantidad, $idPredio){
         return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
     }
-   
+    public function findAllPrediosSelection($selection, $seleccionCantidad, $idPredio){
+        return $this->predioDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
+    }
 
     /**
      * Metodo encargado de buscar un predio por Id
@@ -278,8 +281,8 @@ class Sistema {
         return $this->faunaDAO->findAllFaunasPredio($idpredio);
     }
     
-    public function findAllFlorasPredio($idpredio){
-        return $this->floraDAO->findAllFlorasPredio($idpredio);
+    public function eliminarCarpeta($codigo){
+        return $this->carpetaDAO->delete($codigo);
     }
     
     public function findFloraById($id){
@@ -288,6 +291,10 @@ class Sistema {
 
         public function existePredio($idPredio){
         return $this->predioDAO->existe($idPredio);
+    }
+    
+    public function findFaunaById($idfauna){
+        return $this->faunaDAO->findById($idfauna);
     }
 }
 
