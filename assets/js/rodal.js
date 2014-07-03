@@ -411,10 +411,7 @@ console.log('iniciando eventos de rodal');
                 select: function(event, ui){
                     
                 },
-                change: function(event, ui){
-
-                        
-                   
+                change: function(event, ui){                   
                 }
             });
         }
