@@ -31,7 +31,7 @@ class PDF extends FPDF {
             $this->CellFitSpace(40, 7, utf8_decode($fila), 1, 0, 'L', true);
         }
     }
-    
+
     function cabeceraHorizontalInventario($cabecera) {
         $this->SetXY(10, 20);
         $this->SetFont('Arial', 'B', 10);
@@ -41,30 +41,44 @@ class PDF extends FPDF {
             $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
         }
     }
-    
+
     function cabeceraHorizontalRodal($cabecera) {
         $this->SetXY(10, 20);
         $this->SetFont('Arial', 'B', 10);
         $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
         foreach ($cabecera as $fila) {
-            if($fila == 'Id Predio' ){
+            if ($fila == 'Id Predio') {
                 $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
-            }else{
-                if($fila == 'Id Rodal'){
-                $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
-            }else{
-                if($fila == 'Año Plant.'){
-                    $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
-                }else{
-                    $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else {
+                if ($fila == 'Id Rodal') {
+                    $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
+                } else {
+                    if ($fila == 'Año Plant.') {
+                        $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+                    } else {
+                        $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+                    }
                 }
-                
             }
+        }
+    }
+
+    function cabeceraVerticalFloraFauna($cabeceraVertical) {
+        $this->SetXY(10, 20);
+        $this->SetFont('Arial', 'B', 10);
+        $this->SetFillColor(2, 157, 116); //Fondo verde de celda
+        $this->SetTextColor(240, 255, 240); //Letra color blanco
+        foreach ($cabeceraVertical as $fila) {
+            if (utf8_decode($fila) == "Imagen") {
+                $this->CellFitSpace(55, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else if (utf8_decode($fila) == "Nombre") {
+                $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else if (utf8_decode($fila) == "Especie") {
+                $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+            } else if (utf8_decode($fila) == "Descripcion") {
+                $this->CellFitSpace(95, 7, utf8_decode($fila), 1, 0, 'L', true);
             }
-            
-            
-               
         }
     }
 
@@ -87,14 +101,14 @@ class PDF extends FPDF {
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
-    
+
     function datosHorizontalRodal($rodal) {
         $this->SetXY(10, 27);
         $this->SetFont('Arial', '', 10);
         $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $bandera = false; //Para alternar el relleno
-        while($row =  oci_fetch_array($rodal,OCI_RETURN_NULLS)){
+        while ($row = oci_fetch_array($rodal, OCI_RETURN_NULLS)) {
             //Usaremos CellFitSpace en lugar de
             $this->CellFitSpace(15, 7, utf8_decode($row['ID_PREDIO']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(15, 7, utf8_decode($row['ID_RODAL']), 1, 0, 'L', $bandera);
@@ -104,13 +118,13 @@ class PDF extends FPDF {
             $this->CellFitSpace(30, 7, utf8_decode($row['SUP']), 1, 0, 'L', $bandera);
             //$this->CellFitSpace(20, 7, utf8_decode($row['ANIO']), 1, 0, 'L', $bandera);
             //$this->CellFitSpace(30, 7, utf8_decode($row['VALOR']), 1, 0, 'L', $bandera);
-            
-            
+
+
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
     }
-    
+
     function datosHorizontalInventario($inventarios) {
         $this->SetXY(10, 27);
         $this->SetFont('Arial', '', 10);
@@ -128,7 +142,66 @@ class PDF extends FPDF {
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
-            
+
+            $this->Ln(); //Salto de línea para generar otra fila
+            $bandera = !$bandera; //Alterna el valor de la bandera
+        }
+    }
+
+    function datosVerticalFauna($faunas) {
+        $this->SetXY(10, 27);
+        $this->SetFont('Arial', '', 10);
+        $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
+        $this->SetTextColor(3, 3, 3); //Color del texto: Negro
+        $cont = 0;
+        $distancia = 55;
+        foreach ($faunas as $fauna) {
+            //Cell(float w , float h, string texto , mixed borde, int ln , string align , boolean fill, mixed link)
+            /* w: ancho de la celda. Si ponemos 0 la celda se extiende hasta el margen derecho.
+              H: alto de la celda.
+              Texto: el texto que le vamos a añadir.
+              Borde: nos dice si van a ser visibles o no. si es 0 no serán visibles, si es 1 se verán los bordes.
+              Ln: nos dice donde se empezara a escribir después de llamar a esta función. Siendo 0 a la derecha, 1 al comienzo de la siguiente línea, 2 debajo.
+              Align: para alinear el texto. L alineado a la izquierda, C centrado y R alineado a la derecha.
+              Fill: nos dice si el fondo de la celda va a ir con color o no. los valores son True o False
+             */
+            $this->Cell(55, $distancia, $this->Image($fauna->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 1, 0, 'L');
+            $this->CellFitSpace(20, 55, utf8_decode($fauna->getNombreFauna()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(20, 55, utf8_decode($fauna->getEspecie()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(95, 55, utf8_decode($fauna->getDescripcion()), 1, 0, 'L', $bandera);
+            $cont++;
+            if ($cont == 4) {
+                $this->Ln(); //Salto de línea para generar otra fila    
+                $cont == 1;
+                $distancia = 110;
+            }else{
+                $distancia = 55;
+            }
+            $this->Ln(); //Salto de línea para generar otra fila
+            $bandera = !$bandera; //Alterna el valor de la bandera
+        }
+    }
+    
+    function datosVerticalFlora($floras) {
+        $this->SetXY(10, 27);
+        $this->SetFont('Arial', '', 10);
+        $this->SetFillColor(229, 229, 229); //Gris tenue de cada fila
+        $this->SetTextColor(3, 3, 3); //Color del texto: Negro
+        $cont = 0;
+        $distancia = 55;
+        foreach ($floras as $flora) {
+            $this->Cell(55, $distancia, $this->Image($flora->getRutaImagen(), $this->GetX(), $this->GetY(), 55), 1, 0, 'L');
+            $this->CellFitSpace(20, 55, utf8_decode($flora->getNombreFlora()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(20, 55, utf8_decode($flora->getEspecie()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(95, 55, utf8_decode($flora->getDescripcion()), 1, 0, 'L', $bandera);
+            $cont++;
+            if ($cont == 4) {
+                $this->Ln(); //Salto de línea para generar otra fila    
+                $cont == 1;
+                $distancia = 110;
+            }else{
+                $distancia = 55;
+            }
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
@@ -141,7 +214,7 @@ class PDF extends FPDF {
         // Arial italic 8
         $this->SetFont('Arial', 'I', 8);
         // Número de página
-        $this->Cell(0, 10, 'Pagina ' . $this->PageNo() , 0, 0, 'C');
+        $this->Cell(0, 10, 'Pagina ' . $this->PageNo(), 0, 0, 'C');
     }
 
     function tablaHorizontalPredio($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
@@ -149,20 +222,33 @@ class PDF extends FPDF {
         $this->cabeceraHorizontal($cabeceraHorizontal);
         $this->datosHorizontalPredio($datosHorizontal);
         $this->Footer();
-        
     }
-    
-    function tablaHorizontalRodal($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
+
+    function tablaHorizontalRodal($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontalRodal($cabeceraHorizontal);
         $this->datosHorizontalRodal($datosHorizontal);
         $this->Footer();
     }
-    
-    function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina){
+
+    function tablaHorizontalInventario($cabeceraHorizontal, $datosHorizontal, $tituloPagina) {
         $this->logoAndTitulo($tituloPagina);
         $this->cabeceraHorizontalInventario($cabeceraHorizontal);
         $this->datosHorizontalInventario($datosHorizontal);
+        $this->Footer();
+    }
+
+    function tablaVerticalFauna($cabeceraVertical, $faunas, $tituloPagina) {
+        $this->logoAndTitulo($tituloPagina);
+        $this->cabeceraVerticalFloraFauna($cabeceraVertical);
+        $this->datosVerticalFauna($faunas);
+        $this->Footer();
+    }
+    
+    function tablaVerticalFlora($cabeceraVertical, $floras, $tituloPagina) {
+        $this->logoAndTitulo($tituloPagina);
+        $this->cabeceraVerticalFloraFauna($cabeceraVertical);
+        $this->datosVerticalFlora($floras);
         $this->Footer();
     }
 

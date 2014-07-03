@@ -252,6 +252,14 @@ class Sistema {
     public function findALlFloras(){
         return $this->floraDAO->findAll();
     }
+    
+    public function findAllFaunasPredio($idpredio){
+        return $this->faunaDAO->findAllFaunasPredio($idpredio);
+    }
+    
+    public function findAllFlorasPredio($idpredio){
+        return $this->floraDAO->findAllFlorasPredio($idpredio);
+    }
 }
 
 

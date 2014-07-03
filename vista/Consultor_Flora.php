@@ -21,7 +21,7 @@ $floras = $control->findAllFloras();
         <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable dataTable">
             <thead>
                 <tr>
-                    <th >ID Camino <i class='fa fa-sort' style="cursor:hand"></i></th>
+                    <th >Imagen <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Nombre <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Especie <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Descripcion <i class='fa fa-sort' style="cursor:hand"></i></th>

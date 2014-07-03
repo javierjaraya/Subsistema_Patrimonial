@@ -9,10 +9,15 @@ include_once '../controlador/Flora.php';
 
 $control = Sistema::getInstancia();
 $floras = $control->findAllFloras();
-
 ?>
 
 <div class="row">
+    <div style="float:right;">    
+        <form action="floraReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
+            Id Predio : <input type="text" name="idprediofiltro" name="idprediofiltro" value=""> 
+            <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte"></button>
+        </form>
+    </div>
     <h1>Lista de Flora</h1>
 </div>
 <div class="row">
@@ -21,10 +26,11 @@ $floras = $control->findAllFloras();
         <table cellpadding="0" cellspacing="0" border="0" id="tabla_contactos" class="table table-striped table-bordered bootstrap-datatable dataTable">
             <thead>
                 <tr>
-                    <th >ID Camino <i class='fa fa-sort' style="cursor:hand"></i></th>
+                    <th >Imagen <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Nombre <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Especie <i class='fa fa-sort' style="cursor:hand"></i></th>
                     <th >Descripcion <i class='fa fa-sort' style="cursor:hand"></i></th>
+                    <th >Acción <i class='fa fa-sort' style="cursor:hand"></i></th>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -32,10 +38,14 @@ $floras = $control->findAllFloras();
                 foreach ($floras as $flora) {
                     echo "<tr>";
                     echo "<td ><img onclick='javascript:this.width=450;this.height=338'  ondblclick='javascript:this.width=135;this.height=120' "
-                         . "src = '". $flora->getRutaImagen()  . "' width='135px' height='120px'></td>";
+                    . "src = '" . $flora->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($flora->getNombreFlora()) . "</td>";
-                    echo "<td>" . utf8_encode($flora->getEspecie())     . "</td>";
-                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";                    
+                    echo "<td>" . utf8_encode($flora->getEspecie()) . "</td>";
+                    echo "<td>" . utf8_encode($flora->getDescripcion()) . "</td>";
+                    echo "<td>";
+                    echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                    echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>

@@ -55,5 +55,29 @@ class FaunaDAO implements interfaceDAO{
     public function update($object) {
         
     }
+    
+    public function findAllFaunasPredio($idpredio){
+        $this->conexion->conectar();
+        $consulta = "SELECT * FROM FAUNA JOIN FAUNAPREDIO ON FAUNA.ID_FAUNA = FAUNAPREDIO.ID_FAUNA
+                     WHERE FAUNAPREDIO.ID_PREDIO = $idpredio";
+        $query = $this->conexion->ejecutar($consulta);
+        
+        $i = 0;
+        $faunas = array();
+        while(ocifetch($query)){
+            $faunaImagen = new Fauna();
+            $faunaImagen->setIdFauna(ociresult($query, "ID_FAUNA"));
+            $faunaImagen->setNombreFauna(ociresult($query, "NOMBRE_FAUNA"));
+            $faunaImagen->setEspecie(ociresult($query, "ESPECIE"));
+            $faunaImagen->setDescripcion(ociresult($query, "DESCRIPCION"));
+            $faunaImagen->setNombreImagen(ociresult($query, "NOMBRE_IMAGEN"));
+            $faunaImagen->setRutaImagen(ociresult($query, "RUTA"));
+            $faunas[$i] = $faunaImagen;
+            $i++;
+        }
+        $this->conexion->desconectar();
+        return $faunas;
+        
+    }
 }
 ?>
