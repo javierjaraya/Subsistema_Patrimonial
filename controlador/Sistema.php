@@ -296,6 +296,10 @@ class Sistema {
     public function findFaunaById($idfauna){
         return $this->faunaDAO->findById($idfauna);
     }
+    
+    public function actualizarFauna($fauna){
+        $this->faunaDAO->update($fauna);
+    }
 }
 
 

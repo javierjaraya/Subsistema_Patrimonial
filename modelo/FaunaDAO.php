@@ -65,7 +65,16 @@ class FaunaDAO implements interfaceDAO{
     }
 
     public function update($object) {
+        $this->conexion->conectar();
+        $laConsulta = "UPDATE fauna 
+                        SET     NOMBRE_FAUNA='".$object->getNombreFauna()."',
+                                ESPECIE='".$object->getEspecie()."',
+                                DESCRIPCION='".$object->getDescripcion()."'
+                                
+                        WHERE ID_FAUNA='".$object->getIdFauna()."' ";
         
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
     
     public function findAllFaunasPredio($idpredio){
