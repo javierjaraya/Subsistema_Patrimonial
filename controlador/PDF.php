@@ -48,25 +48,8 @@ class PDF extends FPDF {
         $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
         foreach ($cabecera as $fila) {
-            
-            
-            if($fila == 'Id Predio' ){
-                $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
-            }else{
-                if($fila == 'Id'){
-                    $this->CellFitSpace(10, 7, utf8_decode($fila), 1, 0, 'L', true);
-                }else{
-                    if($fila == 'Año Plant.'){
-                        $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
-                    }else{
-                        $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
-                    }
-                }
-                
-                
-            }
-            
-            
+            $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+               
         }
     }
 
@@ -97,17 +80,14 @@ class PDF extends FPDF {
         $this->SetTextColor(3, 3, 3); //Color del texto: Negro
         $bandera = false; //Para alternar el relleno
         while($row =  oci_fetch_array($rodal,OCI_RETURN_NULLS)){
-            //Usaremos CellFitSpace en lugar de 
-            $this->CellFitSpace(15, 7, utf8_decode($row['ID_PREDIO']), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(10, 7, utf8_decode($row['ID_RODAL']), 1, 0, 'L', $bandera);
+            //Usaremos CellFitSpace en lugar de
+            $this->CellFitSpace(30, 7, utf8_decode($row['ID_PREDIO']), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($row['ID_RODAL']), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($row['NOMBRE']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['MANEJO']), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(30, 7, utf8_decode($row['ARBOREA']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['ZONA']), 1, 0, 'L', $bandera);
-            $a = number_format($row['SUP']);
-            $this->CellFitSpace(30, 7, utf8_decode($a.' ha'), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(20, 7, utf8_decode($row['ANIO']), 1, 0, 'L', $bandera);
-            $b = number_format($row['VALOR']);
-            $this->CellFitSpace(30, 7, utf8_decode('$ '.$b), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($row['SUP']), 1, 0, 'L', $bandera);
+            
             
             
             $this->Ln(); //Salto de línea para generar otra fila

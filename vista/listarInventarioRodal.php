@@ -41,12 +41,12 @@ $inventario = $control->getInventarios($idRodal);
                 <th >ID  <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Servicio <i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Sist. Inventario <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Ø Medio <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Altura Dominante <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Área Basal <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Volumen <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Ø Medio (m) <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Altura Dominante (m)<i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Área Basal (m2)<i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Volumen (m3)<i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >N° Arboles <i class='fa fa-sort' style="cursor:hand"></i></th>
-                <th >Altura <i class='fa fa-sort' style="cursor:hand"></i></th>
+                <th >Altura (m)<i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Fecha<i class='fa fa-sort' style="cursor:hand"></i></th>
                 <th >Acción</th>
                

@@ -29,6 +29,159 @@ class RodalDAO implements interfaceDAO{
         return $query;
     }
     
+    public function findAllSelection($seleccion, $seleccionCantidad){
+        
+        $estado = 1;
+        $this->cone->conectar();
+        
+        if($seleccion == 0){
+            if($seleccionCantidad<=100){
+                $laConsulta = "
+                    SELECT * FROM
+                    (SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY anio)
+                        WHERE ROWNUM <= $seleccionCantidad";
+            }else{
+                $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY anio";
+            }
+            
+        }
+        if($seleccion == 1){
+            if($seleccionCantidad<=100){
+                $laConsulta = "
+                    SELECT * FROM
+                    (SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY r.ID_PREDIO)
+                        WHERE ROWNUM <= $seleccionCantidad";
+            }else{
+                $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."'
+                        ORDER BY r.ID_PREDIO";
+            }
+            
+        }
+        if($seleccion == 2){
+            if($seleccionCantidad<=100){
+                $laConsulta ="
+                    SELECT * FROM
+                    (SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY r.ID_RODAL)
+                        WHERE ROWNUM <= $seleccionCantidad";
+            }else{
+               $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."'
+                        ORDER BY r.ID_RODAL"; 
+            }
+            
+        }
+        if($seleccion == 3){
+            if($seleccionCantidad<=100){
+                $laConsulta ="
+                    SELECT * FROM
+                    (SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY nombre)
+                        WHERE ROWNUM <= $seleccionCantidad";
+            }else{
+              $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."'
+                        ORDER BY nombre";  
+            }
+            
+        }
+        if($seleccion == 4){
+            if($seleccionCantidad<=100){
+                $laConsulta ="
+                    SELECT * FROM
+                    (SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY sup)
+                        WHERE ROWNUM <= $seleccionCantidad";
+            }else{
+              $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."'
+                        ORDER BY sup";  
+            }
+            
+        }
+        if($seleccion == 5){
+            if($seleccionCantidad<=100){
+                $laConsulta ="
+                    SELECT * FROM
+                    (SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                        e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                        r.valor_comercial valor
+                        FROM rodal  r, predio  p, especiearborea e
+                        WHERE  r.ID_PREDIO = p.ID_PREDIO
+                        AND r.id_especie_arborea = e.id_especie_arborea
+                        AND r.ESTADO = '".$estado."' ORDER BY zona)
+                        WHERE ROWNUM <= $seleccionCantidad";
+            }else{
+               $laConsulta = "SELECT r.id_predio id_predio, p.nombre nombre, r.id_rodal id_rodal, r.manejo manejo,
+                    e.nombre_especie_arborea arborea, r.zona_crecimiento zona, r.superficie sup, r.anio_plantacion anio,
+                    r.valor_comercial valor
+                    FROM rodal  r, predio  p, especiearborea e
+                    WHERE  r.ID_PREDIO = p.ID_PREDIO
+                    AND r.id_especie_arborea = e.id_especie_arborea
+                    AND r.ESTADO = '".$estado."'
+                    ORDER BY zona"; 
+            }
+            
+        }
+        $query = $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+        return $query;
+    }
+    
    
 
 

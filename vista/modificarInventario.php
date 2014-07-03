@@ -44,7 +44,7 @@ if($yy>= 0 && $yy<=70){
             <div><label>Sistema Inventario: </label><input class="form-control" type="text" id="sistemaInventario" name="sistemaInventario" <?php echo "value='$sistemaInventario'"?> /></div>
             <div><label>Diámetro Medio (m): </label><input type="text" class="form-control" id="diametroMedio" name="diametroMedio" <?php echo "value='$diametroMedio'"?> /></div>
             <div><label>Altura Dominante (m): </label><input type="text" class="form-control" id="alturaDominante" name="alturaDominante" <?php echo "value='$alturaDominante'"?> /></div>
-            <div><label>Área Basal (m): </label><input type="text" class="form-control" id="areaBasal" name="areaBasal" <?php echo "value='$areaBasal'"?> /></div>
+            <div><label>Área Basal (m2): </label><input type="text" class="form-control" id="areaBasal" name="areaBasal" <?php echo "value='$areaBasal'"?> /></div>
             <div><label>Volumen (m3): </label><input type="text" class="form-control" id="volumen" name="volumen" <?php echo "value='$volumen'"?> /></div>
             <div><label>Número Árboles: </label><input type="text" class="form-control" id="numeroArboles" name="numeroArboles" <?php echo "value='$numeroArboles'"?> /></div>
             <div><label>Altura (m): </label><input type="text" class="form-control" id="altura" name="altura" <?php echo "value='$altura'"?> /></div>
