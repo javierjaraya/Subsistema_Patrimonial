@@ -1,5 +1,5 @@
 
-console.log('iniciando eventos de caminos');
+console.log('iniciando eventos de fauna');
 var fauna = (function() {
     var confLoad = ({css: {border: 'none',
             padding: '15px',
@@ -26,6 +26,7 @@ var fauna = (function() {
                         }
 
                 );
+                fauna.autocompletePredioFiltro();
             });
             console.log('tabla cargada');
         },
@@ -36,6 +37,21 @@ var fauna = (function() {
             alest("El contenido del formulario es ajvier javeri : "+datos.idpredio);
         },
         
+        autocompletePredioFiltro: function(){
+            $("#idprediofiltro").autocomplete({
+                source: "buscaPredio.php",
+                minLength: 2,
+//                appendTo: '#nuevoPredio',
+                select: function(event, ui){
+                    
+                },
+                change: function(event, ui){
+
+                        
+                   
+                }
+            });
+        },
         cancelarIngresoCamino: function() {
             console.log("Ingreso de camino cancelado");
             $.unblockUI();

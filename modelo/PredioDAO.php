@@ -73,7 +73,7 @@ class PredioDAO implements interfaceDAO{
          * Verifico valores que vienen en el ejemplo
          */
         if($predio->getIdPredio() != ""){
-            $laConsulta = $laConsulta." ".$conector." ID_PREDIO = $predio->getIdPredio()";
+            $laConsulta = $laConsulta." ".$conector." ID_PREDIO = ".$predio->getIdPredio();
             $conector  = "AND";
         }
             
@@ -105,7 +105,6 @@ class PredioDAO implements interfaceDAO{
             $laConsulta = $laConsulta." ".$conector." ID_EMPRESA = $predio->getIdEmpresa()";
         }
         $query = $this->cone->ejecutar($laConsulta);
-        
         $predios = array();
         while(ocifetch($query)){
             $predio = new Predio();
@@ -164,8 +163,25 @@ class PredioDAO implements interfaceDAO{
         return $predioEncontrado;
     }
 
-    public function findLikeAtrr($name) {
-        
+    public function findLikeAtrr($id) {
+         $this->cone->conectar();
+        // busca cohincidencias que comiencen con $id
+        $consulta = " SELECT  ID_PREDIO
+                            FROM    PREDIO
+                            WHERE   upper(ID_PREDIO) LIKE upper('$id%')";
+        $query = $this->cone->ejecutar($consulta);
+        $comunas = array();
+        $resultado_comunas = array();
+        while(ocifetch($query)){
+            //es necesario pasar a UTF8 para conservar eñes y tíldes 
+            $comunas['id']  = utf8_encode(ociresult($query, "ID_PREDIO"));
+            $comunas['value'] = utf8_encode(ociresult($query, "ID_PREDIO"));
+            array_push($resultado_comunas, $comunas);
+        }
+//        if(!isset($comunas))
+//            $comunas[] ="Sin resultado";
+        $this->cone->desconectar();
+        return $resultado_comunas;
     }
 
     public function update($object) {

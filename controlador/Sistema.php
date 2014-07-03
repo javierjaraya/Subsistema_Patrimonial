@@ -194,10 +194,20 @@ class Sistema {
     public function actualizarPredio($predio, $id_original){
         $this->predioDAO->actualizarPredioDAO($predio, $id_original);
     }
+    public function findPredioByExample($predio){
+        return $this->predioDAO->findByExample($predio);
+    }
+    public function findPredioLikeId($id){
+        return $this->predioDAO->findLikeAtrr($id);
+    }
     
     /** Método encargado de elimnar un Predio mediante su Id - Iván*/
     public function eliminarPredio($idPredio){
         $this->predioDAO->delete($idPredio);
+    }
+    
+    public function eliminarRodalesDelPredio($idPredio){
+        $this->rodalDAO->deleteRodalByIdPredio($idPredio);
     }
     
     public function eliminarRodal($idRodal){

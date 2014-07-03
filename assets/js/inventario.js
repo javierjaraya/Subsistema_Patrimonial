@@ -357,8 +357,9 @@ console.log('iniciando eventos de inventario');
               resizable: false,
               buttons: {
                 Actualizar: function() {
-                  
-                  var bValid = true;
+                  var confirmacion = confirm("¿Está seguro que desea actualizar?");
+                  if(confirmacion){
+                     var bValid = true;
                   var idinventario = id;
                   idRodal = $("#idRodal").val();
                   servicio = $("#servicio").val();
@@ -402,7 +403,9 @@ console.log('iniciando eventos de inventario');
             });
             
             $( this ).dialog( "close" );
-                    return true;
+                    return true; 
+                  }
+                  
                   
             }
             ,

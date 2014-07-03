@@ -264,6 +264,8 @@ console.log('iniciando eventos de predio');
               draggable: false,
               buttons: {
                 Actualizar: function() {
+                    var confirmacion = confirm("¿Está seguro que desea actualizar?");
+                if(confirmacion){
                 validacion = true;
                 ok_nombre = false;
                 ok_comuna = false;
@@ -282,7 +284,7 @@ console.log('iniciando eventos de predio');
                 
             $( this ).dialog( "close" );
                     return true;
-                  
+                }  
             }
             ,
                 Cancelar: function() {
