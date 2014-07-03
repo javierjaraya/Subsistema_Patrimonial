@@ -292,6 +292,7 @@ console.log('iniciando eventos de rodal');
                   
                   var bValid = true;
                   var idPredio = $("#idpredio").val();
+                  console.log("Predio: "+idPredio);
                   idRodal = $("#idrodal").val();
                   anioPlantacion = $("#anioPlantacion").val();
                   superficie = $("#superficie").val();
@@ -309,7 +310,8 @@ console.log('iniciando eventos de rodal');
                         + '&idEspecieArborea=' + idEspecieArborea
                         + '&manejo=' + manejo
                         + '&zonaCrecimiento=' + zonaCrecimiento
-                        + '&estado=' + estado;
+                        + '&estado=' + estado
+                        + '&idpredio=' + idPredio;
             $.ajax({
                 type: "POST",
                 url: "guardarCambiosActualizacionRodal.php",
