@@ -13,7 +13,35 @@ $zonas = $control->findAllZonas();
 $especies = $control->findAllEspecies();
 ?>
 <div class="row">
-    <h1>Lista de Predios  <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button><button type="button" class='btn btn-success glyphicon glyphicon-floppy-save' style="float:right;" id="agregarContacto" onClick="javascript:window.open('predioReportes.php','','width=700,height=600,left=150,top=50,toolbar=yes');void 0"></button></h1>
+    <div class="col-lg-9">
+      <h1>Lista de Predios <button type="button" class='btn btn-primary glyphicon glyphicon-plus' id="agregarContacto" onClick="predio.ingresaNuevoPredio()"></button>   
+    </h1>
+    </div>  
+    <div class="col-lg-3">
+        
+     <form action="predioReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
+         
+         <select id="seleccionFiltro" name="seleccionFiltro" size="1">
+				    <option value="-1">Ordenar por...</option>
+				    <option value="0">Id Predio</option>
+			           |<option value="1">Nombre Predio</option>
+                                    <option value="2">Comuna</option>
+                                    <option value="3">Superficie</option>
+                                    <option value="4">Valor Comercial</option>
+                             </select>
+         <select id="seleccionCantidad" name="seleccionCantidad" size="1" title="Cantidad de Resultados">
+				    <option value="101">*</option>
+				    <option value="10">10</option>
+			            <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    
+                             </select>
+         <input type="text" id="idprediofiltro" name="idprediofiltro" value="" placeholder="Filtre por ID Predio">
+        <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte" onclick=" return validarSeleccionReporteRodal()" ></button>
+         
+     </form>
+</div>
 </div>
 <div class="row">
     <div class="panel panel-default">
@@ -79,7 +107,7 @@ $especies = $control->findAllEspecies();
  
 </div>
 
-    <div id="nuevoPredio"  class="ui-front"style="display:none; cursor: default" > 
+    <div id="nuevoPredio"  class="ui-dialog-titlebar ui-front"style="display:none; cursor: default" > 
         <fieldset>
             <div><label>Identificador Predio: </label>&nbsp;&nbsp;<img id="id_predio_check" src="" style="display: none;"><input type="number" class="idpredio form-control" name="idpredio" ok="false"/></div>
             <div><label>Nombre: </label><input type="text" class="nombre form-control" name="nombre" required="required"/></div>
