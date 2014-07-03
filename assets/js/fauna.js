@@ -28,61 +28,44 @@ var fauna = (function() {
                 );
             });
             console.log('tabla cargada');
-        },/*
-        filtrarTabla: function() {
-            //var idPredio = document.filtroPredio.idpredio.value
-            //document.filtroPredio.idpredio.defaultValue = "Hola!!"
-            
-            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
-            var randomnumber = Math.random() * 11;
-            $('#page-wrapper').load('Fauna.php', function() {
-                $("#tabla_contactos").dataTable(
-                        {
-                            "sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-12'i><'col-lg-12 center'p>>",
-                            "sPaginationType": "bootstrap",
-                            "oLanguage": {
-                                "sLengthMenu": "_MENU_ records per page"
-                            }
-                        }
-
-                );
-            });
-            console.log('tabla cargada');
-        },*/
-        vaciaTabla: function(tabla) {
-          console.log('tabla ocultada');
         },
-        cancelarIngresoCamino: function(){
+        
+        filtrarTabla: function(datos) {
+            //var value1 = document.formulario.idpredio.value;
+            //alert("El contenido del formulario es : " + value1);
+            alest("El contenido del formulario es ajvier javeri : "+datos.idpredio);
+        },
+        
+        cancelarIngresoCamino: function() {
             console.log("Ingreso de camino cancelado");
             $.unblockUI();
         },
-        aceptarIngresoCamino: function(){
+        aceptarIngresoCamino: function() {
             $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
             var idCamino = $(".idcamino").val();
-            longitud = $(".longitud").val();
-            tipoSuperficie = $(".superficie").val();
-            idPredio = $(".idpredio").val();
-            
-            
-            var datos = 'idcamino='+ idCamino + '&longitud=' + longitud + '&tipoSuperficie=' + tipoSuperficie + '&idPredio=' + idPredio;
+                        longitud = $(".longitud").val();
+                        tipoSuperficie = $(".superficie").val();
+                        idPredio = $(".idpredio").val();
+
+
+            var datos = 'idcamino=' + idCamino + '&longitud=' + longitud + '&tipoSuperficie=' + tipoSuperficie + '&idPredio=' + idPredio;
             $.ajax({
-                type: "POST",
-                url: "ingresarCamino.php",
-                data: datos,
-                success: function(response) {
+                    type: "POST",
+                    url: "ingresarCamino.php",
+                    data: datos,
+                    success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     camino.cargarTabla();
                    
-                },
-                error: function() {
+                    },
+                    error: function() {
                     console.log("Error al ejecutar AJAX");
                     $('#page-wrapper').html('Error al Ingresar Camino');
                                   
-                }
+                    }
             });
             return false;
         },
-                
         ingresaNuevoCamino: function() {
             $("#nuevoCamino").dialog({
                 title: "Nuevo Camino",
