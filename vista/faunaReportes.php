@@ -16,7 +16,7 @@ $idpredio = trim(htmlentities(htmlspecialchars(strip_tags($_GET['idprediofiltro'
 if($idpredio == ""){
     $idpredio = $_GET['idprediofiltro'];
     $faunas = $control->findALlFaunas();
-    $tituloPagina = "Fauna     Fecha: " . $fechaActual;
+    $tituloPagina = "Fauna de todos los predios  Fecha: " . $fechaActual;
 }  else {
     $faunas = $control->findAllFaunasPredio($idpredio);
     $tituloPagina = "Fauna del predio  " . $idpredio . "    Fecha: " . $fechaActual;

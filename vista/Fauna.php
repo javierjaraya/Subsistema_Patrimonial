@@ -68,7 +68,7 @@ $faunas = $control->findAllFaunas();
                     . "src = '" . $fauna->getRutaImagen() . "' width='135px' height='120px'></td>";
                     echo "<td>" . utf8_encode($fauna->getNombreFauna()) . "</td>";
                     echo "<td>" . utf8_encode($fauna->getEspecie()) . "</td>";
-                    echo "<td>" . utf8_encode($fauna->getDescripcion()) . "</td>";
+                    echo "<td class='text-justify'>" . utf8_encode($fauna->getDescripcion()) . "</td>";
                     echo "<td>";
                     echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
