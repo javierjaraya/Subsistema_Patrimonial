@@ -80,3 +80,7 @@ $faunas = $control->findAllFaunas();
         </table>
     </div>    
 </div>
+<div id="editFaunaDialog" title="Create new user">
+        
+</div>
+    
