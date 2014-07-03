@@ -250,7 +250,7 @@ console.log('iniciando eventos de inventario');
                               
                       }
                   }
-                 
+                 //$( "#nuevoInventario" ).dialog("destroy");
                   
             },
                 Cancelar: function() {

@@ -38,7 +38,16 @@ class PDF extends FPDF {
         $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
         foreach ($cabecera as $fila) {
-            $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+            if($fila == 'Id'){
+                $this->CellFitSpace(10, 7, utf8_decode($fila), 1, 0, 'L', true);
+            }else{
+                if($fila == 'Altura (m)'){
+                   $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true); 
+                }else{
+                    $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+                }
+            }
+            
         }
     }
     
@@ -119,7 +128,7 @@ class PDF extends FPDF {
         $bandera = false; //Para alternar el relleno
         foreach ($inventarios as $inventario) {
             //Usaremos CellFitSpace en lugar de Cell
-            $this->CellFitSpace(30, 7, utf8_decode($inventario->getIdInventario()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(10, 7, utf8_decode($inventario->getIdInventario()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getServicio()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getSistemaInventario()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getDiametroMedio()), 1, 0, 'L', $bandera);
@@ -127,8 +136,8 @@ class PDF extends FPDF {
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getAreaBasal()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getVolumen()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($inventario->getNumeroArboles()), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(30, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
-            
+            $this->CellFitSpace(15, 7, utf8_decode($inventario->getAltura()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode($inventario->getFechaMedicion()), 1, 0, 'L', $bandera);
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }
