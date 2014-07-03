@@ -392,12 +392,12 @@ console.log('iniciando eventos de inventario');
                 data: datos,
                 success: function(response) {
                     console.log("Actualizacion correcta");
-                    $('#page-wrapper').html(response);
+                    
                     rodal.cargarListaInventario(idRodal);
                 },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Consulta mal hecha');
+                    
                 }
             });
             
