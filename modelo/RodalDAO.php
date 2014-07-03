@@ -20,7 +20,7 @@ class RodalDAO implements interfaceDAO{
             FROM rodal  r, predio  p, especiearborea e
             WHERE  r.ID_PREDIO = p.ID_PREDIO
             AND r.id_especie_arborea = e.id_especie_arborea
-            AND r.ESTADO = '".$estado."'
+            AND r.ESTADO = '".$estado."' AND p.ESTADO = '".$estado."'
             
             ORDER BY p.ID_PREDIO";
         
