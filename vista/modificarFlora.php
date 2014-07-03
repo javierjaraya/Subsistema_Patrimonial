@@ -29,7 +29,7 @@ $descripcion = $flora->getDescripcion();
         <div><label>Nombre Fauna: </label>&nbsp;&nbsp;<img id="nombre" src="" style="display: none;"><input class="form-control nombrefauna" type="text" id="nombrefauna" name="nombrefauna" <?php echo "value='$nombreFauna'" ?> /></div>
         <div><label>Especie Fauna: </label><input type="text" class="text ui-widget-content ui-corner-all form-control especie" id="especie" <?php echo "value='$especie'" ?> /></div>
         <div><label>Descripcion: </label>&nbsp;&nbsp;<img id="predio_check_modificar" src="" style="display: none;">
-        <input type="text" class="descripcion form-control" ok="true" cols="30" rows="5" id="descripcion" name="descripcion" <?php echo "value='$descripcion'" ?> /></div>
+        <textarea type="text" class="descripcion form-control" ok="true" cols="50" rows="8" id="descripcion" name="descripcion"><?php echo "$descripcion" ?></textarea></div>
 
         <input type="hidden" <?php echo "value=$idflora" ?> id="idflora" class="idflora"/>
 </fieldset>

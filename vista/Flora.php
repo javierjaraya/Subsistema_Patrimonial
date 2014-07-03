@@ -44,7 +44,6 @@ $floras = $control->findAllFloras();
                     echo "<td class='text-justify'>" . utf8_encode($flora->getDescripcion()) . "</td>";
                     echo "<td>";
                     echo "<button type='button' onclick='flora.mostrarModificar(" . $flora->getIdFlora() . ")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                    echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
                     echo "</td>";
                     echo "</tr>";
                 }
