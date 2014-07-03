@@ -111,8 +111,8 @@ class PDF extends FPDF {
             $this->CellFitSpace(30, 7, utf8_decode($row['MANEJO']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['ZONA']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['SUP']), 1, 0, 'L', $bandera);
-            //$this->CellFitSpace(20, 7, utf8_decode($row['ANIO']), 1, 0, 'L', $bandera);
-            //$this->CellFitSpace(30, 7, utf8_decode($row['VALOR']), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(20, 7, utf8_decode($row['ANIO']), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(30, 7, utf8_decode(number_format($row['VALOR'])), 1, 0, 'L', $bandera);
             
             
             $this->Ln(); //Salto de línea para generar otra fila
