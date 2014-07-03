@@ -23,7 +23,7 @@ if($idpredio == ""){
 }
 
 $miCabecera = array('Imagen', 'Nombre', 'Especie', 'Descripcion');
-
+$pdf->SetAutoPageBreak(TRUE);
 $pdf->tablaVerticalFauna($miCabecera, $faunas, $tituloPagina);
 
 $pdf->Output(); //Salida al navegador
