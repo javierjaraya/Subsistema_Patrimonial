@@ -48,7 +48,22 @@ class PDF extends FPDF {
         $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
         foreach ($cabecera as $fila) {
-            $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+            if($fila == 'Id Predio' ){
+                $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
+            }else{
+                if($fila == 'Id Rodal'){
+                $this->CellFitSpace(15, 7, utf8_decode($fila), 1, 0, 'L', true);
+            }else{
+                if($fila == 'Año Plant.'){
+                    $this->CellFitSpace(20, 7, utf8_decode($fila), 1, 0, 'L', true);
+                }else{
+                    $this->CellFitSpace(30, 7, utf8_decode($fila), 1, 0, 'L', true);
+                }
+                
+            }
+            }
+            
+            
                
         }
     }
@@ -81,13 +96,14 @@ class PDF extends FPDF {
         $bandera = false; //Para alternar el relleno
         while($row =  oci_fetch_array($rodal,OCI_RETURN_NULLS)){
             //Usaremos CellFitSpace en lugar de
-            $this->CellFitSpace(30, 7, utf8_decode($row['ID_PREDIO']), 1, 0, 'L', $bandera);
-            $this->CellFitSpace(30, 7, utf8_decode($row['ID_RODAL']), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(15, 7, utf8_decode($row['ID_PREDIO']), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(15, 7, utf8_decode($row['ID_RODAL']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['NOMBRE']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['MANEJO']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['ZONA']), 1, 0, 'L', $bandera);
             $this->CellFitSpace(30, 7, utf8_decode($row['SUP']), 1, 0, 'L', $bandera);
-            
+            //$this->CellFitSpace(20, 7, utf8_decode($row['ANIO']), 1, 0, 'L', $bandera);
+            //$this->CellFitSpace(30, 7, utf8_decode($row['VALOR']), 1, 0, 'L', $bandera);
             
             
             $this->Ln(); //Salto de línea para generar otra fila

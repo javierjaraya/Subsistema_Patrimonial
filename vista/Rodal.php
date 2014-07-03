@@ -14,8 +14,9 @@ $predios = $control->findAllRodales();
         <h1>Lista de Rodales <h1>
     </div>
     <div class="col-lg-3">
+        
      <form action="rodalReportes.php" target="_blank" name="form "method="GET" class="form-horizontal" role="form">
-     
+         
          <select id="seleccionFiltro" name="seleccionFiltro" size="1">
 				    <option value="-1">Ordenar por...</option>
 				    <option value="0">Año Plantación</option>
@@ -34,7 +35,9 @@ $predios = $control->findAllRodales();
                                     
                              </select>
         <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte" onclick=" return validarSeleccionReporteRodal()" ></button>
+         
      </form>
+             
     </div>
     </div>
 <div class="row">
