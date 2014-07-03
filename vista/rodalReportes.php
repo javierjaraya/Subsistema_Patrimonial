@@ -6,7 +6,7 @@ $seleccionCantidad = $_GET['seleccionCantidad'];
 
 
 
-$pdf = new PDF();
+$pdf = new PDF('L','mm','A4');
 $control = Sistema::getInstancia();
 $pdf->AddPage();
 $predios = $control->findAllRodalesSelection($seleccion, $seleccionCantidad);
