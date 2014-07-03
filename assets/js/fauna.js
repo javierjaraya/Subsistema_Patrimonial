@@ -127,12 +127,12 @@ var fauna = (function() {
                                
                    $.ajax({
                        type: "POST",
-                       url: "guardarCambiosActualizacionRodal.php",
+                       url: "guardarCambiosActualizacionFauna.php",
                        data: datos,
                        success: function(response) {
                            console.log("Ajax ejecutado correctamente");
                            $('#page-wrapper').html(response);
-                           rodal.cargarTabla();
+                           fauna.cargarTabla();
                        },
                        error: function() {
                            console.log("Error al ejecutar AJAX");
