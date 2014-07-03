@@ -197,6 +197,9 @@ class Sistema {
     public function findPredioByExample($predio){
         return $this->predioDAO->findByExample($predio);
     }
+    public function findPredioLikeId($id){
+        return $this->predioDAO->findLikeAtrr($id);
+    }
     
     /** Método encargado de elimnar un Predio mediante su Id - Iván*/
     public function eliminarPredio($idPredio){
