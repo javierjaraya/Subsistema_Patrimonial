@@ -94,11 +94,8 @@ var fauna = (function() {
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
                     $('#editFaunaDialog').html(response);
-                    
-                    rodal.mostrarModificar();
-                    
-                   
-                },
+                    fauna.mostrarModificar();
+                },
                 error: function() {
                     console.log("Error al ejecutar AJAX");
                     //$('#page-wrapper').html('Consulta mal hecha');
@@ -108,9 +105,9 @@ var fauna = (function() {
             
         },
         mostrarModificar: function(){
-              $( "#editRodalDialog" ).dialog({
-              title: "Edición Rodal",
-              height: 600,
+              $( "#editFaunaDialog" ).dialog({
+              title: "Edición Fauna",
+              height: 500,
               width: 500,
               modal: true,
               resizable: false,

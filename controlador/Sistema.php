@@ -277,7 +277,7 @@ class Sistema {
     }
     
     public function findFaunaById($idfauna){
-        $this->faunaDAO->findById($idfauna);
+        return $this->faunaDAO->findById($idfauna);
     }
 }
 

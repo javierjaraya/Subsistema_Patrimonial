@@ -42,9 +42,9 @@ class FaunaDAO implements interfaceDAO{
 
     public function findByID($id) {
         $faunaEncontrado = new Fauna();
-        $this->cone->conectar();
+        $this->conexion->conectar();
         $laConsulta = "SELECT * FROM fauna WHERE ID_FAUNA = '".$id."'";
-        $query = $this->cone->ejecutar($laConsulta);
+        $query = $this->conexion->ejecutar($laConsulta);
         while(ocifetch($query)){   
             $faunaEncontrado->setNombreFauna(ociresult($query, "NOMBRE_FAUNA"));
             $faunaEncontrado->setEspecie(ociresult($query, "ESPECIE"));
@@ -52,7 +52,7 @@ class FaunaDAO implements interfaceDAO{
             
         }
         
-        $this->cone->desconectar();
+        $this->conexion->desconectar();
         return $faunaEncontrado;
     }
 
