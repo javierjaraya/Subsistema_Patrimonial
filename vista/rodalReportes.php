@@ -12,7 +12,7 @@ $pdf->AddPage();
 $predios = $control->findAllRodalesSelection($seleccion, $seleccionCantidad);
 
 $fechaActual =  date("d/m/Y"); 
-$miCabecera = array('Id Predio','Id Rodal', 'Nombre Predio', 'Manejo', 'Zona Crecimiento','Superficie', 'Año Plant.', 'Valor Comercial');
+$miCabecera = array('Id Predio','Id Rodal', 'Nombre Predio', 'Manejo', 'Zona Crecimiento','Superficie (ha)', 'Año Plant.', 'Valor Comercial');
 
 if($seleccion == 0){
     $modoOrden = 'Año Plantación';
