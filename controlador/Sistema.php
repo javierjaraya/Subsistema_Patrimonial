@@ -194,6 +194,9 @@ class Sistema {
     public function actualizarPredio($predio, $id_original){
         $this->predioDAO->actualizarPredioDAO($predio, $id_original);
     }
+    public function findPredioByExample($predio){
+        return $this->predioDAO->findByExample($predio);
+    }
     
     /** Método encargado de elimnar un Predio mediante su Id - Iván*/
     public function eliminarPredio($idPredio){
