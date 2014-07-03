@@ -86,4 +86,11 @@ class CaminoDAO {
         $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
     }
+    
+    public function eliminarCamino($id){
+        $this->conexion->conectar();
+        $consulta = "DELETE FROM camino WHERE ID_CAMINO = '".$id."'";
+        $this->conexion->ejecutar($consulta);
+        $this->conexion->desconectar();
+    }
 }

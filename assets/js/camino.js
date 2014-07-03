@@ -246,8 +246,11 @@ var camino = (function() {
             var confirmacion = confirm("¿Está seguro que desea eliminar el camino?");
             if (confirmacion) {
                 var idCamino = id;
-                console.log("Id camino a eliminar: " + idCamino);
+                
                 var datos = 'idcamino=' + idCamino;
+                
+                console.log(datos);
+                
                 $.ajax({
                         type: "POST",
                         url: "eliminarCamino.php",
@@ -255,6 +258,7 @@ var camino = (function() {
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
                         camino.cargarTabla();
+                        camino.mostrarMensaje("Se a eliminado el camino");
                     },
                         error: function() {
                         console.log("Error al ejecutar AJAX");
