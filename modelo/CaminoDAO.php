@@ -69,12 +69,12 @@ class CaminoDAO {
         $this->conexion->conectar();
         $laConsulta = "INSERT into CAMINO (ID_CAMINO, LONGITUD, TIPO_SUPERFICIE, ID_PREDIO) 
             VALUES ('".$camino->getIdCamino()."','".$camino->getLongitud()."','".$camino->getTipoSuperficie()."','".$camino->getIdPredio()."')";
-        $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
     
     public function actualizarCaminoDAO($camino, $id_original) {
-        $this->cone->conectar();
+        $this->conexion->conectar();
         $laConsulta = "UPDATE camino 
                         SET     ID_CAMINO='".$camino->getIdCamino()."',
                                 LONGITUD='".$camino->getLongitud()."',
@@ -83,7 +83,7 @@ class CaminoDAO {
                                
                         WHERE ID_CAMINO='".$id_original."' ";
         
-        $this->cone->ejecutar($laConsulta);
-        $this->cone->desconectar();
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
 }
