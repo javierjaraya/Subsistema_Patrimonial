@@ -13,6 +13,7 @@ include_once '../modelo/PredioDAO.php';
 include_once '../modelo/ProvinciaDAO.php';
 include_once '../modelo/RodalDAO.php';
 include_once '../modelo/ZonaDAO.php';
+include_once '../modelo/CarpetaLegalDAO.php';
 
 include_once 'Session.php';
 //include_once 'Cuenta.php';
@@ -38,7 +39,7 @@ class Sistema {
      private $inventarioDAO;
      private $especieArboreaDAO;
      private $zonaDAO;
-     private $faunaDAO;
+     private $carpetaDAO;
 
 
      private function Sistema(){
@@ -54,8 +55,7 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
-         $this->faunaDAO = new FaunaDAO();
-         $this->floraDAO = new FloraDAO();
+         $this->carpetaDAO = new CarpetaLegalDAO();
      }
      
      public static function  getInstancia(){
@@ -164,8 +164,12 @@ class Sistema {
         $this->caminoDAO->save($camino);
     }
     
-    public function actualizarCamino($camino, $id_original){
-        $this->caminoDAO->actualizarCaminoDAO($camino, $id_original);
+    public function actualizarCamino($camino){
+        $this->caminoDAO->actualizarCaminoDAO($camino);
+    }
+    
+    public function eliminarCamino($id){
+        $this->caminoDAO->eliminarCamino($id);
     }
 
     /**
@@ -257,19 +261,16 @@ class Sistema {
         $this->inventarioDAO->update($inventario);
     }
 
-    public function findALlFaunas(){
-        return $this->faunaDAO->findAll();
-    }
-    public function findALlFloras(){
-        return $this->floraDAO->findAll();
+    public function findAllCarpetas(){
+        return $this->carpetaDAO->findAll();
     }
     
-    public function findAllFaunasPredio($idpredio){
-        return $this->faunaDAO->findAllFaunasPredio($idpredio);
+    public function saveCarpeta($carpeta){
+        return $this->carpetaDAO->save($carpeta);
     }
     
-    public function findAllFlorasPredio($idpredio){
-        return $this->floraDAO->findAllFlorasPredio($idpredio);
+    public function eliminarCarpeta($codigo){
+        return $this->carpetaDAO->delete($codigo);
     }
     
     public function existePredio($idPredio){

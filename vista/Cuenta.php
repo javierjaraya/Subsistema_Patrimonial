@@ -45,12 +45,9 @@ $cuentas = $control->findAllCuentas();
                 echo "<td>".$cuenta->getPassword()."</td>";
                 echo "<td>".$estado."</td>";
                 echo "<td>".$cuenta->getNombrePerfil()."</td>";
-                echo "<td>";
-                              
+                echo "<td>";              
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick='cuenta.modificarCuenta(".$cuenta->getIdCuenta().")'></button>";
-                
                 echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='cuenta.eliminarCuenta(".$cuenta->getIdCuenta().")'></button>";
-                
                 echo "</td>";
                 echo "</tr>";
             }
@@ -62,11 +59,11 @@ $cuentas = $control->findAllCuentas();
 
 <div id="nuevaCuenta" style="display:none; cursor: default"> 
         <fieldset>
-            <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" /></div>
-            <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" /></div>
-            <div><label>Password: </label><input type="text" class="password" name="password" /></div>
-            <div><label>Estado: </label><input type="text" class="estado" name="estado" /></div>
-            <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>            
+            <div><label>ID Cuenta: </label><input type="text" class="form-control" name="idCuenta" /></div>
+            <div><label>Fecha de Creacion: </label><input type="text" class="form-control" name="fechaCreacion" /></div>
+            <div><label>Password: </label><input type="text" class="form-control" name="password" /></div>
+            <div><label>Estado: </label><input type="text" class="form-control" name="estado" /></div>
+            <div><label>ID Perfil: </label><input cols="30" rows="5" class="form-control" name="idPerfil" /></div>            
         </fieldset>
 </div>     
 

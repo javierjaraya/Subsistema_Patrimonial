@@ -34,7 +34,7 @@ $caminos = $control->findAllCaminos();
                     echo "<td>" . $camino->getTipoSuperficie() . "</td>";
                     echo "<td>" . $camino->getIdPredio() . "</td>";
                     echo "<td>";
-                    echo "<button type='button' onclick='camino.modificarCamino(" . $camino->getIdCamino() . ")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
+                    echo "<button type='button' onclick='camino.mostrarModificar(" . $camino->getIdCamino() . ")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "<button type='button' onclick='camino.eliminarCamino(" . $camino->getIdCamino() . ")'class='btn btn-danger glyphicon glyphicon-trash'></button>";
                     echo "</td>";
                     echo "</tr>";
@@ -47,32 +47,35 @@ $caminos = $control->findAllCaminos();
     <!--VENTA DIALOGO : AGREGAR CAMINO -->    
     <div id="nuevoCamino"  class="ui-front"style="display:none; cursor: default" > 
         <fieldset>
-           <div>
-               <label>Longitud: </label>
-               <input type="number" class="longitud form-control" name="longitud" required="required"/>
-           </div>
-           <div class="ui-widget">
-               <label>Tipo Superficie: </label>&nbsp;&nbsp;<img id="superficie_check" src="" style="display: none;">
-               <select id="superficie" name="superficie" class="superficie form-control" size="1">
-                   |<option value="1">Ripio</option>
+               <div>
+                <label>Longitud: </label>
+                <input type="number" class="longitud form-control" name="longitud" required="required"/>
+            </div>
+            <div class="ui-widget">
+                <label>Tipo Superficie: </label>&nbsp;&nbsp;<img id="superficie_check" src="" style="display: none;">
+                <select id="superficie" name="superficie" class="superficie form-control" size="1">
+                    |<option value="1">Ripio</option>
                     <option value="2">Gravilla</option>
                     <option value="3">Arena</option>
                     <option value="4">Tierra</option>
                     <option value="5">Pavimento</option>
-               </select>
-           </div>
-           <div>
-               <label>Id Predio: </label>
-               <input type="text" class="idpredio form-control" id="idpredio" name="idpredio" required="required" />
-           </div>
+                </select>
+            </div>
+               <div>
+                <label>Id Predio: </label>
+                <input type="text" class="idpredio form-control" id="idpredio" name="idpredio" required="required" />
+            </div>
         </fieldset>
          
     </div> 
-
+    
+    <!--VENTA DIALOGO : AGREGAR CAMINO -->   
+    <div id="editCaminoDialog" title="Modificar Camino">
+        
+    </div>
+    
+    <!--VENTA DIALOGO : AGREGAR CAMINO -->   
     <div  style="display:none; cursor: default"> 
-        <div id="editCaminoDialog" title="Create new user">
-        </div>
-
         <div id="notify_correct" class="notify_correct" style="display:none">
             <h1>Camino Agregado</h1>
             <h2>Correctamente!</h2>

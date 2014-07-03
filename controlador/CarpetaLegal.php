@@ -12,24 +12,17 @@
  * @author Pipe
  */
 class CarpetaLegal {
-    private $idCarpeta;
-    private $inscripcion;
+ 
     private $fechaInscripcion;
     private $contribucion;
     private $codigo;
     private $rol;
     private $conservadorBienRaiz;
     private $idPredio;
+    private $estado;
     
     function __construct() {
         
-    }
-    public function getIdCarpeta() {
-        return $this->idCarpeta;
-    }
-
-    public function getInscripcion() {
-        return $this->inscripcion;
     }
 
     public function getFechaInscripcion() {
@@ -55,12 +48,9 @@ class CarpetaLegal {
     public function getIdPredio() {
         return $this->idPredio;
     }
-    public function setIdCarpeta($idCarpeta) {
-        $this->idCarpeta = $idCarpeta;
-    }
-
-    public function setInscripcion($inscripcion) {
-        $this->inscripcion = $inscripcion;
+    
+    public function getEstado() {
+        return $this->estado;
     }
 
     public function setFechaInscripcion($fechaInscripcion) {
@@ -86,6 +76,9 @@ class CarpetaLegal {
     public function setIdPredio($idPredio) {
         $this->idPredio = $idPredio;
     }
-
-            //put your code here
+    
+    public function setEstado($estado) {
+        $this->estado = $estado;
+    }
+    //put your code here
 }
