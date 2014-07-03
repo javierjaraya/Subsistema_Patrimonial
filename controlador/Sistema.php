@@ -39,6 +39,7 @@ class Sistema {
      private $especieArboreaDAO;
      private $zonaDAO;
      private $faunaDAO;
+     private $floraDAO;
 
 
      private function Sistema(){
@@ -268,6 +269,11 @@ class Sistema {
         return $this->floraDAO->findAll();
     }
     
+    public function actualizarFlora($flora){
+        return $this->floraDAO->update($flora);
+    }
+
+
     public function findAllFaunasPredio($idpredio){
         return $this->faunaDAO->findAllFaunasPredio($idpredio);
     }
@@ -276,7 +282,11 @@ class Sistema {
         return $this->floraDAO->findAllFlorasPredio($idpredio);
     }
     
-    public function existePredio($idPredio){
+    public function findFloraById($id){
+        return $this->floraDAO->findByID($id);
+    }
+
+        public function existePredio($idPredio){
         return $this->predioDAO->existe($idPredio);
     }
 }
