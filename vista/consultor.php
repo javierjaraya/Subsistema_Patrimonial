@@ -1,15 +1,15 @@
 <?php
-    include_once '../controlador/Sistema.php';
-    include_once '../controlador/Session.php';
-    
-    $control = Sistema::getInstancia();
-    $session = $control->getSession();
-    
-    $empleado = $session->getNombreEmpleado();
-    if(!isset($empleado)){
-        $direccion = $session->securityCheck();
-        header('Location: '.$direccion);
-    }
+include_once '../controlador/Sistema.php';
+include_once '../controlador/Session.php';
+
+$control = Sistema::getInstancia();
+$session = $control->getSession();
+
+$empleado = $session->getNombreEmpleado();
+if (!isset($empleado)) {
+    $direccion = $session->securityCheck();
+    header('Location: ' . $direccion);
+}
 ?>
 <html>
     <head>
@@ -25,18 +25,18 @@
         <link href="../assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
         <script type="text/javascript">
-      function validarSeleccionReporteRodal(){
-           seleccion = document.getElementById("seleccionFiltro").value;
-            if(seleccion == -1 ){
-                alert("Para generar el reporte de Rodal debe escoger un tipo de ordenamiento");
-                return false;
-                
-             }else{
-                 return true;
-             }
-             
-      }
-  </script>
+            function validarSeleccionReporteRodal() {
+                seleccion = document.getElementById("seleccionFiltro").value;
+                if (seleccion == -1) {
+                    alert("Para generar el reporte de Rodal debe escoger un tipo de ordenamiento");
+                    return false;
+
+                } else {
+                    return true;
+                }
+
+            }
+        </script>
     </head>
 
     <body>
@@ -71,7 +71,7 @@
                                 <li><a href="javascript:consultor_rodal.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
                             </ul>
                         </li>                        
-                                                
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop"></i> Flora y Fauna <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -89,7 +89,7 @@
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo " ".$empleado;?><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo " " . $empleado; ?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Perfil</a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i> Configuracion</a></li>
@@ -102,8 +102,9 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
-
+                <h1>Bienvenido!<small><?php echo " " . $empleado; ?></small></h1>
+                <br>                    
+                <img src="../assets/img/fogooo.jpg" width="95%" height="77%" ><!--width="800px" height="500px">-->
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
@@ -128,7 +129,7 @@
     <script type="text/javascript" src="../assets/js/camino.js"></script>
     <script type="text/javascript" src="../assets/js/fauna.js"></script>
     <script type="text/javascript" src="../assets/js/flora.js"></script>
-    
+
     <script type="text/javascript" src="../assets/js/consultor_camino.js"></script>
     <script type="text/javascript" src="../assets/js/consultor_fauna.js"></script>
     <script type="text/javascript" src="../assets/js/consultor_flora.js"></script>

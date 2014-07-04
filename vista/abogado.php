@@ -1,15 +1,15 @@
 <?php
-    include_once '../controlador/Sistema.php';
-    include_once '../controlador/Session.php';
-    
-    $control = Sistema::getInstancia();
-    $session = $control->getSession();
-    
-    $empleado = $session->getNombreEmpleado();
-    if(!isset($empleado)){
-        $direccion = $session->securityCheck();
-        header('Location: '.$direccion);
-    }
+include_once '../controlador/Sistema.php';
+include_once '../controlador/Session.php';
+
+$control = Sistema::getInstancia();
+$session = $control->getSession();
+
+$empleado = $session->getNombreEmpleado();
+if (!isset($empleado)) {
+    $direccion = $session->securityCheck();
+    header('Location: ' . $direccion);
+}
 ?>
 <html>
     <head>
@@ -52,14 +52,14 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-briefcase"></i> Carpeta Legal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:carpeta.cargarTabla();" class="glyphicon glyphicon-folder-open"> Ver Datos</a></li>
-                                
+
                             </ul>
                         </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo " ".$empleado;?><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo " " . $empleado; ?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i> Perfil</a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i> Configuracion</a></li>
@@ -72,8 +72,9 @@
             </nav>
 
             <div id="page-wrapper">
-                <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
-
+                <h1>Bienvenido!<small><?php echo " " . $empleado; ?></small></h1>
+                <br>                    
+                <img src="../assets/img/fogooo.jpg" width="95%" height="77%" ><!--width="800px" height="500px">-->
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
@@ -88,14 +89,14 @@
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
-    
+
     <!-- Boostrap core JS -->
     <!-- BlockUI core JS -->
     <!-- BlockUI core JS -->
     <script type="text/javascript" src="../assets/js/jquery.blockUI.js"></script>
     <!-- Eventos subsistema patrimonial JS -->
-    
-    <!--<script type="text/javascript" src="../assets/js/seguridad.js"></script>-->
+
+<!--<script type="text/javascript" src="../assets/js/seguridad.js"></script>-->
     <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="../assets/js/carpeta.js"></script>
