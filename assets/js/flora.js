@@ -128,7 +128,7 @@ var flora = (function() {
                         $("#editFloraDialog").dialog("destroy");
                         
                         flora.cargarTabla();
-                        flora.mostrarMensaje("Se editado una flora");
+                        //flora.mostrarMensaje("Se editado una flora");
                     },
                     error: function() {
                         console.log("Error al ejecutar AJAX");

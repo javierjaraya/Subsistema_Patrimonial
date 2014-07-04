@@ -200,6 +200,13 @@
                 <div class="col-sm-9">
                     <h1>Bienvenido!<small><?php echo " ".$empleado;?></small></h1>
                     
+<!--    
+<br><center><embed src="http://www.relojesflash.com/swf/5.swf" quality="high" width="325" height="250" type="application/x-shockwave-flash" allownetworking="internal" allowscriptaccess="never" autoplay="false" wmode="transparent"></center>
+-->
+<br>
+<br>
+<img src="../assets/img/fogooo.jpg" width="800px" height="500px">
+                    
                 </div>
                 
                 
