@@ -24,6 +24,7 @@ $cuenta->setDniCta($dniCta);
 
 $control = Sistema::getInstancia();
 $control->saveCuenta($cuenta);
+$control->asignarCta($dniCta,$idCuenta);
 
 //echo $idCuenta . " - " .$fechaCreacion. " - " .$password. " - " . $estado. " - " . $idPerfil;
 

@@ -78,6 +78,14 @@ class EmpleadoDAO {
         $this->cone->desconectar();
         return $empleado;
     }
+    
+    public function asignarCuenta($dniCta, $idCuenta) {
+        $this->cone->conectar();
+        $laConsulta = "UPDATE EMPLEADO SET ID_CUENTA='".$idCuenta."' WHERE DNI='".$dniCta."'";
+        echo $laConsulta; 
+        $this->cone->ejecutar($laConsulta);
+        $this->cone->desconectar();
+    }
 }
 
 ?>

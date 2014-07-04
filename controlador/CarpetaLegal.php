@@ -20,6 +20,8 @@ class CarpetaLegal {
     private $conservadorBienRaiz;
     private $idPredio;
     private $estado;
+    private $nombreConservador;
+    private $nombrePredio;
     
     function __construct() {
         
@@ -53,6 +55,14 @@ class CarpetaLegal {
         return $this->estado;
     }
 
+    public function getNombreConservador(){
+        return $this->nombreConservador;
+    }
+    
+    public function getNombrePredio(){
+        return $this->nombrePredio;
+    }
+
     public function setFechaInscripcion($fechaInscripcion) {
         $this->fechaInscripcion = $fechaInscripcion;
     }
@@ -79,6 +89,14 @@ class CarpetaLegal {
     
     public function setEstado($estado) {
         $this->estado = $estado;
+    }
+    
+    public function setNombreConservador($nombreConservador){
+        $this->nombreConservador = $nombreConservador;
+    }
+    
+    public function setNombrePredio($nombrePredio){
+        $this->nombrePredio = $nombrePredio;
     }
     //put your code here
 }

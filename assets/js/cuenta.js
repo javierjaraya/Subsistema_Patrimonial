@@ -83,7 +83,7 @@ console.log('iniciando eventos de cuenta');
             idPerfil = $(".idPerfil").val(); 
             
             var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
-                    + '&estado=' + estado + '&idPerfil=' + idPerfil + '&dniCta'+ dniCta;
+                    + '&estado=' + estado + '&idPerfil=' + idPerfil + '&dniCta='+ dniCta;
                     
             $.ajax({
                 type: "POST",
@@ -92,6 +92,7 @@ console.log('iniciando eventos de cuenta');
                 success: function(response) {
                     //$('#showCuentaDialog').dialog({height: 300, width: 400});
                     console.log("Ajax ejecutado correctamente");
+                    empleado.cargarTabla();
                     $('#page-wrapper').html(response);
                     //cuenta.cargarTabla();
                     

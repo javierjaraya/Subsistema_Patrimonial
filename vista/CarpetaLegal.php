@@ -21,10 +21,11 @@ $carpetas = $control->findAllCarpetas();
         <thead>
             <tr>
                 <th >Codigo </th>
+                <th >Predio</th>
                 <th >Fecha Inscripcion</th>
                 <th >Contribucion </th>
                 <th >Rol </th>
-                <th >Conservador</th>
+                <th >Conservador Bien Raiz</th>
                 <th >ID_Predio</th>
                 <th>Accion</th>
                 
@@ -36,10 +37,11 @@ $carpetas = $control->findAllCarpetas();
                 if($carpeta->getEstado()==1){
                 echo "<tr>";
                 echo "<td>".$carpeta->getCodigo()."</td>";
+                echo "<td>".$carpeta->getNombrePredio()."</td>";
                 echo "<td>".$carpeta->getFechaInscripcion()."</td>";
                 echo "<td>".$carpeta->getContribucion()."</td>";
                 echo "<td>".$carpeta->getRol()."</td>";
-                echo "<td>".$carpeta->getConservadorBienRaiz()."</td>";
+                echo "<td>".$carpeta->getNombreConservador()."</td>";
                 echo "<td>".$carpeta->getIdPredio()."</td>";
                 echo "<td>";              
                 echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick=''></button>";

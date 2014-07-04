@@ -39,8 +39,6 @@ $empleados = $control->findAllEmpleados();
                 echo "<td>".$empleado->getApMaternoEmpleado()."</td>";
                 echo "<td>".$empleado->getFechaIngreso()."</td>";
                 echo "<td>";
-                echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash'></button>";
                 if($empleado->getIdCuenta()==null){
                 echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta(".$empleado->getDni().")'>&nbsp;Cuenta</button>";
                 }else{

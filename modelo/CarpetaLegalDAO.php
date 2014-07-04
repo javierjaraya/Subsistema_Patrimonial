@@ -36,12 +36,17 @@ class CarpetaLegalDAO{
         $carpetas = array(); // Lista contenedora de las carpetas
         //$codigo = $this->queryMaxId();
         $this->conexion->conectar();
-        $laConsulta = "SELECT * FROM CARPETALEGAL";
+        $laConsulta = "SELECT CARPETALEGAL.FECHA_INSCRIPCION,  CARPETALEGAL.CONTRIBUCION, CARPETALEGAL.CODIGO,CARPETALEGAL.ROL, 
+CARPETALEGAL.CONSERVADOR_BIEN_RAIZ, CARPETALEGAL.ID_PREDIO, CARPETALEGAL.ESTADO, CONSERVADOR.NOMBRE_CONSERVADOR, PREDIO.NOMBRE
+FROM CARPETALEGAL JOIN CONSERVADOR ON CARPETALEGAL.CONSERVADOR_BIEN_RAIZ=CONSERVADOR.ID_CONSERVADOR JOIN PREDIO
+ON CARPETALEGAL.ID_PREDIO=PREDIO.ID_PREDIO";
         
         $query = $this->conexion->ejecutar($laConsulta);
         $i = 0;
         while(ocifetch($query)){
             $carpeta = new CarpetaLegal();
+            $carpeta->setNombrePredio(ociresult($query, "NOMBRE"));
+            $carpeta->setNombreConservador(ociresult($query, "NOMBRE_CONSERVADOR"));
             $carpeta->setFechaInscripcion(ociresult($query, "FECHA_INSCRIPCION"));
             $carpeta->setContribucion(ociresult($query, "CONTRIBUCION"));
             $carpeta->setCodigo(ociresult($query, "CODIGO"));

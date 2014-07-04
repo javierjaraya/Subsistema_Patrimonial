@@ -273,7 +273,9 @@ class Sistema {
         return $this->carpetaDAO->delete($codigo);
     }
 
-
+    public function asignarCta($dniCta, $idCuenta) {
+        return $this->empleadoDAO->asignarCuenta($dniCta, $idCuenta);
+    }
 
 }
 
