@@ -277,8 +277,8 @@ class Sistema {
         return $this->floraDAO->findAll();
     }
     
-    public function actualizarFlora($flora){
-        return $this->floraDAO->update($flora);
+    public function eliminarCarpeta($codigo){
+        return $this->carpetaDAO->delete($codigo);
     }
     
     public function actualizarCarpeta($carpeta, $id_original){
