@@ -27,9 +27,11 @@ class PDF extends FPDF {
         $this->SetFont('Arial', 'B', 10);
         $this->SetFillColor(2, 157, 116); //Fondo verde de celda
         $this->SetTextColor(240, 255, 240); //Letra color blanco
-        foreach ($cabecera as $fila) {
-            $this->CellFitSpace(40, 7, utf8_decode($fila), 1, 0, 'L', true);
-        }
+        $this->CellFitSpace(20, 7, utf8_decode($cabecera[0]), 1, 0, 'L', true);
+        $this->CellFitSpace(40, 7, utf8_decode($cabecera[1]), 1, 0, 'L', true);
+        $this->CellFitSpace(40, 7, utf8_decode($cabecera[2]), 1, 0, 'L', true);
+        $this->CellFitSpace(40, 7, utf8_decode($cabecera[3]), 1, 0, 'L', true);
+        $this->CellFitSpace(40, 7, utf8_decode($cabecera[4]), 1, 0, 'L', true);
     }
 
     function cabeceraHorizontalInventario($cabecera) {
@@ -99,13 +101,14 @@ class PDF extends FPDF {
         $bandera = false; //Para alternar el relleno
         foreach ($predios as $predio) {
             //Usaremos CellFitSpace en lugar de Cell
-            $this->CellFitSpace(40, 7, utf8_decode($predio->getIdPredio()), 1, 0, 'L', $bandera);
+            $this->CellFitSpace(20, 7, utf8_decode($predio->getIdPredio()), 1, 0, 'L', $bandera);
             $this->CellFitSpace(40, 7, utf8_decode($predio->getNombre()), 1, 0, 'L', $bandera);
             $a = number_format($predio->getSuperficie());
             $this->CellFitSpace(40, 7, utf8_decode($a . ' ha'), 1, 0, 'R', $bandera);
             //Damos formato numerico
             $a = number_format($predio->getValorComercial());
             $this->CellFitSpace(40, 7, utf8_decode('$' . $a), 1, 0, 'R', $bandera);
+            $this->CellFitSpace(40, 7, utf8_decode($predio->getComuna()->getNombreComuna()), 1, 0, 'L', $bandera);
             $this->Ln(); //Salto de línea para generar otra fila
             $bandera = !$bandera; //Alterna el valor de la bandera
         }

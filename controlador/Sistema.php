@@ -82,8 +82,8 @@ class Sistema {
     public function findAllRodalesSelection($selection, $seleccionCantidad, $idPredio){
         return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
     }
-    public function findAllPrediosSelection($selection, $seleccionCantidad, $idPredio){
-        return $this->predioDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
+    public function findAllPrediosSelection($selection, $seleccionCantidad){
+        return $this->predioDAO->findAllSelection($selection, $seleccionCantidad);
     }
 
     /**
