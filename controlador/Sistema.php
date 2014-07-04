@@ -284,8 +284,8 @@ class Sistema {
         return $this->faunaDAO->findAllFaunasPredio($idpredio);
     }
     
-    public function eliminarCarpeta($codigo){
-        return $this->carpetaDAO->delete($codigo);
+    public function findAllFlorasPredio($idpredio){
+        return $this->floraDAO->findAllFlorasPredio($idpredio);
     }
     
     public function findFloraById($id){
