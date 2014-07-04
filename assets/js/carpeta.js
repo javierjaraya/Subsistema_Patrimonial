@@ -227,7 +227,9 @@ console.log('iniciando eventos de cuenta');
                     data: datos,
                     success: function(response) {
                         console.log("Ajax ejecutado correctamente");
+                        console.log(response);
                         carpeta.cargarTabla();
+                        
                     },
                     error: function() {
                         console.log("Error al ejecutar AJAX");
