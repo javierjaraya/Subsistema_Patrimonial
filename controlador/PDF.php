@@ -179,10 +179,10 @@ function datosVerticalFauna($faunas) {
             //POSICION DEL NOMBRE
             $this->Sety($distancia);
             $this->SetX(10);
-            $this->MultiCell(30, 5, "Nombre : $distancia", 0, 0, 'L', $bandera);
+            $this->MultiCell(30, 5, "Nombre : ", 0, 0, 'L', $bandera);
             $this->Sety($distancia);
             $this->SetX(50);
-            $this->MultiCell(40, 5, utf8_decode($fauna->getNombreFauna()).$distancia, 0, 'L', $bandera);
+            $this->MultiCell(40, 5, utf8_decode($fauna->getNombreFauna()), 0, 'L', $bandera);
             //POSICION DE LA ESPECIE
             $this->Sety($distancia+10);
             $this->SetX(10);
