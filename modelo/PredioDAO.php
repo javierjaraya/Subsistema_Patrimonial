@@ -37,7 +37,6 @@ class PredioDAO implements interfaceDAO{
                         ORDER BY ID_PREDIO";
         
         $query = $this->cone->ejecutar($laConsulta);
-        $i = 0;
         while(ocifetch($query)){
             $predio = new Predio();
             $comuna = new Comuna();
@@ -57,8 +56,7 @@ class PredioDAO implements interfaceDAO{
             $comuna->setNombreComuna(ociresult($query, "NOMBRE_COMUNA"));
             $predio->setComuna($comuna);
             
-            $predios[$i] = $predio;
-            $i++;
+            $predios[] = $predio;
             
         }
         $this->cone->desconectar();
@@ -229,6 +227,61 @@ class PredioDAO implements interfaceDAO{
         }else{
             return false;
         }
+    }
+    
+     public function findAllSelection($seleccion, $seleccionCantidad){
+        $array = array("p.NOMBRE", "c.NOMBRE_COMUNA", "SUPERFICIE", "VALOR_COMERCIAL");
+        $estado = 1;
+        $this->cone->conectar();
+
+            if($seleccionCantidad<=100){
+
+                  $laConsulta = "
+                    SELECT * FROM
+                    (SELECT p.ID_PREDIO, p.NOMBRE, p.SUPERFICIE, p.VALOR_COMERCIAL, p.ID_COMUNA,
+                            p.ID_EMPRESA, p.ID_ZONA, c.ID_PROVINCIA, c.NOMBRE_COMUNA
+                        FROM predio p, comuna c, zona z
+                        WHERE   p.ID_COMUNA = c.ID_COMUNA
+                        AND     p.ID_ZONA = z.ID_ZONA
+                        AND p.ESTADO = '".$estado."' ORDER BY ".$array[$seleccion-1].")
+
+                        WHERE ROWNUM <= $seleccionCantidad";  
+
+
+            }else{
+                $laConsulta = "SELECT *
+                        FROM predio p, comuna c, zona z
+                        WHERE   p.ID_COMUNA = c.ID_COMUNA
+                        AND     p.ID_ZONA = z.ID_ZONA
+                        AND p.ESTADO = '".$estado."' ORDER BY ".$array[$seleccion-1];
+            }
+      
+        
+        $query = $this->cone->ejecutar($laConsulta);
+        while(ocifetch($query)){
+            $predio = new Predio();
+            $comuna = new Comuna();
+            $predio->setIdComuna(ociresult($query, "ID_COMUNA"));
+            $predio->setIdEmpresa(ociresult($query, "ID_EMPRESA"));
+            $predio->setIdPredio(ociresult($query, "ID_PREDIO"));
+            $predio->setIdZona(ociresult($query, "ID_ZONA"));
+            $predio->setNombre(ociresult($query, "NOMBRE"));
+            $predio->setSuperficie(ociresult($query, "SUPERFICIE"));
+            $predio->setValorComercial(ociresult($query, "VALOR_COMERCIAL"));
+            /*
+             * Carga comuna
+             */
+            $comuna->setIdComuna(ociresult($query, "ID_COMUNA"));
+            $comuna->setIdProvincia(ociresult($query, "ID_PROVINCIA"));
+            $comuna->setNombreComuna(ociresult($query, "NOMBRE_COMUNA"));
+            $predio->setComuna($comuna);
+            
+            $predios[] = $predio;
+            
+        }
+        
+        $this->cone->desconectar();
+        return $predios;
     }
 
 }
