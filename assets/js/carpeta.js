@@ -127,6 +127,92 @@ console.log('iniciando eventos de cuenta');
             return false;
         },
         
+        modificarCarpeta: function(cod){            
+            var codigo = cod;
+            //cuenta.mostrarModificar();
+            console.log(codigo);
+            var datos = 'Codigo='+ codigo ;
+            $.ajax({
+                type: "POST",
+                url: "modificarCarpeta.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editCarpetaDialog').html(response);
+                    
+                    carpeta.mostrarModificar();
+                    carpeta.cargarTabla();
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+        },
+        
+        mostrarModificar: function(){
+              $( "#editCarpetaDialog" ).dialog({
+              title: "Edición Carpeta",
+              height: 500,
+              width: 500,
+              modal: true,
+             
+              resizable: false,
+              buttons: {
+                Actualizar: function() {
+                  var bValid = true;
+                  var idOriginal = $("#idOriginal").val();
+                    codigo = $("#codigo").val();                 
+                    fechaInscripcion = $("#fechaInscripcion").val();
+                    rol = $("#rol").val();
+                    conservador = $("#conservador").val();
+                    contribucion = $("#contribucion").val();
+                    idPredio = $("#idPredio").val();
+                    estado = $("#estado").val();
+                    
+                    console.log("codigo: "+codigo);
+                    
+            
+            var datos = 'idOriginal=' + idOriginal +'&codigo='+ codigo + '&fechaInscripcion=' + fechaInscripcion + 
+                    '&rol=' + rol + '&conservador=' + conservador + '&contribucion=' + 
+                    contribucion + '&idPredio=' + predio + '&estado=' + estado;
+            $.ajax({
+                type: "POST",
+                url: "guardarCambiosActualizacionCarpeta.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#page-wrapper').html(response);
+                    cuenta.cargarTabla();
+                    
+                    
+                   
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    $('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+            $( this ).dialog( "destroy" );
+                    return true;
+                  
+            }
+            ,
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        $( this ).dialog( "close" );
+              }
+            });
+        },
+        
         eliminarCarpeta: function(cod){
             var confirmacion = confirm("¿Está seguro que desea eliminar?");
             if(confirmacion){

@@ -85,6 +85,48 @@ ON CARPETALEGAL.ID_PREDIO=PREDIO.ID_PREDIO";
         $this->conexion->desconectar();
     }
     
+    public function actualizarCarpetaDAO($carpeta, $id_original) {
+        $this->conexion->conectar();
+        $laConsulta = "UPDATE CARPETALEGAL
+                        SET     CODIGO='".$carpeta->getCodigo()."',
+                                FECHA_INSCRIPCION='".$carpeta->getFechaInscripcion()."',
+                                ROL='".$carpeta->getRol()."', 
+                                CONSERVADOR_BIEN_RAIZ='".$carpeta->getConservadorBienRaiz()."',
+                                CONTRIBUCION='".$carpeta->getContribucion()."',
+                                ID_PREDIO='".$carpeta->getIdPredio()."',
+                                ESTADO='".$carpeta->getEstado()."' 
+                                
+                        WHERE CODIGO='".$id_original."' ";
+        
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
+    }
+    
+
+    public function findByID($codigo) {//falla
+        $carpeta = new CarpetaLegal();
+        $this->conexion->conectar();
+        $laConsulta = " SELECT * 
+                        FROM CARPETALEGAL
+                        WHERE CARPETALEGAL.CODIGO = '".$codigo."'";
+        echo $laConsulta;
+        $query = $this->conexion->ejecutar($laConsulta);
+        while(ocifetch($query)){
+            
+            $carpeta->setCodigo(ociresult($query, "CODIGO"));
+            $carpeta->setFechaInscripcion(ociresult($query, "FECHA_INSCRIPCION"));
+            $carpeta->setRol(ociresult($query, "ROL"));
+            $carpeta->setConservadorBienRaiz(ociresult($query, "CONSERVADOR_BIEN_RAIZ"));
+            $carpeta->setContribucion(ociresult($query, "CONTRIBUCION"));
+            $carpeta->setIdPredio(ociresult($query, "ID_PREDIO"));
+            $carpeta->setEstado(ociresult($query, "ESTADO"));
+        }
+        //echo $carpeta->getFechaInscripcion();
+        $this->conexion->desconectar();
+        return $carpeta;
+    
+    }
+    
     public function findLikeAtrr($name) {
         
     }

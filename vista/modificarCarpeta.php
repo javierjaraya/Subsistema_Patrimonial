@@ -6,8 +6,9 @@ include_once '../controlador/CarpetaLegal.php';
 $codigo = $_POST['Codigo'];
 $control = Sistema::getInstancia();
 $carpeta = $control->findCarpetaById($codigo);
+//echo $codigo;
 
-$fechaInscripcion = $carpeta->getCodigo();
+$fechaInscripcion = $carpeta->getFechaInscripcion();
 $rol = $carpeta->getRol();
 $contribucion = $carpeta->getContribucion();
 $conservador = $carpeta->getConservadorBienRaiz();

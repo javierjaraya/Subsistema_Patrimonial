@@ -31,7 +31,9 @@ $empleados = $control->findAllEmpleados();
         </thead>
         <tbody id="tbody">
             <?PHP
+            $dni;
             foreach($empleados as $empleado){
+                $dni='"'.$empleado->getDni().'"';
                 echo "<tr>";
                 echo "<td>".$empleado->getDni()."</td>";
                 echo "<td>".$empleado->getNombreEmpleado()."</td>";
@@ -40,7 +42,7 @@ $empleados = $control->findAllEmpleados();
                 echo "<td>".$empleado->getFechaIngreso()."</td>";
                 echo "<td>";
                 if($empleado->getIdCuenta()==null){
-                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta(".$empleado->getDni().")'>&nbsp;Cuenta</button>";
+                echo "<button type='button' class='btn btn-primary glyphicon glyphicon-plus' onClick='cuenta.ingresaNuevaCuenta(".$dni.")'>&nbsp;Cuenta</button>";
                 }else{
                     echo "<button type='button' class='btn btn-success glyphicon glyphicon-search'>&nbsp;Cuenta</button>";
                 }
@@ -74,7 +76,7 @@ $empleados = $control->findAllEmpleados();
             <div><label>ID Cuenta: </label><input type="text" class="idCuenta" name="idCuenta" /></div>
             <div><label>Fecha de Creacion: </label><input type="text" class="fechaCreacion" name="fechaCreacion" /></div>
             <div><label>Password: </label><input type="text" class="password" name="password" /></div>
-            <div><label>Estado: </label><input type="text" class="estado" name="estado" /></div>
-            <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>            
+            <div><label>ID Perfil: </label><input cols="30" rows="5" class="idPerfil" name="idPerfil" /></div>   
+            <div><input type="hidden" class="estado" name="estado" value="1"/></div>       
         </fieldset>
 </div>     

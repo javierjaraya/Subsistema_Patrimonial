@@ -272,6 +272,14 @@ class Sistema {
     public function eliminarCarpeta($codigo){
         return $this->carpetaDAO->delete($codigo);
     }
+    
+    public function actualizarCarpeta($carpeta, $id_original){
+        return $this->carpetaDAO->actualizarCarpetaDAO($carpeta, $id_original);
+    }
+    
+    public function findCarpetaById($codigo){
+        return $this->carpetaDAO->findByID($codigo);
+    }
 
     public function asignarCta($dniCta, $idCuenta) {
         return $this->empleadoDAO->asignarCuenta($dniCta, $idCuenta);

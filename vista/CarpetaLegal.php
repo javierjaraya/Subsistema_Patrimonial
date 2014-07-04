@@ -44,7 +44,7 @@ $carpetas = $control->findAllCarpetas();
                 echo "<td>".$carpeta->getNombreConservador()."</td>";
                 echo "<td>".$carpeta->getIdPredio()."</td>";
                 echo "<td>";              
-                echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick=''></button>";
+                echo "<button type='button' class='btn btn-warning glyphicon glyphicon-pencil' onclick='carpeta.modificarCarpeta(".$carpeta->getCodigo().")'></button>";
                 echo "<button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='carpeta.eliminarCarpeta(".$carpeta->getCodigo().")'></button>";
                 echo "</td>";
                 echo "</tr>";             
@@ -65,4 +65,9 @@ $carpetas = $control->findAllCarpetas();
             <div><label>ID Predio: </label><input cols="30" rows="5" class="idPredio" name="idPredio" /></div>
             <div><input type="hidden" class="estado" name="estado" value="1" visible="false"/></div>             
         </fieldset>
+</div>
+    
+<div  style="display:none; cursor: default"> 
+           <div id="editCarpetaDialog" title="Create new user">
+        
 </div>

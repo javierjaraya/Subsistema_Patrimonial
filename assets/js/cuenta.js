@@ -48,8 +48,9 @@ console.log('iniciando eventos de cuenta');
         
         
         ingresaNuevaCuenta: function(dni){
-            var dniCta = dni;
-            console.log(dniCta);
+            var dniCta = String(dni);
+            
+            console.log(dni);
             $( "#nuevaCuenta" ).dialog({
               title: "Ingresar Cuenta",
               height: 400,
@@ -81,7 +82,6 @@ console.log('iniciando eventos de cuenta');
             password = $(".password").val();
             estado = $(".estado").val();
             idPerfil = $(".idPerfil").val(); 
-            
             var datos = 'idCuenta='+ idCuenta + '&fechaCreacion=' + fechaCreacion + '&password=' + password
                     + '&estado=' + estado + '&idPerfil=' + idPerfil + '&dniCta='+ dniCta;
                     
@@ -92,7 +92,7 @@ console.log('iniciando eventos de cuenta');
                 success: function(response) {
                     //$('#showCuentaDialog').dialog({height: 300, width: 400});
                     console.log("Ajax ejecutado correctamente");
-                    empleado.cargarTabla();
+                    //empleado.cargarTabla();
                     $('#page-wrapper').html(response);
                     //cuenta.cargarTabla();
                     
