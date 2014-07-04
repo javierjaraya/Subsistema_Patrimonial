@@ -40,6 +40,7 @@ class Sistema {
      private $especieArboreaDAO;
      private $zonaDAO;
      private $faunaDAO;
+     private $floraDAO;
 
 
      private function Sistema(){
@@ -102,6 +103,9 @@ class Sistema {
     public function findAllEmpleados(){
         return $this->empleadoDAO->findAll();
     } 
+        public function saveCarpeta($carpeta){
+        return $this->carpetaDAO->save($carpeta);
+    }
     
     public function saveCuenta($cuenta){
         $this->cuentaDAO->save($cuenta);
@@ -271,20 +275,33 @@ class Sistema {
         return $this->floraDAO->findAll();
     }
     
-    public function saveCarpeta($carpeta){
-        return $this->carpetaDAO->save($carpeta);
+    public function actualizarFlora($flora){
+        return $this->floraDAO->update($flora);
+    }
+
+
+    public function findAllFaunasPredio($idpredio){
+        return $this->faunaDAO->findAllFaunasPredio($idpredio);
     }
     
     public function eliminarCarpeta($codigo){
         return $this->carpetaDAO->delete($codigo);
     }
     
-    public function existePredio($idPredio){
+    public function findFloraById($id){
+        return $this->floraDAO->findByID($id);
+    }
+
+        public function existePredio($idPredio){
         return $this->predioDAO->existe($idPredio);
     }
     
     public function findFaunaById($idfauna){
         return $this->faunaDAO->findById($idfauna);
+    }
+    
+    public function actualizarFauna($fauna){
+        $this->faunaDAO->update($fauna);
     }
 }
 

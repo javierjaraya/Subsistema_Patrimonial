@@ -43,8 +43,7 @@ $floras = $control->findAllFloras();
                     echo "<td>" . utf8_encode($flora->getEspecie()) . "</td>";
                     echo "<td class='text-justify'>" . utf8_encode($flora->getDescripcion()) . "</td>";
                     echo "<td>";
-                    echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                    echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                    echo "<button type='button' onclick='flora.mostrarModificar(" . $flora->getIdFlora() . ")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -52,4 +51,11 @@ $floras = $control->findAllFloras();
             </tbody>
         </table>
     </div>    
+    
+    <!--VENTA DIALOGO : MODIFICAR FLORA -->   
+    <div id="editFloraDialog" title="Modificar Flora">
+        
+    </div>
+    
+    
 </div>

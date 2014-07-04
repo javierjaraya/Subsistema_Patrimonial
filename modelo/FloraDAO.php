@@ -39,7 +39,18 @@ class FloraDAO implements interfaceDAO{
     }
 
     public function findByID($id) {
-        
+        $this->conexion->conectar();
+        $consulta = "SELECT * FROM flora WHERE flora.ID_FLORA = ".$id;
+        $query = $this->conexion->ejecutar($consulta);
+        $flora = new Flora();
+        while(ocifetch($query)){
+            $flora->setIdFlora(ociresult($query, "ID_FLORA"));
+            $flora->setNombreFlora(ociresult($query, "NOMBRE_FLORA"));
+            $flora->setEspecie(ociresult($query, "ESPECIE"));
+            $flora->setDescripcion(ociresult($query, "DESCRIPCION"));
+        }
+        $this->conexion->desconectar();
+        return $flora;
     }
 
     public function findLikeAtrr($name) {
@@ -50,8 +61,18 @@ class FloraDAO implements interfaceDAO{
         
     }
 
-    public function update($object) {
+    public function update($flora) {
+        $this->conexion->conectar();
+        $laConsulta = "UPDATE flora 
+                        SET     ID_FLORA='".$flora->getIdFlora()."',
+                                NOMBRE_FLORA='".$flora->getNombreFlora()."',
+                                ESPECIE='".$flora->getEspecie()."',
+                                DESCRIPCION='".$flora->getDescripcion()."'   
+                               
+                        WHERE ID_FLORA='".$flora->getIdFlora()."' ";
         
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
     
     public function findAllFlorasPredio($idpredio){
