@@ -144,28 +144,19 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tree-deciduous"></i> Predio <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:predio.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Predio</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tree-conifer"></i> Rodal <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:rodal.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Rodal</a></li>
-                                <li><a href="#">Resumen Rodal</a></li>
+                                <li><a href="javascript:rodal.cargarTabla();" class="fa fa-table"> Ver todos</a></li>                               
                             </ul>
                         </li>
                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Empleados <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:empleado.cargarTabla();" class="fa fa-table"> Ver todos</a></li>
-                                <li><a href="#">Agregar Nuevo</a></li>
-                                <li><a href="#">Buscar Empleado</a></li>
-                                <li><a href="#">Generar Reporte</a></li>
+                                <li><a href="javascript:empleado.cargarTabla();" class="fa fa-table"> Ver todos</a></li>                                
                             </ul>
                         </li>
                         

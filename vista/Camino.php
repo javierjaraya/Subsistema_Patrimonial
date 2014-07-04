@@ -69,7 +69,7 @@ $caminos = $control->findAllCaminos();
          
     </div> 
     
-    <!--VENTA DIALOGO : AGREGAR CAMINO -->   
+    <!--VENTA DIALOGO : MODIFICAR CAMINO -->   
     <div id="editCaminoDialog" title="Modificar Camino">
         
     </div>
