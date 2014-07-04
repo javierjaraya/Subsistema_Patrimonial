@@ -303,6 +303,10 @@ class Sistema {
     public function actualizarFauna($fauna){
         $this->faunaDAO->update($fauna);
     }
+    
+    public function findAllFlorasPredio($idpredio){
+        $this->floraDAO->findAllFlorasPredio($idpredio);
+    }
 }
 
 ?>

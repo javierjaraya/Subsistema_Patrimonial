@@ -217,15 +217,15 @@ function datosVerticalFauna($faunas) {
         $cont = 0;
         $distancia = 27;
         $bandera = FALSE;
+        
         foreach ($floras as $flora) {
             if($cont == 2){
-//                $distancia = $distancia+250;
                 $cont = 0;
                 $this->addPage();   
                 $distancia = 27;
             }else{
                 if($cont == 1)
-                $distancia = $distancia+90;
+                    $distancia = $distancia+90;
             }
             //POSICION DEL NOMBRE
             $this->Sety($distancia);
@@ -255,9 +255,6 @@ function datosVerticalFauna($faunas) {
             $this->Ln(); //Salto de línea para generar otra fila
             
             $cont++;
-
-            
-            
         }
     }
 
