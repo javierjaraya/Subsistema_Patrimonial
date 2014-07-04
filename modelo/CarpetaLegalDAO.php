@@ -108,7 +108,7 @@ ON CARPETALEGAL.ID_PREDIO=PREDIO.ID_PREDIO";
         $laConsulta = " SELECT * 
                         FROM CARPETALEGAL
                         WHERE CARPETALEGAL.CODIGO = '".$codigo."'";
-        echo $laConsulta;
+        //echo $laConsulta;
         $query = $this->conexion->ejecutar($laConsulta);
         while(ocifetch($query)){
             
