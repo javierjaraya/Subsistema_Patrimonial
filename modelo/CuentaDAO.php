@@ -66,7 +66,7 @@ class CuentaDAO{
     public function save($cuenta) {
         $this->conexion->conectar();
         $laConsulta = "INSERT into CUENTA (ID_CUENTA, FECHACREACION, PASSWORD, ESTADO, ID_PERFIL) VALUES ('".$cuenta->getIdCuenta()."','".$cuenta->getFechaCreacion()."','".$cuenta->getPassword()."','".$cuenta->getEstado()."','".$cuenta->getIdPerfil()."')";
-        echo $laConsulta; 
+        //echo $laConsulta; 
         $query = $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
         

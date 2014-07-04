@@ -79,8 +79,7 @@ ON CARPETALEGAL.ID_PREDIO=PREDIO.ID_PREDIO";
         
         $this->conexion->conectar();
         $laConsulta = "INSERT into CARPETALEGAL (CODIGO, FECHA_INSCRIPCION, ROL, CONSERVADOR_BIEN_RAIZ, CONTRIBUCION, ID_PREDIO, ESTADO)"
-                . " VALUES ('".$carpeta->getCodigo()."','".$carpeta->getFechaInscripcion()."','".$carpeta->getRol()."','".$carpeta->getConservadorBienRaiz()."','".$carpeta->getContribucion()."','".$carpeta->getIdPredio()."','".$carpeta->getEstado()."')";
-        echo $laConsulta; 
+                . " VALUES ('".$carpeta->getCodigo()."',to_date('".$carpeta->getFechaInscripcion()."', 'yyyy-mm-dd'),'".$carpeta->getRol()."','".$carpeta->getConservadorBienRaiz()."','".$carpeta->getContribucion()."','".$carpeta->getIdPredio()."','".$carpeta->getEstado()."')";
         $this->conexion->ejecutar($laConsulta);
         $this->conexion->desconectar();
     }

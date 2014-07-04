@@ -57,13 +57,13 @@ $carpetas = $control->findAllCarpetas();
 
 <div id="nuevaCarpeta" style="display:none; cursor: default"> 
         <fieldset>
-            <div><label>Codigo: </label><input type="text" class="form-control" name="codigo" /></div>
-            <div><label>Fecha de Inscripcion: </label><input type="text" class="form-control" name="fechaInscripcion" /></div>
-            <div><label>Rol: </label><input type="text" class="form-control" name="rol" /></div>
-            <div><label>Conservador: </label><input type="text" class="form-control" name="conservador" /></div>
-            <div><label>Contribucion: </label><input type="text" class="form-control" name="contribucion" /></div>
-            <div><label>ID Predio: </label><input cols="30" rows="5" class="form-control" name="idPredio" /></div>
-            <div><input type="hidden" class="form-control" name="estado" value="1" visible="false"/></div>             
+            <div><label>Codigo: </label><input type="text" class="form-control" name="codigo" id="codigo_carpeta" /></div>
+            <div><label>Fecha de Inscripcion: </label><input type="date" class="form-control" name="fechaInscripcion" id="fecha_carpeta"/></div>
+            <div><label>Rol: </label><input type="text" class="form-control" name="rol" id="rol_carpeta" /></div>
+            <div><label>Conservador: </label><input type="text" class="form-control" name="conservador" id="conservador_carpeta"/></div>
+            <div><label>Contribucion: </label><input type="text" class="form-control" name="contribucion" id="contribucion_carpeta" /></div>
+            <div><label>ID Predio: </label><input cols="30" rows="5" class="form-control" name="idPredio" id="id_predio_carpeta"/></div>
+            <div><input type="hidden" class="form-control" name="estado" value="1" visible="false" id="estado_carpeta"/></div>             
         </fieldset>
 </div>
     

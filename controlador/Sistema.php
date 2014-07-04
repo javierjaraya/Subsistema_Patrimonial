@@ -105,7 +105,7 @@ class Sistema {
     public function findAllEmpleados(){
         return $this->empleadoDAO->findAll();
     } 
-        public function saveCarpeta($carpeta){
+    public function saveCarpeta($carpeta){
         return $this->carpetaDAO->save($carpeta);
     }
     
@@ -321,7 +321,6 @@ class Sistema {
     public function findAllCarpetas(){
         return $this->carpetaDAO->findAll();
     }
-
 }
 
 ?>

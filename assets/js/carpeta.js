@@ -93,29 +93,32 @@ console.log('iniciando eventos de cuenta');
         
         aceptarIngresoCarpeta: function(){
             
-            var codigo = $(".codigo").val();
-            fechaInscripcion = $(".fechaInscripcion").val();
-            rol = $(".rol").val();
-            conservador = $(".conservador").val();
-            contribucion = $(".contribucion").val();
-            idPredio = $(".idPredio").val();
-            estado = $(".estado").val();
+            var codigo = $("#codigo_carpeta").val();
+            fechaInscripcion = $("#fecha_carpeta").val();
+            rol = $("#rol_carpeta").val();
+            conservador = $("#conservador_carpeta").val();
+            contribucion = $("#contribucion_carpeta").val();
+            idPredio = $("#id_predio_carpeta").val();
+            estado = $("#estado_carpeta").val();
                      
             
             var datos = 'codigo='+ codigo + '&fechaInscripcion=' + fechaInscripcion + '&rol=' + rol
                     + '&conservador=' + conservador + '&contribucion=' + contribucion + '&idPredio='
                     + idPredio + '&estado=' + estado;
-                    
+            
+            console.log("DATOS " +datos);
+            
             $.ajax({
                 type: "POST",
                 url: "ingresaCarpeta.php",
                 data: datos,
                 success: function(response) {
                     //$('#showCuentaDialog').dialog({height: 300, width: 400});
-                    console.log("Ajax ejecutado correctamente");
-                    $('#page-wrapper').html(response);
-                    //cuenta.cargarTabla();
-                    
+                    console.log("Ajax ejecutado correctamente aceptarIngresarCarpeta");
+                    console.log(response);// $('#page-wrapper').html(response);
+                    carpeta.cargarTabla();
+                   $("#nuevaCarpeta").dialog("destroy");
+                   
                    
                 },
                 error: function() {
@@ -137,7 +140,7 @@ console.log('iniciando eventos de cuenta');
                 url: "modificarCarpeta.php",
                 data: datos,
                 success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
+                    console.log("Ajax ejecutado correctamente (modificarCarpeta)");
                     $('#editCarpetaDialog').html(response);
                     
                     carpeta.mostrarModificar();
@@ -184,10 +187,9 @@ console.log('iniciando eventos de cuenta');
                 url: "guardarCambiosActualizacionCarpeta.php",
                 data: datos,
                 success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
+                    console.log("Ajax ejecutado correctamente (mostrarModificar)");
                     $('#page-wrapper').html(response);
                     cuenta.cargarTabla();
-                    
                     
                    
                 },
