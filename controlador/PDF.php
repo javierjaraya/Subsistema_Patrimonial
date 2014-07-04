@@ -203,9 +203,7 @@ function datosVerticalFauna($faunas) {
 
             $this->Ln(); //Salto de línea para generar otra fila
             
-            $cont++;
-            
-            
+            $cont++;                        
         }
     }
     
