@@ -101,13 +101,14 @@ console.log('iniciando eventos de predio');
             idComuna = $(".id_comuna").attr("idcomuna");
             zona = $("#zona_agregar").val();
             
-            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna + '&zona' + zona;
+            var datos = 'idpredio='+ idPredio + '&nombre=' + nombre + '&superficie=' + superficie + '&valorcomercial=' + valorcomercial + '&idcomuna=' + idComuna + '&zona=' + zona;
             $.ajax({
                 type: "POST",
                 url: "ingresaPredio.php",
                 data: datos,
                 success: function(response) {
                     console.log("Ajax ejecutado correctamente");
+                    console.log(response);
                     predio.cargarTabla();
                    // $(document).ajaxStop(predio.mostrarMensaje(""));
                     
