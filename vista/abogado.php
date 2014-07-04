@@ -15,7 +15,9 @@ if (!isset($empleado)) {
     <head>
         <meta charset="UTF-8">
         <title>Subsistema Patrimonial</title>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.css" rel="stylesheet" type="text/css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.theme.css" rel="stylesheet" type="text/css">
+        <link href="../assets/jquery-ui-1.11.0/jquery-ui.structure.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/menu.css" rel="stylesheet" type="text/css">
         <link href='../assets/ico/favicon.png' type='image/x-icon' rel='shortcut icon' />
@@ -85,7 +87,7 @@ if (!isset($empleado)) {
     <!-- jQuery core JS -->
     <script type="text/javascript" src="../assets/js/jquery-2.1.1.js"></script>
     <!-- jQuery UI (estilos) -->
-    <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-ui-1.11.0/jquery-ui.min.js"></script>
     <!-- Boostrap core JS -->
     <script type="text/javascript" src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
