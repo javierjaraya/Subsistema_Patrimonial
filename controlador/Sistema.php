@@ -41,6 +41,7 @@ class Sistema {
      private $zonaDAO;
      private $faunaDAO;
      private $floraDAO;
+     private $carpetaDAO;
 
 
      private function Sistema(){
@@ -58,6 +59,7 @@ class Sistema {
          $this->zonaDAO = new ZonaDAO();
          $this->faunaDAO = new FaunaDAO();
          $this->floraDAO = new FloraDAO();
+         $this->carpetaDAO = new CarpetaLegalDAO();
      }
      
      public static function  getInstancia(){
@@ -312,6 +314,13 @@ class Sistema {
         $this->faunaDAO->update($fauna);
     }
     
+    public function asignarCta($dniCta, $idCuenta) {
+        return $this->empleadoDAO->asignarCuenta($dniCta, $idCuenta);
+    }
+    
+    public function findAllCarpetas(){
+        return $this->carpetaDAO->findAll();
+    }
 
 }
 
