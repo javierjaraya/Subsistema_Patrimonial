@@ -39,7 +39,8 @@ class Sistema {
      private $inventarioDAO;
      private $especieArboreaDAO;
      private $zonaDAO;
-     private $carpetaDAO;
+     private $faunaDAO;
+     private $floraDAO;
 
 
      private function Sistema(){
@@ -55,7 +56,8 @@ class Sistema {
          $this->inventarioDAO = new InventarioDAO();
          $this->especieArboreaDAO = new EspecieArboreaDAO();
          $this->zonaDAO = new ZonaDAO();
-         $this->carpetaDAO = new CarpetaLegalDAO();
+         $this->faunaDAO = new FaunaDAO();
+         $this->floraDAO = new FloraDAO();
      }
      
      public static function  getInstancia(){
@@ -81,7 +83,9 @@ class Sistema {
     public function findAllRodalesSelection($selection, $seleccionCantidad, $idPredio){
         return $this->rodalDAO->findAllSelection($selection, $seleccionCantidad, $idPredio);
     }
-   
+    public function findAllPrediosSelection($selection, $seleccionCantidad){
+        return $this->predioDAO->findAllSelection($selection, $seleccionCantidad);
+    }
 
     /**
      * Metodo encargado de buscar un predio por Id
@@ -99,6 +103,9 @@ class Sistema {
     public function findAllEmpleados(){
         return $this->empleadoDAO->findAll();
     } 
+        public function saveCarpeta($carpeta){
+        return $this->carpetaDAO->save($carpeta);
+    }
     
     public function saveCuenta($cuenta){
         $this->cuentaDAO->save($cuenta);
@@ -261,16 +268,15 @@ class Sistema {
         $this->inventarioDAO->update($inventario);
     }
 
-    public function findAllCarpetas(){
-        return $this->carpetaDAO->findAll();
+    public function findALlFaunas(){
+        return $this->faunaDAO->findAll();
+    }
+    public function findALlFloras(){
+        return $this->floraDAO->findAll();
     }
     
-    public function saveCarpeta($carpeta){
-        return $this->carpetaDAO->save($carpeta);
-    }
-    
-    public function eliminarCarpeta($codigo){
-        return $this->carpetaDAO->delete($codigo);
+    public function actualizarFlora($flora){
+        return $this->floraDAO->update($flora);
     }
     
     public function actualizarCarpeta($carpeta, $id_original){
@@ -281,11 +287,32 @@ class Sistema {
         return $this->carpetaDAO->findByID($codigo);
     }
 
-    public function asignarCta($dniCta, $idCuenta) {
-        return $this->empleadoDAO->asignarCuenta($dniCta, $idCuenta);
+
+    public function findAllFaunasPredio($idpredio){
+        return $this->faunaDAO->findAllFaunasPredio($idpredio);
+    }
+    
+    public function findAllFlorasPredio($idpredio){
+        return $this->floraDAO->findAllFlorasPredio($idpredio);
+    }
+    
+    public function findFloraById($id){
+        return $this->floraDAO->findByID($id);
     }
 
-}
+        public function existePredio($idPredio){
+        return $this->predioDAO->existe($idPredio);
+    }
+    
+    public function findFaunaById($idfauna){
+        return $this->faunaDAO->findById($idfauna);
+    }
+    
+    public function actualizarFauna($fauna){
+        $this->faunaDAO->update($fauna);
+    }
+    
 
+}
 
 ?>

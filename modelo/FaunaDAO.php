@@ -41,7 +41,19 @@ class FaunaDAO implements interfaceDAO{
     }
 
     public function findByID($id) {
+        $faunaEncontrado = new Fauna();
+        $this->conexion->conectar();
+        $laConsulta = "SELECT * FROM fauna WHERE ID_FAUNA = '".$id."'";
+        $query = $this->conexion->ejecutar($laConsulta);
+        while(ocifetch($query)){   
+            $faunaEncontrado->setNombreFauna(ociresult($query, "NOMBRE_FAUNA"));
+            $faunaEncontrado->setEspecie(ociresult($query, "ESPECIE"));
+            $faunaEncontrado->setDescripcion(ociresult($query, "DESCRIPCION"));
+            
+        }
         
+        $this->conexion->desconectar();
+        return $faunaEncontrado;
     }
 
     public function findLikeAtrr($name) {
@@ -53,7 +65,16 @@ class FaunaDAO implements interfaceDAO{
     }
 
     public function update($object) {
+        $this->conexion->conectar();
+        $laConsulta = "UPDATE fauna 
+                        SET     NOMBRE_FAUNA='".$object->getNombreFauna()."',
+                                ESPECIE='".$object->getEspecie()."',
+                                DESCRIPCION='".$object->getDescripcion()."'
+                                
+                        WHERE ID_FAUNA='".$object->getIdFauna()."' ";
         
+        $this->conexion->ejecutar($laConsulta);
+        $this->conexion->desconectar();
     }
     
     public function findAllFaunasPredio($idpredio){

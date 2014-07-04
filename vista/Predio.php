@@ -37,7 +37,6 @@ $especies = $control->findAllEspecies();
                                     <option value="100">100</option>
                                     
                              </select>
-         <input type="text" id="idprediofiltro" name="idprediofiltro" value="" placeholder="Filtre por ID Predio">
         <button type="submit" class='btn btn-success glyphicon glyphicon-floppy-save' title="Generar reporte" onclick=" return validarSeleccionReporteRodal()" ></button>
          
      </form>

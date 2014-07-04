@@ -82,5 +82,79 @@ var fauna = (function() {
             });
             return false;
         },
+        modificarFauna: function(id){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idFauna = id;
+            var datos = 'idfauna='+ idFauna ;
+            console.log(idFauna);
+            $.ajax({
+                type: "POST",
+                url: "modificarFauna.php",
+                data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editFaunaDialog').html(response);
+                    fauna.mostrarModificar(id);
+                },
+                error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    //$('#page-wrapper').html('Consulta mal hecha');
+                                  
+                }
+            });
+            
+        },
+        mostrarModificar: function(id){
+              $( "#editFaunaDialog" ).dialog({
+              title: "Edición Fauna",
+              height: 500,
+              width: 500,
+              modal: true,
+              resizable: false,
+              buttons: {
+                Actualizar: function() {
+                  var confirmacion = confirm("¿Está seguro que desea actualizar?");
+                  if(confirmacion){
+                         var idFauna = id
+                         nombre = $("#nombre").val();
+                         descripcion = $("#descripcion").val();
+                         especie = $("#especie").val();
+
+                   var datos = 'idFauna='+ idFauna
+                               + '&nombre=' + nombre 
+                               + '&descripcion=' + descripcion 
+                               + '&especie=' + especie ;
+                               
+                   $.ajax({
+                       type: "POST",
+                       url: "guardarCambiosActualizacionFauna.php",
+                       data: datos,
+                       success: function(response) {
+                           console.log("Ajax ejecutado correctamente");
+                           $('#page-wrapper').html(response);
+                           fauna.cargarTabla();
+                       },
+                       error: function() {
+                           console.log("Error al ejecutar AJAX");
+                           $('#page-wrapper').html('Consulta mal hecha');
+                       }
+                   });
+
+                   $( this ).dialog( "destroy" );
+                           return true; 
+                  }
+                  
+                  
+            }
+            ,
+                Cancelar: function() {
+                  $( this ).dialog( "close" );
+                }
+              },
+              close: function() {
+        $( this ).dialog( "close" );
+              }
+            });
+        }
     };
 })();

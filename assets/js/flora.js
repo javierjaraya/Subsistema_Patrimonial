@@ -33,35 +33,9 @@ var flora = (function() {
         vaciaTabla: function(tabla) {
           console.log('tabla ocultada');
         },
-        cancelarIngresoCamino: function(){
-            console.log("Ingreso de camino cancelado");
+        cancelarIngresoFlora: function(){
+            console.log("Ingreso de flora cancelado");
             $.unblockUI();
-        },
-        aceptarIngresoCamino: function(){
-            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
-            var idCamino = $(".idcamino").val();
-            longitud = $(".longitud").val();
-            tipoSuperficie = $(".superficie").val();
-            idPredio = $(".idpredio").val();
-            
-            
-            var datos = 'idcamino='+ idCamino + '&longitud=' + longitud + '&tipoSuperficie=' + tipoSuperficie + '&idPredio=' + idPredio;
-            $.ajax({
-                type: "POST",
-                url: "ingresarCamino.php",
-                data: datos,
-                success: function(response) {
-                    console.log("Ajax ejecutado correctamente");
-                    camino.cargarTabla();
-                   
-                },
-                error: function() {
-                    console.log("Error al ejecutar AJAX");
-                    $('#page-wrapper').html('Error al Ingresar Camino');
-                                  
-                }
-            });
-            return false;
         },
         autocompletePredioFiltro: function(){
             $("#idprediofiltro").autocomplete({
@@ -78,31 +52,116 @@ var flora = (function() {
                 }
             });
         },
-                
-        ingresaNuevoCamino: function() {
-            $("#nuevoCamino").dialog({
-                title: "Nuevo Camino",
-                height: 400,
+        mostrarModificar: function(idflora){
+            $(document).ajaxStart($.blockUI(confLoad)).ajaxStop($.unblockUI);
+            var idFlora = idflora;
+            console.log(idFlora);
+            var datos = 'idflora=' + idFlora;
+            console.log(datos);
+            $.ajax({
+                    type: "POST",
+                    url: "modificarFlora.php",
+                    data: datos,
+                success: function(response) {
+                    console.log("Ajax ejecutado correctamente");
+                    $('#editFloraDialog').html(response);
+                    
+                    flora.modificarFlora();
+                    
+                    },
+                    error: function() {
+                    console.log("Error al ejecutar AJAX");
+                    }
+            });
+        },
+        
+        modificarFlora: function() {
+            $("#editFloraDialog").dialog({
+                title: "Edición Flora",
+                height: 560,
                 width: 500,
                 modal: true,
                 position: {my: "center top", at: "center top", of: "#page-wrapper"},
                 resizable: false,
+                draggable: false,
                 buttons: {
-                    Aceptar: function() {
+                    Actualizar: function() {
+                        nombrefauna = $("#nombrefauna").val();
+                        especie = $("#especie").val();
+                        descripcion = $("#descripcion").val();
+                        idflora = $("#idflora").val();
 
-                        camino.aceptarIngresoCamino();
-                        //$(this).dialog("close");
-                    },
+                        flora.aceptaModificarFlora();
+                        
+                        $(this).dialog("close");
+                        return true;
+
+                    }
+                    ,
                     Cancelar: function() {
                         $(this).dialog("close");
-
                     }
                 },
                 close: function() {
-
+                    $(this).dialog("close");
                 }
             });
-            console.log('abriendo contenedor nuevo camino');
+        },
+        
+        aceptaModificarFlora: function() {
+            $(document).ajaxStart($.blockUI(confLoad));
+            var nombrefauna = $("#nombrefauna").val();
+            var especie = $("#especie").val();
+            var descripcion = $("#descripcion").val();
+            var idflora = $("#idflora").val();
+
+            $('#editFloraDialog').empty();
+            
+            var datos = 'idflora=' + idflora + '&nombreflora=' + nombrefauna + '&especie=' + especie + '&descripcion=' + descripcion;
+            
+            console.log("Datos nuevos: " + datos);
+            $.ajax({
+                    type: "POST",
+                    url: "guardarCambiosActualizacionFlora.php",
+                    data: datos,
+                    success: function() {
+                        $("#editFloraDialog").dialog("destroy");
+                        
+                        flora.cargarTabla();
+                        //flora.mostrarMensaje("Se editado una flora");
+                    },
+                    error: function() {
+                        console.log("Error al ejecutar AJAX");
+                        $('#page-wrapper').html('Consulta mal hecha');          
+                    }
+            });
+        },
+        
+        mostrarMensaje: function(mensaje){
+            $('#notify_correct').html(mensaje);
+            confi = { 
+            message: $('#notify_correct'), 
+            fadeIn: 700, 
+            fadeOut: 700, 
+            timeout: 4000, 
+            showOverlay: false, 
+            centerY: false, 
+            css: { 
+                
+                    width: '350px', 
+                    top: '60px', 
+                    left: '', 
+                    right: '20px', 
+                    border: 'none', 
+                    padding: '5px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    color: '#fff' 
+                } 
+            };
+            $.blockUI(confi);
         }
+        
     };
 })();

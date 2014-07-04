@@ -66,12 +66,11 @@ $faunas = $control->findAllFaunas();
                     echo "<tr>";
                     echo "<td ><img onclick='javascript:this.width=450;this.height=338'  ondblclick='javascript:this.width=135;this.height=120' "
                     . "src = '" . $fauna->getRutaImagen() . "' width='135px' height='120px'></td>";
-                    echo "<td>" . utf8_encode($fauna->getNombreFauna()) . "</td>";
-                    echo "<td>" . utf8_encode($fauna->getEspecie()) . "</td>";
-                    echo "<td class='text-justify'>" . utf8_encode($fauna->getDescripcion()) . "</td>";
+                    echo "<td>" .$fauna->getNombreFauna() . "</td>";
+                    echo "<td>" . $fauna->getEspecie() . "</td>";
+                    echo "<td class='text-justify'>" .$fauna->getDescripcion() . "</td>";
                     echo "<td>";
-                    echo "<button type='button' onclick=''  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
-                    echo "<button type='button' onclick=''  class='btn btn-danger glyphicon glyphicon-trash'></button>";
+                    echo "<button type='button' onclick='fauna.modificarFauna(".$fauna->getIdFauna().")'  class='btn btn-warning glyphicon glyphicon-pencil'></button>";
                     echo "</td>";
                     echo "</tr>";
                 }
@@ -80,3 +79,7 @@ $faunas = $control->findAllFaunas();
         </table>
     </div>    
 </div>
+<div id="editFaunaDialog" title="Create new user">
+        
+</div>
+    
