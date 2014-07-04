@@ -230,7 +230,7 @@ class PredioDAO implements interfaceDAO{
     }
     
      public function findAllSelection($seleccion, $seleccionCantidad){
-        $array = array("p.NOMBRE", "c.NOMBRE_COMUNA", "SUPERFICIE", "VALOR_COMERCIAL");
+        $array = array("p.ID_PREDIO","p.NOMBRE", "c.NOMBRE_COMUNA", "SUPERFICIE", "VALOR_COMERCIAL");
         $estado = 1;
         $this->cone->conectar();
 
@@ -243,7 +243,7 @@ class PredioDAO implements interfaceDAO{
                         FROM predio p, comuna c, zona z
                         WHERE   p.ID_COMUNA = c.ID_COMUNA
                         AND     p.ID_ZONA = z.ID_ZONA
-                        AND p.ESTADO = '".$estado."' ORDER BY ".$array[$seleccion-1].")
+                        AND p.ESTADO = '".$estado."' ORDER BY ".$array[$seleccion].")
 
                         WHERE ROWNUM <= $seleccionCantidad";  
 
@@ -253,7 +253,7 @@ class PredioDAO implements interfaceDAO{
                         FROM predio p, comuna c, zona z
                         WHERE   p.ID_COMUNA = c.ID_COMUNA
                         AND     p.ID_ZONA = z.ID_ZONA
-                        AND p.ESTADO = '".$estado."' ORDER BY ".$array[$seleccion-1];
+                        AND p.ESTADO = '".$estado."' ORDER BY ".$array[$seleccion];
             }
       
         
